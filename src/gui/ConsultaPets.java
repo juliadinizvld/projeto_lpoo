@@ -71,7 +71,7 @@ public class ConsultaPets extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Consulta PET");
-		lblNewLabel_1.setBounds(154, 11, 151, 14);
+		lblNewLabel_1.setBounds(164, 11, 151, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnNewButton_1 = new JButton("Consultar");
@@ -84,12 +84,12 @@ public class ConsultaPets extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Pets encontrados no CPF Informado");
-		lblNewLabel_2.setBounds(106, 135, 187, 14);
+		lblNewLabel_2.setBounds(121, 130, 187, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Bob", "Luna", "Ralph", "Amora"}));
-		comboBox.setBounds(121, 164, 164, 22);
+		comboBox.setBounds(121, 155, 164, 22);
 		contentPane.add(comboBox);
 		
 		JList list = new JList();
