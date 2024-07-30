@@ -1,18 +1,18 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 import javax.swing.JList;
+import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class ProdutosConsultaDeProdutos extends JFrame {
+public class FuncionariosTelaInicial extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -25,7 +25,7 @@ public class ProdutosConsultaDeProdutos extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ProdutosConsultaDeProdutos frame = new ProdutosConsultaDeProdutos();
+					FuncionariosTelaInicial frame = new FuncionariosTelaInicial();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,50 +37,56 @@ public class ProdutosConsultaDeProdutos extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ProdutosConsultaDeProdutos() {
+	public FuncionariosTelaInicial() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		
+
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBounds(45, 11, 700, 500);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Consulta de produtos");
+		JLabel lblNewLabel = new JLabel("Funcionários");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(250, 11, 195, 31);
+		lblNewLabel.setBounds(272, 10, 150, 25);
 		panel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome do produto:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(184, 90, 115, 19);
+		JLabel lblNewLabel_1 = new JLabel("Nome do funcionário: ");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_1.setBounds(120, 83, 205, 25);
 		panel.add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(309, 91, 201, 20);
-		panel.add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblNewLabel_2 = new JLabel("Produtos encontrados:");
+		JLabel lblNewLabel_2 = new JLabel("Funcionários encontrados:");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_2.setBounds(250, 133, 201, 31);
+		lblNewLabel_2.setBounds(214, 142, 267, 40);
 		panel.add(lblNewLabel_2);
 		
 		JList list = new JList();
-		list.setBounds(210, 194, 300, 177);
+		list.setBounds(152, 232, 396, 158);
 		panel.add(list);
 		
-		JButton btnNewButton = new JButton("← Retonar");
-		btnNewButton.setBounds(210, 410, 130, 23);
+		textField = new JTextField();
+		textField.setBounds(302, 83, 267, 24);
+		panel.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("← Retornar");
+		btnNewButton.setBounds(152, 433, 99, 21);
 		panel.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Realizar pedido");
-		btnNewButton_1.setBounds(373, 410, 137, 23);
+		JButton btnNewButton_1 = new JButton("<html>Adicionar<br>funcionário\r\n</html>");
+		btnNewButton_1.setBounds(302, 419, 85, 40);
 		panel.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("<html>Verificar <br>funcionário</html>");
+		btnNewButton_2.setBounds(463, 419, 85, 40);
+		panel.add(btnNewButton_2);
 	}
 }
