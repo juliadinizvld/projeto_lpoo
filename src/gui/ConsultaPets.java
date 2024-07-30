@@ -17,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class ConsultaPets extends JFrame {
 
@@ -45,7 +46,7 @@ public class ConsultaPets extends JFrame {
 	 */
 	public ConsultaPets() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -53,43 +54,43 @@ public class ConsultaPets extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton(" <- Retornar");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(95, 83, 103, 23);
+		btnNewButton.setBounds(222, 206, 125, 23);
 		contentPane.add(btnNewButton);
 		
 		textField = new JTextField();
-		textField.setBounds(177, 40, 198, 20);
+		textField.setBounds(288, 117, 241, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("ID do PET ou CPF do tutor");
-		lblNewLabel.setBounds(10, 43, 157, 14);
+		lblNewLabel.setBounds(121, 120, 157, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Consulta PET");
-		lblNewLabel_1.setBounds(164, 11, 151, 14);
+		lblNewLabel_1.setBounds(378, 23, 151, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnNewButton_1 = new JButton("Consultar");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(226, 83, 103, 23);
+		btnNewButton_1.setBounds(483, 206, 119, 23);
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Pets encontrados no CPF Informado");
-		lblNewLabel_2.setBounds(121, 130, 187, 14);
+		lblNewLabel_2.setBounds(330, 262, 187, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Bob", "Luna", "Ralph", "Amora"}));
-		comboBox.setBounds(121, 155, 164, 22);
+		comboBox.setBounds(343, 300, 164, 22);
 		contentPane.add(comboBox);
 		
 		JList list = new JList();
@@ -101,12 +102,12 @@ public class ConsultaPets extends JFrame {
 		contentPane.add(list_1);
 		
 		JButton btnNewButton_2 = new JButton("Verificar Ficha");
-		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_2.setBounds(147, 208, 125, 23);
+		btnNewButton_2.setBounds(359, 372, 125, 23);
 		contentPane.add(btnNewButton_2);
 	}
 }

@@ -55,7 +55,7 @@ public class consultaPetTela2 extends JFrame {
 	 */
 	public consultaPetTela2() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		contentPane.setToolTipText("Consulta dia 03/02/2024");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -64,25 +64,26 @@ public class consultaPetTela2 extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Tutor:");
-		lblNewLabel.setBounds(296, 10, 46, 14);
+		lblNewLabel.setBounds(546, 26, 46, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("CPF do tutor:");
-		lblNewLabel_1.setBounds(256, 26, 86, 14);
+		lblNewLabel_1.setBounds(546, 51, 86, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		textField = new JTextField();
-		textField.setBounds(348, 8, 86, 17);
+		textField.setBounds(602, 24, 154, 17);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(348, 23, 86, 20);
+		textField_1.setBounds(624, 52, 132, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Dados do PET");
-		lblNewLabel_2.setBounds(143, -3, 103, 41);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblNewLabel_2.setBounds(292, 13, 103, 41);
 		contentPane.add(lblNewLabel_2);
 		
 		table = new JTable();
@@ -97,89 +98,44 @@ public class consultaPetTela2 extends JFrame {
 		table_2.setBounds(197, 109, 1, 1);
 		contentPane.add(table_2);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(64, 43, 86, 14);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
-		
 		JLabel lblNewLabel_3 = new JLabel("ID ");
-		lblNewLabel_3.setBounds(8, 43, 46, 14);
+		lblNewLabel_3.setBounds(8, 109, 46, 14);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Nome");
-		lblNewLabel_4.setBounds(8, 59, 33, 14);
+		lblNewLabel_4.setBounds(8, 134, 33, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Espécie");
-		lblNewLabel_5.setBounds(8, 79, 46, 14);
+		lblNewLabel_5.setBounds(8, 164, 46, 14);
 		contentPane.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("Raça");
-		lblNewLabel_6.setBounds(8, 96, 46, 14);
+		lblNewLabel_6.setBounds(8, 189, 46, 14);
 		contentPane.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_8 = new JLabel("Idade");
-		lblNewLabel_8.setBounds(8, 128, 46, 20);
+		lblNewLabel_8.setBounds(8, 236, 46, 20);
 		contentPane.add(lblNewLabel_8);
 		
 		JLabel lblNewLabel_9 = new JLabel("Sexo");
-		lblNewLabel_9.setBounds(8, 147, 46, 14);
+		lblNewLabel_9.setBounds(8, 267, 46, 14);
 		contentPane.add(lblNewLabel_9);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(64, 59, 86, 14);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
-		
-		textField_4 = new JTextField();
-		textField_4.setBounds(64, 79, 86, 14);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
-		
 		JLabel lblNewLabel_10 = new JLabel("Peso");
-		lblNewLabel_10.setBounds(8, 165, 46, 14);
+		lblNewLabel_10.setBounds(8, 292, 46, 14);
 		contentPane.add(lblNewLabel_10);
 		
 		JLabel lblNewLabel_11 = new JLabel("Vacinas");
-		lblNewLabel_11.setBounds(8, 184, 46, 14);
+		lblNewLabel_11.setBounds(8, 317, 46, 14);
 		contentPane.add(lblNewLabel_11);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(64, 115, 86, 14);
-		contentPane.add(textField_5);
-		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(64, 96, 86, 14);
-		contentPane.add(textField_6);
-		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(64, 131, 86, 14);
-		contentPane.add(textField_7);
-		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		textField_8.setBounds(64, 184, 86, 14);
-		contentPane.add(textField_8);
-		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(64, 165, 86, 14);
-		contentPane.add(textField_9);
-		
-		textField_10 = new JTextField();
-		textField_10.setColumns(10);
-		textField_10.setBounds(64, 147, 86, 14);
-		contentPane.add(textField_10);
-		
 		JLabel lblNewLabel_12 = new JLabel("Lista de Consultas ");
-		lblNewLabel_12.setBounds(278, 59, 108, 14);
+		lblNewLabel_12.setBounds(494, 109, 108, 14);
 		contentPane.add(lblNewLabel_12);
 		
 		JList list_1 = new JList();
-		list_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		list_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		list_1.setModel(new AbstractListModel() {
 			String[] values = new String[] {"Consulta: 07/04/2024", "Consulta: 08/06/2024"};
 			public int getSize() {
@@ -189,26 +145,71 @@ public class consultaPetTela2 extends JFrame {
 				return values[index];
 			}
 		});
-		list_1.setBounds(256, 78, 147, 96);
+		list_1.setBounds(429, 147, 244, 109);
 		contentPane.add(list_1);
 		
 		JButton btnNewButton = new JButton("Verificar Consulta");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnNewButton.setBounds(263, 180, 140, 23);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton.setBounds(492, 288, 140, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Agendar consulta");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnNewButton_1.setBounds(64, 227, 134, 23);
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_1.setBounds(175, 403, 180, 23);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Agendar Procedimento");
-		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnNewButton_2.setBounds(222, 227, 147, 23);
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_2.setBounds(481, 403, 206, 23);
 		contentPane.add(btnNewButton_2);
 		
 		JLabel lblNewLabel_7 = new JLabel("Nascimento");
-		lblNewLabel_7.setBounds(8, 109, 55, 27);
+		lblNewLabel_7.setBounds(8, 205, 55, 27);
 		contentPane.add(lblNewLabel_7);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(90, 106, 171, 20);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(90, 131, 171, 20);
+		contentPane.add(textField_3);
+		textField_3.setColumns(10);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(90, 317, 171, 20);
+		contentPane.add(textField_4);
+		textField_4.setColumns(10);
+		
+		textField_5 = new JTextField();
+		textField_5.setBounds(90, 291, 171, 20);
+		contentPane.add(textField_5);
+		textField_5.setColumns(10);
+		
+		textField_6 = new JTextField();
+		textField_6.setBounds(90, 267, 171, 20);
+		contentPane.add(textField_6);
+		textField_6.setColumns(10);
+		
+		textField_7 = new JTextField();
+		textField_7.setBounds(90, 239, 171, 20);
+		contentPane.add(textField_7);
+		textField_7.setColumns(10);
+		
+		textField_8 = new JTextField();
+		textField_8.setBounds(90, 211, 171, 20);
+		contentPane.add(textField_8);
+		textField_8.setColumns(10);
+		
+		textField_9 = new JTextField();
+		textField_9.setBounds(90, 189, 171, 20);
+		contentPane.add(textField_9);
+		textField_9.setColumns(10);
+		
+		textField_10 = new JTextField();
+		textField_10.setBounds(90, 164, 171, 20);
+		contentPane.add(textField_10);
+		textField_10.setColumns(10);
 	}
 }
