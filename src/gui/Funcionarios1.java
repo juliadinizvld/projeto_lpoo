@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import model.services.ServicoAlterarTela;
+
 public class Funcionarios1 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -122,6 +124,15 @@ public class Funcionarios1 extends JFrame {
 		JButton botaoAdicionarFuncionario = new JButton("<html>Adicionar<br>funcionário\r\n</html>");
 		botaoAdicionarFuncionario.setBounds(302, 419, 85, 40);
 		panel.add(botaoAdicionarFuncionario);
+		
+		botaoAdicionarFuncionario.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ServicoAlterarTela.alterarTela(new Funcionarios2(), getLocation().x, getLocation().y);
+				setVisible(false);
+			}
+			
+		});
 
 		JButton botaoVerificarFuncionario = new JButton("<html>Verificar <br>funcionário</html>");
 		botaoVerificarFuncionario.setBounds(463, 419, 85, 40);

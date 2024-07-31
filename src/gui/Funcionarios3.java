@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import model.services.RetornarPaginaServico;
+import model.services.ServicoAlterarTela;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -89,7 +89,7 @@ public class Funcionarios3 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int positionX = getLocation().x;
 				int positionY = getLocation().y;
-				RetornarPaginaServico.returnPage(new Funcionarios1(), positionX, positionY);
+				ServicoAlterarTela.alterarTela(new Funcionarios1(), positionX, positionY);
 				setVisible(false);
 			}
 		});
