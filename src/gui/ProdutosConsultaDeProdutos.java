@@ -16,7 +16,7 @@ public class ProdutosConsultaDeProdutos extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField campoNomeDoProduto;
 
 	/**
 	 * Launch the application.
@@ -51,36 +51,36 @@ public class ProdutosConsultaDeProdutos extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Consulta de produtos");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(250, 11, 195, 31);
-		panel.add(lblNewLabel);
+		JLabel tituloConsultaDeProdutos = new JLabel("Consulta de produtos");
+		tituloConsultaDeProdutos.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		tituloConsultaDeProdutos.setBounds(250, 11, 195, 31);
+		panel.add(tituloConsultaDeProdutos);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome do produto:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(184, 90, 115, 19);
-		panel.add(lblNewLabel_1);
+		JLabel textoNomeDoProduto = new JLabel("Nome do produto:");
+		textoNomeDoProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textoNomeDoProduto.setBounds(184, 90, 115, 19);
+		panel.add(textoNomeDoProduto);
 		
-		textField = new JTextField();
-		textField.setBounds(309, 91, 201, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		campoNomeDoProduto = new JTextField();
+		campoNomeDoProduto.setBounds(309, 91, 201, 20);
+		panel.add(campoNomeDoProduto);
+		campoNomeDoProduto.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Produtos encontrados:");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_2.setBounds(250, 133, 201, 31);
-		panel.add(lblNewLabel_2);
+		JLabel tituloProdutosEncontrados = new JLabel("Produtos encontrados:");
+		tituloProdutosEncontrados.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		tituloProdutosEncontrados.setBounds(250, 133, 201, 31);
+		panel.add(tituloProdutosEncontrados);
 		
-		JList list = new JList();
-		list.setBounds(210, 194, 300, 177);
-		panel.add(list);
+		JList listaProdutosEncontrados = new JList();
+		listaProdutosEncontrados.setBounds(210, 194, 300, 177);
+		panel.add(listaProdutosEncontrados);
 		
-		JButton btnNewButton = new JButton("← Retonar");
-		btnNewButton.setBounds(210, 410, 130, 23);
-		panel.add(btnNewButton);
+		JButton botaoRetornar = new JButton("← Retonar");
+		botaoRetornar.setBounds(210, 410, 130, 23);
+		panel.add(botaoRetornar);
 		
-		JButton btnNewButton_1 = new JButton("Realizar pedido");
-		btnNewButton_1.setBounds(373, 410, 137, 23);
-		panel.add(btnNewButton_1);
+		JButton botaoRealizarPedido = new JButton("Realizar pedido");
+		botaoRealizarPedido.setBounds(373, 410, 137, 23);
+		panel.add(botaoRealizarPedido);
 	}
 }

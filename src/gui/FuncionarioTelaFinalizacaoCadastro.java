@@ -48,16 +48,16 @@ public class FuncionarioTelaFinalizacaoCadastro extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Funcionário adicionado!");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(111, 41, 197, 20);
-		panel.add(lblNewLabel);
+		JLabel tituloFuncionarioAdicionado = new JLabel("Funcionário adicionado!");
+		tituloFuncionarioAdicionado.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		tituloFuncionarioAdicionado.setHorizontalAlignment(SwingConstants.CENTER);
+		tituloFuncionarioAdicionado.setBounds(111, 41, 197, 20);
+		panel.add(tituloFuncionarioAdicionado);
 		
-		JButton btnNewButton = new JButton("Ok");
-		btnNewButton.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnNewButton.setBounds(160, 71, 85, 21);
-		panel.add(btnNewButton);
+		JButton botaoOk = new JButton("Ok");
+		botaoOk.setVerticalAlignment(SwingConstants.BOTTOM);
+		botaoOk.setBounds(160, 71, 85, 21);
+		panel.add(botaoOk);
 	}
 
 }

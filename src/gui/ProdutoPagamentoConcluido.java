@@ -48,20 +48,21 @@ public class ProdutoPagamentoConcluido extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("<html>O pagamento foi concluído e o <br>medicamento já pode ser retirado. Aperte <br>no botão abaixo para retornar a página inicial.</html>");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel.setBounds(186, 106, 332, 85);
-		panel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Pagamento concluído!");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(240, 11, 197, 32);
-		panel.add(lblNewLabel_1);
+		JLabel tituloPagamentoConcluido = new JLabel("Pagamento concluído!");
+		tituloPagamentoConcluido.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		tituloPagamentoConcluido.setBounds(240, 11, 197, 32);
+		panel.add(tituloPagamentoConcluido);
 		
-		JButton btnNewButton = new JButton("Retornar a página inicial");
-		btnNewButton.setBounds(260, 202, 166, 49);
-		panel.add(btnNewButton);
+		JLabel textoPagamentoConcluido = new JLabel("<html>O pagamento foi concluído e o <br>medicamento já pode ser retirado. Aperte <br>no botão abaixo para retornar a página inicial.</html>");
+		textoPagamentoConcluido.setHorizontalAlignment(SwingConstants.CENTER);
+		textoPagamentoConcluido.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textoPagamentoConcluido.setBounds(187, 85, 332, 85);
+		panel.add(textoPagamentoConcluido);
+
+		JButton botaoRetornarHome = new JButton("Retornar a página inicial");
+		botaoRetornarHome.setBounds(254, 203, 197, 49);
+		panel.add(botaoRetornarHome);
 	}
 
 }

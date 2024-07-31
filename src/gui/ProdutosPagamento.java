@@ -49,35 +49,35 @@ public class ProdutosPagamento extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Pagamento");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(305, 11, 101, 25);
-		panel.add(lblNewLabel);
+		JLabel tituloPagamento = new JLabel("Pagamento");
+		tituloPagamento.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		tituloPagamento.setBounds(305, 11, 101, 25);
+		panel.add(tituloPagamento);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome do produto: ");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(168, 107, 322, 14);
-		panel.add(lblNewLabel_1);
+		JLabel textoNomeDoProduto = new JLabel("Nome do produto: ");
+		textoNomeDoProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textoNomeDoProduto.setBounds(168, 100, 322, 25);
+		panel.add(textoNomeDoProduto);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Quantidade solicitada: ");
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_1_1.setBounds(168, 132, 322, 14);
-		panel.add(lblNewLabel_1_1);
+		JLabel textoQuantidadeSolicitada = new JLabel("Quantidade solicitada: ");
+		textoQuantidadeSolicitada.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textoQuantidadeSolicitada.setBounds(168, 134, 322, 25);
+		panel.add(textoQuantidadeSolicitada);
 		
-		JLabel lblNewLabel_1_2 = new JLabel("<html>Para conclusão da compra é necessário realizar o pagamento, o valor total para pagamento é de R$ . Acesse o link abaixo para realização do pagamento: </html>");
-		lblNewLabel_1_2.setVerticalAlignment(SwingConstants.TOP);
-		lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_1_2.setBounds(167, 157, 352, 94);
-		panel.add(lblNewLabel_1_2);
+		JLabel textoConclusaoCompra = new JLabel("<html>Para conclusão da compra é necessário realizar o pagamento, o valor total para pagamento é de R$ . Acesse o link abaixo para realização do pagamento: </html>");
+		textoConclusaoCompra.setVerticalAlignment(SwingConstants.TOP);
+		textoConclusaoCompra.setHorizontalAlignment(SwingConstants.CENTER);
+		textoConclusaoCompra.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textoConclusaoCompra.setBounds(168, 170, 352, 94);
+		panel.add(textoConclusaoCompra);
 		
-		JLabel lblNewLabel_1_3 = new JLabel("Link mercado pago");
-		lblNewLabel_1_3.setBounds(284, 262, 89, 14);
-		panel.add(lblNewLabel_1_3);
+		JLabel linkMercadoPagoApi = new JLabel("Link mercado pago");
+		linkMercadoPagoApi.setBounds(293, 278, 89, 14);
+		panel.add(linkMercadoPagoApi);
 		
-		JButton btnNewButton = new JButton("← Retornar");
-		btnNewButton.setBounds(168, 344, 117, 23);
-		panel.add(btnNewButton);
+		JButton botaoRetornar = new JButton("← Retornar");
+		botaoRetornar.setBounds(168, 344, 117, 23);
+		panel.add(botaoRetornar);
 	}
 
 }
