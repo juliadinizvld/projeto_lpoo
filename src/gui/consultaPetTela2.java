@@ -83,7 +83,7 @@ public class consultaPetTela2 extends JFrame {
 		
 		JLabel lblNewLabel_2 = new JLabel("Dados do PET");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lblNewLabel_2.setBounds(292, 13, 103, 41);
+		lblNewLabel_2.setBounds(300, 13, 103, 41);
 		contentPane.add(lblNewLabel_2);
 		
 		table = new JTable();
@@ -131,7 +131,7 @@ public class consultaPetTela2 extends JFrame {
 		contentPane.add(lblNewLabel_11);
 		
 		JLabel lblNewLabel_12 = new JLabel("Lista de Consultas ");
-		lblNewLabel_12.setBounds(494, 109, 108, 14);
+		lblNewLabel_12.setBounds(484, 122, 108, 14);
 		contentPane.add(lblNewLabel_12);
 		
 		JList list_1 = new JList();

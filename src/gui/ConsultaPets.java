@@ -67,7 +67,7 @@ public class ConsultaPets extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("ID do PET ou CPF do tutor");
+		JLabel lblNewLabel = new JLabel("ID do PET ou CPF do tutor:");
 		lblNewLabel.setBounds(121, 120, 157, 14);
 		contentPane.add(lblNewLabel);
 		
@@ -84,8 +84,8 @@ public class ConsultaPets extends JFrame {
 		btnNewButton_1.setBounds(483, 206, 119, 23);
 		contentPane.add(btnNewButton_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Pets encontrados no CPF Informado");
-		lblNewLabel_2.setBounds(330, 262, 187, 14);
+		JLabel lblNewLabel_2 = new JLabel("Animais encontrados no CPF Informado");
+		lblNewLabel_2.setBounds(288, 262, 229, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		JComboBox comboBox = new JComboBox();

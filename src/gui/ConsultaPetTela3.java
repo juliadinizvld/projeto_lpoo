@@ -50,7 +50,7 @@ public class ConsultaPetTela3 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Data da consulta");
+		JLabel lblNewLabel = new JLabel("Data da Consulta");
 		lblNewLabel.setBounds(10, 25, 168, 14);
 		contentPane.add(lblNewLabel);
 		
@@ -59,7 +59,7 @@ public class ConsultaPetTela3 extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Médico da consulta");
+		JLabel lblNewLabel_2 = new JLabel("Médico da Consulta");
 		lblNewLabel_2.setBounds(10, 50, 168, 14);
 		contentPane.add(lblNewLabel_2);
 		
@@ -95,7 +95,7 @@ public class ConsultaPetTela3 extends JFrame {
 		contentPane.add(lblNewLabel_6);
 		
 		textField_4 = new JTextField();
-		textField_4.setBounds(201, 237, 335, 20);
+		textField_4.setBounds(198, 237, 335, 20);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
 		
