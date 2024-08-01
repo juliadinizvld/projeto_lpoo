@@ -1,11 +1,11 @@
-package telas;
+package gui;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ConfirmacaoTela {
+public class FinalizarCadastroTutor {
 
     public static void showConfirmationDialog(JFrame parentFrame) {
         // Cria a nova janela de confirmação

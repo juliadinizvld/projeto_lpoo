@@ -1,11 +1,11 @@
-package telas;
+package gui;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class tela3 {
+public class TelaDadosTutor {
     private static JFrame frame;
     private static JPanel mainPanel;
     private static JTextField textField;
@@ -149,7 +149,7 @@ public class tela3 {
             btnNewButton_1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     // Abre a tela de confirmação quando o botão é clicado
-                    ConfirmacaoTela.showConfirmationDialog(frame);
+                    FinalizarCadastroTutor.showConfirmationDialog(frame);
                 }
             });
             mainPanel.add(btnNewButton_1);

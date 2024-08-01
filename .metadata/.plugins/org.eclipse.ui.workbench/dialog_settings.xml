@@ -3,5 +3,7 @@
 	<section name="NewWizardAction">
 	</section>
 	<section name="ImportExportAction">
+		<section name="ImportExportWizard.dialogBounds">
+		</section>
 	</section>
 </section>
