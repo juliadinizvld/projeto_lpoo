@@ -5,27 +5,6 @@
 		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
-		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
-<<<<<<< HEAD
-			<item value="C:\Users\55819\Desktop\Projeto LPOO\projeto_lpoo"/>
-		</list>
-		<section name="SmartImportWizard.dialogBounds">
-			<item key="DIALOG_X_ORIGIN" value="429"/>
-			<item key="DIALOG_Y_ORIGIN" value="35"/>
-			<item key="DIALOG_WIDTH" value="885"/>
-			<item key="DIALOG_HEIGHT" value="629"/>
-			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
-=======
-			<item value="C:\Users\rafae\OneDrive\Área de Trabalho\Projetos\Java\LPOO\projeto_lpoo"/>
-		</list>
-		<section name="SmartImportWizard.dialogBounds">
-			<item key="DIALOG_X_ORIGIN" value="502"/>
-			<item key="DIALOG_Y_ORIGIN" value="35"/>
-			<item key="DIALOG_WIDTH" value="935"/>
-			<item key="DIALOG_HEIGHT" value="726"/>
-			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
->>>>>>> 0e5cb109afa48cdc48d0158a76f9c17afb48af19
-		</section>
 	</section>
 	<section name="ExternalProjectImportWizard">
 		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
@@ -34,51 +13,18 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
-<<<<<<< HEAD
-			<item value="C:\Users\55819\Desktop\Projeto LPOO\projeto_lpoo"/>
-=======
-			<item value="C:\Users\rafae\OneDrive\Área de Trabalho\Projetos\Java\LPOO\projeto_lpoo"/>
->>>>>>> 0e5cb109afa48cdc48d0158a76f9c17afb48af19
+			<item value="C:\Users\Ana\OneDrive\Documentos\projeto_lpoo"/>
+			<item value="C:\Users\rebec\Desktop\projeto_lpoo"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>
 		</list>
 		<section name="ExternalProjectImportWizard.dialogBounds">
-<<<<<<< HEAD
-			<item key="DIALOG_X_ORIGIN" value="429"/>
-			<item key="DIALOG_Y_ORIGIN" value="26"/>
-			<item key="DIALOG_WIDTH" value="525"/>
-			<item key="DIALOG_HEIGHT" value="710"/>
-			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
-		</section>
-	</section>
-	<section name="NewWizardAction">
-		<section name="NewWizard.dialogBounds">
-			<item key="DIALOG_X_ORIGIN" value="0"/>
-			<item key="DIALOG_Y_ORIGIN" value="0"/>
-			<item key="DIALOG_WIDTH" value="525"/>
-			<item key="DIALOG_HEIGHT" value="500"/>
-			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
-		</section>
-	</section>
-	<section name="ChooseWorkspaceDialogSettings">
-		<item key="DIALOG_X_ORIGIN" value="399"/>
-		<item key="DIALOG_Y_ORIGIN" value="185"/>
-=======
 			<item key="DIALOG_X_ORIGIN" value="619"/>
 			<item key="DIALOG_Y_ORIGIN" value="142"/>
 			<item key="DIALOG_WIDTH" value="700"/>
 			<item key="DIALOG_HEIGHT" value="861"/>
 			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 		</section>
-	</section>
-	<section name="ChooseWorkspaceDialogSettings">
-		<item key="DIALOG_X_ORIGIN" value="611"/>
-		<item key="DIALOG_Y_ORIGIN" value="269"/>
->>>>>>> 0e5cb109afa48cdc48d0158a76f9c17afb48af19
-	</section>
-	<section name="WORKBENCH_SETTINGS">
-		<list key="ENABLED_TRANSFERS">
-		</list>
 	</section>
 </section>
