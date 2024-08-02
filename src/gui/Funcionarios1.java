@@ -95,7 +95,7 @@ public class Funcionarios1 extends JFrame {
 				}
 			}
 		});
-		
+
 		JButton botaoPesquisarFuncionario = new JButton("Pesquisar Funcionario");
 		botaoPesquisarFuncionario.setBounds(251, 119, 171, 23);
 		panel.add(botaoPesquisarFuncionario);
@@ -124,20 +124,19 @@ public class Funcionarios1 extends JFrame {
 		JButton botaoAdicionarFuncionario = new JButton("<html>Adicionar<br>funcionário\r\n</html>");
 		botaoAdicionarFuncionario.setBounds(302, 419, 85, 40);
 		panel.add(botaoAdicionarFuncionario);
-		
+
 		botaoAdicionarFuncionario.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ServicoAlterarTela.alterarTela(new Funcionarios2(), getLocation().x, getLocation().y);
 				setVisible(false);
 			}
-			
+
 		});
 
 		JButton botaoVerificarFuncionario = new JButton("<html>Verificar <br>funcionário</html>");
 		botaoVerificarFuncionario.setBounds(463, 419, 85, 40);
 		panel.add(botaoVerificarFuncionario);
-		
 
 	}
 }

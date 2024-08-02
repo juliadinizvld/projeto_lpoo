@@ -4,17 +4,18 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.text.ParseException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
 import model.services.ServicoAlterarTela;
 
@@ -48,6 +49,13 @@ public class Funcionarios2 extends JFrame {
 	 * Create the frame.
 	 */
 	public Funcionarios2() {
+		MaskFormatter mf = null;
+		try {
+			mf = new MaskFormatter("##");
+		} catch (ParseException e) {
+			e.getStackTrace();
+		}
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
@@ -83,19 +91,20 @@ public class Funcionarios2 extends JFrame {
 		textoIdade.setBounds(137, 131, 62, 20);
 		panel.add(textoIdade);
 
-		campoIdade = new JTextField();
+		JFormattedTextField campoIdade = new JFormattedTextField(mf);
+		campoIdade.setToolTipText("");
 		campoIdade.setFont(new Font("Dialog", Font.PLAIN, 14));
 		campoIdade.setBounds(203, 131, 62, 22);
-		panel.add(campoIdade);
 		campoIdade.setColumns(10);
-
+		panel.add(campoIdade);
+		
 		JLabel textoFuncao = new JLabel("Função:");
 		textoFuncao.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textoFuncao.setBounds(137, 198, 56, 20);
 		panel.add(textoFuncao);
 
 		String[] funcoes = { "", "Médico Veterinário", "Atendente", "Vendedor" };
-		JComboBox selectFuncao = new JComboBox(funcoes);
+		JComboBox<String> selectFuncao = new JComboBox<String>(funcoes);
 		selectFuncao.setFont(new Font("Dialog", Font.PLAIN, 14));
 		selectFuncao.setBounds(203, 198, 149, 23);
 		panel.add(selectFuncao);
@@ -138,12 +147,14 @@ public class Funcionarios2 extends JFrame {
 				System.out.println(campoNomeFuncionario.getText());
 				System.out.println(campoIdade.getText());
 				System.out.println(campoCpf.getText());
-				if(selectFuncao.getSelectedItem() == "Médico Veterinário");{
+				if (selectFuncao.getSelectedItem() == "Médico Veterinário")
+					;
+				{
 					System.out.println(selectFuncao.getSelectedItem());
 					System.out.println(campoEspecialidade.getText());
 					System.out.println(campoRmv.getText());
 				}
-				
+
 			}
 		});
 
