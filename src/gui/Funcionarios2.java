@@ -49,9 +49,13 @@ public class Funcionarios2 extends JFrame {
 	 * Create the frame.
 	 */
 	public Funcionarios2() {
-		MaskFormatter mf = null;
+		MaskFormatter mfIdade = null;
+		MaskFormatter mfCpf = null;
+		MaskFormatter mfCrmv = null;
 		try {
-			mf = new MaskFormatter("##");
+			mfIdade = new MaskFormatter("##");
+			mfCpf = new MaskFormatter("###.###.###-##");
+			mfCrmv = new MaskFormatter("CRM/UU#####-##");
 		} catch (ParseException e) {
 			e.getStackTrace();
 		}
@@ -91,12 +95,24 @@ public class Funcionarios2 extends JFrame {
 		textoIdade.setBounds(137, 131, 62, 20);
 		panel.add(textoIdade);
 
-		JFormattedTextField campoIdade = new JFormattedTextField(mf);
+		JFormattedTextField campoIdade = new JFormattedTextField(mfIdade);
 		campoIdade.setToolTipText("");
 		campoIdade.setFont(new Font("Dialog", Font.PLAIN, 14));
 		campoIdade.setBounds(203, 131, 62, 22);
 		campoIdade.setColumns(10);
 		panel.add(campoIdade);
+		
+		JLabel textoCpf = new JLabel("CPF: ");
+		textoCpf.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textoCpf.setBounds(137, 162, 46, 25);
+		panel.add(textoCpf);
+
+		campoCpf = new JFormattedTextField(mfCpf);
+		campoCpf.setFont(new Font("Dialog", Font.PLAIN, 14));
+		campoCpf.setBounds(193, 162, 111, 25);
+		panel.add(campoCpf);
+		campoCpf.setColumns(10);
+
 		
 		JLabel textoFuncao = new JLabel("Função:");
 		textoFuncao.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -126,7 +142,7 @@ public class Funcionarios2 extends JFrame {
 		textoRmv.setBounds(137, 260, 62, 20);
 		panel.add(textoRmv);
 
-		campoRmv = new JTextField();
+		campoRmv = new JFormattedTextField(mfCrmv);
 		campoRmv.setFont(new Font("Dialog", Font.PLAIN, 14));
 		campoRmv.setBounds(206, 260, 120, 25);
 		panel.add(campoRmv);
@@ -158,23 +174,15 @@ public class Funcionarios2 extends JFrame {
 			}
 		});
 
-		JLabel textoCpf = new JLabel("CPF: ");
-		textoCpf.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoCpf.setBounds(137, 162, 46, 25);
-		panel.add(textoCpf);
-
-		campoCpf = new JTextField();
-		campoCpf.setFont(new Font("Dialog", Font.PLAIN, 14));
-		campoCpf.setBounds(193, 162, 111, 25);
-		panel.add(campoCpf);
-		campoCpf.setColumns(10);
 
 		ActionListener verificarFuncao = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (selectFuncao.getSelectedItem() != "Médico Veterinário") {
 					campoEspecialidade.setEditable(false);
+					campoEspecialidade.setText("");
 					campoRmv.setEditable(false);
+					campoRmv.setText("");
 				} else {
 					campoEspecialidade.setEditable(true);
 					campoRmv.setEditable(true);
