@@ -82,19 +82,19 @@ public class consultaPetTela2 extends JFrame {
 		contentPane.add(textIDPet);
 		
 		JLabel TextNomePet = new JLabel("Nome:");
-		TextNomePet.setBounds(8, 134, 33, 14);
+		TextNomePet.setBounds(8, 134, 86, 14);
 		contentPane.add(TextNomePet);
 		
 		JLabel TextEspeciePet = new JLabel("Espécie:");
-		TextEspeciePet.setBounds(8, 164, 46, 14);
+		TextEspeciePet.setBounds(8, 164, 114, 14);
 		contentPane.add(TextEspeciePet);
 		
 		JLabel TextracaPet = new JLabel("Raça:");
-		TextracaPet.setBounds(8, 189, 46, 14);
+		TextracaPet.setBounds(8, 189, 95, 14);
 		contentPane.add(TextracaPet);
 		
 		JLabel textIdadePet = new JLabel(" Idade:");
-		textIdadePet.setBounds(8, 236, 46, 20);
+		textIdadePet.setBounds(8, 236, 86, 20);
 		contentPane.add(textIdadePet);
 		
 		JLabel TextSexoPet = new JLabel("Sexo:");
@@ -106,7 +106,7 @@ public class consultaPetTela2 extends JFrame {
 		contentPane.add(textPesoPet);
 		
 		JLabel textVacinasPet = new JLabel("Vacinas:");
-		textVacinasPet.setBounds(8, 317, 46, 14);
+		textVacinasPet.setBounds(8, 317, 86, 14);
 		contentPane.add(textVacinasPet);
 		
 		JLabel textListaDeConsulta = new JLabel("Lista de Consultas ");
@@ -143,7 +143,7 @@ public class consultaPetTela2 extends JFrame {
 		contentPane.add(botaoAgendarProcedimento);
 		
 		JLabel TextNascPet = new JLabel("Nascimento:");
-		TextNascPet.setBounds(8, 205, 86, 27);
+		TextNascPet.setBounds(8, 205, 142, 27);
 		contentPane.add(TextNascPet);
 	}
 }

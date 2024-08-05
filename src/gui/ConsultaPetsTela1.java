@@ -33,7 +33,7 @@ public class ConsultaPetsTela1 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ConsultaPets frame = new ConsultaPets();
+					ConsultaPetsTela1 frame = new ConsultaPetsTela1();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -113,5 +113,13 @@ public class ConsultaPetsTela1 extends JFrame {
 		});
 		botaoVerificarFicha.setBounds(354, 398, 125, 23);
 		contentPane.add(botaoVerificarFicha);
+	
+	
+	}
+	
+	private void botaoVerificarFichaActionPerformed (java.awt.event.ActionEvent evt) {
+		 consultaPetTela2 telaFicha = new consultaPetTela2 ();
+		 telaFicha.setVisible(true);
+		
 	}
 }

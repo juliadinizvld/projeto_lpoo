@@ -47,9 +47,9 @@ public class ConsultaPetTela3 extends JFrame {
 		textDataConsulta.setBounds(10, 25, 168, 14);
 		contentPane.add(textDataConsulta);
 		
-		JLabel lblNewLabel_2 = new JLabel("Médico da Consulta:");
-		lblNewLabel_2.setBounds(10, 50, 168, 14);
-		contentPane.add(lblNewLabel_2);
+		JLabel textMedicoDaConsulta = new JLabel("Médico da Consulta:");
+		textMedicoDaConsulta.setBounds(10, 50, 168, 14);
+		contentPane.add(textMedicoDaConsulta);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBounds(163, 129, 46, 14);
@@ -75,8 +75,9 @@ public class ConsultaPetTela3 extends JFrame {
 		lblNewLabel_1.setBounds(163, 335, 109, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JButton btnNewButton = new JButton("Sair");
-		btnNewButton.setBounds(672, 21, 89, 23);
-		contentPane.add(btnNewButton);
+		JButton botaoSair = new JButton("Sair");
+		botaoSair.setBounds(672, 21, 89, 23);
+		contentPane.add(botaoSair);
 	}
+	
 }
