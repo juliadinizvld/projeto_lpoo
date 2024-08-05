@@ -15,7 +15,7 @@ import javax.swing.AbstractListModel;
 import java.awt.Font;
 import javax.swing.JButton;
 
-public class consultaPetTela2 extends JFrame {
+public class ConsultaPetTela2 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -30,7 +30,7 @@ public class consultaPetTela2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					consultaPetTela2 frame = new consultaPetTela2();
+					ConsultaPetTela2 frame = new ConsultaPetTela2();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +42,7 @@ public class consultaPetTela2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public consultaPetTela2() {
+	public ConsultaPetTela2() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
@@ -130,7 +130,8 @@ public class consultaPetTela2 extends JFrame {
 		JButton botaoVerificarConsulta = new JButton("Verificar Consulta");
 		botaoVerificarConsulta.setFont(new Font("Tahoma", Font.BOLD, 11));
 		botaoVerificarConsulta.setBounds(492, 288, 140, 23);
-		contentPane.add(botaoVerificarConsulta);
+		contentPane.add(botaoVerificarConsulta)
+		;
 		
 		JButton botaoAgendarConsulta = new JButton("Agendar consulta");
 		botaoAgendarConsulta.setFont(new Font("Tahoma", Font.BOLD, 11));

@@ -106,20 +106,24 @@ public class ConsultaPetsTela1 extends JFrame {
 		contentPane.add(list_1);
 		
 		JButton botaoVerificarFicha = new JButton("Verificar Ficha");
+		botaoVerificarFicha.setBounds(354, 398, 125, 23);
 		botaoVerificarFicha.setFont(new Font("Tahoma", Font.BOLD, 11));
 		botaoVerificarFicha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+						ConsultaPetTela2 telaFicha = new ConsultaPetTela2 ();
+						 telaFicha.setVisible(true);
+						 dispose();
+					}
+					 
+				
+				});
+			
+				
+				contentPane.add(botaoVerificarFicha);
+						   
+			
+			
 			}
-		});
-		botaoVerificarFicha.setBounds(354, 398, 125, 23);
-		contentPane.add(botaoVerificarFicha);
-	
-	
-	}
-	
-	private void botaoVerificarFichaActionPerformed (java.awt.event.ActionEvent evt) {
-		 consultaPetTela2 telaFicha = new consultaPetTela2 ();
-		 telaFicha.setVisible(true);
 		
-	}
+		
 }
