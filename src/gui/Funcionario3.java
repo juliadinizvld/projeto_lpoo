@@ -1,56 +1,34 @@
 package gui;
 
-import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
-import model.services.ServicoAlterarTela;
-
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-public class Funcionarios3 extends JFrame {
+public class Funcionario3 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
+	 * Create the panel.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Funcionarios3 frame = new Funcionarios3();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public Funcionarios3() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 600);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+	public Funcionario3() {
+		setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(45, 11, 700, 500);
-		contentPane.add(panel);
+		panel.setBounds(0, 0, 821, 500);
+		add(panel);
 		panel.setLayout(null);
 
 		JLabel tituloConsultaFuncionario = new JLabel("Consulta funcionário");
@@ -87,14 +65,12 @@ public class Funcionarios3 extends JFrame {
 		JButton botaoRetornar = new JButton("← Retornar");
 		botaoRetornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int positionX = getLocation().x;
-				int positionY = getLocation().y;
-				ServicoAlterarTela.alterarTela(new Funcionarios1(), positionX, positionY);
-				setVisible(false);
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new Funcionario1());
+				f.revalidate();
 			}
 		});
 		botaoRetornar.setBounds(264, 306, 122, 21);
 		panel.add(botaoRetornar);
 	}
-
-}
+};

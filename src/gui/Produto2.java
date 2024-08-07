@@ -1,52 +1,30 @@
 package gui;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
-public class ProdutosSelecaoQuantidade extends JFrame {
+public class Produto2 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
 	private JButton botaoRetornar;
-
+	
 	/**
-	 * Launch the application.
+	 * Create the panel.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ProdutosSelecaoQuantidade frame = new ProdutosSelecaoQuantidade();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public ProdutosSelecaoQuantidade() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 600);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+	public Produto2() {
+		setLayout(null);
 
 		JPanel panel = new JPanel();
 		panel.setBounds(45, 11, 700, 500);
-		contentPane.add(panel);
+		add(panel);
 		panel.setLayout(null);
 
 		JLabel tituloInformacoesDoProduto = new JLabel("Informações do produto");
@@ -82,10 +60,33 @@ public class ProdutosSelecaoQuantidade extends JFrame {
 		botaoRetornar.setBounds(170, 345, 131, 23);
 		panel.add(botaoRetornar);
 
+		botaoRetornar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new Produto1());
+				f.revalidate();
+				
+			}
+			
+		});
+		
 		JButton botaoFazerPedido = new JButton("Fazer pedido");
 		botaoFazerPedido.setBounds(335, 345, 150, 23);
 		panel.add(botaoFazerPedido);
 		
+		botaoFazerPedido.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new Produto3());
+				f.revalidate();
+				
+			}
+			
+		});
+		
 	}
 }

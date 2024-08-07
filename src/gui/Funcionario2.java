@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,41 +13,24 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
-import model.services.ServicoAlterarTela;
-
-public class Funcionarios2 extends JFrame {
+public class Funcionario2 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextField campoIdade;
+
 	private JTextField campoEspecialidade;
 	private JTextField campoRmv;
 	private JTextField campoNomeFuncionario;
 	private JTextField campoCpf;
 
 	/**
-	 * Launch the application.
+	 * Create the panel.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Funcionarios2 frame = new Funcionarios2();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public Funcionarios2() {
+	public Funcionario2() {
+		setLayout(null);
 		MaskFormatter mfIdade = null;
 		MaskFormatter mfCpf = null;
 		MaskFormatter mfCrmv = null;
@@ -59,18 +41,10 @@ public class Funcionarios2 extends JFrame {
 		} catch (ParseException e) {
 			e.getStackTrace();
 		}
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 600);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
 		panel.setBounds(45, 11, 700, 500);
-		contentPane.add(panel);
+		add(panel);
 		panel.setLayout(null);
 
 		JLabel tituloNovoFuncionario = new JLabel("Novo funcionário");
@@ -101,7 +75,7 @@ public class Funcionarios2 extends JFrame {
 		campoIdade.setBounds(203, 131, 62, 22);
 		campoIdade.setColumns(10);
 		panel.add(campoIdade);
-		
+
 		JLabel textoCpf = new JLabel("CPF: ");
 		textoCpf.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textoCpf.setBounds(137, 162, 46, 25);
@@ -113,7 +87,6 @@ public class Funcionarios2 extends JFrame {
 		panel.add(campoCpf);
 		campoCpf.setColumns(10);
 
-		
 		JLabel textoFuncao = new JLabel("Função:");
 		textoFuncao.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textoFuncao.setBounds(137, 198, 56, 20);
@@ -174,7 +147,6 @@ public class Funcionarios2 extends JFrame {
 			}
 		});
 
-
 		ActionListener verificarFuncao = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -194,8 +166,9 @@ public class Funcionarios2 extends JFrame {
 		botaoRetornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ServicoAlterarTela.alterarTela(new Funcionarios1(), getLocation().x, getLocation().y);
-				setVisible(false);
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new Funcionario1());
+				f.revalidate();
 			}
 		});
 	}
