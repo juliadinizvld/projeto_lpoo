@@ -22,13 +22,14 @@ public class ConsultaPets1 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField caixaInserirIDPet;
+	public static ConsultaPets1 consultaPets1 = new ConsultaPets1();
 
 	/**
 	 * Create the panel.
 	 */
 	public ConsultaPets1() {
 		setLayout(null);
-
+		ConsultaPets2 teste = new ConsultaPets2();
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 821, 500);
 		add(panel);
@@ -91,7 +92,7 @@ public class ConsultaPets1 extends JPanel {
 		botaoVerificarFicha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new ConsultaPets2());
+				f.setContentPane(teste);
 				f.revalidate();
 			}
 

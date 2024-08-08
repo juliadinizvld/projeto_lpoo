@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,7 +14,6 @@ import javax.swing.SwingUtilities;
 public class Produto3 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JButton botaoRetornar;
 
 	/**
 	 * Create the panel.
@@ -63,7 +61,7 @@ public class Produto3 extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new Produto2());
+				f.setContentPane(Produto2.produto2);
 				f.revalidate();
 
 			}

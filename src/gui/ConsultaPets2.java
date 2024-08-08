@@ -26,6 +26,7 @@ public class ConsultaPets2 extends JPanel {
 	private JTable table;
 	private JTable table_1;
 	private JTable table_2;
+	public static ConsultaPets2 consultaPets2 = new ConsultaPets2();
 
 	/**
 	 * Create the panel.
@@ -142,20 +143,20 @@ public class ConsultaPets2 extends JPanel {
 		JLabel TextNascPet = new JLabel("Nascimento:");
 		TextNascPet.setBounds(8, 205, 142, 27);
 		panel.add(TextNascPet);
-		
+
 		JButton botaoRetornar = new JButton("Retornar");
 		botaoRetornar.setBounds(346, 451, 114, 23);
 		panel.add(botaoRetornar);
-		
+
 		botaoRetornar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new ConsultaPets1());
+				f.setContentPane(ConsultaPets1.consultaPets1);
 				f.revalidate();
 			}
-			
+
 		});
 
 	}

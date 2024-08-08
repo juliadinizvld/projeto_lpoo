@@ -15,6 +15,7 @@ public class Produto2 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton botaoRetornar;
+	public static Produto2 produto2 = new Produto2();
 	
 	/**
 	 * Create the panel.
@@ -65,7 +66,7 @@ public class Produto2 extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new Produto1());
+				f.setContentPane(Produto1.produto1);
 				f.revalidate();
 				
 			}

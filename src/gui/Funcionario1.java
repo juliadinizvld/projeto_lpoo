@@ -20,6 +20,7 @@ public class Funcionario1 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField campoNomeFuncionario;
+	public static Funcionario1 funcionario1 = new Funcionario1();
 
 	/**
 	 * Create the panel.

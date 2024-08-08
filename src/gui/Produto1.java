@@ -16,7 +16,7 @@ public class Produto1 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField campoNomeDoProduto;
-
+	public static Produto1 produto1 = new Produto1();
 	/**
 	 * Create the panel.
 	 */
