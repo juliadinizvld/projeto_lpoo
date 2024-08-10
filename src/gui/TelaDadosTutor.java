@@ -28,13 +28,13 @@ public class TelaDadosTutor {
 
             // Cria um painel principal com um layout de coluna única
             mainPanel = new JPanel();
-            mainPanel.setBackground(new Color(222, 222, 222)); // Define a cor de fundo
+            mainPanel.setBackground(new Color(222, 222, 222)); //  cor de fundo
 
             // Adiciona o painel principal à janela
             frame.getContentPane().add(mainPanel);
             mainPanel.setLayout(null);
             
-            // Cria a barra de menus
+            //  barra de menus
             JMenuBar menuBar = new JMenuBar();
             menuBar.setBackground(new Color(192, 192, 192));
             
@@ -55,55 +55,55 @@ public class TelaDadosTutor {
             lblNewLabel.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 17));
             mainPanel.add(lblNewLabel);
 
-            JLabel lblNewLabel_1 = new JLabel("CPF :");
-            lblNewLabel_1.setBounds(200, 126, 45, 13);
-            lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 10));
-            mainPanel.add(lblNewLabel_1);
+            JLabel lblCPF = new JLabel("CPF :");
+            lblCPF.setBounds(200, 126, 45, 13);
+            lblCPF.setFont(new Font("Arial", Font.BOLD, 10));
+            mainPanel.add(lblCPF);
 
-            JLabel lblNewLabel_2 = new JLabel("Nome Completo :");
-            lblNewLabel_2.setBounds(200, 87, 98, 13);
-            lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 10));
-            mainPanel.add(lblNewLabel_2);
+            JLabel lblNomeCompleto = new JLabel("Nome Completo :");
+            lblNomeCompleto.setBounds(200, 87, 98, 13);
+            lblNomeCompleto.setFont(new Font("Arial", Font.BOLD, 10));
+            mainPanel.add(lblNomeCompleto);
 
-            JLabel lblNewLabel_3 = new JLabel("Sexo :");
-            lblNewLabel_3.setBounds(200, 149, 45, 13);
-            lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 10));
-            mainPanel.add(lblNewLabel_3);
+            JLabel lblSexo = new JLabel("Sexo :");
+            lblSexo.setBounds(200, 149, 45, 13);
+            lblSexo.setFont(new Font("Arial", Font.BOLD, 10));
+            mainPanel.add(lblSexo);
 
-            JLabel lblNewLabel_4 = new JLabel("Data de nascimento :");
-            lblNewLabel_4.setBounds(397, 126, 114, 13);
-            lblNewLabel_4.setFont(new Font("Arial", Font.BOLD, 10));
-            mainPanel.add(lblNewLabel_4);
+            JLabel lblDataNascimento = new JLabel("Data de nascimento :");
+            lblDataNascimento.setBounds(397, 126, 114, 13);
+            lblDataNascimento.setFont(new Font("Arial", Font.BOLD, 10));
+            mainPanel.add(lblDataNascimento);
 
-            JLabel lblNewLabel_5 = new JLabel("Telefone :");
-            lblNewLabel_5.setBounds(413, 149, 74, 13);
-            lblNewLabel_5.setFont(new Font("Arial", Font.BOLD, 10));
-            mainPanel.add(lblNewLabel_5);
+            JLabel lblTelefone = new JLabel("Telefone :");
+            lblTelefone.setBounds(413, 149, 74, 13);
+            lblTelefone.setFont(new Font("Arial", Font.BOLD, 10));
+            mainPanel.add(lblTelefone);
 
-            JLabel lblNewLabel_8 = new JLabel("Cidade : ");
-            lblNewLabel_8.setBounds(200, 309, 56, 13);
-            lblNewLabel_8.setFont(new Font("Arial", Font.BOLD, 10));
-            mainPanel.add(lblNewLabel_8);
+            JLabel lblCidade = new JLabel("Cidade : ");
+            lblCidade.setBounds(200, 309, 56, 13);
+            lblCidade.setFont(new Font("Arial", Font.BOLD, 10));
+            mainPanel.add(lblCidade);
 
-            JLabel lblNewLabel_9 = new JLabel("CEP :");
-            lblNewLabel_9.setBounds(200, 233, 45, 13);
-            lblNewLabel_9.setFont(new Font("Arial", Font.BOLD, 10));
-            mainPanel.add(lblNewLabel_9);
+            JLabel lblCep = new JLabel("CEP :");
+            lblCep.setBounds(200, 233, 45, 13);
+            lblCep.setFont(new Font("Arial", Font.BOLD, 10));
+            mainPanel.add(lblCep);
 
-            JLabel lblNewLabel_10 = new JLabel("Rua/Av");
-            lblNewLabel_10.setBounds(397, 236, 45, 13);
-            lblNewLabel_10.setFont(new Font("Arial", Font.BOLD, 10));
-            mainPanel.add(lblNewLabel_10);
+            JLabel lblRua = new JLabel("Rua/Av");
+            lblRua.setBounds(397, 236, 45, 13);
+            lblRua.setFont(new Font("Arial", Font.BOLD, 10));
+            mainPanel.add(lblRua);
 
-            JLabel lblNewLabel_6 = new JLabel("Bairro :");
-            lblNewLabel_6.setBounds(200, 273, 45, 13);
-            lblNewLabel_6.setFont(new Font("Arial", Font.BOLD, 10));
-            mainPanel.add(lblNewLabel_6);
+            JLabel lblBairro = new JLabel("Bairro :");
+            lblBairro.setBounds(200, 273, 45, 13);
+            lblBairro.setFont(new Font("Arial", Font.BOLD, 10));
+            mainPanel.add(lblBairro);
 
-            JLabel lblNewLabel_11 = new JLabel("Número : ");
-            lblNewLabel_11.setBounds(397, 273, 56, 13);
-            lblNewLabel_11.setFont(new Font("Arial", Font.BOLD, 10));
-            mainPanel.add(lblNewLabel_11);
+            JLabel lblNumero = new JLabel("Número : ");
+            lblNumero.setBounds(397, 273, 56, 13);
+            lblNumero.setFont(new Font("Arial", Font.BOLD, 10));
+            mainPanel.add(lblNumero);
 
             textField = new JTextField();
             textField.setBounds(521, 146, 96, 19);
@@ -135,29 +135,29 @@ public class TelaDadosTutor {
             mainPanel.add(textField_5);
             textField_5.setColumns(10);
 
-            JButton btnNewButton = new JButton("Retornar ");
-            btnNewButton.setBounds(255, 448, 112, 37);
-            btnNewButton.addActionListener(new ActionListener() {
+            JButton btnRetornar = new JButton("Retornar ");
+            btnRetornar.setBounds(255, 448, 112, 37);
+            btnRetornar.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     // Ação para o botão Retornar
                 }
             });
-            mainPanel.add(btnNewButton);
+            mainPanel.add(btnRetornar);
 
-            JButton btnNewButton_1 = new JButton("Finalizar cadastro ");
-            btnNewButton_1.setBounds(436, 448, 148, 37);
-            btnNewButton_1.addActionListener(new ActionListener() {
+            JButton btnFinalizarCadastro = new JButton("Finalizar cadastro ");
+            btnFinalizarCadastro.setBounds(436, 448, 148, 37);
+            btnFinalizarCadastro.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     // Abre a tela de confirmação quando o botão é clicado
                     FinalizarCadastroTutor.showConfirmationDialog(frame);
                 }
             });
-            mainPanel.add(btnNewButton_1);
+            mainPanel.add(btnFinalizarCadastro);
 
-            JLabel lblNewLabel_12 = new JLabel("Email :");
-            lblNewLabel_12.setBounds(200, 188, 45, 13);
-            lblNewLabel_12.setFont(new Font("Arial", Font.BOLD, 10));
-            mainPanel.add(lblNewLabel_12);
+            JLabel lblEmail = new JLabel("Email :");
+            lblEmail.setBounds(200, 188, 45, 13);
+            lblEmail.setFont(new Font("Arial", Font.BOLD, 10));
+            mainPanel.add(lblEmail);
 
             textField_7 = new JTextField();
             textField_7.setBounds(239, 188, 189, 16);
