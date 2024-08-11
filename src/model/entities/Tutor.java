@@ -1,20 +1,22 @@
-package Model;
+package model.entities;
+
+import java.time.LocalDate;
 
 public class Tutor {
-	private String id;
+	private int id;
 	private String nome;
 	private String cpf;
-	private String sexo;
-	private String dataNascimento;
-	private String pet;
+	private char sexo;
+	private LocalDate dataNascimento;
+	private Pet pet;
 	private String endereco;
 	private String email;
-	
+
 	public Tutor() {
-		
+
 	}
-	
-	public Tutor(String id, String nome, String cpf, String sexo, String dataNascimento, String pet, String endereco,
+
+	public Tutor(int id, String nome, String cpf, char sexo, LocalDate dataNascimento, Pet pet, String endereco,
 			String email) {
 		super();
 		this.id = id;
@@ -27,11 +29,11 @@ public class Tutor {
 		this.email = email;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -51,27 +53,27 @@ public class Tutor {
 		this.cpf = cpf;
 	}
 
-	public String getSexo() {
+	public char getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(String sexo) {
+	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
 
-	public String getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String getPet() {
+	public Pet getPet() {
 		return pet;
 	}
 
-	public void setPet(String pet) {
+	public void setPet(Pet pet) {
 		this.pet = pet;
 	}
 
@@ -90,7 +92,5 @@ public class Tutor {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
 
 }
