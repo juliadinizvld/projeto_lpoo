@@ -35,12 +35,8 @@ public class Main extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		JLabel lblNewLabel = new JLabel("TESTE");
-		contentPane.add(lblNewLabel);
 		setContentPane(new TelaInicial());
-		
 	}
 	
 	public void setPanel(JPanel newPanel) {

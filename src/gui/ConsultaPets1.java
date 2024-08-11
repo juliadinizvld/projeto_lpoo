@@ -29,7 +29,6 @@ public class ConsultaPets1 extends JPanel {
 	 */
 	public ConsultaPets1() {
 		setLayout(null);
-		ConsultaPets2 teste = new ConsultaPets2();
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 821, 500);
 		add(panel);
@@ -42,7 +41,7 @@ public class ConsultaPets1 extends JPanel {
 			}
 		});
 		botaoRetornar.setBounds(222, 206, 125, 23);
-		
+
 		botaoRetornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
@@ -101,7 +100,7 @@ public class ConsultaPets1 extends JPanel {
 		botaoVerificarFicha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(teste);
+				f.setContentPane(ConsultaPets2.consultaPets2);
 				f.revalidate();
 			}
 

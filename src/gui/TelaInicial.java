@@ -79,7 +79,9 @@ public class TelaInicial extends JPanel {
 		agendamentoProcedimentosButton.setBackground(new Color(192, 192, 192));
 		agendamentoProcedimentosButton.setBounds(293, 275, 200, 64);
 		agendamentoProcedimentosButton.addActionListener(e -> {
-			// Ação para agendamento de procedimentos
+			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+			f.setContentPane(Agendamento1.agendamento1);
+			f.revalidate();
 		});
 
 		JButton consultaProdutosButton = new JButton(

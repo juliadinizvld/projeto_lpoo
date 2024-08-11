@@ -19,6 +19,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.border.EmptyBorder;
 
 public class ConsultaPets2 extends JPanel {
 
@@ -130,22 +131,12 @@ public class ConsultaPets2 extends JPanel {
 			}
 		});
 
-		JButton botaoAgendarConsulta = new JButton("Agendar consulta");
-		botaoAgendarConsulta.setFont(new Font("Tahoma", Font.BOLD, 11));
-		botaoAgendarConsulta.setBounds(172, 403, 180, 23);
-		panel.add(botaoAgendarConsulta);
-
-		JButton botaoAgendarProcedimento = new JButton("Agendar Procedimento");
-		botaoAgendarProcedimento.setFont(new Font("Tahoma", Font.BOLD, 11));
-		botaoAgendarProcedimento.setBounds(481, 403, 206, 23);
-		panel.add(botaoAgendarProcedimento);
-
 		JLabel TextNascPet = new JLabel("Nascimento:");
 		TextNascPet.setBounds(8, 205, 142, 27);
 		panel.add(TextNascPet);
 
 		JButton botaoRetornar = new JButton("Retornar");
-		botaoRetornar.setBounds(346, 451, 114, 23);
+		botaoRetornar.setBounds(197, 403, 114, 23);
 		panel.add(botaoRetornar);
 
 		botaoRetornar.addActionListener(new ActionListener() {
