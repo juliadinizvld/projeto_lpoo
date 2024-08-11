@@ -39,7 +39,7 @@ public class Main extends JFrame {
 		setContentPane(contentPane);
 		JLabel lblNewLabel = new JLabel("TESTE");
 		contentPane.add(lblNewLabel);
-		setContentPane(new Produto1());
+		setContentPane(new TelaInicial());
 		
 	}
 	

@@ -17,6 +17,7 @@ public class Produto1 extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTextField campoNomeDoProduto;
 	public static Produto1 produto1 = new Produto1();
+
 	/**
 	 * Create the panel.
 	 */
@@ -63,10 +64,10 @@ public class Produto1 extends JPanel {
 		botaoRetornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				/*
-				 * JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				 * f.setContentPane(new Funcionario2()); f.revalidate();
-				 */
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(TelaInicial.telaInicial);
+				f.revalidate();
+
 			}
 		});
 

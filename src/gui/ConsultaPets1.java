@@ -42,6 +42,15 @@ public class ConsultaPets1 extends JPanel {
 			}
 		});
 		botaoRetornar.setBounds(222, 206, 125, 23);
+		
+		botaoRetornar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new TelaInicial());
+				f.revalidate();
+			}
+
+		});
 		panel.add(botaoRetornar);
 
 		caixaInserirIDPet = new JTextField();
