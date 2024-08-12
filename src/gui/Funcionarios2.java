@@ -1,0 +1,183 @@
+package gui;
+
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import model.services.ServicoAlterarTela;
+
+public class Funcionarios2 extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField campoIdade;
+	private JTextField campoEspecialidade;
+	private JTextField campoRmv;
+	private JTextField campoNomeFuncionario;
+	private JTextField campoCpf;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Funcionarios2 frame = new Funcionarios2();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Funcionarios2() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 800, 600);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+
+		JPanel panel = new JPanel();
+		panel.setBounds(45, 11, 700, 500);
+		contentPane.add(panel);
+		panel.setLayout(null);
+
+		JLabel tituloNovoFuncionario = new JLabel("Novo funcionário");
+		tituloNovoFuncionario.setHorizontalAlignment(SwingConstants.CENTER);
+		tituloNovoFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		tituloNovoFuncionario.setBounds(216, 10, 253, 25);
+		panel.add(tituloNovoFuncionario);
+
+		JLabel textoNomeDoFuncionario = new JLabel("Nome do funcionário:");
+		textoNomeDoFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textoNomeDoFuncionario.setBounds(137, 90, 167, 20);
+		panel.add(textoNomeDoFuncionario);
+
+		campoNomeFuncionario = new JTextField();
+		campoNomeFuncionario.setFont(new Font("Dialog", Font.PLAIN, 14));
+		campoNomeFuncionario.setBounds(306, 90, 278, 22);
+		panel.add(campoNomeFuncionario);
+		campoNomeFuncionario.setColumns(10);
+
+		JLabel textoIdade = new JLabel("Idade:");
+		textoIdade.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textoIdade.setBounds(137, 131, 62, 20);
+		panel.add(textoIdade);
+
+		campoIdade = new JTextField();
+		campoIdade.setFont(new Font("Dialog", Font.PLAIN, 14));
+		campoIdade.setBounds(203, 131, 62, 22);
+		panel.add(campoIdade);
+		campoIdade.setColumns(10);
+
+		JLabel textoFuncao = new JLabel("Função:");
+		textoFuncao.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textoFuncao.setBounds(137, 198, 56, 20);
+		panel.add(textoFuncao);
+
+		String[] funcoes = { "", "Médico Veterinário", "Atendente", "Vendedor" };
+		JComboBox selectFuncao = new JComboBox(funcoes);
+		selectFuncao.setFont(new Font("Dialog", Font.PLAIN, 14));
+		selectFuncao.setBounds(203, 198, 149, 23);
+		panel.add(selectFuncao);
+
+		JLabel textoEspecialidade = new JLabel("Especialidade:");
+		textoEspecialidade.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textoEspecialidade.setBounds(137, 229, 109, 20);
+		panel.add(textoEspecialidade);
+
+		campoEspecialidade = new JTextField();
+		campoEspecialidade.setFont(new Font("Dialog", Font.PLAIN, 14));
+		campoEspecialidade.setBounds(249, 229, 260, 25);
+		panel.add(campoEspecialidade);
+		campoEspecialidade.setColumns(10);
+		campoEspecialidade.setEditable(false);
+
+		JLabel textoRmv = new JLabel("RMV:");
+		textoRmv.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textoRmv.setBounds(137, 260, 62, 20);
+		panel.add(textoRmv);
+
+		campoRmv = new JTextField();
+		campoRmv.setFont(new Font("Dialog", Font.PLAIN, 14));
+		campoRmv.setBounds(206, 260, 120, 25);
+		panel.add(campoRmv);
+		campoRmv.setColumns(10);
+		campoRmv.setEditable(false);
+
+		JButton botaoRetornar = new JButton("← Retornar");
+		botaoRetornar.setBounds(225, 341, 120, 21);
+		panel.add(botaoRetornar);
+
+		JButton botaoConfirmar = new JButton("Confirmar");
+		botaoConfirmar.setBounds(400, 340, 109, 23);
+		panel.add(botaoConfirmar);
+
+		botaoConfirmar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(campoNomeFuncionario.getText());
+				System.out.println(campoIdade.getText());
+				System.out.println(campoCpf.getText());
+				if(selectFuncao.getSelectedItem() == "Médico Veterinário");{
+					System.out.println(selectFuncao.getSelectedItem());
+					System.out.println(campoEspecialidade.getText());
+					System.out.println(campoRmv.getText());
+				}
+				
+			}
+		});
+
+		JLabel textoCpf = new JLabel("CPF: ");
+		textoCpf.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textoCpf.setBounds(137, 162, 46, 25);
+		panel.add(textoCpf);
+
+		campoCpf = new JTextField();
+		campoCpf.setFont(new Font("Dialog", Font.PLAIN, 14));
+		campoCpf.setBounds(193, 162, 111, 25);
+		panel.add(campoCpf);
+		campoCpf.setColumns(10);
+
+		ActionListener verificarFuncao = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (selectFuncao.getSelectedItem() != "Médico Veterinário") {
+					campoEspecialidade.setEditable(false);
+					campoRmv.setEditable(false);
+				} else {
+					campoEspecialidade.setEditable(true);
+					campoRmv.setEditable(true);
+				}
+			}
+		};
+
+		selectFuncao.addActionListener(verificarFuncao);
+		botaoRetornar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ServicoAlterarTela.alterarTela(new Funcionarios1(), getLocation().x, getLocation().y);
+				setVisible(false);
+			}
+		});
+	}
+}

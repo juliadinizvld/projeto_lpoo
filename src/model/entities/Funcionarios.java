@@ -1,25 +1,19 @@
 package model.entities;
 
-public class Funcionarios {
+public abstract  class Funcionarios {
 
 	private int id;
 	private String nome;
 	private String cpf;
-	private String sexo;
-	private String funcao;
-	private String especialidade;
-	private String crm;
+	private char sexo;
 	private String contato;
 	private String endereco;
 
-	public Funcionarios (int id, String nome, String cpf, String sexo, String funcao, String especialidade, String crm, String contato, String endereco) {
+	public Funcionarios (int id, String nome, String cpf, char sexo, String contato, String endereco) {
         this.id = id;
 		this.nome = nome;
         this.cpf = cpf;
         this.sexo = sexo;
-        this.funcao = funcao;
-        this.especialidade = especialidade;
-        this.crm = crm;
         this.contato= contato;
         this.endereco = endereco;
     }
@@ -48,36 +42,12 @@ public class Funcionarios {
 		this.cpf = cpf;
 	}
 
-	public String getFuncao() {
-		return funcao;
-	}
-
-	public void setFuncao(String funcao) {
-		this.funcao = funcao;
-	}
-
-	public String getSexo() {
+	public char getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(String sexo) {
+	public void setSexo(char sexo) {
 		this.sexo = sexo;
-	}
-
-	public String getCrm() {
-		return crm;
-	}
-
-	public void setCrm(String crm) {
-		this.crm = crm;
-	}
-
-	public String getEspecialidade() {
-		return especialidade;
-	}
-
-	public void setEspecialidade(String especialidade) {
-		this.especialidade = especialidade;
 	}
 
 	public String getContato() {
