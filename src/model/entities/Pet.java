@@ -7,14 +7,14 @@ public class Pet {
     private String especie;
     private String raca;
     private double peso;
-    private String tutor;
+    private  Tutor tutor;
     public char sexo;
     public double idade;
     public String[] vacinas;
 
     public Pet(int id, String nome, String especie, String raca, double peso, String tutor, char sexo, double idade) {
         this.id = id;
-        this.nome = nome;
+        this.name = nome;
         this.especie = especie;
         this.raca = raca;
         this.peso = peso;
