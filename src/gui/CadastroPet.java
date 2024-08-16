@@ -18,10 +18,10 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-public class TelaCadastro1 extends JPanel {
+public class CadastroPet extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public static TelaCadastro1 telaCadastro1 = new TelaCadastro1();
+	public static CadastroPet telaCadastro1 = new CadastroPet();
 	private static JTextField textField;
 	private static JTextField textField_1;
 	private static JTextField textField_2;
@@ -32,7 +32,7 @@ public class TelaCadastro1 extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public TelaCadastro1() {
+	public CadastroPet() {
 		setLayout(null);
 		// Cria um painel principal com um layout de BorderLayout
 		JPanel panel = new JPanel();
@@ -152,7 +152,7 @@ public class TelaCadastro1 extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(TelaCadastro2.telaCadastro2);
+				f.setContentPane(CadastroTutor.telaCadastro2);
 				f.revalidate();
 			}
 		});

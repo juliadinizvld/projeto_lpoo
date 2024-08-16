@@ -12,14 +12,14 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
-public class Produto4 extends JPanel {
+public class ConclusaoPagamentoProduto extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Create the panel.
 	 */
-	public Produto4() {
+	public ConclusaoPagamentoProduto() {
 		setLayout(null);
 		JPanel panel = new JPanel();
 		panel.setBounds(45, 11, 700, 500);
@@ -47,7 +47,7 @@ public class Produto4 extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new Produto1());
+				f.setContentPane(new ConsultarProdutos());
 				f.revalidate();
 
 			}
