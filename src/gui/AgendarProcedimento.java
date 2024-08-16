@@ -19,15 +19,15 @@ import javax.swing.SwingUtilities;
 
 import bd.BD;
 
-public class Agendamento1 extends JPanel {
+public class AgendarProcedimento extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public static Agendamento1 agendamento1 = new Agendamento1();
+	public static AgendarProcedimento agendamento1 = new AgendarProcedimento();
 
 	/**
 	 * Create the panel.
 	 */
-	public Agendamento1() {
+	public AgendarProcedimento() {
 
 		// Painel principal
 		JPanel panel = new JPanel();
@@ -94,7 +94,7 @@ public class Agendamento1 extends JPanel {
 		btnAvancar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(Agendamento2.agendamento2);
+				f.setContentPane(PagamentoAgendamento.agendamento2);
 				f.revalidate();
 			}
 		});

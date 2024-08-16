@@ -17,15 +17,15 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SwingUtilities;
 
-public class Agendamento2 extends JPanel {
+public class PagamentoAgendamento extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public static Agendamento2 agendamento2 = new Agendamento2();
+	public static PagamentoAgendamento agendamento2 = new PagamentoAgendamento();
 
 	/**
 	 * Create the panel.
 	 */
-	public Agendamento2() {
+	public PagamentoAgendamento() {
 		// Painel principal
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridBagLayout());
@@ -69,7 +69,7 @@ public class Agendamento2 extends JPanel {
 		btnRetornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(Agendamento1.agendamento1);
+				f.setContentPane(AgendarProcedimento.agendamento1);
 				f.revalidate();
 			}
 		});
