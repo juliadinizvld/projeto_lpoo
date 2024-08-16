@@ -21,7 +21,7 @@ USE `mydb` ;
 -- Table `mydb`.`Pet`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Pet` (
-  `idPet` INT NOT NULL,
+  `idPet` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `especie` VARCHAR(45) NOT NULL,
   `raca` VARCHAR(45) NOT NULL,
@@ -43,11 +43,11 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Tutor`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Tutor` (
-  `idTutor` INT NOT NULL,
+  `idTutor` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(100) NOT NULL,
   `cpf` VARCHAR(45) NOT NULL,
   `sexo` VARCHAR(45) NOT NULL,
-  `data_nasc` VARCHAR(45) NOT NULL,
+  `data_nasc` DATE NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `endereco` VARCHAR(45) NOT NULL,
   `pet` INT NOT NULL,
@@ -65,7 +65,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Produto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Produto` (
-  `idProduto` INT NOT NULL,
+  `idProduto` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `quantidade` VARCHAR(45) NOT NULL,
   `valor_unitario` DECIMAL(5,1) NOT NULL,
@@ -77,12 +77,13 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Endereco`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Endereco` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `cep` INT NOT NULL,
   `cidade` VARCHAR(45) NOT NULL,
   `rua` VARCHAR(45) NOT NULL,
   `bairro` VARCHAR(45) NOT NULL,
   `numero` INT NOT NULL,
-  PRIMARY KEY (`cep`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -90,7 +91,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Funcionario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Funcionario` (
-  `idFuncionario` INT NOT NULL,
+  `idFuncionario` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(100) NOT NULL,
   `cpf` VARCHAR(45) NOT NULL,
   `sexo` VARCHAR(45) NOT NULL,
