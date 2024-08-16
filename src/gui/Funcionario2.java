@@ -43,7 +43,7 @@ public class Funcionario2 extends JPanel {
 		}
 
 		JPanel panel = new JPanel();
-		panel.setBounds(45, 11, 700, 500);
+		panel.setBounds(0, 0, 700, 500);
 		add(panel);
 		panel.setLayout(null);
 

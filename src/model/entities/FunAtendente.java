@@ -1,4 +1,4 @@
-package Model.entities;
+package model.entities;
 
 public class FunAtendente {
 

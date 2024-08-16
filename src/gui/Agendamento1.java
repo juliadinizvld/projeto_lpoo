@@ -5,6 +5,9 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -13,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import bd.BD;
 
 public class Agendamento1 extends JPanel {
 
@@ -40,7 +45,7 @@ public class Agendamento1 extends JPanel {
 		JComboBox<String> cbTipo = new JComboBox<>(tipos);
 		gbc.gridx = 1;
 		panel.add(cbTipo, gbc);
-
+		
 		// Escolha exames/etapas
 		JLabel lblExame = new JLabel("Escolha exames/etapas:");
 		gbc.gridx = 0;
@@ -73,10 +78,11 @@ public class Agendamento1 extends JPanel {
 				// TODO Auto-generated method stub
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
 				f.setContentPane(TelaInicial.telaInicial);
-				System.out.println(btnRetornar.getAlignmentX());
-				System.out.println(btnRetornar.getAlignmentX());
 				f.revalidate();
-	
+				Connection connection = BD.getConnection();
+				Statement st = null;
+				ResultSet rs = null;
+				BD.closeConnection();	
 			}
 		});
 

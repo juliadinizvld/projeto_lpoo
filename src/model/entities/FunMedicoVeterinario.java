@@ -1,4 +1,4 @@
-package Model.entities;
+package model.entities;
 
 public class FunMedicoVeterinario extends Funcionarios{
 	private String crm ;
