@@ -36,7 +36,7 @@ public class Main extends JFrame {
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
-		setContentPane(new TelaInicial());
+		setContentPane(new AdicaoProdutos1());
 	}
 	
 	public void setPanel(JPanel newPanel) {
