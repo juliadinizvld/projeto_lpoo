@@ -9,7 +9,7 @@ public abstract  class Funcionarios {
 	private String contato;
 	private String endereco;
 
-	public Funcionarios (int id, String nome, String cpf, char sexo, String contato, String endereco) {
+	public Funcionarios (int id, String nome, String cpf, SexoEnum sexo, String contato, String endereco) {
         this.id = id;
 		this.nome = nome;
         this.cpf = cpf;
@@ -46,7 +46,7 @@ public abstract  class Funcionarios {
 		return sexo;
 	}
 
-	public void setSexo(char sexo) {
+	public void setSexo(SexoEnum sexo) {
 		this.sexo = sexo;
 	}
 
