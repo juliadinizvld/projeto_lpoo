@@ -3,38 +3,33 @@ package ui.entities;
 import java.time.LocalDate;
 
 public class Tutor {
-	private int id;
 	private String nome;
 	private String cpf;
-	private char sexo;
 	private LocalDate dataNascimento;
-	private Pet pet;
-	private String endereco;
+	private String sexo;
 	private String email;
+	private String cep;
+	private String rua;
+	private String bairro;
+	private int numero;
+	private String cidade;
+	private String telefone;
+	private String endereco;
 
-	public Tutor() {
-
-	}
-
-	public Tutor(int id, String nome, String cpf, char sexo, LocalDate dataNascimento, Pet pet, String endereco,
-			String email) {
-		super();
-		this.id = id;
+	public Tutor(String nome, String cpf, LocalDate dataNascimento, String sexo, String email, String cep, String rua,
+			String bairro, int numero, String cidade, String telefone, String endereco) {
 		this.nome = nome;
 		this.cpf = cpf;
-		this.sexo = sexo;
 		this.dataNascimento = dataNascimento;
-		this.pet = pet;
-		this.endereco = endereco;
+		this.sexo = sexo;
 		this.email = email;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+		this.cep = cep;
+		this.rua = rua;
+		this.bairro = bairro;
+		this.numero = numero;
+		this.cidade = cidade;
+		this.telefone = telefone;
+		this.endereco = endereco;
 	}
 
 	public String getNome() {
@@ -53,14 +48,6 @@ public class Tutor {
 		this.cpf = cpf;
 	}
 
-	public char getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(char sexo) {
-		this.sexo = sexo;
-	}
-
 	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
@@ -69,20 +56,12 @@ public class Tutor {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public Pet getPet() {
-		return pet;
+	public String getSexo() {
+		return sexo;
 	}
 
-	public void setPet(Pet pet) {
-		this.pet = pet;
-	}
-
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 
 	public String getEmail() {
@@ -91,6 +70,62 @@ public class Tutor {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 }

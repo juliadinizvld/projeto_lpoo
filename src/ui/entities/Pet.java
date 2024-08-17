@@ -1,36 +1,30 @@
 package ui.entities;
 
+import java.time.LocalDate;
+
 public class Pet {
 
-	private int id;
 	private String nome;
 	private String especie;
 	private String raca;
+	private LocalDate dataNascimento;
+	private char sexo;
 	private double peso;
+	private String alergias;
+	private String vacinas;
 	private Tutor tutor;
-	public char sexo;
-	public double idade;
-	public String vacinas;
 
-	public Pet(int id, String nome, String especie, String raca, double peso, Tutor tutor, char sexo, double idade,
-			String vacinas) {
-		this.id = id;
+	public Pet(String nome, String especie, String raca, LocalDate dataNascimento, char sexo, double peso,
+			String alergias, String vacinas, Tutor tutor) {
 		this.nome = nome;
 		this.especie = especie;
 		this.raca = raca;
-		this.peso = peso;
-		this.tutor = tutor;
+		this.dataNascimento = dataNascimento;
 		this.sexo = sexo;
-		this.idade = idade;
+		this.peso = peso;
+		this.alergias = alergias;
 		this.vacinas = vacinas;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+		this.tutor = tutor;
 	}
 
 	public String getNome() {
@@ -57,20 +51,12 @@ public class Pet {
 		this.raca = raca;
 	}
 
-	public double getPeso() {
-		return peso;
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setPeso(double peso) {
-		this.peso = peso;
-	}
-
-	public Tutor getTutor() {
-		return tutor;
-	}
-
-	public void setTutor(Tutor tutor) {
-		this.tutor = tutor;
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	public char getSexo() {
@@ -81,12 +67,20 @@ public class Pet {
 		this.sexo = sexo;
 	}
 
-	public double getIdade() {
-		return idade;
+	public double getPeso() {
+		return peso;
 	}
 
-	public void setIdade(double idade) {
-		this.idade = idade;
+	public void setPeso(double peso) {
+		this.peso = peso;
+	}
+
+	public String getAlergias() {
+		return alergias;
+	}
+
+	public void setAlergias(String alergias) {
+		this.alergias = alergias;
 	}
 
 	public String getVacinas() {
@@ -95,6 +89,14 @@ public class Pet {
 
 	public void setVacinas(String vacinas) {
 		this.vacinas = vacinas;
+	}
+
+	public Tutor getTutor() {
+		return tutor;
+	}
+
+	public void setTutor(Tutor tutor) {
+		this.tutor = tutor;
 	}
 
 }

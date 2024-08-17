@@ -4,11 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
-import ui.Home;
-
-import javax.swing.JLabel;
+import ui.AdicaoProdutos;
 
 public class Main extends JFrame {
 
@@ -39,7 +36,7 @@ public class Main extends JFrame {
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
-		setContentPane(new Home());
+		setContentPane(new AdicaoProdutos());
 	}
 	
 	public void setPanel(JPanel newPanel) {
