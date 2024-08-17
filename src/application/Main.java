@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import ui.Home;
+import ui.FuncionariosNovoFuncionario;
 
 public class Main extends JFrame {
 
@@ -36,7 +36,7 @@ public class Main extends JFrame {
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
-		setContentPane(new Home());
+		setContentPane(new FuncionariosNovoFuncionario());
 	}
 	
 	public void setPanel(JPanel newPanel) {
