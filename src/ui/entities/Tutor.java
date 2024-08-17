@@ -11,13 +11,12 @@ public class Tutor {
 	private String cep;
 	private String rua;
 	private String bairro;
-	private int numero;
+	private int numeroCasa;
 	private String cidade;
 	private String telefone;
-	private String endereco;
 
 	public Tutor(String nome, String cpf, LocalDate dataNascimento, String sexo, String email, String cep, String rua,
-			String bairro, int numero, String cidade, String telefone, String endereco) {
+			String bairro, int numeroCasa, String cidade, String telefone) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
@@ -26,10 +25,9 @@ public class Tutor {
 		this.cep = cep;
 		this.rua = rua;
 		this.bairro = bairro;
-		this.numero = numero;
+		this.numeroCasa = numeroCasa;
 		this.cidade = cidade;
 		this.telefone = telefone;
-		this.endereco = endereco;
 	}
 
 	public String getNome() {
@@ -97,11 +95,11 @@ public class Tutor {
 	}
 
 	public int getNumero() {
-		return numero;
+		return numeroCasa;
 	}
 
-	public void setNumero(int numero) {
-		this.numero = numero;
+	public void setNumero(int numeroCasa) {
+		this.numeroCasa = numeroCasa;
 	}
 
 	public String getCidade() {
@@ -118,14 +116,6 @@ public class Tutor {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-	}
-
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
 	}
 
 }

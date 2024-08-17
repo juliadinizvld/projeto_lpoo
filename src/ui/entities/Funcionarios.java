@@ -5,21 +5,23 @@ public abstract class Funcionarios {
 	private String nome;
 	private String cpf;
 	private Enum sexo;
-	private String contato;
+	private String telefone;
 	private String rua;
 	private String cidade;
+	private String estado;
 	private String bairro;
 	private int numeroCasa;
 	private String cep;
 
-	public Funcionarios(String nome, String cpf, Enum sexo, String contato, String rua, String cidade, String bairro,
-			int numeroCasa, String cep) {
+	public Funcionarios(String nome, String cpf, Enum sexo, String telefone, String rua, String cidade, String estado,
+			String bairro, int numeroCasa, String cep) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.sexo = sexo;
-		this.contato = contato;
+		this.telefone = telefone;
 		this.rua = rua;
 		this.cidade = cidade;
+		this.estado = estado;
 		this.bairro = bairro;
 		this.numeroCasa = numeroCasa;
 		this.cep = cep;
@@ -47,14 +49,6 @@ public abstract class Funcionarios {
 
 	public void setSexo(Enum sexo) {
 		this.sexo = sexo;
-	}
-
-	public String getContato() {
-		return contato;
-	}
-
-	public void setContato(String contato) {
-		this.contato = contato;
 	}
 
 	public String getRua() {
@@ -95,6 +89,22 @@ public abstract class Funcionarios {
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 }
