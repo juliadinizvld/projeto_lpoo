@@ -6,7 +6,7 @@ public class Produto {
 	private int quantidade;
 	private double valorUnitario;
 
-	public Produto(int id, String nome, int quantidade, double valorUnitario) {
+	public Produto(String nome, int quantidade, double valorUnitario) {
 		this.nome = nome;
 		this.quantidade = quantidade;
 		this.valorUnitario = valorUnitario;
@@ -36,4 +36,11 @@ public class Produto {
 		this.valorUnitario = valorUnitario;
 	}
 
+	@Override
+	public String toString() {
+		return "Produto [nome=" + nome + ", quantidade=" + quantidade + ", valorUnitario=" + valorUnitario + "]";
+	}
+	
+	
+	
 }

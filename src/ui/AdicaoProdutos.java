@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import data.BD;
+import ui.entities.Produto;
 
 public class AdicaoProdutos extends JPanel {
 
@@ -86,31 +87,9 @@ public class AdicaoProdutos extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String nomeProduto = String.valueOf(comboBox.getSelectedItem()) + " - " + txtProductName.getText();
-				String quantidadeProduto = txtQuantity.getText();
+				int quantidadeProduto = Integer.parseInt(txtQuantity.getText());
 				double valorUnitarioProduto = Double.parseDouble(txtValorUnitario.getText());
-				System.out.println(txtValorUnitario.getText());
-				Connection connection = BD.getConnection();
-				PreparedStatement ps = null;
-
-				try {
-					ps = connection.prepareStatement(
-							"INSERT INTO produto (idProduto, nome, quantidade, valor_unitario) VALUES (?, ?, ?, ?)");
-					ps.setInt(1, 5);
-					ps.setString(2, nomeProduto);
-					ps.setString(3, quantidadeProduto);
-					ps.setDouble(4, valorUnitarioProduto);
-
-					if (ps.executeUpdate() > 0) {
-						System.out.println("Inserido!");
-					}
-				} catch (SQLException i) {
-					i.printStackTrace();
-				}
-				finally {
-					BD.closeStatement(ps);
-					BD.closeConnection();
-				}
-
+				Produto produto = new Produto(nomeProduto, quantidadeProduto, valorUnitarioProduto);
 			}
 		});
 

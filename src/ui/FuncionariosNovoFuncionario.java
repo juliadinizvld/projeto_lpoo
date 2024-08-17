@@ -34,6 +34,7 @@ public class FuncionariosNovoFuncionario extends JPanel {
 		MaskFormatter mfIdade = null;
 		MaskFormatter mfCpf = null;
 		MaskFormatter mfCrmv = null;
+		
 		try {
 			mfIdade = new MaskFormatter("##");
 			mfCpf = new MaskFormatter("###.###.###-##");
