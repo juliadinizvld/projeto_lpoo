@@ -1,18 +1,13 @@
 package ui;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -22,6 +17,7 @@ public class CadastroCadastroPet extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	public static CadastroCadastroPet telaCadastro1 = new CadastroCadastroPet();
+	private static JFrame frame;
 	private static JTextField textField;
 	private static JTextField textField_1;
 	private static JTextField textField_2;
@@ -151,9 +147,7 @@ public class CadastroCadastroPet extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(CadastroCadastroTutor.telaCadastro2);
-				f.revalidate();
+				CadastroFinalizarCadastroTutor.showConfirmationDialog(frame);
 			}
 		});
 		
@@ -165,7 +159,7 @@ public class CadastroCadastroPet extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(Home.telaInicial);
+				f.setContentPane(CadastroCadastroTutor.cadastroTutor);
 				f.revalidate();
 			}
 		});

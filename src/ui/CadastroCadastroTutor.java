@@ -1,6 +1,5 @@
 package ui;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,8 +17,7 @@ import javax.swing.SwingUtilities;
 public class CadastroCadastroTutor extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public static CadastroCadastroTutor telaCadastro2 = new CadastroCadastroTutor();
-	private static JFrame frame;
+	public static CadastroCadastroTutor cadastroTutor = new CadastroCadastroTutor();
 	private static JTextField textField;
 	private static JTextField textField_1;
 	private static JTextField textField_2;
@@ -140,20 +138,22 @@ public class CadastroCadastroTutor extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(CadastroCadastroPet.telaCadastro1);
+				f.setContentPane(new CadastroEscolha());
 				f.revalidate();
 			}
 		});
 
-		JButton btnFinalizarCadastro = new JButton("Finalizar cadastro ");
-		btnFinalizarCadastro.setBounds(436, 448, 148, 37);
-		btnFinalizarCadastro.addActionListener(new ActionListener() {
+		JButton btnAvancar = new JButton("Avançar");
+		btnAvancar.setBounds(436, 448, 148, 37);
+		btnAvancar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Abre a tela de confirmação quando o botão é clicado
-				CadastroFinalizarCadastroTutor.showConfirmationDialog(frame);
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new CadastroCadastroPet());
+				f.revalidate();
 			}
 		});
-		panel.add(btnFinalizarCadastro);
+		panel.add(btnAvancar);
 
 		JLabel lblEmail = new JLabel("Email :");
 		lblEmail.setBounds(200, 188, 45, 13);

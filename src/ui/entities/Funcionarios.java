@@ -1,20 +1,41 @@
 package ui.entities;
 
-public abstract class Funcionarios {
+import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+@Entity
+public abstract class Funcionarios implements Serializable {
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String nome;
 	private String cpf;
-	private Enum sexo;
+	private String sexo;
 	private String telefone;
 	private String rua;
 	private String cidade;
 	private String estado;
 	private String bairro;
+	@Column(name = "numero_casa")
 	private int numeroCasa;
 	private String cep;
 
-	public Funcionarios(String nome, String cpf, Enum sexo, String telefone, String rua, String cidade, String estado,
-			String bairro, int numeroCasa, String cep) {
+	protected Funcionarios() {
+
+	}
+
+	public Funcionarios(Integer id, String nome, String cpf, String sexo, String telefone, String rua, String cidade,
+			String estado, String bairro, int numeroCasa, String cep) {
+
+		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.sexo = sexo;
@@ -25,6 +46,14 @@ public abstract class Funcionarios {
 		this.bairro = bairro;
 		this.numeroCasa = numeroCasa;
 		this.cep = cep;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -43,11 +72,11 @@ public abstract class Funcionarios {
 		this.cpf = cpf;
 	}
 
-	public Enum getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(Enum sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 

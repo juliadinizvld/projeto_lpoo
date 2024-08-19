@@ -3,9 +3,7 @@ package ui;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.text.ParseException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -13,8 +11,10 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.text.MaskFormatter;
 
-import data.BD;
+import business.BDServices;
+import ui.entities.Produtos;
 
 public class AdicaoProdutos extends JPanel {
 
@@ -25,6 +25,17 @@ public class AdicaoProdutos extends JPanel {
 	 * Create the panel.
 	 */
 	public AdicaoProdutos() {
+		
+		MaskFormatter quantidadeProduto = null;
+		MaskFormatter valorProduto = null;
+		
+		try {
+			quantidadeProduto = new MaskFormatter("");
+			valorProduto = new MaskFormatter("###.##");
+		} catch (ParseException e) {
+			e.getStackTrace();
+		}
+		
 		setLayout(null);
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 821, 500);
@@ -77,7 +88,7 @@ public class AdicaoProdutos extends JPanel {
 		txtQuantity.setBounds(394, 134, 28, 20);
 		panel.add(txtQuantity);
 
-		JFormattedTextField txtValorUnitario = new JFormattedTextField();
+		JFormattedTextField txtValorUnitario = new JFormattedTextField(valorProduto);
 		txtValorUnitario.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		txtValorUnitario.setBounds(394, 165, 71, 20);
 		panel.add(txtValorUnitario);
@@ -86,33 +97,11 @@ public class AdicaoProdutos extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String nomeProduto = String.valueOf(comboBox.getSelectedItem()) + " - " + txtProductName.getText();
-				String quantidadeProduto = txtQuantity.getText();
+				int quantidadeProduto = Integer.parseInt(txtQuantity.getText());
 				double valorUnitarioProduto = Double.parseDouble(txtValorUnitario.getText());
-				System.out.println(txtValorUnitario.getText());
-				Connection connection = BD.getConnection();
-				PreparedStatement ps = null;
-
-				try {
-					ps = connection.prepareStatement(
-							"INSERT INTO produto (idProduto, nome, quantidade, valor_unitario) VALUES (?, ?, ?, ?)");
-					ps.setInt(1, 5);
-					ps.setString(2, nomeProduto);
-					ps.setString(3, quantidadeProduto);
-					ps.setDouble(4, valorUnitarioProduto);
-
-					if (ps.executeUpdate() > 0) {
-						System.out.println("Inserido!");
-					}
-				} catch (SQLException i) {
-					i.printStackTrace();
-				}
-				finally {
-					BD.closeStatement(ps);
-					BD.closeConnection();
-				}
-
+				Produtos produto = new Produtos(null, nomeProduto, quantidadeProduto, valorUnitarioProduto);
+				BDServices.inserirProduto(produto);
 			}
 		});
-
 	}
 }

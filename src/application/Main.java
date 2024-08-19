@@ -5,12 +5,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import ui.FuncionariosNovoFuncionario;
+import ui.AdicaoProdutos;
 
 public class Main extends JFrame {
-
+	
 	private static final long serialVersionUID = 1L;
-	private  JPanel contentPane;
+	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -27,7 +27,7 @@ public class Main extends JFrame {
 			}
 		});
 	}
-	
+
 	/**
 	 * Create the frame.
 	 */
@@ -36,9 +36,9 @@ public class Main extends JFrame {
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
-		setContentPane(new FuncionariosNovoFuncionario());
+		setContentPane(new AdicaoProdutos());
 	}
-	
+
 	public void setPanel(JPanel newPanel) {
 		setContentPane(newPanel);
 	}

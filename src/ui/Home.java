@@ -58,7 +58,7 @@ public class Home extends JPanel {
 		cadastroPetsButton.setBounds(295, 97, 200, 60);
 		cadastroPetsButton.addActionListener(e -> {
 			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-			f.setContentPane(new CadastroCadastroPet());
+			f.setContentPane(new CadastroEscolha());
 			f.revalidate();
 		});
 
