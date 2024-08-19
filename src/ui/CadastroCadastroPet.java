@@ -4,6 +4,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,10 +18,15 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import com.mysql.cj.protocol.Resultset;
+
+import data.BD;
+
 public class CadastroCadastroPet extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	public static CadastroCadastroPet telaCadastro1 = new CadastroCadastroPet();
+
 	private static JFrame frame;
 	private static JTextField textField;
 	private static JTextField textField_1;
@@ -25,11 +35,20 @@ public class CadastroCadastroPet extends JPanel {
 	private static JTextField textField_4;
 	private static JTextField textField_5;
 
+	private static JTextField campoNomeAnimal;
+	private static JTextField campoRacaAnimal;
+	private static JTextField campoDataNascimento;
+	private static JTextField campoPesoAnimal;
+	private static JTextField campoAlergiasAnimal;
+	private static JTextField campoVacinasAnimal;
+
+
 	/**
 	 * Create the panel.
 	 */
 	public CadastroCadastroPet() {
 		setLayout(null);
+		SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
 		// Cria um painel principal com um layout de BorderLayout
 		JPanel panel = new JPanel();
 		panel.setBounds(45, 11, 700, 500);
@@ -44,21 +63,21 @@ public class CadastroCadastroPet extends JPanel {
 
 		// Adiciona o título ao painel principal
 		panel.add(titleLabel);
-		
-		textField = new JTextField();
-		textField.setBounds(282, 74, 242, 26);
-		textField.setColumns(10);
-		panel.add(textField);
+
+		campoNomeAnimal = new JTextField();
+		campoNomeAnimal.setBounds(282, 74, 242, 26);
+		campoNomeAnimal.setColumns(10);
+		panel.add(campoNomeAnimal);
 
 		JLabel lblNewLabel = new JLabel("Nome do animal:");
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 10));
 		lblNewLabel.setBounds(185, 74, 100, 24);
 		panel.add(lblNewLabel);
 
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(225, 161, 273, 26);
-		panel.add(textField_1);
+		campoRacaAnimal = new JTextField();
+		campoRacaAnimal.setColumns(10);
+		campoRacaAnimal.setBounds(225, 161, 273, 26);
+		panel.add(campoRacaAnimal);
 
 		JLabel lblNewLabel_1 = new JLabel("Espécie:");
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 10));
@@ -87,11 +106,11 @@ public class CadastroCadastroPet extends JPanel {
 		lblNewLabel_1_1_1.setBounds(185, 205, 108, 24);
 		panel.add(lblNewLabel_1_1_1);
 
-		textField_2 = new JTextField();
-		textField_2.setText("        /        /");
-		textField_2.setColumns(10);
-		textField_2.setBounds(296, 205, 103, 26);
-		panel.add(textField_2);
+		campoDataNascimento = new JTextField();
+		campoDataNascimento.setText("        /        /");
+		campoDataNascimento.setColumns(10);
+		campoDataNascimento.setBounds(296, 205, 103, 26);
+		panel.add(campoDataNascimento);
 
 		JLabel lblNewLabel_1_1_1_1 = new JLabel("Sexo:");
 		lblNewLabel_1_1_1_1.setFont(new Font("Arial", Font.BOLD, 10));
@@ -115,30 +134,30 @@ public class CadastroCadastroPet extends JPanel {
 		lblNewLabel_1_1_1_1_1.setBounds(185, 299, 49, 24);
 		panel.add(lblNewLabel_1_1_1_1_1);
 
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(250, 299, 100, 26);
-		panel.add(textField_3);
+		campoPesoAnimal = new JTextField();
+		campoPesoAnimal.setColumns(10);
+		campoPesoAnimal.setBounds(250, 299, 100, 26);
+		panel.add(campoPesoAnimal);
 
 		JLabel lblNewLabel_1_1_2 = new JLabel("Alergia(s):");
 		lblNewLabel_1_1_2.setFont(new Font("Arial", Font.BOLD, 10));
 		lblNewLabel_1_1_2.setBounds(185, 351, 58, 24);
 		panel.add(lblNewLabel_1_1_2);
 
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(251, 351, 273, 26);
-		panel.add(textField_4);
+		campoAlergiasAnimal = new JTextField();
+		campoAlergiasAnimal.setColumns(10);
+		campoAlergiasAnimal.setBounds(251, 351, 273, 26);
+		panel.add(campoAlergiasAnimal);
 
 		JLabel lblNewLabel_1_1_2_1 = new JLabel("Vacinas:");
 		lblNewLabel_1_1_2_1.setFont(new Font("Arial", Font.BOLD, 10));
 		lblNewLabel_1_1_2_1.setBounds(185, 398, 58, 24);
 		panel.add(lblNewLabel_1_1_2_1);
 
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(251, 398, 273, 26);
-		panel.add(textField_5);
+		campoVacinasAnimal = new JTextField();
+		campoVacinasAnimal.setColumns(10);
+		campoVacinasAnimal.setBounds(251, 398, 273, 26);
+		panel.add(campoVacinasAnimal);
 
 		JButton btnNewButton = new JButton("Avançar ");
 		btnNewButton.setBounds(416, 454, 108, 35);
@@ -148,9 +167,45 @@ public class CadastroCadastroPet extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				CadastroFinalizarCadastroTutor.showConfirmationDialog(frame);
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(CadastroCadastroTutor.cadastroTutor);
+				String nome = campoNomeAnimal.getText();
+				String dataNascimento = campoDataNascimento.getText();
+				String peso = campoPesoAnimal.getText();
+				String alergias = campoAlergiasAnimal.getText();
+				String vacinas = campoVacinasAnimal.getText();
+
+				Connection connection = null;
+				PreparedStatement ps = null;
+				
+				try {
+					connection = BD.getConnection();
+					ps = connection.prepareStatement(
+							"INSERT INTO funcionarios (nome, especie, data_nascimento, sexo, raca, peso, alergias, vacinas, id_tutor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+					ps.setString(1, "Bob");
+					ps.setString(2, "Cachorro");
+					ps.setDate(3, new java.sql.Date(fmt.parse("27/05/2020").getTime()));
+					ps.setString(4, "Macho");
+					ps.setString(5, "Golden Retriever");
+					ps.setDouble(6, 50.42);
+					ps.setString(7, "Poeira");
+					ps.setString(8, "Anti-Rábica, Gripe canina");
+					ps.setInt(9, 1);
+
+					ps.executeUpdate();
+
+				} catch (SQLException i) {
+					i.printStackTrace();
+				} catch (ParseException i) {
+					i.printStackTrace();
+				} finally {
+					BD.closeStatement(ps);
+					BD.closeConnection();
+				}
+				f.revalidate();
 			}
 		});
-		
+
 		JButton btnRetornar = new JButton("Retornar");
 		btnRetornar.setBounds(262, 454, 108, 35);
 		panel.add(btnRetornar);

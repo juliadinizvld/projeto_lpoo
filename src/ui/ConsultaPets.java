@@ -57,7 +57,7 @@ public class ConsultaPets extends JPanel {
 		panel.add(caixaInserirIDPet);
 		caixaInserirIDPet.setColumns(10);
 
-		JLabel textoIDPet = new JLabel("ID do PET ou CPF do tutor:");
+		JLabel textoIDPet = new JLabel("CPF do tutor:");
 		textoIDPet.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textoIDPet.setBounds(121, 120, 157, 14);
 		panel.add(textoIDPet);

@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import ui.AdicaoProdutos;
 
+
 public class Main extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
@@ -37,6 +38,7 @@ public class Main extends JFrame {
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		setContentPane(new AdicaoProdutos());
+
 	}
 
 	public void setPanel(JPanel newPanel) {

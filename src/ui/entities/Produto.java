@@ -18,7 +18,7 @@ public class Produto {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -44,6 +44,11 @@ public class Produto {
 
 	public void setValorUnitario(double valorUnitario) {
 		this.valorUnitario = valorUnitario;
+	}
+
+	@Override
+	public String toString() {
+		return "Produto [nome=" + nome + ", quantidade=" + quantidade + ", valorUnitario=" + valorUnitario + "]";
 	}
 
 }

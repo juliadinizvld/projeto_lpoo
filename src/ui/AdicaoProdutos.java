@@ -12,7 +12,6 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.text.MaskFormatter;
-
 import business.BDServices;
 import ui.entities.Produtos;
 
@@ -25,17 +24,17 @@ public class AdicaoProdutos extends JPanel {
 	 * Create the panel.
 	 */
 	public AdicaoProdutos() {
-		
+
 		MaskFormatter quantidadeProduto = null;
 		MaskFormatter valorProduto = null;
-		
+
 		try {
 			quantidadeProduto = new MaskFormatter("");
 			valorProduto = new MaskFormatter("###.##");
 		} catch (ParseException e) {
 			e.getStackTrace();
 		}
-		
+
 		setLayout(null);
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 821, 500);
@@ -99,8 +98,10 @@ public class AdicaoProdutos extends JPanel {
 				String nomeProduto = String.valueOf(comboBox.getSelectedItem()) + " - " + txtProductName.getText();
 				int quantidadeProduto = Integer.parseInt(txtQuantity.getText());
 				double valorUnitarioProduto = Double.parseDouble(txtValorUnitario.getText());
+
 				Produtos produto = new Produtos(null, nomeProduto, quantidadeProduto, valorUnitarioProduto);
 				BDServices.inserirProduto(produto);
+
 			}
 		});
 	}
