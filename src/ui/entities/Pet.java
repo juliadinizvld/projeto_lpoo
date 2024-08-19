@@ -2,8 +2,15 @@ package ui.entities;
 
 import java.time.LocalDate;
 
-public class Pet {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+public class Pet {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String nome;
 	private String especie;
 	private String raca;
@@ -14,8 +21,9 @@ public class Pet {
 	private String vacinas;
 	private Tutor tutor;
 
-	public Pet(String nome, String especie, String raca, LocalDate dataNascimento, char sexo, double peso,
+	public Pet(Integer id, String nome, String especie, String raca, LocalDate dataNascimento, char sexo, double peso,
 			String alergias, String vacinas, Tutor tutor) {
+		this.id = id;
 		this.nome = nome;
 		this.especie = especie;
 		this.raca = raca;
@@ -27,6 +35,14 @@ public class Pet {
 		this.tutor = tutor;
 	}
 
+	public Integer getId() {
+		return this.id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	public String getNome() {
 		return nome;
 	}

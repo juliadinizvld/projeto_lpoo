@@ -1,20 +1,23 @@
 package ui;
 
 import java.awt.Font;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+
+import data.BD;
 
 public class FuncionariosConsultaFuncionario extends JPanel {
 
@@ -49,29 +52,6 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 		panel.add(campoNomeFuncionario);
 		campoNomeFuncionario.setColumns(10);
 
-		campoNomeFuncionario.addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode() == e.VK_ENTER) {
-					String nomeFuncionario = campoNomeFuncionario.getText();
-					System.out.println(nomeFuncionario);
-				}
-			}
-		});
-
 		JButton botaoPesquisarFuncionario = new JButton("Pesquisar Funcionario");
 		botaoPesquisarFuncionario.setBounds(299, 119, 171, 23);
 		panel.add(botaoPesquisarFuncionario);
@@ -82,9 +62,36 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 		textoFuncionariosEncontrados.setBounds(254, 167, 267, 40);
 		panel.add(textoFuncionariosEncontrados);
 
-		JList listaFuncionariosEncontrados = new JList();
-		listaFuncionariosEncontrados.setBounds(196, 232, 396, 158);
-		panel.add(listaFuncionariosEncontrados);
+		JComboBox<String> selectResultadoFuncionarios = new JComboBox<>();
+		selectResultadoFuncionarios.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		selectResultadoFuncionarios.setBounds(281, 219, 203, 21);
+		panel.add(selectResultadoFuncionarios);
+
+		botaoPesquisarFuncionario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				Connection connection = null;
+				Statement st = null;
+				ResultSet rs = null;
+				String nome = "'Rafael Correia Costa'";
+				try {
+					connection = BD.getConnection();
+					st = connection.createStatement();
+					rs = st.executeQuery("SELECT * FROM funcionarios WHERE nome = " + nome);
+					while(rs.next()) {
+						System.out.println(rs.getInt("id"));
+					}}
+					catch(SQLException i) {
+						i.printStackTrace();
+					}
+				}
+				// EntityManagerFactory emf =
+				// Persistence.createEntityManagerFactory("clinicaveterinaria");
+				// EntityManager em = emf.createEntityManager();
+				// Funcionarios f = em.find(Funcionarios.class, 1);
+				// selectResultadoFuncionarios.addItem(f.getNome());
+			// }
+		});
 
 		JButton botaoRetornar = new JButton("← Retornar");
 		botaoRetornar.setBounds(196, 426, 99, 21);
@@ -93,11 +100,10 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 		botaoRetornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Home");
-				/*
-				 * JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				 * f.setContentPane(new Fun3()); f.revalidate();
-				 */
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new Home());
+				f.revalidate();
+
 			}
 		});
 

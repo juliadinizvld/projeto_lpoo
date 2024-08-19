@@ -15,21 +15,19 @@ import javax.swing.text.MaskFormatter;
 import business.BDServices;
 import ui.entities.Produtos;
 
-public class AdicaoProdutos extends JPanel {
+public class ConsultaProdutos extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public static AdicaoProdutos adicaoProdutos1 = new AdicaoProdutos();
+	public static ConsultaProdutos adicaoProdutos1 = new ConsultaProdutos();
 
 	/**
 	 * Create the panel.
 	 */
-	public AdicaoProdutos() {
+	public ConsultaProdutos() {
 
-		MaskFormatter quantidadeProduto = null;
 		MaskFormatter valorProduto = null;
 
 		try {
-			quantidadeProduto = new MaskFormatter("");
 			valorProduto = new MaskFormatter("###.##");
 		} catch (ParseException e) {
 			e.getStackTrace();
@@ -101,6 +99,7 @@ public class AdicaoProdutos extends JPanel {
 
 				Produtos produto = new Produtos(null, nomeProduto, quantidadeProduto, valorUnitarioProduto);
 				BDServices.inserirProduto(produto);
+
 			}
 		});
 	}

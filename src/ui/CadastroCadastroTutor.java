@@ -151,6 +151,7 @@ public class CadastroCadastroTutor extends JPanel {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
 				f.setContentPane(new CadastroCadastroPet());
 				f.revalidate();
+				
 			}
 		});
 		panel.add(btnAvancar);

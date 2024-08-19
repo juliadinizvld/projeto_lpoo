@@ -9,7 +9,6 @@ import javax.persistence.Table;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "atendentes")
 public class FuncionarioAtendente extends Funcionarios implements Serializable {
 	private static final long serialVersionUID = 1L;
 

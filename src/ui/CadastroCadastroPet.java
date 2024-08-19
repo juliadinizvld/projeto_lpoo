@@ -18,8 +18,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-import com.mysql.cj.protocol.Resultset;
-
 import data.BD;
 
 public class CadastroCadastroPet extends JPanel {
@@ -169,41 +167,19 @@ public class CadastroCadastroPet extends JPanel {
 				CadastroFinalizarCadastroTutor.showConfirmationDialog(frame);
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
 				f.setContentPane(CadastroCadastroTutor.cadastroTutor);
+				f.revalidate();
+				
 				String nome = campoNomeAnimal.getText();
 				String dataNascimento = campoDataNascimento.getText();
 				String peso = campoPesoAnimal.getText();
 				String alergias = campoAlergiasAnimal.getText();
 				String vacinas = campoVacinasAnimal.getText();
-
+					
 				Connection connection = null;
 				PreparedStatement ps = null;
-				
-				try {
-					connection = BD.getConnection();
-					ps = connection.prepareStatement(
-							"INSERT INTO funcionarios (nome, especie, data_nascimento, sexo, raca, peso, alergias, vacinas, id_tutor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-					ps.setString(1, "Bob");
-					ps.setString(2, "Cachorro");
-					ps.setDate(3, new java.sql.Date(fmt.parse("27/05/2020").getTime()));
-					ps.setString(4, "Macho");
-					ps.setString(5, "Golden Retriever");
-					ps.setDouble(6, 50.42);
-					ps.setString(7, "Poeira");
-					ps.setString(8, "Anti-Rábica, Gripe canina");
-					ps.setInt(9, 1);
-
-					ps.executeUpdate();
-
-				} catch (SQLException i) {
-					i.printStackTrace();
-				} catch (ParseException i) {
-					i.printStackTrace();
-				} finally {
-					BD.closeStatement(ps);
-					BD.closeConnection();
 				}
-				f.revalidate();
-			}
+				
+			
 		});
 
 		JButton btnRetornar = new JButton("Retornar");

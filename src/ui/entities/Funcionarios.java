@@ -136,4 +136,11 @@ public abstract class Funcionarios implements Serializable {
 		this.estado = estado;
 	}
 
+	@Override
+	public String toString() {
+		return "Funcionarios [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", sexo=" + sexo + ", telefone="
+				+ telefone + ", rua=" + rua + ", cidade=" + cidade + ", estado=" + estado + ", bairro=" + bairro
+				+ ", numeroCasa=" + numeroCasa + ", cep=" + cep + "]";
+	}
+
 }

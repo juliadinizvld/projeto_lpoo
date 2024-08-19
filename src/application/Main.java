@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import ui.AdicaoProdutos;
+import ui.FuncionariosConsultaFuncionario;
 
 
 public class Main extends JFrame {
@@ -23,7 +23,7 @@ public class Main extends JFrame {
 					Main frame = new Main();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					e.printStackTrace();	
 				}
 			}
 		});
@@ -37,7 +37,7 @@ public class Main extends JFrame {
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
-		setContentPane(new AdicaoProdutos());
+		setContentPane(new FuncionariosConsultaFuncionario());
 
 	}
 
