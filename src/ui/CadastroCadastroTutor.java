@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -26,7 +27,7 @@ public class CadastroCadastroTutor extends JPanel {
 	public static CadastroCadastroTutor cadastroTutor = new CadastroCadastroTutor();
 	private static JTextField campoTelefone;
 	private static JTextField campoDataNascimento;
-	private static JTextField campoCep;
+	private static JFormattedTextField campoCep;
 	private static JTextField campoNumeroCasa;
 	private static JTextField campoBairro;
 	private static JTextField campoRua;
@@ -45,12 +46,15 @@ public class CadastroCadastroTutor extends JPanel {
 		MaskFormatter mfDataNascimento = null;
 		MaskFormatter mfTelefone = null;
 		MaskFormatter mfEstado = null;
+		MaskFormatter mfCep = null;
 
 		try {
 			mfcpf = new MaskFormatter("###.###.###-##");
 			mfDataNascimento = new MaskFormatter("##/##/####");
 			mfTelefone = new MaskFormatter("### #####-####");
 			mfEstado = new MaskFormatter("UU");
+			mfCep = new MaskFormatter("########"); 
+			mfCep.setValidCharacters("0123456789");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -128,7 +132,7 @@ public class CadastroCadastroTutor extends JPanel {
 		panel.add(campoDataNascimento);
 		campoDataNascimento.setColumns(10);
 
-		campoCep = new JTextField();
+		campoCep = new JFormattedTextField(mfCep);
 		campoCep.setBounds(255, 230, 96, 19);
 		panel.add(campoCep);
 		campoCep.setColumns(10);
@@ -222,7 +226,11 @@ public class CadastroCadastroTutor extends JPanel {
 				} catch (ParseException e1) {
 					e1.printStackTrace();
 				}
-				String cep = campoCep.getText();
+				String cep = campoCep.getText().replaceAll("\\D", ""); 
+				if (cep.length() != 8) {
+					JOptionPane.showMessageDialog(null, "O CEP deve ter exatamente 8 dígitos numéricos.", "Erro", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 				String bairro = campoBairro.getText();
 				String rua = campoRua.getText();
 
@@ -236,6 +244,5 @@ public class CadastroCadastroTutor extends JPanel {
 				f.revalidate();
 			}
 		});
-
 	}
 }
