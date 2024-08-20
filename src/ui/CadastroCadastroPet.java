@@ -165,10 +165,6 @@ public class CadastroCadastroPet extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				CadastroFinalizarCadastroTutor.showConfirmationDialog(frame);
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(CadastroCadastroTutor.cadastroTutor);
-				f.revalidate();
-				
 				String nome = campoNomeAnimal.getText();
 				String dataNascimento = campoDataNascimento.getText();
 				String peso = campoPesoAnimal.getText();

@@ -19,10 +19,10 @@ public class Pet {
 	private double peso;
 	private String alergias;
 	private String vacinas;
-	private Tutor tutor;
+	private Tutores tutor;
 
 	public Pet(Integer id, String nome, String especie, String raca, LocalDate dataNascimento, char sexo, double peso,
-			String alergias, String vacinas, Tutor tutor) {
+			String alergias, String vacinas, Tutores tutor) {
 		this.id = id;
 		this.nome = nome;
 		this.especie = especie;
@@ -107,11 +107,11 @@ public class Pet {
 		this.vacinas = vacinas;
 	}
 
-	public Tutor getTutor() {
+	public Tutores getTutor() {
 		return tutor;
 	}
 
-	public void setTutor(Tutor tutor) {
+	public void setTutor(Tutores tutor) {
 		this.tutor = tutor;
 	}
 

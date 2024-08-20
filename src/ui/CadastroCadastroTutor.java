@@ -3,35 +3,58 @@ package ui;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.text.MaskFormatter;
+
+import business.BDServices;
+import ui.entities.Tutores;
 
 public class CadastroCadastroTutor extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	public static CadastroCadastroTutor cadastroTutor = new CadastroCadastroTutor();
-	private static JTextField textField;
-	private static JTextField textField_1;
-	private static JTextField textField_2;
-	private static JTextField textField_3;
-	private static JTextField textField_4;
-	private static JTextField textField_5;
-	private static JTextField textField_7;
-	private static JTextField textField_8;
-	private static JTextField textField_9;
+	private static JTextField campoTelefone;
+	private static JTextField campoDataNascimento;
+	private static JTextField campoCep;
+	private static JTextField campoNumeroCasa;
+	private static JTextField campoBairro;
+	private static JTextField campoRua;
+	private static JTextField campoEmail;
+	private static JTextField campoNome;
+	private static JTextField campoCidade;
 
 	/**
 	 * Create the panel.
 	 */
 	public CadastroCadastroTutor() {
+
+		SimpleDateFormat fmtBr = new SimpleDateFormat("dd/MM/yyyy");
+
+		MaskFormatter mfcpf = null;
+		MaskFormatter mfDataNascimento = null;
+		MaskFormatter mfTelefone = null;
+		MaskFormatter mfEstado = null;
+
+		try {
+			mfcpf = new MaskFormatter("###.###.###-##");
+			mfDataNascimento = new MaskFormatter("##/##/####");
+			mfTelefone = new MaskFormatter("### #####-####");
+			mfEstado = new MaskFormatter("UU");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
 		setLayout(null);
 		// Cria um painel principal com um layout de BorderLayout
 		JPanel panel = new JPanel();
@@ -56,7 +79,7 @@ public class CadastroCadastroTutor extends JPanel {
 		panel.add(lblNomeCompleto);
 
 		JLabel lblSexo = new JLabel("Sexo :");
-		lblSexo.setBounds(200, 149, 45, 13);
+		lblSexo.setBounds(200, 156, 45, 13);
 		lblSexo.setFont(new Font("Arial", Font.BOLD, 10));
 		panel.add(lblSexo);
 
@@ -95,43 +118,38 @@ public class CadastroCadastroTutor extends JPanel {
 		lblNumero.setFont(new Font("Arial", Font.BOLD, 10));
 		panel.add(lblNumero);
 
-		textField = new JTextField();
-		textField.setBounds(521, 146, 96, 19);
-		panel.add(textField);
-		textField.setColumns(10);
+		campoTelefone = new JFormattedTextField(mfTelefone);
+		campoTelefone.setBounds(521, 146, 96, 19);
+		panel.add(campoTelefone);
+		campoTelefone.setColumns(10);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(521, 123, 96, 19);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		campoDataNascimento = new JFormattedTextField(mfDataNascimento);
+		campoDataNascimento.setBounds(521, 123, 96, 19);
+		panel.add(campoDataNascimento);
+		campoDataNascimento.setColumns(10);
 
-		textField_2 = new JTextField();
-		textField_2.setBounds(255, 230, 96, 19);
-		panel.add(textField_2);
-		textField_2.setColumns(10);
+		campoCep = new JTextField();
+		campoCep.setBounds(255, 230, 96, 19);
+		panel.add(campoCep);
+		campoCep.setColumns(10);
 
-		textField_3 = new JTextField();
-		textField_3.setBounds(447, 273, 40, 19);
-		panel.add(textField_3);
-		textField_3.setColumns(10);
+		campoNumeroCasa = new JTextField();
+		campoNumeroCasa.setBounds(447, 273, 40, 19);
+		panel.add(campoNumeroCasa);
+		campoNumeroCasa.setColumns(10);
 
-		textField_4 = new JTextField();
-		textField_4.setBounds(255, 270, 96, 19);
-		panel.add(textField_4);
-		textField_4.setColumns(10);
+		campoBairro = new JTextField();
+		campoBairro.setBounds(255, 270, 96, 19);
+		panel.add(campoBairro);
+		campoBairro.setColumns(10);
 
-		textField_5 = new JTextField();
-		textField_5.setBounds(457, 230, 96, 19);
-		panel.add(textField_5);
-		textField_5.setColumns(10);
+		campoRua = new JTextField();
+		campoRua.setBounds(457, 230, 96, 19);
+		panel.add(campoRua);
+		campoRua.setColumns(10);
 
 		JButton btnRetornar = new JButton("Retornar ");
 		btnRetornar.setBounds(255, 448, 112, 37);
-		btnRetornar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Ação para o botão Retornar
-			}
-		});
 		panel.add(btnRetornar);
 
 		btnRetornar.addActionListener(new ActionListener() {
@@ -145,15 +163,6 @@ public class CadastroCadastroTutor extends JPanel {
 
 		JButton btnAvancar = new JButton("Avançar");
 		btnAvancar.setBounds(436, 448, 148, 37);
-		btnAvancar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Abre a tela de confirmação quando o botão é clicado
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new CadastroCadastroPet());
-				f.revalidate();
-				
-			}
-		});
 		panel.add(btnAvancar);
 
 		JLabel lblEmail = new JLabel("Email :");
@@ -161,37 +170,73 @@ public class CadastroCadastroTutor extends JPanel {
 		lblEmail.setFont(new Font("Arial", Font.BOLD, 10));
 		panel.add(lblEmail);
 
-		textField_7 = new JTextField();
-		textField_7.setBounds(239, 188, 189, 16);
-		textField_7.setColumns(10);
-		panel.add(textField_7);
+		campoEmail = new JTextField();
+		campoEmail.setBounds(239, 188, 189, 16);
+		campoEmail.setColumns(10);
+		panel.add(campoEmail);
 
-		textField_8 = new JTextField();
-		textField_8.setBounds(296, 84, 304, 19);
-		textField_8.setColumns(10);
-		panel.add(textField_8);
+		campoNome = new JTextField();
+		campoNome.setBounds(296, 84, 304, 19);
+		campoNome.setColumns(10);
+		panel.add(campoNome);
 
-		JRadioButton rdbtnFeminino = new JRadioButton("Feminino");
-		rdbtnFeminino.setBounds(241, 145, 74, 21);
-		panel.add(rdbtnFeminino);
+		String[] sexos = { "Masculino", "Feminino" };
+		JComboBox<String> selectSexo = new JComboBox<String>(sexos);
+		selectSexo.setFont(new Font("Dialog", Font.PLAIN, 14));
+		selectSexo.setBounds(239, 150, 112, 21);
+		panel.add(selectSexo);
 
-		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
-		rdbtnMasculino.setBounds(317, 145, 74, 21);
-		panel.add(rdbtnMasculino);
+		campoCidade = new JTextField();
+		campoCidade.setBounds(255, 306, 96, 19);
+		campoCidade.setColumns(10);
+		panel.add(campoCidade);
 
-		// Agrupa os botões de rádio
-		ButtonGroup genderGroup = new ButtonGroup();
-		genderGroup.add(rdbtnFeminino);
-		genderGroup.add(rdbtnMasculino);
+		JFormattedTextField campoCpf = new JFormattedTextField(mfcpf);
+		campoCpf.setBounds(239, 123, 112, 19);
+		panel.add(campoCpf);
 
-		textField_9 = new JTextField();
-		textField_9.setBounds(255, 306, 96, 19);
-		textField_9.setColumns(10);
-		panel.add(textField_9);
+		JFormattedTextField campoEstado = new JFormattedTextField(mfEstado);
+		campoEstado.setToolTipText("");
+		campoEstado.setBounds(446, 305, 41, 20);
+		panel.add(campoEstado);
 
-		JFormattedTextField formattedTextField = new JFormattedTextField();
-		formattedTextField.setBounds(239, 123, 112, 19);
-		panel.add(formattedTextField);
+		JLabel textoEstado = new JLabel("Estado:");
+		textoEstado.setFont(new Font("Arial", Font.BOLD, 10));
+		textoEstado.setBounds(396, 308, 46, 14);
+		panel.add(textoEstado);
+
+		btnAvancar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				String nome = campoNome.getText();
+				String cpf = campoCpf.getText().replace(".", "").replace("-", "");
+				String sexo = String.valueOf(selectSexo.getSelectedItem()).toUpperCase();
+				String email = campoEmail.getText();
+				String estado = campoEstado.getText();
+				String cidade = campoCidade.getText();
+				String telefone = campoTelefone.getText().replace("-", "").replace(" ", "");
+				int numeroCasa = Integer.parseInt(campoNumeroCasa.getText());
+				String dataNascimento = campoDataNascimento.getText();
+				Date dataFormatada = null;
+				try {
+					dataFormatada = new java.sql.Date(fmtBr.parse(dataNascimento).getTime());
+				} catch (ParseException e1) {
+					e1.printStackTrace();
+				}
+				String cep = campoCep.getText();
+				String bairro = campoBairro.getText();
+				String rua = campoRua.getText();
+
+				Tutores tutor = new Tutores(null, nome, cpf, sexo, email, estado, cidade, telefone, numeroCasa,
+						dataFormatada, cep, bairro, rua);
+
+				BDServices.inserirTutor(tutor);
+
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new CadastroCadastroPet());
+				f.revalidate();
+			}
+		});
 
 	}
 }

@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 import ui.entities.Funcionarios;
 import ui.entities.MedicosVeterinarios;
 import ui.entities.Produtos;
+import ui.entities.Tutores;
 
 public class BDServices {
 	public static void inserirProduto(Produtos produto) {
@@ -34,6 +35,16 @@ public class BDServices {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(medico);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+	}
+	
+	public static void inserirTutor(Tutores tutor) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(tutor);
 		em.getTransaction().commit();
 		em.close();
 		emf.close();
