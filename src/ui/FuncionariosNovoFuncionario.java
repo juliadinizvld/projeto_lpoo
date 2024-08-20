@@ -17,16 +17,12 @@ import javax.swing.SwingUtilities;
 import javax.swing.text.MaskFormatter;
 
 import business.BDServices;
-import ui.entities.FuncionarioAdministrador;
-import ui.entities.FuncionarioAtendente;
-import ui.entities.FuncionarioMedicoVeterinario;
 import ui.entities.Funcionarios;
+import ui.entities.MedicosVeterinarios;
 
 public class FuncionariosNovoFuncionario extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-
-	private JTextField campoEspecialidade;
 	private JTextField campoRmv;
 	private JTextField campoNomeFuncionario;
 	private JTextField campoCpf;
@@ -104,32 +100,20 @@ public class FuncionariosNovoFuncionario extends JPanel {
 		textoFuncao.setBounds(336, 143, 56, 20);
 		panel.add(textoFuncao);
 
-		String[] funcoes = { "", "Médico Veterinário", "Atendente", "Vendedor" };
+		String[] funcoes = { "", "Médico Veterinário", "Atendente", "Administrador" };
 		JComboBox<String> selectFuncao = new JComboBox<String>(funcoes);
 		selectFuncao.setFont(new Font("Dialog", Font.PLAIN, 14));
 		selectFuncao.setBounds(402, 143, 149, 23);
 		panel.add(selectFuncao);
 
-		JLabel textoEspecialidade = new JLabel("Especialidade:");
-		textoEspecialidade.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoEspecialidade.setBounds(130, 203, 109, 20);
-		panel.add(textoEspecialidade);
-
-		campoEspecialidade = new JTextField();
-		campoEspecialidade.setFont(new Font("Dialog", Font.PLAIN, 14));
-		campoEspecialidade.setBounds(249, 203, 260, 25);
-		panel.add(campoEspecialidade);
-		campoEspecialidade.setColumns(10);
-		campoEspecialidade.setEditable(false);
-
 		JLabel textoRmv = new JLabel("RMV:");
 		textoRmv.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoRmv.setBounds(130, 236, 62, 20);
+		textoRmv.setBounds(130, 209, 62, 20);
 		panel.add(textoRmv);
 
 		campoRmv = new JFormattedTextField(mfCrmv);
 		campoRmv.setFont(new Font("Dialog", Font.PLAIN, 14));
-		campoRmv.setBounds(186, 234, 120, 25);
+		campoRmv.setBounds(186, 207, 120, 25);
 		panel.add(campoRmv);
 		campoRmv.setColumns(10);
 		campoRmv.setEditable(false);
@@ -165,62 +149,62 @@ public class FuncionariosNovoFuncionario extends JPanel {
 
 		JLabel textoRua = new JLabel("Rua:");
 		textoRua.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoRua.setBounds(130, 301, 46, 20);
+		textoRua.setBounds(130, 274, 46, 20);
 		panel.add(textoRua);
 
 		JLabel textoEstado = new JLabel("Estado:");
 		textoEstado.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoEstado.setBounds(130, 332, 62, 20);
+		textoEstado.setBounds(130, 305, 62, 20);
 		panel.add(textoEstado);
 
 		JLabel textoCep = new JLabel("Cep:");
 		textoCep.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoCep.setBounds(130, 267, 46, 20);
+		textoCep.setBounds(130, 240, 46, 20);
 		panel.add(textoCep);
 
 		JLabel textoCidade_1 = new JLabel("Cidade:");
 		textoCidade_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoCidade_1.setBounds(330, 332, 62, 20);
+		textoCidade_1.setBounds(330, 305, 62, 20);
 		panel.add(textoCidade_1);
 
 		JLabel textoBairro = new JLabel("Bairro:");
 		textoBairro.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoBairro.setBounds(330, 301, 62, 20);
+		textoBairro.setBounds(330, 274, 62, 20);
 		panel.add(textoBairro);
 
 		JLabel textoNumeroCasa = new JLabel("Numero da casa:");
 		textoNumeroCasa.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoNumeroCasa.setBounds(330, 272, 132, 20);
+		textoNumeroCasa.setBounds(330, 245, 132, 20);
 		panel.add(textoNumeroCasa);
 
 		JFormattedTextField campoCep = new JFormattedTextField(mfCep);
 		campoCep.setFont(new Font("Dialog", Font.PLAIN, 14));
-		campoCep.setBounds(169, 267, 120, 23);
+		campoCep.setBounds(169, 240, 120, 23);
 		panel.add(campoCep);
 
 		JFormattedTextField campoRua = new JFormattedTextField();
 		campoRua.setFont(new Font("Dialog", Font.PLAIN, 14));
-		campoRua.setBounds(169, 301, 120, 22);
+		campoRua.setBounds(169, 274, 120, 22);
 		panel.add(campoRua);
 
 		JFormattedTextField campoEstado = new JFormattedTextField(mfEstado);
 		campoEstado.setFont(new Font("Dialog", Font.PLAIN, 14));
-		campoEstado.setBounds(186, 331, 46, 22);
+		campoEstado.setBounds(186, 304, 46, 22);
 		panel.add(campoEstado);
 
 		JFormattedTextField campoBairro = new JFormattedTextField();
 		campoBairro.setFont(new Font("Dialog", Font.PLAIN, 14));
-		campoBairro.setBounds(384, 301, 120, 22);
+		campoBairro.setBounds(384, 274, 120, 22);
 		panel.add(campoBairro);
 
 		JFormattedTextField campoNumeroCasa = new JFormattedTextField();
 		campoNumeroCasa.setFont(new Font("Dialog", Font.PLAIN, 14));
-		campoNumeroCasa.setBounds(454, 269, 56, 22);
+		campoNumeroCasa.setBounds(454, 242, 56, 22);
 		panel.add(campoNumeroCasa);
 
 		JFormattedTextField campoCidade = new JFormattedTextField();
 		campoCidade.setFont(new Font("Dialog", Font.PLAIN, 14));
-		campoCidade.setBounds(389, 331, 120, 22);
+		campoCidade.setBounds(389, 304, 120, 22);
 		panel.add(campoCidade);
 
 		botaoConfirmar.addActionListener(new ActionListener() {
@@ -228,7 +212,7 @@ public class FuncionariosNovoFuncionario extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String nome = campoNomeFuncionario.getText();
 				String cpf = campoCpf.getText().replace(".", "").replace("-", "");
-				String sexo = String.valueOf(selectSexo.getSelectedItem());
+				String sexo = String.valueOf(selectSexo.getSelectedItem()).toUpperCase();
 				String telefone = campoTelefone.getText().replace(" ", "").replace("-", "");
 				String rua = campoRua.getText();
 				String cidade = campoCidade.getText();
@@ -236,25 +220,18 @@ public class FuncionariosNovoFuncionario extends JPanel {
 				String bairro = campoBairro.getText();
 				int numeroCasa = Integer.valueOf(campoNumeroCasa.getText());
 				String cep = campoCep.getText().replace("-", "");
-
 				int idade = Integer.parseInt(campoIdade.getText());
 
 				if (selectFuncao.getSelectedItem() == "Médico Veterinário") {
-					String especialidade = campoEspecialidade.getText();
 					String rmv = campoRmv.getText();
-
-					FuncionarioMedicoVeterinario medicoVeterinario = new FuncionarioMedicoVeterinario(null, nome, cpf, sexo, telefone,
-							rua, cidade, estado, bairro, numeroCasa, cep, rmv);
-					BDServices.inserirFuncionario(medicoVeterinario);
-
-				} else if ((selectFuncao.getSelectedItem() == "Atendente")) {
-					FuncionarioAtendente atendente = new FuncionarioAtendente(null, nome, cpf, sexo, telefone, rua, cidade,
-							estado, bairro, numeroCasa, cep);
-					BDServices.inserirFuncionario(atendente);
+					MedicosVeterinarios medicoVeterinario = new MedicosVeterinarios(null, nome, idade, telefone, cpf,
+							sexo, cep, numeroCasa, rua, bairro, estado, cidade, rmv);
+					BDServices.inserirMedicoVeterinario(medicoVeterinario);
 				} else {
-					FuncionarioAdministrador administrador = new FuncionarioAdministrador(null, nome, cpf, sexo,
-							telefone, rua, cidade, estado, bairro, numeroCasa, cep);
-					BDServices.inserirFuncionario(administrador);
+					String tipoFuncionario = String.valueOf(selectFuncao.getSelectedItem()).toUpperCase();
+					Funcionarios funcionario = new Funcionarios(null, nome, idade, telefone, cpf, tipoFuncionario, sexo,
+							cep, numeroCasa, rua, bairro, cidade, estado);
+					BDServices.inserirFuncionario(funcionario);
 				}
 			}
 		});
@@ -263,12 +240,9 @@ public class FuncionariosNovoFuncionario extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (selectFuncao.getSelectedItem() != "Médico Veterinário") {
-					campoEspecialidade.setEditable(false);
-					campoEspecialidade.setText("");
 					campoRmv.setEditable(false);
 					campoRmv.setText("");
 				} else {
-					campoEspecialidade.setEditable(true);
 					campoRmv.setEditable(true);
 				}
 			}

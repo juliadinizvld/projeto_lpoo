@@ -16,6 +16,9 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class Home extends JPanel {
 
@@ -66,13 +69,13 @@ public class Home extends JPanel {
 		consultarPetsButton.setBackground(new Color(192, 192, 192));
 		consultarPetsButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		consultarPetsButton.setBounds(295, 187, 200, 60);
-		
+
 		consultarPetsButton.addActionListener(e -> {
 			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
 			f.setContentPane(new ConsultaPets());
 			f.revalidate();
 		});
-		
+
 		JButton agendamentoProcedimentosButton = new JButton(
 				"<html><div style='text-align: center;'>Agendamento de<br/>procedimentos</div></html>");
 		agendamentoProcedimentosButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -116,5 +119,42 @@ public class Home extends JPanel {
 
 		// Adiciona o painel de contêiner à janela
 		add(containerPanel);
-	};
+
+		JMenuBar menuAdministrador = new JMenuBar();
+		menuAdministrador.setBounds(0, 0, 800, 22);
+		add(menuAdministrador);
+
+		JMenu mnNewMenu = new JMenu("Adicionar/consultar");
+		mnNewMenu.setFont(new Font("Arial", Font.PLAIN, 12));
+		menuAdministrador.add(mnNewMenu);
+
+		JMenuItem menuItemProduto = new JMenuItem("Produto");
+		mnNewMenu.add(menuItemProduto);
+
+		menuItemProduto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new AdicaoProdutos());
+				f.revalidate();
+			}
+		});
+
+		JMenuItem menuItemFuncionario = new JMenuItem("Funcionario");
+		mnNewMenu.add(menuItemFuncionario);
+
+		menuItemFuncionario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new FuncionariosConsultaFuncionario());
+				f.revalidate();
+			}
+		});
+
+		JMenu mnNewMenu_1 = new JMenu("Informações");
+		mnNewMenu_1.setFont(new Font("Arial", Font.PLAIN, 12));
+		menuAdministrador.add(mnNewMenu_1);
+
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Sobre");
+		mnNewMenu_1.add(mntmNewMenuItem_2);
+	}
 }

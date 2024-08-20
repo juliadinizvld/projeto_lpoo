@@ -12,23 +12,23 @@ import javax.persistence.Id;
 public class Produtos implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private Produtos() {
-
-	}
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	private String tipo;
 	private String nome;
 	private int quantidade;
-	@Column(name = "valor")
-	private double valorUnitario;
+	private double valor;
 
-	public Produtos(Integer id, String nome, int quantidade, double valorUnitario) {
+	private Produtos() {
+	}
+
+	public Produtos(Integer id, String tipo, String nome, int quantidade, double valor) {
 		this.id = id;
+		this.tipo = tipo;
 		this.nome = nome;
 		this.quantidade = quantidade;
-		this.valorUnitario = valorUnitario;
+		this.valor = valor;
 	}
 
 	public Integer getId() {
@@ -37,6 +37,14 @@ public class Produtos implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getNome() {
@@ -55,12 +63,12 @@ public class Produtos implements Serializable {
 		this.quantidade = quantidade;
 	}
 
-	public double getValorUnitario() {
-		return valorUnitario;
+	public double getValor() {
+		return valor;
 	}
 
-	public void setValorUnitario(double valorUnitario) {
-		this.valorUnitario = valorUnitario;
+	public void setValor(double valor) {
+		this.valor = valor;
 	}
 
 }

@@ -25,15 +25,17 @@ DROP TABLE IF EXISTS `funcionarios`;
 CREATE TABLE `funcionarios` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
-  `cep` varchar(8) NOT NULL,
-  `estado` varchar(45) NOT NULL,
-  `cidade` varchar(45) NOT NULL,
-  `rua` varchar(45) NOT NULL,
-  `bairro` varchar(45) NOT NULL,
-  `numero_casa` int NOT NULL,
+  `idade` int NOT NULL,
   `telefone` varchar(12) NOT NULL,
   `cpf` varchar(11) NOT NULL,
-  `sexo` varchar(25) NOT NULL,
+  `tipoFuncionario` ENUM("ADMINISTRADOR", "ATENDENTE") NOT NULL,
+  `sexo` ENUM("MASCULINO", "FEMININO") NOT NULL,
+  `cep` varchar(8) NOT NULL,
+  `numeroCasa` int NOT NULL,
+  `rua` varchar(45) NOT NULL,
+  `bairro` varchar(45) NOT NULL,
+  `cidade` varchar(45) NOT NULL,
+  `estado` varchar(45) NOT NULL,  
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -48,36 +50,37 @@ LOCK TABLES `funcionarios` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `medicos_veterinarios`
+-- Table structure for table `medicosVeterinarios`
 --
 
-DROP TABLE IF EXISTS `medicos_veterinarios`;
+DROP TABLE IF EXISTS `medicosVeterinarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `medicos_veterinarios` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `crm` varchar(20) NOT NULL,
+CREATE TABLE `medicosVeterinarios` (
+ `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
-  `cep` varchar(8) NOT NULL,
-  `estado` varchar(45) NOT NULL,
-  `cidade` varchar(45) NOT NULL,
-  `rua` varchar(45) NOT NULL,
-  `bairro` varchar(45) NOT NULL,
-  `numero_casa` int NOT NULL,
+  `idade` int NOT NULL,
   `telefone` varchar(12) NOT NULL,
   `cpf` varchar(11) NOT NULL,
-  `sexo` varchar(25) NOT NULL,
+  `sexo` ENUM("MASCULINO", "FEMININO") NOT NULL,
+  `cep` varchar(8) NOT NULL,
+  `numeroCasa` int NOT NULL,
+  `rua` varchar(45) NOT NULL,
+  `bairro` varchar(45) NOT NULL,
+  `cidade` varchar(45) NOT NULL,
+  `estado` varchar(45) NOT NULL,
+  `rmv` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `medicos_veterinarios`
+-- Dumping data for table `medicosVeterinarios`
 --
 
 LOCK TABLES `medicos_veterinarios` WRITE;
-/*!40000 ALTER TABLE `medicos_veterinarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `medicos_veterinarios` ENABLE KEYS */;
+/*!40000 ALTER TABLE `medicosVeterinarios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `medicosVeterinarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -182,9 +185,10 @@ DROP TABLE IF EXISTS `produtos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `produtos` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `tipo` ENUM("CONSULTA", "EXAME", "CIRURGIA", "VACINA", "GERAL") DEFAULT NULL,
   `nome` varchar(45) DEFAULT NULL,
-  `valor` double NOT NULL,
   `quantidade` int NOT NULL,
+  `valor` double NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

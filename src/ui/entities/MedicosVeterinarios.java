@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Funcionarios implements Serializable {
+public class MedicosVeterinarios implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,6 @@ public class Funcionarios implements Serializable {
 	private int idade;
 	private String telefone;
 	private String cpf;
-	private String tipoFuncionario;
 	private String sexo;
 	private String cep;
 	private int numeroCasa;
@@ -25,18 +24,18 @@ public class Funcionarios implements Serializable {
 	private String bairro;
 	private String estado;
 	private String cidade;
+	private String rmv;
 
-	protected Funcionarios() {
+	protected MedicosVeterinarios() {
 	}
 
-	public Funcionarios(Integer id, String nome, int idade, String telefone, String cpf, String tipoFuncionario,
-			String sexo, String cep, int numeroCasa, String rua, String bairro, String estado, String cidade) {
+	public MedicosVeterinarios(Integer id, String nome, int idade, String telefone, String cpf, String sexo, String cep,
+			int numeroCasa, String rua, String bairro, String estado, String cidade, String crmv) {
 		this.id = id;
 		this.nome = nome;
 		this.idade = idade;
 		this.telefone = telefone;
 		this.cpf = cpf;
-		this.tipoFuncionario = tipoFuncionario;
 		this.sexo = sexo;
 		this.cep = cep;
 		this.numeroCasa = numeroCasa;
@@ -44,6 +43,7 @@ public class Funcionarios implements Serializable {
 		this.bairro = bairro;
 		this.estado = estado;
 		this.cidade = cidade;
+		this.rmv = crmv;
 	}
 
 	public Integer getId() {
@@ -84,14 +84,6 @@ public class Funcionarios implements Serializable {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
-	}
-
-	public String getTipoFuncionario() {
-		return tipoFuncionario;
-	}
-
-	public void setTipoFuncionario(String tipoFuncionario) {
-		this.tipoFuncionario = tipoFuncionario;
 	}
 
 	public String getSexo() {
@@ -148,6 +140,21 @@ public class Funcionarios implements Serializable {
 
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+
+	public String getRrmv() {
+		return rmv;
+	}
+
+	public void setRmv(String rmv) {
+		this.rmv = rmv;
+	}
+
+	@Override
+	public String toString() {
+		return "MedicosVeterinarios [id=" + id + ", nome=" + nome + ", idade=" + idade + ", telefone=" + telefone
+				+ ", cpf=" + cpf + ", sexo=" + sexo + ", cep=" + cep + ", numeroCasa=" + numeroCasa + ", rua=" + rua
+				+ ", bairro=" + bairro + ", estado=" + estado + ", cidade=" + cidade + ", rmv=" + rmv + "]";
 	}
 
 }

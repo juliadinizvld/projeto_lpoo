@@ -9,8 +9,10 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.text.MaskFormatter;
 import business.BDServices;
 import ui.entities.Produtos;
@@ -95,13 +97,24 @@ public class AdicaoProdutos extends JPanel {
 		btnAddProduct.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String nomeProduto = String.valueOf(comboBox.getSelectedItem()) + " - " + txtProductName.getText();
+				String tipoProduto = String.valueOf(comboBox.getSelectedItem()).toUpperCase();
+				String nomeProduto = String.valueOf(txtProductName.getText());
 				int quantidadeProduto = Integer.parseInt(txtQuantity.getText());
 				double valorUnitarioProduto = Double.parseDouble(txtValorUnitario.getText());
-
-				Produtos produto = new Produtos(null, nomeProduto, quantidadeProduto, valorUnitarioProduto);
+				Produtos produto = new Produtos(null, tipoProduto, nomeProduto, quantidadeProduto,
+						valorUnitarioProduto);
 				BDServices.inserirProduto(produto);
 			}
+		});
+
+		btnReturn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new Home());
+				f.revalidate();
+			}
+
 		});
 	}
 }

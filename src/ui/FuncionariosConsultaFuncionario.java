@@ -53,7 +53,7 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 		campoNomeFuncionario.setColumns(10);
 
 		JButton botaoPesquisarFuncionario = new JButton("Pesquisar Funcionario");
-		botaoPesquisarFuncionario.setBounds(299, 119, 171, 23);
+		botaoPesquisarFuncionario.setBounds(299, 133, 171, 23);
 		panel.add(botaoPesquisarFuncionario);
 
 		JLabel textoFuncionariosEncontrados = new JLabel("Funcionários encontrados:");
@@ -64,7 +64,7 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 
 		JComboBox<String> selectResultadoFuncionarios = new JComboBox<>();
 		selectResultadoFuncionarios.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		selectResultadoFuncionarios.setBounds(281, 219, 203, 21);
+		selectResultadoFuncionarios.setBounds(298, 218, 203, 21);
 		panel.add(selectResultadoFuncionarios);
 
 		botaoPesquisarFuncionario.addActionListener(new ActionListener() {
@@ -73,11 +73,11 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 				Connection connection = null;
 				Statement st = null;
 				ResultSet rs = null;
-				String nome = "'Rafael Correia Costa'";
+				String nome = "Rafa";
 				try {
 					connection = BD.getConnection();
 					st = connection.createStatement();
-					rs = st.executeQuery("SELECT * FROM funcionarios WHERE nome = " + nome);
+					rs = st.executeQuery("SELECT * FROM funcionarios WHERE nome LIKE '%"  + nome + "%';");
 					while(rs.next()) {
 						System.out.println(rs.getInt("id"));
 					}}
@@ -94,7 +94,7 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 		});
 
 		JButton botaoRetornar = new JButton("← Retornar");
-		botaoRetornar.setBounds(196, 426, 99, 21);
+		botaoRetornar.setBounds(248, 426, 99, 21);
 		panel.add(botaoRetornar);
 
 		botaoRetornar.addActionListener(new ActionListener() {
@@ -107,8 +107,8 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 			}
 		});
 
-		JButton botaoAdicionarFuncionario = new JButton("<html>Adicionar<br>funcionário\r\n</html>");
-		botaoAdicionarFuncionario.setBounds(346, 412, 85, 40);
+		JButton botaoAdicionarFuncionario = new JButton("Adicionar novo funcionário\r\n");
+		botaoAdicionarFuncionario.setBounds(425, 407, 209, 40);
 		panel.add(botaoAdicionarFuncionario);
 
 		botaoAdicionarFuncionario.addActionListener(new ActionListener() {
@@ -122,7 +122,7 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 		});
 
 		JButton botaoVerificarFuncionario = new JButton("<html>Verificar <br>funcionário</html>");
-		botaoVerificarFuncionario.setBounds(507, 412, 85, 40);
+		botaoVerificarFuncionario.setBounds(320, 251, 150, 40);
 		panel.add(botaoVerificarFuncionario);
 
 		botaoVerificarFuncionario.addActionListener(new ActionListener() {
