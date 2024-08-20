@@ -73,23 +73,23 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 				Connection connection = null;
 				Statement st = null;
 				ResultSet rs = null;
-				String nome = "Rafa";
+				String nome = "rafa";
 				try {
 					connection = BD.getConnection();
 					st = connection.createStatement();
-					rs = st.executeQuery("SELECT * FROM funcionarios WHERE nome LIKE '%"  + nome + "%';");
-					while(rs.next()) {
-						System.out.println(rs.getInt("id"));
-					}}
-					catch(SQLException i) {
-						i.printStackTrace();
+					rs = st.executeQuery("SELECT * FROM funcionarios WHERE nome LIKE '%" + nome + "%';");
+					while (rs.next()) {
+						selectResultadoFuncionarios.addItem(rs.getString("nome") + " - " +rs.getInt("id"));
 					}
+				} catch (SQLException i) {
+					i.printStackTrace();
 				}
-				// EntityManagerFactory emf =
-				// Persistence.createEntityManagerFactory("clinicaveterinaria");
-				// EntityManager em = emf.createEntityManager();
-				// Funcionarios f = em.find(Funcionarios.class, 1);
-				// selectResultadoFuncionarios.addItem(f.getNome());
+			}
+			// EntityManagerFactory emf =
+			// Persistence.createEntityManagerFactory("clinicaveterinaria");
+			// EntityManager em = emf.createEntityManager();
+			// Funcionarios f = em.find(Funcionarios.class, 1);
+			// selectResultadoFuncionarios.addItem(f.getNome());
 			// }
 		});
 

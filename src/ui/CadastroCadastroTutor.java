@@ -207,7 +207,6 @@ public class CadastroCadastroTutor extends JPanel {
 
 		btnAvancar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				String nome = campoNome.getText();
 				String cpf = campoCpf.getText().replace(".", "").replace("-", "");
 				String sexo = String.valueOf(selectSexo.getSelectedItem()).toUpperCase();

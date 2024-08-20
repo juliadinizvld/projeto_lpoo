@@ -4,21 +4,22 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.text.MaskFormatter;
 
-import data.BD;
+import business.BDServices;
+import ui.entities.Pets;
 
 public class CadastroCadastroPet extends JPanel {
 
@@ -40,11 +41,23 @@ public class CadastroCadastroPet extends JPanel {
 	private static JTextField campoAlergiasAnimal;
 	private static JTextField campoVacinasAnimal;
 
-
 	/**
 	 * Create the panel.
 	 */
 	public CadastroCadastroPet() {
+
+		SimpleDateFormat fmtBr = new SimpleDateFormat("dd/MM/yyyy");
+
+		MaskFormatter mfDataNascimento = null;
+		MaskFormatter mfPeso = null;
+
+		try {
+			mfDataNascimento = new MaskFormatter("##/##/####");
+			mfPeso = new MaskFormatter("##.##");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
 		setLayout(null);
 		SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
 		// Cria um painel principal com um layout de BorderLayout
@@ -82,17 +95,11 @@ public class CadastroCadastroPet extends JPanel {
 		lblNewLabel_1.setBounds(185, 118, 49, 24);
 		panel.add(lblNewLabel_1);
 
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Cachorro\r\n");
-		rdbtnNewRadioButton.setBounds(240, 120, 79, 21);
-		panel.add(rdbtnNewRadioButton);
-
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Gato");
-		rdbtnNewRadioButton_1.setBounds(321, 120, 58, 21);
-		panel.add(rdbtnNewRadioButton_1);
-
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Outro");
-		rdbtnNewRadioButton_2.setBounds(381, 120, 103, 21);
-		panel.add(rdbtnNewRadioButton_2);
+		String[] especies = { "Cachorro", "Gato" };
+		JComboBox<String> selectEspecie = new JComboBox<String>(especies);
+		selectEspecie.setFont(new Font("Dialog", Font.PLAIN, 14));
+		selectEspecie.setBounds(244, 118, 108, 21);
+		panel.add(selectEspecie);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Raça:");
 		lblNewLabel_1_1.setFont(new Font("Arial", Font.BOLD, 10));
@@ -104,8 +111,7 @@ public class CadastroCadastroPet extends JPanel {
 		lblNewLabel_1_1_1.setBounds(185, 205, 108, 24);
 		panel.add(lblNewLabel_1_1_1);
 
-		campoDataNascimento = new JTextField();
-		campoDataNascimento.setText("        /        /");
+		campoDataNascimento = new JFormattedTextField(mfDataNascimento);
 		campoDataNascimento.setColumns(10);
 		campoDataNascimento.setBounds(296, 205, 103, 26);
 		panel.add(campoDataNascimento);
@@ -115,24 +121,18 @@ public class CadastroCadastroPet extends JPanel {
 		lblNewLabel_1_1_1_1.setBounds(185, 255, 49, 24);
 		panel.add(lblNewLabel_1_1_1_1);
 
-		JRadioButton rdbtnFmea = new JRadioButton("Fêmea");
-		rdbtnFmea.setBounds(219, 257, 66, 21);
-		panel.add(rdbtnFmea);
-
-		JRadioButton rdbtnFmea_1 = new JRadioButton("Macho");
-		rdbtnFmea_1.setBounds(282, 257, 58, 21);
-		panel.add(rdbtnFmea_1);
-
-		JRadioButton rdbtnNoIdentificado = new JRadioButton("Não identificado");
-		rdbtnNoIdentificado.setBounds(347, 257, 126, 21);
-		panel.add(rdbtnNoIdentificado);
+		String[] sexos = { "Macho", "Fêmea" };
+		JComboBox<String> selectSexo = new JComboBox<String>(sexos);
+		selectSexo.setFont(new Font("Dialog", Font.PLAIN, 14));
+		selectSexo.setBounds(230, 255, 108, 21);
+		panel.add(selectSexo);
 
 		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("Peso(kg):");
 		lblNewLabel_1_1_1_1_1.setFont(new Font("Arial", Font.BOLD, 10));
 		lblNewLabel_1_1_1_1_1.setBounds(185, 299, 49, 24);
 		panel.add(lblNewLabel_1_1_1_1_1);
 
-		campoPesoAnimal = new JTextField();
+		campoPesoAnimal = new JFormattedTextField(mfPeso);
 		campoPesoAnimal.setColumns(10);
 		campoPesoAnimal.setBounds(250, 299, 100, 26);
 		panel.add(campoPesoAnimal);
@@ -166,16 +166,23 @@ public class CadastroCadastroPet extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				CadastroFinalizarCadastroTutor.showConfirmationDialog(frame);
 				String nome = campoNomeAnimal.getText();
+				String especie = String.valueOf(selectEspecie.getSelectedItem()).toUpperCase();
+				String raca = campoRacaAnimal.getText();
 				String dataNascimento = campoDataNascimento.getText();
-				String peso = campoPesoAnimal.getText();
+				Date dataFormatada = null;
+				try {
+					dataFormatada = new java.sql.Date(fmtBr.parse(dataNascimento).getTime());
+				} catch (ParseException e1) {
+					e1.printStackTrace();
+				}
+				String sexo = String.valueOf(selectSexo.getSelectedItem()).toUpperCase();
+				Double peso = Double.parseDouble(campoPesoAnimal.getText());
 				String alergias = campoAlergiasAnimal.getText();
 				String vacinas = campoVacinasAnimal.getText();
-					
-				Connection connection = null;
-				PreparedStatement ps = null;
-				}
-				
-			
+				Pets pet = new Pets(null, nome, especie, dataFormatada, sexo, raca, peso, alergias, vacinas, 1);
+				BDServices.inserirPet(pet);
+			}
+
 		});
 
 		JButton btnRetornar = new JButton("Retornar");

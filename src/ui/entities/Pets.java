@@ -1,48 +1,53 @@
 package ui.entities;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-public class Pet {
+@Entity
+public class Pets {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String especie;
+	private Date dataNascimento;
+	private String sexo;
 	private String raca;
-	private LocalDate dataNascimento;
-	private char sexo;
 	private double peso;
 	private String alergias;
 	private String vacinas;
-	private Tutores tutor;
+	private int id_tutor;
 
-	public Pet(Integer id, String nome, String especie, String raca, LocalDate dataNascimento, char sexo, double peso,
-			String alergias, String vacinas, Tutores tutor) {
+	private Pets() {
+
+	}
+
+	public Pets(Integer id, String nome, String especie, Date dataNascimento, String sexo, String raca, double peso,
+			String alergias, String vacinas, int id_tutor) {
 		this.id = id;
 		this.nome = nome;
 		this.especie = especie;
-		this.raca = raca;
 		this.dataNascimento = dataNascimento;
 		this.sexo = sexo;
+		this.raca = raca;
 		this.peso = peso;
 		this.alergias = alergias;
 		this.vacinas = vacinas;
-		this.tutor = tutor;
+		this.id_tutor = id_tutor;
 	}
 
 	public Integer getId() {
-		return this.id;
+		return id;
 	}
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -59,28 +64,28 @@ public class Pet {
 		this.especie = especie;
 	}
 
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
 	public String getRaca() {
 		return raca;
 	}
 
 	public void setRaca(String raca) {
 		this.raca = raca;
-	}
-
-	public LocalDate getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(LocalDate dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
-	public char getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(char sexo) {
-		this.sexo = sexo;
 	}
 
 	public double getPeso() {
@@ -107,12 +112,19 @@ public class Pet {
 		this.vacinas = vacinas;
 	}
 
-	public Tutores getTutor() {
-		return tutor;
+	public int getId_tutor() {
+		return id_tutor;
 	}
 
-	public void setTutor(Tutores tutor) {
-		this.tutor = tutor;
+	public void setId_tutor(int id_tutor) {
+		this.id_tutor = id_tutor;
+	}
+
+	@Override
+	public String toString() {
+		return "Pets [id=" + id + ", nome=" + nome + ", especie=" + especie + ", dataNascimento=" + dataNascimento
+				+ ", sexo=" + sexo + ", raca=" + raca + ", peso=" + peso + ", alergias=" + alergias + ", vacinas="
+				+ vacinas + ", id_tutor=" + id_tutor + "]";
 	}
 
 }
