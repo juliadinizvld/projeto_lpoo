@@ -115,7 +115,7 @@ public class ConsultaPetsDadosPet extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new ConsultaPetsDadosConsulta());
+				f.setContentPane(new ConsultaPetsDadosConsulta(pet));
 				f.revalidate();
 			}
 		});
@@ -133,7 +133,7 @@ public class ConsultaPetsDadosPet extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(ConsultaPets.consultaPets1);
+				f.setContentPane(new ConsultaPets());
 				f.revalidate();
 			}
 

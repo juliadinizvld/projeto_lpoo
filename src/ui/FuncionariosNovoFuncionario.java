@@ -230,7 +230,7 @@ public class FuncionariosNovoFuncionario extends JPanel {
 				} else {
 					String tipoFuncionario = String.valueOf(selectFuncao.getSelectedItem()).toUpperCase();
 					Funcionarios funcionario = new Funcionarios(null, nome, idade, telefone, cpf, tipoFuncionario, sexo,
-							cep, numeroCasa, rua, bairro, cidade, estado);
+							cep, numeroCasa, rua, bairro, estado, cidade);
 					BDServices.inserirFuncionario(funcionario);
 				}
 			}
