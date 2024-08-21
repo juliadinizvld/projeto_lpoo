@@ -21,6 +21,7 @@ import javax.swing.text.MaskFormatter;
 import business.BDServices;
 import ui.entities.Pets;
 import ui.entities.Tutores;
+import java.awt.Color;
 
 public class CadastroCadastroPet extends JPanel {
 
@@ -57,7 +58,8 @@ public class CadastroCadastroPet extends JPanel {
 		SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
 		// Cria um painel principal com um layout de BorderLayout
 		JPanel panel = new JPanel();
-		panel.setBounds(45, 11, 700, 500);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(10, -11, 715, 523);
 		add(panel);
 		panel.setLayout(null);
 
@@ -118,6 +120,7 @@ public class CadastroCadastroPet extends JPanel {
 
 		String[] sexos = { "Macho", "Fêmea" };
 		JComboBox<String> selectSexo = new JComboBox<String>(sexos);
+		selectSexo.setBackground(new Color(255, 255, 255));
 		selectSexo.setFont(new Font("Dialog", Font.PLAIN, 14));
 		selectSexo.setBounds(230, 255, 108, 21);
 		panel.add(selectSexo);
@@ -153,6 +156,8 @@ public class CadastroCadastroPet extends JPanel {
 		panel.add(campoVacinasAnimal);
 
 		JButton btnNewButton = new JButton("Avançar ");
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setBackground(new Color(0, 0, 0));
 		btnNewButton.setBounds(416, 454, 108, 35);
 		panel.add(btnNewButton);
 
@@ -183,6 +188,8 @@ public class CadastroCadastroPet extends JPanel {
 		});
 
 		JButton btnRetornar = new JButton("Retornar");
+		btnRetornar.setForeground(new Color(255, 255, 255));
+		btnRetornar.setBackground(new Color(0, 0, 0));
 		btnRetornar.setBounds(262, 454, 108, 35);
 		panel.add(btnRetornar);
 

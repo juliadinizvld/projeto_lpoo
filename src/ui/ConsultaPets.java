@@ -21,6 +21,7 @@ import business.BDServices;
 import data.BD;
 import ui.entities.Funcionarios;
 import ui.entities.Pets;
+import java.awt.Color;
 
 public class ConsultaPets extends JPanel {
 
@@ -34,11 +35,14 @@ public class ConsultaPets extends JPanel {
 	public ConsultaPets() {
 		setLayout(null);
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 821, 500);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(-78, 0, 821, 500);
 		add(panel);
 		panel.setLayout(null);
 
 		JButton botaoRetornar = new JButton(" <- Retornar");
+		botaoRetornar.setForeground(new Color(255, 255, 255));
+		botaoRetornar.setBackground(new Color(0, 0, 0));
 		botaoRetornar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		botaoRetornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -72,6 +76,8 @@ public class ConsultaPets extends JPanel {
 		panel.add(texConsul);
 
 		JButton botaoConsultar = new JButton("Consultar");
+		botaoConsultar.setForeground(new Color(255, 255, 255));
+		botaoConsultar.setBackground(new Color(0, 0, 0));
 		botaoConsultar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		botaoConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -114,7 +120,7 @@ public class ConsultaPets extends JPanel {
 		panel.add(pets);
 
 		JButton botaoVerificarFicha = new JButton("Verificar Ficha");
-		botaoVerificarFicha.setBounds(349, 283, 125, 23);
+		botaoVerificarFicha.setBounds(352, 282, 125, 23);
 		botaoVerificarFicha.setFont(new Font("Tahoma", Font.BOLD, 11));
 		botaoVerificarFicha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
