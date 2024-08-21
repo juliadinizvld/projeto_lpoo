@@ -29,6 +29,8 @@ public class Home extends JPanel {
 	 * Create the panel.
 	 */
 	public Home() {
+		setForeground(new Color(255, 255, 255));
+		setBackground(new Color(255, 255, 255));
 
 		setLayout(null);
 		// Cria um painel para a barra de favoritos
@@ -56,8 +58,9 @@ public class Home extends JPanel {
 
 		// Cria os botões para opções
 		JButton cadastroPetsButton = new JButton("Cadastro de pets");
+		cadastroPetsButton.setForeground(new Color(255, 255, 255));
 		cadastroPetsButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		cadastroPetsButton.setBackground(new Color(192, 192, 192));
+		cadastroPetsButton.setBackground(new Color(0, 0, 0));
 		cadastroPetsButton.setBounds(295, 97, 200, 60);
 		cadastroPetsButton.addActionListener(e -> {
 			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
@@ -66,7 +69,8 @@ public class Home extends JPanel {
 		});
 
 		JButton consultarPetsButton = new JButton("Consultar pets");
-		consultarPetsButton.setBackground(new Color(192, 192, 192));
+		consultarPetsButton.setForeground(new Color(255, 255, 255));
+		consultarPetsButton.setBackground(new Color(0, 0, 0));
 		consultarPetsButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		consultarPetsButton.setBounds(295, 187, 200, 60);
 
@@ -78,9 +82,10 @@ public class Home extends JPanel {
 
 		JButton agendamentoProcedimentosButton = new JButton(
 				"<html><div style='text-align: center;'>Agendamento de<br/>procedimentos</div></html>");
+		agendamentoProcedimentosButton.setForeground(new Color(255, 255, 255));
 		agendamentoProcedimentosButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		agendamentoProcedimentosButton.setBackground(new Color(192, 192, 192));
-		agendamentoProcedimentosButton.setBounds(293, 275, 200, 64);
+		agendamentoProcedimentosButton.setBackground(new Color(0, 0, 0));
+		agendamentoProcedimentosButton.setBounds(295, 270, 200, 64);
 		agendamentoProcedimentosButton.addActionListener(e -> {
 			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
 			f.setContentPane(AgendamentoAgendarProcedimento.agendamento1);
@@ -89,8 +94,9 @@ public class Home extends JPanel {
 
 		JButton consultaProdutosButton = new JButton(
 				"<html><div style='text-align: center;'>Consulta de<br/><div style='padding-left: 5px;'>produtos</div></div></html>");
+		consultaProdutosButton.setForeground(new Color(255, 255, 255));
 		consultaProdutosButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		consultaProdutosButton.setBackground(new Color(192, 192, 192));
+		consultaProdutosButton.setBackground(new Color(0, 0, 0));
 		consultaProdutosButton.setBounds(295, 360, 200, 60);
 		consultaProdutosButton.addActionListener(e -> {
 			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);

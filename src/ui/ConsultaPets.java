@@ -22,6 +22,7 @@ import javax.swing.text.DocumentFilter;
 import business.BDServices;
 import data.BD;
 import ui.entities.Pets;
+import java.awt.Color;
 
 public class ConsultaPets extends JPanel {
 
@@ -29,6 +30,7 @@ public class ConsultaPets extends JPanel {
     private JTextField caixaInserirIDTutor;
     public static ConsultaPets consultaPets1 = new ConsultaPets();
 
+<<<<<<< HEAD
     /**
      * Create the panel.
      */
@@ -50,6 +52,28 @@ public class ConsultaPets extends JPanel {
         });
         botaoRetornar.setBounds(281, 124, 125, 23);
         panel.add(botaoRetornar);
+=======
+	/**
+	 * Create the panel.
+	 */
+	public ConsultaPets() {
+		setLayout(null);
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(-78, 0, 821, 500);
+		add(panel);
+		panel.setLayout(null);
+
+		JButton botaoRetornar = new JButton(" <- Retornar");
+		botaoRetornar.setForeground(new Color(255, 255, 255));
+		botaoRetornar.setBackground(new Color(0, 0, 0));
+		botaoRetornar.setFont(new Font("Tahoma", Font.BOLD, 11));
+		botaoRetornar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		botaoRetornar.setBounds(281, 124, 125, 23);
+>>>>>>> ea5af2ae76ed793ea573c80ea162781004fd728a
 
         caixaInserirIDTutor = new JTextField();
         caixaInserirIDTutor.setBounds(414, 75, 63, 20);
@@ -83,10 +107,23 @@ public class ConsultaPets extends JPanel {
         texConsul.setBounds(378, 23, 151, 14);
         panel.add(texConsul);
 
+<<<<<<< HEAD
         JButton botaoConsultar = new JButton("Consultar");
         botaoConsultar.setFont(new Font("Tahoma", Font.BOLD, 11));
         botaoConsultar.setBounds(436, 124, 119, 23);
         panel.add(botaoConsultar);
+=======
+		JButton botaoConsultar = new JButton("Consultar");
+		botaoConsultar.setForeground(new Color(255, 255, 255));
+		botaoConsultar.setBackground(new Color(0, 0, 0));
+		botaoConsultar.setFont(new Font("Tahoma", Font.BOLD, 11));
+		botaoConsultar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		botaoConsultar.setBounds(436, 124, 119, 23);
+		panel.add(botaoConsultar);
+>>>>>>> ea5af2ae76ed793ea573c80ea162781004fd728a
 
         JLabel textAnimaisPorID = new JLabel("Animais encontrados no CPF Informado");
         textAnimaisPorID.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -131,6 +168,7 @@ public class ConsultaPets extends JPanel {
             }
         });
 
+<<<<<<< HEAD
         JButton botaoVerificarFicha = new JButton("Verificar Ficha");
         botaoVerificarFicha.setBounds(349, 283, 125, 23);
         botaoVerificarFicha.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -143,6 +181,20 @@ public class ConsultaPets extends JPanel {
                 f.setContentPane(new ConsultaPetsDadosPet(pet));
                 f.revalidate();
             }
+=======
+		JButton botaoVerificarFicha = new JButton("Verificar Ficha");
+		botaoVerificarFicha.setBounds(352, 282, 125, 23);
+		botaoVerificarFicha.setFont(new Font("Tahoma", Font.BOLD, 11));
+		botaoVerificarFicha.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String[] petSelecionado = String.valueOf(ListAnimaisPorID.getSelectedItem()).split("-");
+				int idPetSelecionado = Integer.parseInt(petSelecionado[1].trim());
+				Pets pet = BDServices.consultarPet(idPetSelecionado);
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new ConsultaPetsDadosPet(pet));
+				f.revalidate();
+			}
+>>>>>>> ea5af2ae76ed793ea573c80ea162781004fd728a
 
         });
 
