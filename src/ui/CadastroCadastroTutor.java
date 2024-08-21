@@ -66,7 +66,6 @@ public class CadastroCadastroTutor extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 
-		// Adiciona os componentes
 		JLabel lblNewLabel = new JLabel("Dados do tutor:");
 		lblNewLabel.setBounds(332, 32, 373, 22);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 17));
@@ -210,29 +209,51 @@ public class CadastroCadastroTutor extends JPanel {
 		panel.add(textoEstado);
 
 		btnAvancar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String nome = campoNome.getText();
-				String cpf = campoCpf.getText().replace(".", "").replace("-", "");
-				String sexo = String.valueOf(selectSexo.getSelectedItem()).toUpperCase();
-				String email = campoEmail.getText();
-				String estado = campoEstado.getText();
-				String cidade = campoCidade.getText();
-				String telefone = campoTelefone.getText().replace("-", "").replace(" ", "");
-				int numeroCasa = Integer.parseInt(campoNumeroCasa.getText());
-				String dataNascimento = campoDataNascimento.getText();
-				Date dataFormatada = null;
-				try {
-					dataFormatada = new java.sql.Date(fmtBr.parse(dataNascimento).getTime());
-				} catch (ParseException e1) {
-					e1.printStackTrace();
-				}
-				String cep = campoCep.getText().replaceAll("\\D", ""); 
-				if (cep.length() != 8) {
-					JOptionPane.showMessageDialog(null, "O CEP deve ter exatamente 8 dígitos numéricos.", "Erro", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-				String bairro = campoBairro.getText();
-				String rua = campoRua.getText();
+		    public void actionPerformed(ActionEvent e) {
+		        String nome = campoNome.getText().trim();
+		        String cpf = campoCpf.getText().replace(".", "").replace("-", "").trim();
+		        String sexo = String.valueOf(selectSexo.getSelectedItem()).toUpperCase().trim();
+		        String email = campoEmail.getText().trim();
+		        String estado = campoEstado.getText().trim();
+		        String cidade = campoCidade.getText().trim();
+		        String telefone = campoTelefone.getText().replace("-", "").replace(" ", "").trim();
+		        String numeroCasaStr = campoNumeroCasa.getText().trim();
+		        String dataNascimento = campoDataNascimento.getText().trim();
+		        String cep = campoCep.getText().replaceAll("\\D", "").trim();
+		        String bairro = campoBairro.getText().trim();
+		        String rua = campoRua.getText().trim();
+
+		        if (nome.isEmpty() || cpf.isEmpty() || sexo.isEmpty() || email.isEmpty() ||
+		            estado.isEmpty() || cidade.isEmpty() || telefone.isEmpty() || numeroCasaStr.isEmpty() ||
+		            dataNascimento.isEmpty() || cep.isEmpty() || bairro.isEmpty() || rua.isEmpty()) {
+		            JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos.", "Erro", JOptionPane.ERROR_MESSAGE);
+		            return;
+		        }
+
+
+		        int numeroCasa;
+		        try {
+		            numeroCasa = Integer.parseInt(numeroCasaStr);
+		        } catch (NumberFormatException ex) {
+		            JOptionPane.showMessageDialog(null, "Número da casa deve ser um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+		            return;
+		        }
+
+		        if (cep.length() != 8) {
+		            JOptionPane.showMessageDialog(null, "O CEP deve ter exatamente 8 dígitos numéricos.", "Erro", JOptionPane.ERROR_MESSAGE);
+		            return;
+		        }
+
+		        Date dataFormatada = null;
+		        try {
+		            dataFormatada = new java.sql.Date(fmtBr.parse(dataNascimento).getTime());
+		        } catch (ParseException e1) {
+		            JOptionPane.showMessageDialog(null, "Data de nascimento inválida. Use o formato dd/MM/yyyy.", "Erro", JOptionPane.ERROR_MESSAGE);
+		            return;
+		        }
+		        
+		        JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
 
 				Tutores tutor = new Tutores(null, nome, cpf, sexo, email, estado, cidade, telefone, numeroCasa,
 						dataFormatada, cep, bairro, rua);
