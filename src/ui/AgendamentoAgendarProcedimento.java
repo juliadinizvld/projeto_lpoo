@@ -8,14 +8,17 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.ParseException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.text.MaskFormatter;
 
 import data.BD;
 
@@ -28,6 +31,7 @@ public class AgendamentoAgendarProcedimento extends JPanel {
 	 * Create the panel.
 	 */
 	public AgendamentoAgendarProcedimento() {
+		
 
 		// Painel principal
 		JPanel panel = new JPanel();
@@ -57,21 +61,38 @@ public class AgendamentoAgendarProcedimento extends JPanel {
 		gbc.gridx = 1;
 		panel.add(cbExame, gbc);
 
+
+		// ...
+
 		// ID do pet
 		JLabel lblIdPet = new JLabel("ID do pet:");
 		gbc.gridx = 0;
 		gbc.gridy = 2;
 		panel.add(lblIdPet, gbc);
 
-		JTextField txtIdPet = new JTextField(10);
+		// Cria uma máscara para permitir apenas dígitos numéricos 
+		MaskFormatter idPetFormatter = null;
+		try {
+		    idPetFormatter = new MaskFormatter("##########"); 
+		    idPetFormatter.setPlaceholderCharacter('_'); // Caractere de espaço vazio
+		} catch (ParseException e) {
+		    e.printStackTrace();
+		}
+
+		JFormattedTextField txtIdPet = new JFormattedTextField(idPetFormatter);
+		txtIdPet.setColumns(10);
 		gbc.gridx = 1;
 		panel.add(txtIdPet, gbc);
+
+		// ...
+
+		
 		// Botões
 		JButton btnRetornar = new JButton("Retornar");
 		gbc.gridx = 0;
 		gbc.gridy = 3;
 		panel.add(btnRetornar, gbc);
-
+		
 		btnRetornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -79,7 +100,7 @@ public class AgendamentoAgendarProcedimento extends JPanel {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
 				f.setContentPane(Home.telaInicial);
 				f.revalidate();
-				BD.closeConnection();	
+				BD.closeConnection();
 			}
 		});
 

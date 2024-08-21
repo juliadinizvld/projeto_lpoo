@@ -20,19 +20,14 @@ import javax.swing.text.MaskFormatter;
 
 import business.BDServices;
 import ui.entities.Pets;
+import ui.entities.Tutores;
+import java.awt.Color;
 
 public class CadastroCadastroPet extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public static CadastroCadastroPet telaCadastro1 = new CadastroCadastroPet();
 
 	private static JFrame frame;
-	private static JTextField textField;
-	private static JTextField textField_1;
-	private static JTextField textField_2;
-	private static JTextField textField_3;
-	private static JTextField textField_4;
-	private static JTextField textField_5;
 
 	private static JTextField campoNomeAnimal;
 	private static JTextField campoRacaAnimal;
@@ -44,7 +39,8 @@ public class CadastroCadastroPet extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CadastroCadastroPet() {
+
+	public CadastroCadastroPet(Tutores tutor) {
 
 		SimpleDateFormat fmtBr = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -62,7 +58,8 @@ public class CadastroCadastroPet extends JPanel {
 		SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
 		// Cria um painel principal com um layout de BorderLayout
 		JPanel panel = new JPanel();
-		panel.setBounds(45, 11, 700, 500);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(10, -11, 715, 523);
 		add(panel);
 		panel.setLayout(null);
 
@@ -123,6 +120,7 @@ public class CadastroCadastroPet extends JPanel {
 
 		String[] sexos = { "Macho", "Fêmea" };
 		JComboBox<String> selectSexo = new JComboBox<String>(sexos);
+		selectSexo.setBackground(new Color(255, 255, 255));
 		selectSexo.setFont(new Font("Dialog", Font.PLAIN, 14));
 		selectSexo.setBounds(230, 255, 108, 21);
 		panel.add(selectSexo);
@@ -158,6 +156,8 @@ public class CadastroCadastroPet extends JPanel {
 		panel.add(campoVacinasAnimal);
 
 		JButton btnNewButton = new JButton("Avançar ");
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setBackground(new Color(0, 0, 0));
 		btnNewButton.setBounds(416, 454, 108, 35);
 		panel.add(btnNewButton);
 
@@ -179,13 +179,17 @@ public class CadastroCadastroPet extends JPanel {
 				Double peso = Double.parseDouble(campoPesoAnimal.getText());
 				String alergias = campoAlergiasAnimal.getText();
 				String vacinas = campoVacinasAnimal.getText();
-				Pets pet = new Pets(null, nome, especie, dataFormatada, sexo, raca, peso, alergias, vacinas, 1);
+
+				int idTutor = BDServices.inserirTutor(tutor);
+				Pets pet = new Pets(null, nome, especie, dataFormatada, sexo, raca, peso, alergias, vacinas, idTutor);
 				BDServices.inserirPet(pet);
 			}
 
 		});
 
 		JButton btnRetornar = new JButton("Retornar");
+		btnRetornar.setForeground(new Color(255, 255, 255));
+		btnRetornar.setBackground(new Color(0, 0, 0));
 		btnRetornar.setBounds(262, 454, 108, 35);
 		panel.add(btnRetornar);
 

@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import java.awt.Color;
 
 public class CadastroEscolha extends JPanel {
 
@@ -27,7 +28,8 @@ public class CadastroEscolha extends JPanel {
 		setLayout(null);
 		// Cria um painel principal com um layout de BorderLayout
 		JPanel panel = new JPanel();
-		panel.setBounds(45, 0, 700, 500);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(-40, 0, 700, 500);
 		add(panel);
 		panel.setLayout(null);
 
@@ -38,6 +40,8 @@ public class CadastroEscolha extends JPanel {
 		panel.add(lblNewLabel);
 
 		JButton btnRetornar = new JButton("Retornar ");
+		btnRetornar.setForeground(new Color(255, 255, 255));
+		btnRetornar.setBackground(new Color(0, 0, 0));
 		btnRetornar.setBounds(134, 136, 112, 37);
 		btnRetornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -49,6 +53,8 @@ public class CadastroEscolha extends JPanel {
 		panel.add(btnRetornar);
 
 		JButton btnNovoCadastro = new JButton("Novo Cadastro");
+		btnNovoCadastro.setForeground(new Color(255, 255, 255));
+		btnNovoCadastro.setBackground(new Color(0, 0, 0));
 		btnNovoCadastro.setBounds(275, 136, 148, 37);
 		btnNovoCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -60,6 +66,8 @@ public class CadastroEscolha extends JPanel {
 		panel.add(btnNovoCadastro);
 		
 		JButton btnJaCadastrado = new JButton("Já sou cadastrado");
+		btnJaCadastrado.setForeground(new Color(255, 255, 255));
+		btnJaCadastrado.setBackground(new Color(0, 0, 0));
 		btnJaCadastrado.setBounds(457, 136, 148, 37);
 		panel.add(btnJaCadastrado);
 		
