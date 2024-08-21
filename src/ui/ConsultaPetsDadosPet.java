@@ -1,25 +1,19 @@
 package ui;
 
 import java.awt.Font;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.AbstractListModel;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
-import javax.swing.border.EmptyBorder;
+
+import ui.entities.Pets;
 
 public class ConsultaPetsDadosPet extends JPanel {
 
@@ -27,12 +21,11 @@ public class ConsultaPetsDadosPet extends JPanel {
 	private JTable table;
 	private JTable table_1;
 	private JTable table_2;
-	public static ConsultaPetsDadosPet consultaPets2 = new ConsultaPetsDadosPet();
 
 	/**
 	 * Create the panel.
 	 */
-	public ConsultaPetsDadosPet() {
+	public ConsultaPetsDadosPet(Pets pet) {
 		setLayout(null);
 
 		JPanel panel = new JPanel();
@@ -40,12 +33,12 @@ public class ConsultaPetsDadosPet extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 
-		JLabel textNomeTutor = new JLabel("Tutor:");
-		textNomeTutor.setBounds(546, 26, 46, 14);
+		JLabel textNomeTutor = new JLabel("Nome do Tutor: ");
+		textNomeTutor.setBounds(546, 26, 201, 14);
 		panel.add(textNomeTutor);
 
-		JLabel textCpfTutor = new JLabel("CPF do tutor:");
-		textCpfTutor.setBounds(546, 51, 86, 14);
+		JLabel textCpfTutor = new JLabel("ID do tutor: " + pet.getId_tutor());
+		textCpfTutor.setBounds(546, 51, 155, 14);
 		panel.add(textCpfTutor);
 
 		JLabel tituloDadosPet = new JLabel("Dados do PET");
@@ -65,36 +58,32 @@ public class ConsultaPetsDadosPet extends JPanel {
 		table_2.setBounds(197, 109, 1, 1);
 		panel.add(table_2);
 
-		JLabel textIDPet = new JLabel("ID:");
-		textIDPet.setBounds(8, 109, 46, 14);
+		JLabel textIDPet = new JLabel("ID: " + pet.getId());
+		textIDPet.setBounds(8, 109, 86, 14);
 		panel.add(textIDPet);
 
-		JLabel TextNomePet = new JLabel("Nome:");
-		TextNomePet.setBounds(8, 134, 86, 14);
+		JLabel TextNomePet = new JLabel("Nome: " + pet.getNome());
+		TextNomePet.setBounds(8, 134, 226, 14);
 		panel.add(TextNomePet);
 
-		JLabel TextEspeciePet = new JLabel("Espécie:");
-		TextEspeciePet.setBounds(8, 164, 114, 14);
+		JLabel TextEspeciePet = new JLabel("Espécie: " + pet.getEspecie());
+		TextEspeciePet.setBounds(8, 164, 226, 14);
 		panel.add(TextEspeciePet);
 
-		JLabel TextracaPet = new JLabel("Raça:");
-		TextracaPet.setBounds(8, 189, 95, 14);
+		JLabel TextracaPet = new JLabel("Raça: " + pet.getRaca());
+		TextracaPet.setBounds(8, 189, 190, 14);
 		panel.add(TextracaPet);
 
-		JLabel textIdadePet = new JLabel(" Idade:");
-		textIdadePet.setBounds(8, 236, 86, 20);
-		panel.add(textIdadePet);
-
-		JLabel TextSexoPet = new JLabel("Sexo:");
-		TextSexoPet.setBounds(8, 267, 46, 14);
+		JLabel TextSexoPet = new JLabel("Sexo: " + pet.getSexo());
+		TextSexoPet.setBounds(8, 267, 142, 14);
 		panel.add(TextSexoPet);
 
-		JLabel textPesoPet = new JLabel("Peso:");
-		textPesoPet.setBounds(8, 292, 46, 14);
+		JLabel textPesoPet = new JLabel("Peso: " + pet.getPeso());
+		textPesoPet.setBounds(8, 292, 114, 14);
 		panel.add(textPesoPet);
 
-		JLabel textVacinasPet = new JLabel("Vacinas:");
-		textVacinasPet.setBounds(8, 317, 86, 14);
+		JLabel textVacinasPet = new JLabel("Vacinas: " + pet.getVacinas());
+		textVacinasPet.setBounds(8, 317, 155, 14);
 		panel.add(textVacinasPet);
 
 		JLabel textListaDeConsulta = new JLabel("Lista de Consultas ");
@@ -131,8 +120,8 @@ public class ConsultaPetsDadosPet extends JPanel {
 			}
 		});
 
-		JLabel TextNascPet = new JLabel("Nascimento:");
-		TextNascPet.setBounds(8, 205, 142, 27);
+		JLabel TextNascPet = new JLabel("Nascimento: " + pet.getDataNascimento());
+		TextNascPet.setBounds(8, 205, 208, 27);
 		panel.add(TextNascPet);
 
 		JButton botaoRetornar = new JButton("Retornar");

@@ -17,7 +17,7 @@ public class CadastroFinalizarCadastroTutor {
         // Cria um painel para a nova janela com um layout apropriado
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout()); // Usando GridBagLayout para melhor controle do layout
-        GridBagConstraints gbc = new GridBagConstraints();
+        GridBagConstraints gbc = new GridBagConstraints(); 
         gbc.insets = new Insets(5, 5, 5, 5); // Espaçamento entre os componentes
 
         // Adiciona uma mensagem

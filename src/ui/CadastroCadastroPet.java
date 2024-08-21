@@ -20,19 +20,13 @@ import javax.swing.text.MaskFormatter;
 
 import business.BDServices;
 import ui.entities.Pets;
+import ui.entities.Tutores;
 
 public class CadastroCadastroPet extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public static CadastroCadastroPet telaCadastro1 = new CadastroCadastroPet();
 
 	private static JFrame frame;
-	private static JTextField textField;
-	private static JTextField textField_1;
-	private static JTextField textField_2;
-	private static JTextField textField_3;
-	private static JTextField textField_4;
-	private static JTextField textField_5;
 
 	private static JTextField campoNomeAnimal;
 	private static JTextField campoRacaAnimal;
@@ -44,7 +38,8 @@ public class CadastroCadastroPet extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CadastroCadastroPet() {
+
+	public CadastroCadastroPet(Tutores tutor) {
 
 		SimpleDateFormat fmtBr = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -179,7 +174,9 @@ public class CadastroCadastroPet extends JPanel {
 				Double peso = Double.parseDouble(campoPesoAnimal.getText());
 				String alergias = campoAlergiasAnimal.getText();
 				String vacinas = campoVacinasAnimal.getText();
-				Pets pet = new Pets(null, nome, especie, dataFormatada, sexo, raca, peso, alergias, vacinas, 1);
+
+				int idTutor = BDServices.inserirTutor(tutor);
+				Pets pet = new Pets(null, nome, especie, dataFormatada, sexo, raca, peso, alergias, vacinas, idTutor);
 				BDServices.inserirPet(pet);
 			}
 

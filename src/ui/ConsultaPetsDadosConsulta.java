@@ -56,7 +56,7 @@ public class ConsultaPetsDadosConsulta extends JPanel {
 		botaoSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(ConsultaPetsDadosPet.consultaPets2);
+				f.setContentPane(new ConsultaPetsDadosPet(null));
 				f.revalidate();
 			}
 		});

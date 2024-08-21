@@ -7,9 +7,8 @@ import javax.swing.JPanel;
 
 import ui.Home;
 
-
 public class Main extends JFrame {
-	
+
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
@@ -23,7 +22,7 @@ public class Main extends JFrame {
 					Main frame = new Main();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();	
+					e.printStackTrace();
 				}
 			}
 		});
