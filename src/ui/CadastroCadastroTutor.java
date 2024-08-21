@@ -51,7 +51,7 @@ public class CadastroCadastroTutor extends JPanel {
 		try {
 			mfcpf = new MaskFormatter("###.###.###-##");
 			mfDataNascimento = new MaskFormatter("##/##/####");
-			mfTelefone = new MaskFormatter("### #####-####");
+			mfTelefone = new MaskFormatter("## #####-####");
 			mfEstado = new MaskFormatter("UU");
 			mfCep = new MaskFormatter("########"); 
 			mfCep.setValidCharacters("0123456789");
@@ -231,18 +231,14 @@ public class CadastroCadastroTutor extends JPanel {
 		        }
 
 
-		        int numeroCasa;
+		        int numeroCasa ;
 		        try {
 		            numeroCasa = Integer.parseInt(numeroCasaStr);
 		        } catch (NumberFormatException ex) {
 		            JOptionPane.showMessageDialog(null, "Número da casa deve ser um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
 		            return;
 		        }
-
-		        if (cep.length() != 8) {
-		            JOptionPane.showMessageDialog(null, "O CEP deve ter exatamente 8 dígitos numéricos.", "Erro", JOptionPane.ERROR_MESSAGE);
-		            return;
-		        }
+		        
 
 		        Date dataFormatada = null;
 		        try {
