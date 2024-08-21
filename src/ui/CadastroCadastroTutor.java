@@ -52,7 +52,7 @@ public class CadastroCadastroTutor extends JPanel {
 		try {
 			mfcpf = new MaskFormatter("###.###.###-##");
 			mfDataNascimento = new MaskFormatter("##/##/####");
-			mfTelefone = new MaskFormatter("### #####-####");
+			mfTelefone = new MaskFormatter("## #####-####");
 			mfEstado = new MaskFormatter("UU");
 			mfCep = new MaskFormatter("########");
 			mfCep.setValidCharacters("0123456789");
@@ -238,6 +238,16 @@ public class CadastroCadastroTutor extends JPanel {
 					return;
 				}
 
+<<<<<<< HEAD
+		        int numeroCasa ;
+		        try {
+		            numeroCasa = Integer.parseInt(numeroCasaStr);
+		        } catch (NumberFormatException ex) {
+		            JOptionPane.showMessageDialog(null, "Número da casa deve ser um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+		            return;
+		        }
+		        
+=======
 				int numeroCasa;
 				try {
 					numeroCasa = Integer.parseInt(numeroCasaStr);
@@ -252,6 +262,7 @@ public class CadastroCadastroTutor extends JPanel {
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
+>>>>>>> f278845ac0d935d5a7d8b200e376dbc4b36d2299
 
 				Date dataFormatada = null;
 				try {
