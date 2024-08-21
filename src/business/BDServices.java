@@ -40,17 +40,19 @@ public class BDServices {
 		em.close();
 		emf.close();
 	}
-	
-	public static void inserirTutor(Tutores tutor) {
+
+	public static int inserirTutor(Tutores tutor) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(tutor);
+		int id = tutor.getId();
 		em.getTransaction().commit();
 		em.close();
 		emf.close();
+		return id;
 	}
-	
+
 	public static void inserirPet(Pets pet) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
 		EntityManager em = emf.createEntityManager();
@@ -59,5 +61,14 @@ public class BDServices {
 		em.getTransaction().commit();
 		em.close();
 		emf.close();
+	}
+
+	public static Funcionarios consultarFuncionario(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		Funcionarios funcionario = em.find(Funcionarios.class, id);
+		emf.close();
+		em.close();
+		return funcionario;
 	}
 }

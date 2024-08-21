@@ -53,7 +53,7 @@ public class CadastroCadastroTutor extends JPanel {
 			mfDataNascimento = new MaskFormatter("##/##/####");
 			mfTelefone = new MaskFormatter("### #####-####");
 			mfEstado = new MaskFormatter("UU");
-			mfCep = new MaskFormatter("########"); 
+			mfCep = new MaskFormatter("########");
 			mfCep.setValidCharacters("0123456789");
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -226,9 +226,10 @@ public class CadastroCadastroTutor extends JPanel {
 				} catch (ParseException e1) {
 					e1.printStackTrace();
 				}
-				String cep = campoCep.getText().replaceAll("\\D", ""); 
+				String cep = campoCep.getText().replaceAll("\\D", "");
 				if (cep.length() != 8) {
-					JOptionPane.showMessageDialog(null, "O CEP deve ter exatamente 8 dígitos numéricos.", "Erro", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "O CEP deve ter exatamente 8 dígitos numéricos.", "Erro",
+							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 				String bairro = campoBairro.getText();
@@ -237,10 +238,8 @@ public class CadastroCadastroTutor extends JPanel {
 				Tutores tutor = new Tutores(null, nome, cpf, sexo, email, estado, cidade, telefone, numeroCasa,
 						dataFormatada, cep, bairro, rua);
 
-				BDServices.inserirTutor(tutor);
-
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new CadastroCadastroPet());
+				f.setContentPane(new CadastroCadastroPet(tutor));
 				f.revalidate();
 			}
 		});

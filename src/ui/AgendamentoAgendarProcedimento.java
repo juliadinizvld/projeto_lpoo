@@ -71,7 +71,7 @@ public class AgendamentoAgendarProcedimento extends JPanel {
 		gbc.gridx = 0;
 		gbc.gridy = 3;
 		panel.add(btnRetornar, gbc);
-
+		
 		btnRetornar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -79,7 +79,7 @@ public class AgendamentoAgendarProcedimento extends JPanel {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
 				f.setContentPane(Home.telaInicial);
 				f.revalidate();
-				BD.closeConnection();	
+				BD.closeConnection();
 			}
 		});
 

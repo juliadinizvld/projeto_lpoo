@@ -150,4 +150,12 @@ public class Funcionarios implements Serializable {
 		this.cidade = cidade;
 	}
 
+	@Override
+	public String toString() {
+		return "Funcionarios [id=" + id + ", nome=" + nome + ", idade=" + idade + ", telefone=" + telefone + ", cpf="
+				+ cpf + ", tipoFuncionario=" + tipoFuncionario + ", sexo=" + sexo + ", cep=" + cep + ", numeroCasa="
+				+ numeroCasa + ", rua=" + rua + ", bairro=" + bairro + ", estado=" + estado + ", cidade=" + cidade
+				+ "]";
+	}
+
 }

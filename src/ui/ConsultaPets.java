@@ -1,13 +1,9 @@
 package ui;
 
 import java.awt.Font;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -15,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 public class ConsultaPets extends JPanel {
@@ -57,9 +52,9 @@ public class ConsultaPets extends JPanel {
 		panel.add(caixaInserirIDPet);
 		caixaInserirIDPet.setColumns(10);
 
-		JLabel textoIDPet = new JLabel("CPF do tutor:");
+		JLabel textoIDPet = new JLabel("ID do tutor:");
 		textoIDPet.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textoIDPet.setBounds(121, 120, 157, 14);
+		textoIDPet.setBounds(201, 119, 77, 14);
 		panel.add(textoIDPet);
 
 		JLabel texConsul = new JLabel("Consulta PET");
@@ -81,10 +76,16 @@ public class ConsultaPets extends JPanel {
 		textAnimaisPorID.setBounds(314, 307, 229, 14);
 		panel.add(textAnimaisPorID);
 
-		JComboBox ListAnimaisPorID = new JComboBox();
-		ListAnimaisPorID.setModel(new DefaultComboBoxModel(new String[] { "Bob", "Luna", "Ralph", "Amora" }));
+		JComboBox<String> ListAnimaisPorID = new JComboBox<>();
+		// ListAnimaisPorID.addItem(new TutorConsulta(1, "teste"));
 		ListAnimaisPorID.setBounds(335, 350, 164, 22);
 		panel.add(ListAnimaisPorID);
+
+		botaoConsultar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
 
 		JList list = new JList();
 		list.setBounds(64, 224, 58, 0);
