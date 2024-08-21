@@ -82,11 +82,10 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 					rs = st.executeQuery("SELECT * FROM funcionarios WHERE nome LIKE '%" + nome + "%';");
 					while (rs.next()) {
 						selectResultadoFuncionarios.addItem(rs.getString("nome") + " - " + rs.getInt("id"));
-
 					}
 				} catch (SQLException i) {
 					i.printStackTrace();
-				}
+				} 
 			}
 		});
 

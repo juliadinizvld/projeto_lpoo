@@ -71,4 +71,13 @@ public class BDServices {
 		em.close();
 		return funcionario;
 	}
+
+	public static Pets consultarPet(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		Pets pet = em.find(Pets.class, id);
+		emf.close();
+		em.close();
+		return pet;
+	}
 }
