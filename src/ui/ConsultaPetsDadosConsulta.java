@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import ui.entities.Pets;
+
 public class ConsultaPetsDadosConsulta extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -16,7 +18,7 @@ public class ConsultaPetsDadosConsulta extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public ConsultaPetsDadosConsulta() {
+	public ConsultaPetsDadosConsulta(Pets pet) {
 		setLayout(null);
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 821, 500);
@@ -56,7 +58,7 @@ public class ConsultaPetsDadosConsulta extends JPanel {
 		botaoSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new ConsultaPetsDadosPet(null));
+				f.setContentPane(new ConsultaPetsDadosPet(pet));
 				f.revalidate();
 			}
 		});

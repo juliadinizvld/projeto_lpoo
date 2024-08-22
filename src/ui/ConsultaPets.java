@@ -26,164 +26,114 @@ import java.awt.Color;
 
 public class ConsultaPets extends JPanel {
 
-    private static final long serialVersionUID = 1L;
-    private JTextField caixaInserirIDTutor;
-    public static ConsultaPets consultaPets1 = new ConsultaPets();
+	private static final long serialVersionUID = 1L;
+	private JTextField caixaInserirIDTutor;
+	public static ConsultaPets consultaPets1 = new ConsultaPets();
 
-<<<<<<< HEAD
-    /**
-     * Create the panel.
-     */
-    public ConsultaPets() {
-        setLayout(null);
-        JPanel panel = new JPanel();
-        panel.setBounds(0, 0, 821, 500);
-        add(panel);
-        panel.setLayout(null);
-
-        JButton botaoRetornar = new JButton(" <- Retornar");
-        botaoRetornar.setFont(new Font("Tahoma", Font.BOLD, 11));
-        botaoRetornar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-                f.setContentPane(new Home());
-                f.revalidate();
-            }
-        });
-        botaoRetornar.setBounds(281, 124, 125, 23);
-        panel.add(botaoRetornar);
-=======
 	/**
 	 * Create the panel.
 	 */
 	public ConsultaPets() {
 		setLayout(null);
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(-78, 0, 821, 500);
+		panel.setBounds(0, 0, 821, 500);
 		add(panel);
 		panel.setLayout(null);
 
 		JButton botaoRetornar = new JButton(" <- Retornar");
-		botaoRetornar.setForeground(new Color(255, 255, 255));
-		botaoRetornar.setBackground(new Color(0, 0, 0));
 		botaoRetornar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		botaoRetornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new Home());
+				f.revalidate();
 			}
 		});
 		botaoRetornar.setBounds(281, 124, 125, 23);
->>>>>>> ea5af2ae76ed793ea573c80ea162781004fd728a
+		panel.add(botaoRetornar);
 
-        caixaInserirIDTutor = new JTextField();
-        caixaInserirIDTutor.setBounds(414, 75, 63, 20);
-        panel.add(caixaInserirIDTutor);
-        caixaInserirIDTutor.setColumns(10);
+		/**
+		 * Create the panel.
+		 */
 
-        // Adicionando o filtro de caracteres para aceitar apenas números
-        ((AbstractDocument) caixaInserirIDTutor.getDocument()).setDocumentFilter(new DocumentFilter() {
-            @Override
-            public void insertString(FilterBypass fb, int offset, String string, javax.swing.text.AttributeSet attr) throws javax.swing.text.BadLocationException {
-                if (string.matches("\\d*")) {
-                    super.insertString(fb, offset, string, attr);
-                }
-            }
+		caixaInserirIDTutor = new JTextField();
+		caixaInserirIDTutor.setBounds(414, 75, 63, 20);
+		panel.add(caixaInserirIDTutor);
+		caixaInserirIDTutor.setColumns(10);
 
-            @Override
-            public void replace(FilterBypass fb, int offset, int length, String text, javax.swing.text.AttributeSet attrs) throws javax.swing.text.BadLocationException {
-                if (text.matches("\\d*")) {
-                    super.replace(fb, offset, length, text, attrs);
-                }
-            }
-        });
+		// Adicionando o filtro de caracteres para aceitar apenas números
+		((AbstractDocument) caixaInserirIDTutor.getDocument()).setDocumentFilter(new DocumentFilter() {
+			@Override
+			public void insertString(FilterBypass fb, int offset, String string, javax.swing.text.AttributeSet attr)
+					throws javax.swing.text.BadLocationException {
+				if (string.matches("\\d*")) {
+					super.insertString(fb, offset, string, attr);
+				}
+			}
 
-        JLabel textoIdTutor = new JLabel("ID do tutor:");
-        textoIdTutor.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        textoIdTutor.setBounds(327, 77, 77, 14);
-        panel.add(textoIdTutor);
-
-        JLabel texConsul = new JLabel("Consulta PET");
-        texConsul.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        texConsul.setBounds(378, 23, 151, 14);
-        panel.add(texConsul);
-
-<<<<<<< HEAD
-        JButton botaoConsultar = new JButton("Consultar");
-        botaoConsultar.setFont(new Font("Tahoma", Font.BOLD, 11));
-        botaoConsultar.setBounds(436, 124, 119, 23);
-        panel.add(botaoConsultar);
-=======
-		JButton botaoConsultar = new JButton("Consultar");
-		botaoConsultar.setForeground(new Color(255, 255, 255));
-		botaoConsultar.setBackground(new Color(0, 0, 0));
-		botaoConsultar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		botaoConsultar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			@Override
+			public void replace(FilterBypass fb, int offset, int length, String text,
+					javax.swing.text.AttributeSet attrs) throws javax.swing.text.BadLocationException {
+				if (text.matches("\\d*")) {
+					super.replace(fb, offset, length, text, attrs);
+				}
 			}
 		});
+
+		JLabel textoIdTutor = new JLabel("ID do tutor:");
+		textoIdTutor.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textoIdTutor.setBounds(327, 77, 77, 14);
+		panel.add(textoIdTutor);
+
+		JLabel texConsul = new JLabel("Consulta PET");
+		texConsul.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		texConsul.setBounds(378, 23, 151, 14);
+		panel.add(texConsul);
+
+		JButton botaoConsultar = new JButton("Consultar");
+		botaoConsultar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		botaoConsultar.setBounds(436, 124, 119, 23);
 		panel.add(botaoConsultar);
->>>>>>> ea5af2ae76ed793ea573c80ea162781004fd728a
 
-        JLabel textAnimaisPorID = new JLabel("Animais encontrados no CPF Informado");
-        textAnimaisPorID.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        textAnimaisPorID.setBounds(300, 191, 229, 14);
-        panel.add(textAnimaisPorID);
+		JLabel textAnimaisPorID = new JLabel("Animais encontrados no CPF Informado");
+		textAnimaisPorID.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textAnimaisPorID.setBounds(300, 191, 229, 14);
+		panel.add(textAnimaisPorID);
 
-        JComboBox<String> ListAnimaisPorID = new JComboBox<>();
-        ListAnimaisPorID.setBounds(327, 231, 164, 22);
-        panel.add(ListAnimaisPorID);
+		JComboBox<String> ListAnimaisPorID = new JComboBox<>();
+		ListAnimaisPorID.setBounds(327, 231, 164, 22);
+		panel.add(ListAnimaisPorID);
 
-        botaoConsultar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ListAnimaisPorID.removeAllItems();
-                Connection connection = null;
-                Statement st = null;
-                ResultSet rs = null;
+		botaoConsultar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListAnimaisPorID.removeAllItems();
+				Connection connection = null;
+				Statement st = null;
+				ResultSet rs = null;
 
-                try {
-                    int idTutor = Integer.parseInt(caixaInserirIDTutor.getText());
-                    
-                    try {
-                        connection = BD.getConnection();
-                        st = connection.createStatement();
-                        rs = st.executeQuery("SELECT * FROM pets WHERE id_tutor = " + idTutor);
-                        while (rs.next()) {
-                            ListAnimaisPorID.addItem(rs.getString("nome") + " - " + rs.getInt("id"));
-                        }
-                    } catch (SQLException i) {
-                        i.printStackTrace();
-                    } finally {
-                        try {
-                            if (rs != null) rs.close();
-                            if (st != null) st.close();
-                            if (connection != null) connection.close();
-                        } catch (SQLException ex) {
-                            ex.printStackTrace();
-                        }
-                    }
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Por favor, insira um número válido para o ID do tutor.", "Erro", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
+				try {
+					int idTutor = Integer.parseInt(caixaInserirIDTutor.getText());
 
-<<<<<<< HEAD
-        JButton botaoVerificarFicha = new JButton("Verificar Ficha");
-        botaoVerificarFicha.setBounds(349, 283, 125, 23);
-        botaoVerificarFicha.setFont(new Font("Tahoma", Font.BOLD, 11));
-        botaoVerificarFicha.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String[] petSelecionado = String.valueOf(ListAnimaisPorID.getSelectedItem()).split("-");
-                int idPetSelecionado = Integer.parseInt(petSelecionado[1].trim());
-                Pets pet = BDServices.consultarPet(idPetSelecionado);
-                JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-                f.setContentPane(new ConsultaPetsDadosPet(pet));
-                f.revalidate();
-            }
-=======
+					try {
+						connection = BD.getConnection();
+						st = connection.createStatement();
+						rs = st.executeQuery("SELECT * FROM pets WHERE id_tutor = " + idTutor);
+						while (rs.next()) {
+							ListAnimaisPorID.addItem(rs.getString("nome") + " - " + rs.getInt("id"));
+						}
+					} catch (SQLException i) {
+						i.printStackTrace();
+					} 
+					
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "Por favor, insira um número válido para o ID do tutor.",
+							"Erro", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+
 		JButton botaoVerificarFicha = new JButton("Verificar Ficha");
-		botaoVerificarFicha.setBounds(352, 282, 125, 23);
+		botaoVerificarFicha.setBounds(349, 283, 125, 23);
 		botaoVerificarFicha.setFont(new Font("Tahoma", Font.BOLD, 11));
 		botaoVerificarFicha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -194,10 +144,9 @@ public class ConsultaPets extends JPanel {
 				f.setContentPane(new ConsultaPetsDadosPet(pet));
 				f.revalidate();
 			}
->>>>>>> ea5af2ae76ed793ea573c80ea162781004fd728a
 
-        });
+		});
 
-        panel.add(botaoVerificarFicha);
-    }
+		panel.add(botaoVerificarFicha);
+	}
 }
