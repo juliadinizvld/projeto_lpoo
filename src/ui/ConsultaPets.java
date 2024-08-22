@@ -100,7 +100,7 @@ public class ConsultaPets extends JPanel {
 		botaoConsultar.setBounds(436, 124, 119, 34);
 		panel.add(botaoConsultar);
 
-		JLabel textAnimaisPorID = new JLabel("Animais encontrados no CPF Informado");
+		JLabel textAnimaisPorID = new JLabel("Animais encontrados no Id Informado");
 		textAnimaisPorID.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textAnimaisPorID.setBounds(300, 191, 229, 14);
 		panel.add(textAnimaisPorID);
