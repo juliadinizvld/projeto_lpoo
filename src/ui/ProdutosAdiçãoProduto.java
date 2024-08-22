@@ -33,9 +33,8 @@ public class ProdutosAdiçãoProduto extends JPanel {
         MaskFormatter quantidadeProduto = null;
         MaskFormatter valorProduto = null;
         try {
-        	
-            quantidadeProduto = new MaskFormatter("####.##"); 
-            
+            quantidadeProduto = new MaskFormatter("######");
+            quantidadeProduto.setValidCharacters("0123456789");
             valorProduto = new MaskFormatter("###.##");
         } catch (ParseException e) {
             e.printStackTrace();
@@ -93,12 +92,11 @@ public class ProdutosAdiçãoProduto extends JPanel {
 
         JFormattedTextField txtProductName = new JFormattedTextField();
         txtProductName.setBounds(394, 100, 156, 20);
-        
         // Adiciona o filtro para permitir apenas letras (maiúsculas e minúsculas)
         ((AbstractDocument) txtProductName.getDocument()).setDocumentFilter(new FiltroApenasLetras());
         panel.add(txtProductName);
 
-        JFormattedTextField txtQuantity = new JFormattedTextField();
+        JFormattedTextField txtQuantity = new JFormattedTextField(quantidadeProduto);
         txtQuantity.setBounds(394, 134, 28, 20);
         panel.add(txtQuantity);
 
