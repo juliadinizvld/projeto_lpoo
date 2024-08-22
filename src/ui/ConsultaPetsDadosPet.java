@@ -15,6 +15,7 @@ import javax.swing.SwingUtilities;
 
 import business.BDServices;
 import ui.entities.Pets;
+import java.awt.Color;
 import ui.entities.Tutores;
 
 public class ConsultaPetsDadosPet extends JPanel {
@@ -28,7 +29,6 @@ public class ConsultaPetsDadosPet extends JPanel {
 	 * Create the panel.
 	 */
 	public ConsultaPetsDadosPet(Pets pet) {
-		Tutores tutor = BDServices.consultarTutor(pet.getId_tutor());
 		setLayout(null);
 
 		JPanel panel = new JPanel();
@@ -41,12 +41,12 @@ public class ConsultaPetsDadosPet extends JPanel {
 		panel.add(textNomeTutor);
 
 		JLabel textCpfTutor = new JLabel("ID do tutor: " + pet.getId_tutor());
-		textCpfTutor.setBounds(510, 53, 155, 14);
+		textCpfTutor.setBounds(546, 51, 155, 14);
 		panel.add(textCpfTutor);
 
 		JLabel tituloDadosPet = new JLabel("Dados do PET");
 		tituloDadosPet.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tituloDadosPet.setBounds(313, 13, 132, 41);
+		tituloDadosPet.setBounds(271, 13, 132, 41);
 		panel.add(tituloDadosPet);
 
 		table = new JTable();
@@ -70,19 +70,20 @@ public class ConsultaPetsDadosPet extends JPanel {
 		panel.add(TextNomePet);
 
 		JLabel TextEspeciePet = new JLabel("Espécie: " + pet.getEspecie());
-		TextEspeciePet.setBounds(85, 182, 226, 14);
+		TextEspeciePet.setBackground(new Color(255, 255, 255));
+		TextEspeciePet.setBounds(8, 164, 226, 14);
 		panel.add(TextEspeciePet);
 
 		JLabel TextracaPet = new JLabel("Raça: " + pet.getRaca());
-		TextracaPet.setBounds(85, 207, 190, 14);
+		TextracaPet.setBounds(8, 189, 190, 14);
 		panel.add(TextracaPet);
-		
+
 		JLabel Alergias = new JLabel("Alergias: " + pet.getAlergias());
 		Alergias.setBounds(85, 261, 142, 14);
 		panel.add(Alergias);
 
 		JLabel TextSexoPet = new JLabel("Sexo: " + pet.getSexo());
-		TextSexoPet.setBounds(85, 285, 142, 14);
+		TextSexoPet.setBounds(8, 267, 142, 14);
 		panel.add(TextSexoPet);
 
 		JLabel textPesoPet = new JLabel("Peso: " + pet.getPeso());
@@ -114,8 +115,10 @@ public class ConsultaPetsDadosPet extends JPanel {
 		panel.add(listConsultasAnterior);
 
 		JButton botaoVerificarConsulta = new JButton("Verificar Consulta");
-		botaoVerificarConsulta.setFont(new Font("Tahoma", Font.BOLD, 11));
-		botaoVerificarConsulta.setBounds(547, 337, 140, 23);
+		botaoVerificarConsulta.setBackground(new Color(159, 80, 0));
+		botaoVerificarConsulta.setForeground(new Color(255, 255, 255));
+		botaoVerificarConsulta.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		botaoVerificarConsulta.setBounds(492, 288, 140, 23);
 		panel.add(botaoVerificarConsulta);
 
 		botaoVerificarConsulta.addActionListener(new ActionListener() {
@@ -132,7 +135,9 @@ public class ConsultaPetsDadosPet extends JPanel {
 		panel.add(TextNascPet);
 
 		JButton botaoRetornar = new JButton("Retornar");
-		botaoRetornar.setBounds(331, 404, 114, 23);
+		botaoRetornar.setBackground(new Color(159, 80, 0));
+		botaoRetornar.setForeground(new Color(255, 255, 255));
+		botaoRetornar.setBounds(197, 403, 114, 23);
 		panel.add(botaoRetornar);
 
 		botaoRetornar.addActionListener(new ActionListener() {

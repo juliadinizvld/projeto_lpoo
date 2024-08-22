@@ -63,7 +63,7 @@ public class CadastroCadastroTutor extends JPanel {
 		setLayout(null);
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(-145, 0, 917, 696);
+		panel.setBounds(0, 0, 917, 696);
 		add(panel);
 		panel.setLayout(null);
 
@@ -154,7 +154,7 @@ public class CadastroCadastroTutor extends JPanel {
 
 		JButton btnRetornar = new JButton("Retornar ");
 		btnRetornar.setForeground(new Color(255, 255, 255));
-		btnRetornar.setBackground(new Color(0, 0, 0));
+		btnRetornar.setBackground(new Color(159, 80, 0));
 		btnRetornar.setBounds(255, 448, 112, 37);
 		panel.add(btnRetornar);
 
@@ -168,7 +168,7 @@ public class CadastroCadastroTutor extends JPanel {
 		});
 
 		JButton btnAvancar = new JButton("Avançar");
-		btnAvancar.setBackground(new Color(0, 0, 0));
+		btnAvancar.setBackground(new Color(159, 80, 0));
 		btnAvancar.setForeground(new Color(255, 255, 255));
 		btnAvancar.setBounds(436, 448, 148, 37);
 		panel.add(btnAvancar);

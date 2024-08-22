@@ -19,6 +19,7 @@ import javax.swing.text.MaskFormatter;
 import business.BDServices;
 import ui.entities.Funcionarios;
 import ui.entities.MedicosVeterinarios;
+import java.awt.Color;
 
 public class FuncionariosNovoFuncionario extends JPanel {
 
@@ -51,7 +52,8 @@ public class FuncionariosNovoFuncionario extends JPanel {
 		}
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 700, 500);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(-14, 11, 700, 500);
 		add(panel);
 		panel.setLayout(null);
 
@@ -119,10 +121,14 @@ public class FuncionariosNovoFuncionario extends JPanel {
 		campoRmv.setEditable(false);
 
 		JButton botaoRetornar = new JButton("← Retornar");
+		botaoRetornar.setForeground(new Color(255, 255, 255));
+		botaoRetornar.setBackground(new Color(159, 80, 0));
 		botaoRetornar.setBounds(190, 447, 120, 21);
 		panel.add(botaoRetornar);
 
 		JButton botaoConfirmar = new JButton("Confirmar");
+		botaoConfirmar.setForeground(new Color(255, 255, 255));
+		botaoConfirmar.setBackground(new Color(159, 80, 0));
 		botaoConfirmar.setBounds(402, 446, 109, 23);
 		panel.add(botaoConfirmar);
 

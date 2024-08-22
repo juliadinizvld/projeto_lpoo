@@ -11,6 +11,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import java.awt.Color;
 
 public class ProdutosConsultaProduto extends JPanel {
 
@@ -25,7 +26,8 @@ public class ProdutosConsultaProduto extends JPanel {
 		setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 800, 600);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(-150, 0, 800, 600);
 		add(panel);
 		panel.setLayout(null);
 
@@ -45,6 +47,8 @@ public class ProdutosConsultaProduto extends JPanel {
 		campoNomeDoProduto.setColumns(10);
 
 		JButton botaoVerificarProduto = new JButton("Verificar Produto");
+		botaoVerificarProduto.setForeground(new Color(255, 255, 255));
+		botaoVerificarProduto.setBackground(new Color(159, 80, 0));
 		botaoVerificarProduto.setBounds(316, 122, 137, 23);
 		panel.add(botaoVerificarProduto);
 
@@ -58,6 +62,8 @@ public class ProdutosConsultaProduto extends JPanel {
 		panel.add(listaProdutosEncontrados);
 
 		JButton botaoRetornar = new JButton("← Retornar");
+		botaoRetornar.setForeground(new Color(255, 255, 255));
+		botaoRetornar.setBackground(new Color(159, 80, 0));
 		botaoRetornar.setBounds(244, 450, 130, 23);
 		panel.add(botaoRetornar);
 
@@ -72,6 +78,8 @@ public class ProdutosConsultaProduto extends JPanel {
 		});
 
 		JButton botaoRealizarCompra = new JButton("Realizar Compra");
+		botaoRealizarCompra.setForeground(new Color(255, 255, 255));
+		botaoRealizarCompra.setBackground(new Color(159, 80, 0));
 		botaoRealizarCompra.setBounds(407, 450, 137, 23);
 		panel.add(botaoRealizarCompra);
 

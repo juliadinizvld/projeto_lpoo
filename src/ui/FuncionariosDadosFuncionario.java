@@ -12,6 +12,7 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 import ui.entities.Funcionarios;
+import java.awt.Color;
 
 public class FuncionariosDadosFuncionario extends JPanel {
 
@@ -24,7 +25,8 @@ public class FuncionariosDadosFuncionario extends JPanel {
 		setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 821, 500);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(-11, 0, 821, 500);
 		add(panel);
 		panel.setLayout(null);
 
@@ -60,6 +62,8 @@ public class FuncionariosDadosFuncionario extends JPanel {
 		panel.add(textoRmvFuncionario);
 
 		JButton botaoRetornar = new JButton("← Retornar");
+		botaoRetornar.setForeground(new Color(255, 255, 255));
+		botaoRetornar.setBackground(new Color(159, 80, 0));
 		botaoRetornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);

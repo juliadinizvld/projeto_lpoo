@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.Color;
 
 public class FuncionariosPopupFuncionarioAdicionado extends JFrame {
 
@@ -44,19 +45,22 @@ public class FuncionariosPopupFuncionarioAdicionado extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(28, 10, 428, 143);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(0, 0, 484, 161);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JLabel tituloFuncionarioAdicionado = new JLabel("Funcionário adicionado!");
 		tituloFuncionarioAdicionado.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		tituloFuncionarioAdicionado.setHorizontalAlignment(SwingConstants.CENTER);
-		tituloFuncionarioAdicionado.setBounds(111, 41, 197, 20);
+		tituloFuncionarioAdicionado.setBounds(148, 33, 197, 20);
 		panel.add(tituloFuncionarioAdicionado);
 		
 		JButton botaoOk = new JButton("Ok");
+		botaoOk.setForeground(new Color(255, 255, 255));
+		botaoOk.setBackground(new Color(159, 80, 0));
 		botaoOk.setVerticalAlignment(SwingConstants.BOTTOM);
-		botaoOk.setBounds(160, 71, 85, 21);
+		botaoOk.setBounds(214, 79, 85, 21);
 		panel.add(botaoOk);
 	}
 

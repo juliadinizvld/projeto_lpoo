@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import java.awt.Color;
 
 public class ProdutosPagamento extends JPanel {
 
@@ -21,7 +22,8 @@ public class ProdutosPagamento extends JPanel {
 	public ProdutosPagamento() {
 		setLayout(null);
 		JPanel panel = new JPanel();
-		panel.setBounds(45, 11, 700, 500);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(-63, -47, 700, 500);
 		add(panel);
 		panel.setLayout(null);
 
@@ -32,7 +34,7 @@ public class ProdutosPagamento extends JPanel {
 
 		JLabel textoNomeDoProduto = new JLabel("Nome do produto: ");
 		textoNomeDoProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoNomeDoProduto.setBounds(168, 100, 322, 25);
+		textoNomeDoProduto.setBounds(168, 98, 322, 25);
 		panel.add(textoNomeDoProduto);
 
 		JLabel textoQuantidadeSolicitada = new JLabel("Quantidade solicitada: ");
@@ -45,7 +47,7 @@ public class ProdutosPagamento extends JPanel {
 		textoConclusaoCompra.setVerticalAlignment(SwingConstants.TOP);
 		textoConclusaoCompra.setHorizontalAlignment(SwingConstants.CENTER);
 		textoConclusaoCompra.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoConclusaoCompra.setBounds(168, 170, 352, 94);
+		textoConclusaoCompra.setBounds(178, 170, 352, 94);
 		panel.add(textoConclusaoCompra);
 
 		JLabel linkMercadoPagoApi = new JLabel("Link mercado pago");
@@ -53,6 +55,8 @@ public class ProdutosPagamento extends JPanel {
 		panel.add(linkMercadoPagoApi);
 
 		JButton botaoRetornar = new JButton("← Retornar");
+		botaoRetornar.setForeground(new Color(255, 255, 255));
+		botaoRetornar.setBackground(new Color(159, 80, 0));
 		botaoRetornar.setBounds(168, 344, 117, 23);
 		panel.add(botaoRetornar);
 

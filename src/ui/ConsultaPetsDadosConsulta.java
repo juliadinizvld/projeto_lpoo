@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import ui.entities.Pets;
+import java.awt.Color;
 
 public class ConsultaPetsDadosConsulta extends JPanel {
 
@@ -21,6 +22,7 @@ public class ConsultaPetsDadosConsulta extends JPanel {
 	public ConsultaPetsDadosConsulta(Pets pet) {
 		setLayout(null);
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 821, 500);
 		add(panel);
 		panel.setLayout(null);
@@ -54,6 +56,8 @@ public class ConsultaPetsDadosConsulta extends JPanel {
 		panel.add(textValorConsulta);
 
 		JButton botaoSair = new JButton("Sair");
+		botaoSair.setForeground(new Color(255, 255, 255));
+		botaoSair.setBackground(new Color(159, 80, 0));
 		botaoSair.setBounds(672, 21, 89, 23);
 		botaoSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

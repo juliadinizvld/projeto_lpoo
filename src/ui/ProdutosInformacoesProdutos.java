@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import java.awt.Color;
 
 public class ProdutosInformacoesProdutos extends JPanel {
 
@@ -24,7 +25,8 @@ public class ProdutosInformacoesProdutos extends JPanel {
 		setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(45, 11, 700, 500);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(-73, -114, 700, 500);
 		add(panel);
 		panel.setLayout(null);
 
@@ -58,6 +60,8 @@ public class ProdutosInformacoesProdutos extends JPanel {
 		panel.add(SelectQuantidadeDesejada);
 
 		botaoRetornar = new JButton("← Retornar");
+		botaoRetornar.setForeground(new Color(255, 255, 255));
+		botaoRetornar.setBackground(new Color(159, 80, 0));
 		botaoRetornar.setBounds(170, 345, 131, 23);
 		panel.add(botaoRetornar);
 
@@ -74,6 +78,8 @@ public class ProdutosInformacoesProdutos extends JPanel {
 		});
 		
 		JButton botaoFazerPedido = new JButton("Fazer pedido");
+		botaoFazerPedido.setBackground(new Color(159, 80, 0));
+		botaoFazerPedido.setForeground(new Color(255, 255, 255));
 		botaoFazerPedido.setBounds(335, 345, 150, 23);
 		panel.add(botaoFazerPedido);
 		

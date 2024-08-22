@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import java.awt.Color;
 
 public class ProdutosPagamentoConcluido extends JPanel {
 
@@ -22,6 +23,7 @@ public class ProdutosPagamentoConcluido extends JPanel {
 	public ProdutosPagamentoConcluido() {
 		setLayout(null);
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 700, 500);
 		add(panel);
 		panel.setLayout(null);
@@ -39,6 +41,8 @@ public class ProdutosPagamentoConcluido extends JPanel {
 		panel.add(textoPagamentoConcluido);
 
 		JButton botaoRetornar = new JButton("Retornar a página inicial");
+		botaoRetornar.setForeground(new Color(255, 255, 255));
+		botaoRetornar.setBackground(new Color(159, 80, 0));
 		botaoRetornar.setBounds(254, 203, 197, 49);
 		panel.add(botaoRetornar);
 

@@ -36,11 +36,14 @@ public class ConsultaPets extends JPanel {
 	public ConsultaPets() {
 		setLayout(null);
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 821, 500);
 		add(panel);
 		panel.setLayout(null);
 
 		JButton botaoRetornar = new JButton(" <- Retornar");
+		botaoRetornar.setForeground(new Color(255, 255, 255));
+		botaoRetornar.setBackground(new Color(159, 80, 0));
 		botaoRetornar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		botaoRetornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -49,7 +52,7 @@ public class ConsultaPets extends JPanel {
 				f.revalidate();
 			}
 		});
-		botaoRetornar.setBounds(281, 124, 125, 23);
+		botaoRetornar.setBounds(281, 124, 125, 34);
 		panel.add(botaoRetornar);
 
 		/**
@@ -91,8 +94,10 @@ public class ConsultaPets extends JPanel {
 		panel.add(texConsul);
 
 		JButton botaoConsultar = new JButton("Consultar");
+		botaoConsultar.setBackground(new Color(159, 80, 0));
+		botaoConsultar.setForeground(new Color(255, 255, 255));
 		botaoConsultar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		botaoConsultar.setBounds(436, 124, 119, 23);
+		botaoConsultar.setBounds(436, 124, 119, 34);
 		panel.add(botaoConsultar);
 
 		JLabel textAnimaisPorID = new JLabel("Animais encontrados no CPF Informado");
@@ -101,6 +106,7 @@ public class ConsultaPets extends JPanel {
 		panel.add(textAnimaisPorID);
 
 		JComboBox<String> ListAnimaisPorID = new JComboBox<>();
+		ListAnimaisPorID.setBackground(new Color(192, 192, 192));
 		ListAnimaisPorID.setBounds(327, 231, 164, 22);
 		panel.add(ListAnimaisPorID);
 
@@ -133,7 +139,9 @@ public class ConsultaPets extends JPanel {
 		});
 
 		JButton botaoVerificarFicha = new JButton("Verificar Ficha");
-		botaoVerificarFicha.setBounds(349, 283, 125, 23);
+		botaoVerificarFicha.setForeground(new Color(255, 255, 255));
+		botaoVerificarFicha.setBackground(new Color(159, 80, 0));
+		botaoVerificarFicha.setBounds(349, 283, 125, 34);
 		botaoVerificarFicha.setFont(new Font("Tahoma", Font.BOLD, 11));
 		botaoVerificarFicha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

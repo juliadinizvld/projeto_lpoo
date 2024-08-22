@@ -20,6 +20,7 @@ import javax.swing.SwingUtilities;
 import business.BDServices;
 import data.BD;
 import ui.entities.Funcionarios;
+import java.awt.Color;
 
 public class FuncionariosConsultaFuncionario extends JPanel {
 
@@ -34,7 +35,8 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 		setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 821, 500);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(-15, -13, 821, 500);
 		add(panel);
 		panel.setLayout(null);
 
@@ -55,6 +57,8 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 		campoNomeFuncionario.setColumns(10);
 
 		JButton botaoPesquisarFuncionario = new JButton("Pesquisar Funcionario");
+		botaoPesquisarFuncionario.setForeground(new Color(255, 255, 255));
+		botaoPesquisarFuncionario.setBackground(new Color(159, 80, 0));
 		botaoPesquisarFuncionario.setBounds(299, 133, 171, 23);
 		panel.add(botaoPesquisarFuncionario);
 
@@ -90,6 +94,8 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 		});
 
 		JButton botaoVerificarFuncionario = new JButton("<html>Verificar <br>funcionário</html>");
+		botaoVerificarFuncionario.setForeground(new Color(255, 255, 255));
+		botaoVerificarFuncionario.setBackground(new Color(159, 80, 0));
 		botaoVerificarFuncionario.setBounds(320, 251, 150, 40);
 		panel.add(botaoVerificarFuncionario);
 
@@ -108,6 +114,8 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 		});
 
 		JButton botaoRetornar = new JButton("← Retornar");
+		botaoRetornar.setForeground(new Color(255, 255, 255));
+		botaoRetornar.setBackground(new Color(159, 80, 0));
 		botaoRetornar.setBounds(248, 426, 99, 21);
 		panel.add(botaoRetornar);
 
@@ -122,6 +130,8 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 		});
 
 		JButton botaoAdicionarFuncionario = new JButton("Adicionar novo funcionário\r\n");
+		botaoAdicionarFuncionario.setForeground(new Color(255, 255, 255));
+		botaoAdicionarFuncionario.setBackground(new Color(159, 80, 0));
 		botaoAdicionarFuncionario.setBounds(425, 407, 209, 40);
 		panel.add(botaoAdicionarFuncionario);
 

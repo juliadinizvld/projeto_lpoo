@@ -60,7 +60,7 @@ public class Home extends JPanel {
 		JButton cadastroPetsButton = new JButton("Cadastro de pets");
 		cadastroPetsButton.setForeground(new Color(255, 255, 255));
 		cadastroPetsButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		cadastroPetsButton.setBackground(new Color(0, 0, 0));
+		cadastroPetsButton.setBackground(new Color(159, 80, 0));
 		cadastroPetsButton.setBounds(295, 97, 200, 60);
 		cadastroPetsButton.addActionListener(e -> {
 			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
@@ -70,7 +70,7 @@ public class Home extends JPanel {
 
 		JButton consultarPetsButton = new JButton("Consultar pets");
 		consultarPetsButton.setForeground(new Color(255, 255, 255));
-		consultarPetsButton.setBackground(new Color(0, 0, 0));
+		consultarPetsButton.setBackground(new Color(159, 80, 0));
 		consultarPetsButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		consultarPetsButton.setBounds(295, 187, 200, 60);
 
@@ -84,7 +84,7 @@ public class Home extends JPanel {
 				"<html><div style='text-align: center;'>Agendamento de<br/>procedimentos</div></html>");
 		agendamentoProcedimentosButton.setForeground(new Color(255, 255, 255));
 		agendamentoProcedimentosButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		agendamentoProcedimentosButton.setBackground(new Color(0, 0, 0));
+		agendamentoProcedimentosButton.setBackground(new Color(159, 80, 0));
 		agendamentoProcedimentosButton.setBounds(295, 270, 200, 64);
 		agendamentoProcedimentosButton.addActionListener(e -> {
 			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
@@ -96,7 +96,7 @@ public class Home extends JPanel {
 				"<html><div style='text-align: center;'>Consulta de<br/><div style='padding-left: 5px;'>produtos</div></div></html>");
 		consultaProdutosButton.setForeground(new Color(255, 255, 255));
 		consultaProdutosButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		consultaProdutosButton.setBackground(new Color(0, 0, 0));
+		consultaProdutosButton.setBackground(new Color(159, 80, 0));
 		consultaProdutosButton.setBounds(295, 360, 200, 60);
 		consultaProdutosButton.addActionListener(e -> {
 			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
@@ -127,6 +127,7 @@ public class Home extends JPanel {
 		add(containerPanel);
 
 		JMenuBar menuAdministrador = new JMenuBar();
+		menuAdministrador.setBackground(new Color(249, 220, 189));
 		menuAdministrador.setBounds(0, 0, 800, 22);
 		add(menuAdministrador);
 

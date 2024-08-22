@@ -46,12 +46,14 @@ public class AdicaoProdutos extends JPanel {
 		panel.setLayout(null);
 
 		JButton btnAddProduct = new JButton("Adicionar produto\r\n");
-		btnAddProduct.setBackground(new Color(0, 0, 0));
+		btnAddProduct.setForeground(new Color(255, 255, 255));
+		btnAddProduct.setBackground(new Color(159, 80, 0));
 		btnAddProduct.setBounds(436, 237, 167, 23);
 		panel.add(btnAddProduct);
 
 		JButton btnReturn = new JButton("<-    Retornar");
-		btnReturn.setBackground(new Color(0, 0, 0));
+		btnReturn.setForeground(new Color(255, 255, 255));
+		btnReturn.setBackground(new Color(159, 80, 0));
 		btnReturn.setBounds(282, 237, 125, 23);
 		panel.add(btnReturn);
 
@@ -66,7 +68,7 @@ public class AdicaoProdutos extends JPanel {
 		panel.add(lblTypeOfProduct);
 
 		JComboBox<String> comboBox = new JComboBox<>();
-		comboBox.setBackground(new Color(0, 0, 0));
+		comboBox.setBackground(new Color(192, 192, 192));
 		comboBox.setModel(new DefaultComboBoxModel<>(new String[] { "Consulta", "Exame", "Cirurgia", "Vacina" }));
 		comboBox.setBounds(394, 67, 167, 22);
 		panel.add(comboBox);
