@@ -1,6 +1,9 @@
 package business;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import java.util.List;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -80,4 +83,16 @@ public class BDServices {
 		em.close();
 		return pet;
 	}
+	
+	  public static List<Produtos> consultarProdutosPorNome(String nome) {
+		    EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+	        EntityManager em = emf.createEntityManager();
+	        TypedQuery<Produtos> query = em.createQuery(
+	            "SELECT p FROM Produtos p WHERE p.nome LIKE :nome", Produtos.class
+	        );
+	        query.setParameter("nome", "%" + nome + "%");
+	        List<Produtos> produtos = query.getResultList();
+	        em.close();
+	        return produtos;
+	    }
 }
