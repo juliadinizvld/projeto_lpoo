@@ -29,13 +29,13 @@ public class CadastroEscolha extends JPanel {
 		// Cria um painel principal com um layout de BorderLayout
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(-40, 0, 700, 500);
+		panel.setBounds(0, 0, 800, 600);
 		add(panel);
 		panel.setLayout(null);
 
 		// Adiciona os componentes
 		JLabel lblNewLabel = new JLabel("Tutor já é cadastrado?");
-		lblNewLabel.setBounds(239, 30, 373, 22);
+		lblNewLabel.setBounds(291, 31, 188, 22);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 17));
 		panel.add(lblNewLabel);
 

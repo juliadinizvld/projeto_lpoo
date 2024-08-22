@@ -100,7 +100,6 @@ public class AgendamentoAgendarProcedimento extends JPanel {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
 				f.setContentPane(Home.telaInicial);
 				f.revalidate();
-				BD.closeConnection();
 			}
 		});
 

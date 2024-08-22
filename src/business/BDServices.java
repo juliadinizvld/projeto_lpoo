@@ -83,16 +83,23 @@ public class BDServices {
 		em.close();
 		return pet;
 	}
-	
-	  public static List<Produtos> consultarProdutosPorNome(String nome) {
-		    EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
-	        EntityManager em = emf.createEntityManager();
-	        TypedQuery<Produtos> query = em.createQuery(
-	            "SELECT p FROM Produtos p WHERE p.nome LIKE :nome", Produtos.class
-	        );
-	        query.setParameter("nome", "%" + nome + "%");
-	        List<Produtos> produtos = query.getResultList();
-	        em.close();
-	        return produtos;
-	    }
+
+	public static Tutores consultarTutor(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		Tutores tutor = em.find(Tutores.class, id);
+		emf.close();
+		em.close();
+		return tutor;
+	}
+
+	public static List<Produtos> consultarProdutosPorNome(String nome) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		TypedQuery<Produtos> query = em.createQuery("SELECT p FROM Produtos p WHERE p.nome LIKE :nome", Produtos.class);
+		query.setParameter("nome", "%" + nome + "%");
+		List<Produtos> produtos = query.getResultList();
+		em.close();
+		return produtos;
+	}
 }
