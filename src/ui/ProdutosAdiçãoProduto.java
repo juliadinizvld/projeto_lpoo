@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.text.AbstractDocument;
@@ -108,6 +109,7 @@ public class ProdutosAdiçãoProduto extends JPanel {
         btnAddProduct.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            	JOptionPane.showMessageDialog(panel, "Adicionado com sucesso!");
                 String tipoProduto = String.valueOf(comboBox.getSelectedItem()).toUpperCase();
                 String nomeProduto = String.valueOf(txtProductName.getText());
                 int quantidadeProduto = Integer.parseInt(txtQuantity.getText());
@@ -115,7 +117,9 @@ public class ProdutosAdiçãoProduto extends JPanel {
                 Produtos produto = new Produtos(null, tipoProduto, nomeProduto, quantidadeProduto,
                         valorUnitarioProduto);
                 BDServices.inserirProduto(produto);
+             
             }
+            
         });
 
         btnReturn.addActionListener(new ActionListener() {
