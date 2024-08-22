@@ -20,6 +20,7 @@ import javax.swing.text.MaskFormatter;
 
 import business.BDServices;
 import ui.entities.Tutores;
+import java.awt.Color;
 
 public class CadastroCadastroTutor extends JPanel {
 
@@ -51,7 +52,7 @@ public class CadastroCadastroTutor extends JPanel {
 		try {
 			mfcpf = new MaskFormatter("###.###.###-##");
 			mfDataNascimento = new MaskFormatter("##/##/####");
-			mfTelefone = new MaskFormatter("### #####-####");
+			mfTelefone = new MaskFormatter("## #####-####");
 			mfEstado = new MaskFormatter("UU");
 			mfCep = new MaskFormatter("########");
 			mfCep.setValidCharacters("0123456789");
@@ -60,9 +61,9 @@ public class CadastroCadastroTutor extends JPanel {
 		}
 
 		setLayout(null);
-		// Cria um painel principal com um layout de BorderLayout
 		JPanel panel = new JPanel();
-		panel.setBounds(45, 0, 700, 500);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(-145, 0, 917, 696);
 		add(panel);
 		panel.setLayout(null);
 
@@ -107,7 +108,7 @@ public class CadastroCadastroTutor extends JPanel {
 		panel.add(lblCep);
 
 		JLabel lblRua = new JLabel("Rua/Av");
-		lblRua.setBounds(397, 236, 45, 13);
+		lblRua.setBounds(397, 234, 45, 13);
 		lblRua.setFont(new Font("Arial", Font.BOLD, 10));
 		panel.add(lblRua);
 
@@ -132,7 +133,7 @@ public class CadastroCadastroTutor extends JPanel {
 		campoDataNascimento.setColumns(10);
 
 		campoCep = new JFormattedTextField(mfCep);
-		campoCep.setBounds(255, 230, 96, 19);
+		campoCep.setBounds(230, 229, 96, 19);
 		panel.add(campoCep);
 		campoCep.setColumns(10);
 
@@ -152,6 +153,8 @@ public class CadastroCadastroTutor extends JPanel {
 		campoRua.setColumns(10);
 
 		JButton btnRetornar = new JButton("Retornar ");
+		btnRetornar.setForeground(new Color(255, 255, 255));
+		btnRetornar.setBackground(new Color(0, 0, 0));
 		btnRetornar.setBounds(255, 448, 112, 37);
 		panel.add(btnRetornar);
 
@@ -165,6 +168,8 @@ public class CadastroCadastroTutor extends JPanel {
 		});
 
 		JButton btnAvancar = new JButton("Avançar");
+		btnAvancar.setBackground(new Color(0, 0, 0));
+		btnAvancar.setForeground(new Color(255, 255, 255));
 		btnAvancar.setBounds(436, 448, 148, 37);
 		panel.add(btnAvancar);
 
@@ -232,14 +237,16 @@ public class CadastroCadastroTutor extends JPanel {
 					return;
 				}
 
-				int numeroCasa;
-				try {
-					numeroCasa = Integer.parseInt(numeroCasaStr);
-				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(null, "Número da casa deve ser um número válido.", "Erro",
-							JOptionPane.ERROR_MESSAGE);
-					return;
-				}
+		        int numeroCasa ;
+		        try {
+		            numeroCasa = Integer.parseInt(numeroCasaStr);
+		        } catch (NumberFormatException ex) {
+		            JOptionPane.showMessageDialog(null, "Número da casa deve ser um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+		            return;
+		        }
+		        
+
+		
 
 				if (cep.length() != 8) {
 					JOptionPane.showMessageDialog(null, "O CEP deve ter exatamente 8 dígitos numéricos.", "Erro",

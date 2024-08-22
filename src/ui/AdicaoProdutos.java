@@ -16,6 +16,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.text.MaskFormatter;
 import business.BDServices;
 import ui.entities.Produtos;
+import java.awt.Color;
 
 public class AdicaoProdutos extends JPanel {
 
@@ -39,21 +40,24 @@ public class AdicaoProdutos extends JPanel {
 
 		setLayout(null);
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 821, 500);
 		add(panel);
 		panel.setLayout(null);
 
 		JButton btnAddProduct = new JButton("Adicionar produto\r\n");
+		btnAddProduct.setBackground(new Color(0, 0, 0));
 		btnAddProduct.setBounds(436, 237, 167, 23);
 		panel.add(btnAddProduct);
 
 		JButton btnReturn = new JButton("<-    Retornar");
+		btnReturn.setBackground(new Color(0, 0, 0));
 		btnReturn.setBounds(282, 237, 125, 23);
 		panel.add(btnReturn);
 
 		JLabel lblTitle = new JLabel("Adição de Produtos");
 		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblTitle.setBounds(302, 11, 218, 39);
+		lblTitle.setBounds(313, 17, 218, 39);
 		panel.add(lblTitle);
 
 		JLabel lblTypeOfProduct = new JLabel("Tipo de Produto:");
@@ -62,6 +66,7 @@ public class AdicaoProdutos extends JPanel {
 		panel.add(lblTypeOfProduct);
 
 		JComboBox<String> comboBox = new JComboBox<>();
+		comboBox.setBackground(new Color(0, 0, 0));
 		comboBox.setModel(new DefaultComboBoxModel<>(new String[] { "Consulta", "Exame", "Cirurgia", "Vacina" }));
 		comboBox.setBounds(394, 67, 167, 22);
 		panel.add(comboBox);
