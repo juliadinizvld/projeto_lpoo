@@ -13,7 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 
+import business.BDServices;
 import ui.entities.Pets;
+import ui.entities.Tutores;
 
 public class ConsultaPetsDadosPet extends JPanel {
 
@@ -26,6 +28,7 @@ public class ConsultaPetsDadosPet extends JPanel {
 	 * Create the panel.
 	 */
 	public ConsultaPetsDadosPet(Pets pet) {
+		Tutores tutor = BDServices.consultarTutor(pet.getId_tutor());
 		setLayout(null);
 
 		JPanel panel = new JPanel();
@@ -33,17 +36,17 @@ public class ConsultaPetsDadosPet extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 
-		JLabel textNomeTutor = new JLabel("Nome do Tutor: ");
-		textNomeTutor.setBounds(546, 26, 201, 14);
+		JLabel textNomeTutor = new JLabel("Nome do Tutor: " + tutor.getNome());
+		textNomeTutor.setBounds(510, 28, 264, 14);
 		panel.add(textNomeTutor);
 
 		JLabel textCpfTutor = new JLabel("ID do tutor: " + pet.getId_tutor());
-		textCpfTutor.setBounds(546, 51, 155, 14);
+		textCpfTutor.setBounds(510, 53, 155, 14);
 		panel.add(textCpfTutor);
 
 		JLabel tituloDadosPet = new JLabel("Dados do PET");
 		tituloDadosPet.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tituloDadosPet.setBounds(271, 13, 132, 41);
+		tituloDadosPet.setBounds(313, 13, 132, 41);
 		panel.add(tituloDadosPet);
 
 		table = new JTable();
@@ -59,35 +62,39 @@ public class ConsultaPetsDadosPet extends JPanel {
 		panel.add(table_2);
 
 		JLabel textIDPet = new JLabel("ID: " + pet.getId());
-		textIDPet.setBounds(8, 109, 86, 14);
+		textIDPet.setBounds(85, 127, 86, 14);
 		panel.add(textIDPet);
 
 		JLabel TextNomePet = new JLabel("Nome: " + pet.getNome());
-		TextNomePet.setBounds(8, 134, 226, 14);
+		TextNomePet.setBounds(85, 152, 226, 14);
 		panel.add(TextNomePet);
 
 		JLabel TextEspeciePet = new JLabel("Espécie: " + pet.getEspecie());
-		TextEspeciePet.setBounds(8, 164, 226, 14);
+		TextEspeciePet.setBounds(85, 182, 226, 14);
 		panel.add(TextEspeciePet);
 
 		JLabel TextracaPet = new JLabel("Raça: " + pet.getRaca());
-		TextracaPet.setBounds(8, 189, 190, 14);
+		TextracaPet.setBounds(85, 207, 190, 14);
 		panel.add(TextracaPet);
+		
+		JLabel Alergias = new JLabel("Alergias: " + pet.getAlergias());
+		Alergias.setBounds(85, 261, 142, 14);
+		panel.add(Alergias);
 
 		JLabel TextSexoPet = new JLabel("Sexo: " + pet.getSexo());
-		TextSexoPet.setBounds(8, 267, 142, 14);
+		TextSexoPet.setBounds(85, 285, 142, 14);
 		panel.add(TextSexoPet);
 
 		JLabel textPesoPet = new JLabel("Peso: " + pet.getPeso());
-		textPesoPet.setBounds(8, 292, 114, 14);
+		textPesoPet.setBounds(85, 310, 114, 14);
 		panel.add(textPesoPet);
 
 		JLabel textVacinasPet = new JLabel("Vacinas: " + pet.getVacinas());
-		textVacinasPet.setBounds(8, 317, 155, 14);
+		textVacinasPet.setBounds(85, 335, 155, 14);
 		panel.add(textVacinasPet);
 
 		JLabel textListaDeConsulta = new JLabel("Lista de Consultas ");
-		textListaDeConsulta.setBounds(484, 122, 108, 14);
+		textListaDeConsulta.setBounds(560, 171, 108, 14);
 		panel.add(textListaDeConsulta);
 
 		JList listConsultasAnterior = new JList();
@@ -103,12 +110,12 @@ public class ConsultaPetsDadosPet extends JPanel {
 				return values[index];
 			}
 		});
-		listConsultasAnterior.setBounds(429, 147, 244, 109);
+		listConsultasAnterior.setBounds(484, 196, 244, 109);
 		panel.add(listConsultasAnterior);
 
 		JButton botaoVerificarConsulta = new JButton("Verificar Consulta");
 		botaoVerificarConsulta.setFont(new Font("Tahoma", Font.BOLD, 11));
-		botaoVerificarConsulta.setBounds(492, 288, 140, 23);
+		botaoVerificarConsulta.setBounds(547, 337, 140, 23);
 		panel.add(botaoVerificarConsulta);
 
 		botaoVerificarConsulta.addActionListener(new ActionListener() {
@@ -121,11 +128,11 @@ public class ConsultaPetsDadosPet extends JPanel {
 		});
 
 		JLabel TextNascPet = new JLabel("Nascimento: " + pet.getDataNascimento());
-		TextNascPet.setBounds(8, 205, 208, 27);
+		TextNascPet.setBounds(85, 223, 208, 27);
 		panel.add(TextNascPet);
 
 		JButton botaoRetornar = new JButton("Retornar");
-		botaoRetornar.setBounds(197, 403, 114, 23);
+		botaoRetornar.setBounds(331, 404, 114, 23);
 		panel.add(botaoRetornar);
 
 		botaoRetornar.addActionListener(new ActionListener() {
