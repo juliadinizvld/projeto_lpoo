@@ -18,15 +18,15 @@ import business.BDServices;
 import ui.entities.Produtos;
 import java.awt.Color;
 
-public class AdicaoProdutos extends JPanel {
+public class ProdutosAdiçãoProduto extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public static AdicaoProdutos adicaoProdutos1 = new AdicaoProdutos();
+	public static ProdutosAdiçãoProduto adicaoProdutos1 = new ProdutosAdiçãoProduto();
 
 	/**
 	 * Create the panel.
 	 */
-	public AdicaoProdutos() {
+	public ProdutosAdiçãoProduto() {
 
 		MaskFormatter quantidadeProduto = null;
 		MaskFormatter valorProduto = null;
@@ -118,7 +118,7 @@ public class AdicaoProdutos extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new Home());
+				f.setContentPane(new ProdutosPesquisaProduto());
 				f.revalidate();
 			}
 

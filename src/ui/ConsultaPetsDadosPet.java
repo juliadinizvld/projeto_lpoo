@@ -30,7 +30,8 @@ public class ConsultaPetsDadosPet extends JPanel {
 	 */
 	public ConsultaPetsDadosPet(Pets pet) {
 		setLayout(null);
-
+		Tutores tutor = BDServices.consultarTutor(pet.getId_tutor());
+		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 821, 500);

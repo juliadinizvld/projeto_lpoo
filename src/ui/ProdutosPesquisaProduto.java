@@ -104,11 +104,11 @@ public class ProdutosPesquisaProduto extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String[] produtoSelecionado = String.valueOf(selectResultadoProdutos.getSelectedItem())
 						.split("-");
-				int idProdutoSelecionado = Integer.parseInt(produtoSelecionado[1].trim());
-				Produtos produto = BDServices.consultarProduto(idProdutoSelecionado);
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new AdicaoProdutos(produto));
-				f.revalidate();
+				//int idProdutoSelecionado = Integer.parseInt(produtoSelecionado[1].trim());
+				//Produtos produto = BDServices.consultarProduto(idProdutoSelecionado);
+				//JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				//f.setContentPane(new AdicaoProdutos(produto));
+				//f.revalidate();
 			}
 
 		});
@@ -135,7 +135,7 @@ public class ProdutosPesquisaProduto extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new AdicaoProdutos());
+				f.setContentPane(new ProdutosAdiçãoProduto());
 				f.revalidate();
 			}
 

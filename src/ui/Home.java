@@ -141,7 +141,7 @@ public class Home extends JPanel {
 		menuItemProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new AdicaoProdutos());
+				f.setContentPane(new ProdutosPesquisaProduto());
 				f.revalidate();
 			}
 		});
