@@ -59,7 +59,7 @@ public class CadastroCadastroPet extends JPanel {
 		// Cria um painel principal com um layout de BorderLayout
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(10, -11, 715, 523);
+		panel.setBounds(0, 11, 715, 523);
 		add(panel);
 		panel.setLayout(null);
 

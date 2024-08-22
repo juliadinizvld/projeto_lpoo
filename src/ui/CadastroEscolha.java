@@ -29,7 +29,7 @@ public class CadastroEscolha extends JPanel {
 		// Cria um painel principal com um layout de BorderLayout
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(0, 0, 700, 500);
+		panel.setBounds(-11, 0, 700, 500);
 		add(panel);
 		panel.setLayout(null);
 
@@ -41,7 +41,7 @@ public class CadastroEscolha extends JPanel {
 
 		JButton btnRetornar = new JButton("Retornar ");
 		btnRetornar.setForeground(new Color(255, 255, 255));
-		btnRetornar.setBackground(new Color(0, 0, 0));
+		btnRetornar.setBackground(new Color(159, 80, 0));
 		btnRetornar.setBounds(134, 136, 112, 37);
 		btnRetornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -54,7 +54,7 @@ public class CadastroEscolha extends JPanel {
 
 		JButton btnNovoCadastro = new JButton("Novo Cadastro");
 		btnNovoCadastro.setForeground(new Color(255, 255, 255));
-		btnNovoCadastro.setBackground(new Color(0, 0, 0));
+		btnNovoCadastro.setBackground(new Color(159, 80, 0));
 		btnNovoCadastro.setBounds(275, 136, 148, 37);
 		btnNovoCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -67,7 +67,7 @@ public class CadastroEscolha extends JPanel {
 		
 		JButton btnJaCadastrado = new JButton("Já sou cadastrado");
 		btnJaCadastrado.setForeground(new Color(255, 255, 255));
-		btnJaCadastrado.setBackground(new Color(0, 0, 0));
+		btnJaCadastrado.setBackground(new Color(159, 80, 0));
 		btnJaCadastrado.setBounds(457, 136, 148, 37);
 		panel.add(btnJaCadastrado);
 		

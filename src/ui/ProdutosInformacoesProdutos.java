@@ -62,7 +62,7 @@ public class ProdutosInformacoesProdutos extends JPanel {
 		botaoRetornar = new JButton("← Retornar");
 		botaoRetornar.setForeground(new Color(255, 255, 255));
 		botaoRetornar.setBackground(new Color(159, 80, 0));
-		botaoRetornar.setBounds(170, 345, 131, 23);
+		botaoRetornar.setBounds(170, 345, 131, 36);
 		panel.add(botaoRetornar);
 
 		botaoRetornar.addActionListener(new ActionListener() {
@@ -80,7 +80,7 @@ public class ProdutosInformacoesProdutos extends JPanel {
 		JButton botaoFazerPedido = new JButton("Fazer pedido");
 		botaoFazerPedido.setBackground(new Color(159, 80, 0));
 		botaoFazerPedido.setForeground(new Color(255, 255, 255));
-		botaoFazerPedido.setBounds(335, 345, 150, 23);
+		botaoFazerPedido.setBounds(335, 345, 150, 36);
 		panel.add(botaoFazerPedido);
 		
 		botaoFazerPedido.addActionListener(new ActionListener() {

@@ -20,6 +20,7 @@ import javax.swing.SwingUtilities;
 import business.BDServices;
 import data.BD;
 import ui.entities.Funcionarios;
+import java.awt.Color;
 
 public class ProdutosPesquisaProduto extends JPanel {
 
@@ -34,6 +35,7 @@ public class ProdutosPesquisaProduto extends JPanel {
 		setLayout(null);
 
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 821, 500);
 		add(panel);
 		panel.setLayout(null);
@@ -55,6 +57,8 @@ public class ProdutosPesquisaProduto extends JPanel {
 		campoNomeProduto.setColumns(10);
 
 		JButton botaoPesquisarProduto = new JButton("Pesquisar Produto");
+		botaoPesquisarProduto.setForeground(new Color(255, 255, 255));
+		botaoPesquisarProduto.setBackground(new Color(159, 80, 0));
 		botaoPesquisarProduto.setBounds(299, 133, 171, 23);
 		panel.add(botaoPesquisarProduto);
 
@@ -90,6 +94,8 @@ public class ProdutosPesquisaProduto extends JPanel {
 		});
 
 		JButton botaoVerificarProduto = new JButton("<html>Verificar <br>produto</html>");
+		botaoVerificarProduto.setForeground(new Color(255, 255, 255));
+		botaoVerificarProduto.setBackground(new Color(159, 80, 0));
 		botaoVerificarProduto.setBounds(320, 251, 150, 40);
 		panel.add(botaoVerificarProduto);
 

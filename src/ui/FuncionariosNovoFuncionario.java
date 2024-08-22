@@ -53,7 +53,7 @@ public class FuncionariosNovoFuncionario extends JPanel {
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(-14, 11, 700, 500);
+		panel.setBounds(-12, 11, 700, 500);
 		add(panel);
 		panel.setLayout(null);
 

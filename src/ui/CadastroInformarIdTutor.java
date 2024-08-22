@@ -13,9 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import java.awt.Color;
 
-import business.BDServices;
-import ui.entities.Tutores;
-
 public class CadastroInformarIdTutor extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -57,7 +54,7 @@ public class CadastroInformarIdTutor extends JPanel {
 		btnConfirmar.setBounds(340, 146, 148, 37);
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+		
 			}
 		});
 		panel.add(btnConfirmar);
@@ -82,48 +79,7 @@ public class CadastroInformarIdTutor extends JPanel {
 		btnAvancar.setBounds(270, 305, 148, 37);
 		panel.add(btnAvancar);
 
-		JLabel textoCampoIdTutor = new JLabel("ID:");
-		textoCampoIdTutor.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textoCampoIdTutor.setBounds(261, 90, 35, 17);
-		panel.add(textoCampoIdTutor);
-
-		JLabel textoIdTutor = new JLabel("Id tutor: ");
-		textoIdTutor.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textoIdTutor.setBounds(223, 240, 279, 14);
-		panel.add(textoIdTutor);
-
-		JLabel textoNomeTutor = new JLabel("Nome do tutor:");
-		textoNomeTutor.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textoNomeTutor.setBounds(223, 265, 328, 14);
-		panel.add(textoNomeTutor);
-
-		btnConfirmar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int idTutor = Integer.parseInt(campoIdTutor.getText());
-				Tutores tutor = BDServices.consultarTutor(idTutor);
-
-				textoIdTutor.setText("Id do Tutor: " + tutor.getId());
-				textoNomeTutor.setText("Nome do Tutor: " + tutor.getNome());
-			}
-		});
-
-		btnAvancar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				String[] campoIdTutor = textoIdTutor.getText().split(":");
-				int idTutor = Integer.parseInt(campoIdTutor[1].trim());
-				f.setContentPane(new CadastroCadastroPet(idTutor));
-				f.revalidate();
-			}
-		});
-
-		btnRetornar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new CadastroEscolha());
-				f.revalidate();
-			}
-		});
-
+		// Agrupa os botões de rádio
+		ButtonGroup genderGroup = new ButtonGroup();
 	}
 }

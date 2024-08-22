@@ -65,7 +65,7 @@ public class CadastroCadastroTutor extends JPanel {
 		setLayout(null);
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(0, 0, 917, 696);
+		panel.setBounds(10, 0, 917, 696);
 		add(panel);
 		panel.setLayout(null);
 

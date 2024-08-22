@@ -32,6 +32,7 @@ public class ConsultaPetsDadosPet extends JPanel {
 		setLayout(null);
 
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 821, 500);
 		add(panel);
 		panel.setLayout(null);
@@ -62,11 +63,11 @@ public class ConsultaPetsDadosPet extends JPanel {
 		panel.add(table_2);
 
 		JLabel textIDPet = new JLabel("ID: " + pet.getId());
-		textIDPet.setBounds(85, 127, 86, 14);
+		textIDPet.setBounds(8, 120, 86, 14);
 		panel.add(textIDPet);
 
 		JLabel TextNomePet = new JLabel("Nome: " + pet.getNome());
-		TextNomePet.setBounds(85, 152, 226, 14);
+		TextNomePet.setBounds(8, 147, 226, 14);
 		panel.add(TextNomePet);
 
 		JLabel TextEspeciePet = new JLabel("Espécie: " + pet.getEspecie());
@@ -79,7 +80,7 @@ public class ConsultaPetsDadosPet extends JPanel {
 		panel.add(TextracaPet);
 
 		JLabel Alergias = new JLabel("Alergias: " + pet.getAlergias());
-		Alergias.setBounds(85, 261, 142, 14);
+		Alergias.setBounds(8, 242, 142, 14);
 		panel.add(Alergias);
 
 		JLabel TextSexoPet = new JLabel("Sexo: " + pet.getSexo());
@@ -95,7 +96,7 @@ public class ConsultaPetsDadosPet extends JPanel {
 		panel.add(textVacinasPet);
 
 		JLabel textListaDeConsulta = new JLabel("Lista de Consultas ");
-		textListaDeConsulta.setBounds(560, 171, 108, 14);
+		textListaDeConsulta.setBounds(546, 147, 108, 14);
 		panel.add(textListaDeConsulta);
 
 		JList listConsultasAnterior = new JList();
@@ -111,14 +112,14 @@ public class ConsultaPetsDadosPet extends JPanel {
 				return values[index];
 			}
 		});
-		listConsultasAnterior.setBounds(484, 196, 244, 109);
+		listConsultasAnterior.setBounds(477, 163, 244, 109);
 		panel.add(listConsultasAnterior);
 
 		JButton botaoVerificarConsulta = new JButton("Verificar Consulta");
 		botaoVerificarConsulta.setBackground(new Color(159, 80, 0));
 		botaoVerificarConsulta.setForeground(new Color(255, 255, 255));
 		botaoVerificarConsulta.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		botaoVerificarConsulta.setBounds(492, 288, 140, 23);
+		botaoVerificarConsulta.setBounds(514, 283, 140, 23);
 		panel.add(botaoVerificarConsulta);
 
 		botaoVerificarConsulta.addActionListener(new ActionListener() {
@@ -131,7 +132,7 @@ public class ConsultaPetsDadosPet extends JPanel {
 		});
 
 		JLabel TextNascPet = new JLabel("Nascimento: " + pet.getDataNascimento());
-		TextNascPet.setBounds(85, 223, 208, 27);
+		TextNascPet.setBounds(8, 212, 208, 27);
 		panel.add(TextNascPet);
 
 		JButton botaoRetornar = new JButton("Retornar");
