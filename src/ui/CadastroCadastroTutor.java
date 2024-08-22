@@ -1,3 +1,4 @@
+
 package ui;
 
 import java.awt.Font;
@@ -54,7 +55,7 @@ public class CadastroCadastroTutor extends JPanel {
 			mfDataNascimento = new MaskFormatter("##/##/####");
 			mfTelefone = new MaskFormatter("## #####-####");
 			mfEstado = new MaskFormatter("UU");
-			mfCep = new MaskFormatter("########");
+			mfCep = new MaskFormatter("#####-###");
 			mfCep.setValidCharacters("0123456789");
 		} catch (ParseException e) {
 			e.printStackTrace();
