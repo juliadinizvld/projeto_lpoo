@@ -93,6 +93,7 @@ public class ProdutosAdiçãoProduto extends JPanel {
 
         JFormattedTextField txtProductName = new JFormattedTextField();
         txtProductName.setBounds(394, 100, 156, 20);
+        
         // Adiciona o filtro para permitir apenas letras (maiúsculas e minúsculas)
         ((AbstractDocument) txtProductName.getDocument()).setDocumentFilter(new FiltroApenasLetras());
         panel.add(txtProductName);

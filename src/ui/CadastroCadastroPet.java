@@ -53,6 +53,8 @@ public class CadastroCadastroPet extends JPanel {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+	
+		
 
 		setLayout(null);
 		SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
@@ -204,5 +206,20 @@ public class CadastroCadastroPet extends JPanel {
 		});
 
 		setVisible(true);
+	}
+	
+	public CadastroCadastroPet(int idTutor) {
+
+		SimpleDateFormat fmtBr = new SimpleDateFormat("dd/MM/yyyy");
+
+		MaskFormatter mfDataNascimento = null;
+		MaskFormatter mfPeso = null;
+
+		try {
+			mfDataNascimento = new MaskFormatter("##/##/####");
+			mfPeso = new MaskFormatter("##.##");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 }
