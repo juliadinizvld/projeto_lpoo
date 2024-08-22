@@ -3,137 +3,123 @@ package ui;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.text.ParseException;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
-
+import javax.swing.text.MaskFormatter;
 import business.BDServices;
-import data.BD;
-import ui.entities.Funcionarios;
+import ui.entities.Produtos;
+import java.awt.Color;
 
 public class AdicaoProdutos extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField campoNomeProduto;
-	public static AdicaoProdutos produto1 = new AdicaoProdutos();
+	public static AdicaoProdutos adicaoProdutos1 = new AdicaoProdutos();
 
 	/**
 	 * Create the panel.
 	 */
 	public AdicaoProdutos() {
-		setLayout(null);
 
+		MaskFormatter quantidadeProduto = null;
+		MaskFormatter valorProduto = null;
+
+		try {
+			quantidadeProduto = new MaskFormatter("");
+			valorProduto = new MaskFormatter("###.##");
+		} catch (ParseException e) {
+			e.getStackTrace();
+		}
+
+		setLayout(null);
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 821, 500);
 		add(panel);
 		panel.setLayout(null);
 
-		JLabel tituloProdutos = new JLabel("Produtos");
-		tituloProdutos.setHorizontalAlignment(SwingConstants.CENTER);
-		tituloProdutos.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		tituloProdutos.setBounds(320, 11, 150, 25);
-		panel.add(tituloProdutos);
+		JButton btnAddProduct = new JButton("Adicionar produto\r\n");
+		btnAddProduct.setBackground(new Color(0, 0, 0));
+		btnAddProduct.setBounds(436, 237, 167, 23);
+		panel.add(btnAddProduct);
 
-		JLabel textoNomeProduto = new JLabel("Nome do Produto: ");
-		textoNomeProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoNomeProduto.setBounds(165, 83, 182, 25);
-		panel.add(textoNomeProduto);
+		JButton btnReturn = new JButton("<-    Retornar");
+		btnReturn.setBackground(new Color(0, 0, 0));
+		btnReturn.setBounds(282, 237, 125, 23);
+		panel.add(btnReturn);
 
-		campoNomeProduto = new JTextField();
-		campoNomeProduto.setBounds(347, 83, 267, 24);
-		panel.add(campoNomeProduto);
-		campoNomeProduto.setColumns(10);
+		JLabel lblTitle = new JLabel("Adição de Produtos");
+		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblTitle.setBounds(313, 17, 218, 39);
+		panel.add(lblTitle);
 
-		JButton botaoPesquisarProduto = new JButton("Pesquisar Produto");
-		botaoPesquisarProduto.setBounds(299, 133, 171, 23);
-		panel.add(botaoPesquisarProduto);
+		JLabel lblTypeOfProduct = new JLabel("Tipo de Produto:");
+		lblTypeOfProduct.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblTypeOfProduct.setBounds(263, 70, 102, 14);
+		panel.add(lblTypeOfProduct);
 
-		JLabel textoProdutosEncontrados = new JLabel("Produtos encontrados:");
-		textoProdutosEncontrados.setHorizontalAlignment(SwingConstants.CENTER);
-		textoProdutosEncontrados.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		textoProdutosEncontrados.setBounds(254, 167, 267, 40);
-		panel.add(textoProdutosEncontrados);
+		JComboBox<String> comboBox = new JComboBox<>();
+		comboBox.setBackground(new Color(0, 0, 0));
+		comboBox.setModel(new DefaultComboBoxModel<>(new String[] { "Consulta", "Exame", "Cirurgia", "Vacina" }));
+		comboBox.setBounds(394, 67, 167, 22);
+		panel.add(comboBox);
 
-		JComboBox<String> selectResultadoProdutos = new JComboBox<>();
-		selectResultadoProdutos.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		selectResultadoProdutos.setBounds(298, 218, 203, 21);
-		panel.add(selectResultadoProdutos);
+		JLabel lblProductName = new JLabel("Nome do Produto:");
+		lblProductName.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblProductName.setBounds(252, 102, 102, 14);
+		panel.add(lblProductName);
 
-		botaoPesquisarProduto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				selectResultadoProdutos.removeAllItems();
-				Connection connection = null;
-				Statement st = null;
-				ResultSet rs = null;
-				String nome = campoNomeProduto.getText();
-				try {
-					connection = BD.getConnection();
-					st = connection.createStatement();
-					rs = st.executeQuery("SELECT * FROM produtos WHERE nome LIKE '%" + nome + "%';");
-					while (rs.next()) {
-						selectResultadoProdutos.addItem(rs.getString("nome") + " - " + rs.getInt("id"));
-					}
-				} catch (SQLException i) {
-					i.printStackTrace();
-				} 
-			}
-		});
+		JLabel lblQuantity = new JLabel("Quantidade: ");
+		lblQuantity.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblQuantity.setBounds(281, 136, 71, 14);
+		panel.add(lblQuantity);
 
-		JButton botaoVerificarProduto = new JButton("<html>Verificar <br>produto</html>");
-		botaoVerificarProduto.setBounds(320, 251, 150, 40);
-		panel.add(botaoVerificarProduto);
+		JLabel lblNewLabel = new JLabel("Valor unitário:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(282, 167, 102, 14);
+		panel.add(lblNewLabel);
 
-		botaoVerificarProduto.addActionListener(new ActionListener() {
+		JFormattedTextField txtProductName = new JFormattedTextField();
+		txtProductName.setBounds(394, 100, 156, 20);
+		panel.add(txtProductName);
 
-			public void actionPerformed(ActionEvent e) {
-				String[] produtoSelecionado = String.valueOf(selectResultadoProdutos.getSelectedItem())
-						.split("-");
-				int idProdutoSelecionado = Integer.parseInt(produtoSelecionado[1].trim());
-				Produtos produto = BDServices.consultarProduto(idProdutoSelecionado);
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new AdicaoProdutos(produto));
-				f.revalidate();
-			}
+		JFormattedTextField txtQuantity = new JFormattedTextField();
+		txtQuantity.setBounds(394, 134, 28, 20);
+		panel.add(txtQuantity);
 
-		});
+		JFormattedTextField txtValorUnitario = new JFormattedTextField(valorProduto);
+		txtValorUnitario.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtValorUnitario.setBounds(394, 165, 71, 20);
+		panel.add(txtValorUnitario);
 
-		JButton botaoRetornar = new JButton("← Retornar");
-		botaoRetornar.setBounds(248, 426, 99, 21);
-		panel.add(botaoRetornar);
-
-		botaoRetornar.addActionListener(new ActionListener() {
+		btnAddProduct.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				String tipoProduto = String.valueOf(comboBox.getSelectedItem()).toUpperCase();
+				String nomeProduto = String.valueOf(txtProductName.getText());
+				int quantidadeProduto = Integer.parseInt(txtQuantity.getText());
+				double valorUnitarioProduto = Double.parseDouble(txtValorUnitario.getText());
+				Produtos produto = new Produtos(null, tipoProduto, nomeProduto, quantidadeProduto,
+						valorUnitarioProduto);
+				BDServices.inserirProduto(produto);
+			}
+		});
 
+		btnReturn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
 				f.setContentPane(new Home());
 				f.revalidate();
 			}
-		});
-
-		JButton botaoAdicionarProduto = new JButton("Adicionar novo produto\r\n");
-		botaoAdicionarProduto.setBounds(425, 407, 209, 40);
-		panel.add(botaoAdicionarProduto);
-
-		botaoAdicionarProduto.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new AdicaoProdutos());
-				f.revalidate();
-			}
 
 		});
-
 	}
 }
