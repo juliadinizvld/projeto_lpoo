@@ -49,7 +49,7 @@ public class ProdutosConsultaProduto extends JPanel {
 		JButton botaoVerificarProduto = new JButton("Verificar Produto");
 		botaoVerificarProduto.setForeground(new Color(255, 255, 255));
 		botaoVerificarProduto.setBackground(new Color(159, 80, 0));
-		botaoVerificarProduto.setBounds(316, 122, 137, 23);
+		botaoVerificarProduto.setBounds(316, 122, 137, 43);
 		panel.add(botaoVerificarProduto);
 
 		JLabel tituloProdutosEncontrados = new JLabel("Produtos encontrados:");
@@ -58,13 +58,13 @@ public class ProdutosConsultaProduto extends JPanel {
 		panel.add(tituloProdutosEncontrados);
 
 		JList listaProdutosEncontrados = new JList();
-		listaProdutosEncontrados.setBounds(244, 232, 300, 177);
+		listaProdutosEncontrados.setBounds(244, 233, 300, 177);
 		panel.add(listaProdutosEncontrados);
 
 		JButton botaoRetornar = new JButton("← Retornar");
 		botaoRetornar.setForeground(new Color(255, 255, 255));
 		botaoRetornar.setBackground(new Color(159, 80, 0));
-		botaoRetornar.setBounds(244, 450, 130, 23);
+		botaoRetornar.setBounds(244, 450, 130, 37);
 		panel.add(botaoRetornar);
 
 		botaoRetornar.addActionListener(new ActionListener() {
@@ -80,7 +80,7 @@ public class ProdutosConsultaProduto extends JPanel {
 		JButton botaoRealizarCompra = new JButton("Realizar Compra");
 		botaoRealizarCompra.setForeground(new Color(255, 255, 255));
 		botaoRealizarCompra.setBackground(new Color(159, 80, 0));
-		botaoRealizarCompra.setBounds(407, 450, 137, 23);
+		botaoRealizarCompra.setBounds(407, 450, 137, 37);
 		panel.add(botaoRealizarCompra);
 
 		botaoRealizarCompra.addActionListener(new ActionListener() {
