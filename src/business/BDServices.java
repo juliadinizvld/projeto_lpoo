@@ -102,4 +102,12 @@ public class BDServices {
 		em.close();
 		return produtos;
 	}
+
+	public static Produtos consultarProdutoPorId(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		Produtos produto = em.find(Produtos.class, id);
+		em.close();
+		return produto;
+	}
 }

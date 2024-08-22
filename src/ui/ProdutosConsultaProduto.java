@@ -57,7 +57,7 @@ public class ProdutosConsultaProduto extends JPanel {
 		listaProdutosEncontrados.setBounds(244, 232, 300, 177);
 		panel.add(listaProdutosEncontrados);
 
-		JButton botaoRetornar = new JButton("← Retonar");
+		JButton botaoRetornar = new JButton("← Retornar");
 		botaoRetornar.setBounds(244, 450, 130, 23);
 		panel.add(botaoRetornar);
 
@@ -86,3 +86,4 @@ public class ProdutosConsultaProduto extends JPanel {
 
 	}
 }
+
