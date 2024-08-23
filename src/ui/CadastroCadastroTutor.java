@@ -24,7 +24,7 @@ import javax.swing.text.MaskFormatter;
 import javax.swing.text.DocumentFilter.FilterBypass;
 
 import business.BDServices;
-import ui.FuncionariosNovoFuncionario.FiltroApenasLetras;
+
 import ui.entities.Tutores;
 import java.awt.Color;
 
@@ -283,8 +283,6 @@ public class CadastroCadastroTutor extends JPanel {
 					return;
 				}
 
-				JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "Sucesso",
-						JOptionPane.INFORMATION_MESSAGE);
 
 				Tutores tutor = new Tutores(null, nome, cpf, sexo, email, estado, cidade, telefone, numeroCasa,
 						dataFormatada, cep, bairro, rua);

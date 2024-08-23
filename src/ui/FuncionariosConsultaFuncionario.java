@@ -58,8 +58,8 @@ public class FuncionariosConsultaFuncionario extends JPanel {
         panel.add(campoNomeFuncionario);
         campoNomeFuncionario.setColumns(10);
 
-        // Adiciona o filtro para permitir apenas letras
-        ((AbstractDocument) campoNomeFuncionario.getDocument()).setDocumentFilter(new FiltroApenasLetras());
+        // Adiciona o filtro para permitir apenas letras acentuadas, letras e espaços
+        ((AbstractDocument) campoNomeFuncionario.getDocument()).setDocumentFilter(new FiltroApenasLetrasEAcentos());
 
         JButton botaoPesquisarFuncionario = new JButton("Pesquisar Funcionario");
         botaoPesquisarFuncionario.setForeground(new Color(255, 255, 255));
@@ -151,18 +151,18 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 
     }
 
-    // Filtro para permitir apenas letras (maiúsculas e minúsculas)
-    class FiltroApenasLetras extends DocumentFilter {
+    // Filtro para permitir apenas letras acentuadas, letras e espaços
+    class FiltroApenasLetrasEAcentos extends DocumentFilter {
         @Override
         public void insertString(FilterBypass fb, int offset, String string, javax.swing.text.AttributeSet attr) throws BadLocationException {
-            if (string != null && string.matches("[a-zA-Z ]*")) {  // Permite letras e espaços
+            if (string != null && string.matches("[\\p{L} ]*")) {  // Permite letras, acentos e espaços
                 super.insertString(fb, offset, string, attr);
             }
         }
 
         @Override
         public void replace(FilterBypass fb, int offset, int length, String text, javax.swing.text.AttributeSet attrs) throws BadLocationException {
-            if (text != null && text.matches("[a-zA-Z ]*")) {  // Permite letras e espaços
+            if (text != null && text.matches("[\\p{L} ]*")) {  // Permite letras, acentos e espaços
                 super.replace(fb, offset, length, text, attrs);
             }
         }
