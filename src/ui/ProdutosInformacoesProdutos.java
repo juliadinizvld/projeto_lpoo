@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,13 +11,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import java.awt.Color;
 
 public class ProdutosInformacoesProdutos extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton botaoRetornar;
-	public static ProdutosInformacoesProdutos produto2 = new ProdutosInformacoesProdutos();
+	public static ProdutosInformacoesProdutos produtosInformacoesProdutos = new ProdutosInformacoesProdutos();
 	
 	/**
 	 * Create the panel.

@@ -103,7 +103,7 @@ public class BDServices {
 		return produtos;
 	}
 
-	public static Produtos consultarProdutoPorId(int id) {
+	public static Produtos consultarProduto(int id) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
 		EntityManager em = emf.createEntityManager();
 		Produtos produto = em.find(Produtos.class, id);
