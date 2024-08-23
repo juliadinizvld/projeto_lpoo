@@ -1,5 +1,5 @@
 package ui;
-
+import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -19,27 +18,26 @@ import javax.swing.SwingUtilities;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
+
 import business.BDServices;
 import data.BD;
 import ui.entities.Funcionarios;
+
 import java.awt.Color;
 
 public class FuncionariosConsultaFuncionario extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private JTextField campoNomeFuncionario;
-    public static FuncionariosConsultaFuncionario funcionario1 = new FuncionariosConsultaFuncionario();
 
-    /**
-     * Create the panel.
-     */
     public FuncionariosConsultaFuncionario() {
-        setLayout(null);
+
+        setLayout(new BorderLayout());
 
         JPanel panel = new JPanel();
-        panel.setBackground(new Color(255, 255, 255));
-        panel.setBounds(-15, -13, 821, 500);
-        add(panel);
+        panel.setBackground(Color.WHITE);
+
+        add(panel, BorderLayout.CENTER);
         panel.setLayout(null);
 
         JLabel tituloFuncionarios = new JLabel("Funcionários");
@@ -62,7 +60,7 @@ public class FuncionariosConsultaFuncionario extends JPanel {
         ((AbstractDocument) campoNomeFuncionario.getDocument()).setDocumentFilter(new FiltroApenasLetrasEAcentos());
 
         JButton botaoPesquisarFuncionario = new JButton("Pesquisar Funcionario");
-        botaoPesquisarFuncionario.setForeground(new Color(255, 255, 255));
+        botaoPesquisarFuncionario.setForeground(Color.WHITE);
         botaoPesquisarFuncionario.setBackground(new Color(159, 80, 0));
         botaoPesquisarFuncionario.setBounds(299, 133, 171, 23);
         panel.add(botaoPesquisarFuncionario);
@@ -94,18 +92,17 @@ public class FuncionariosConsultaFuncionario extends JPanel {
                     }
                 } catch (SQLException i) {
                     i.printStackTrace();
-                } 
+                }
             }
         });
 
         JButton botaoVerificarFuncionario = new JButton("<html>Verificar <br>funcionário</html>");
-        botaoVerificarFuncionario.setForeground(new Color(255, 255, 255));
+        botaoVerificarFuncionario.setForeground(Color.WHITE);
         botaoVerificarFuncionario.setBackground(new Color(159, 80, 0));
         botaoVerificarFuncionario.setBounds(320, 251, 150, 40);
         panel.add(botaoVerificarFuncionario);
 
         botaoVerificarFuncionario.addActionListener(new ActionListener() {
-
             public void actionPerformed(ActionEvent e) {
                 String[] funcionarioSelecionado = String.valueOf(selectResultadoFuncionarios.getSelectedItem())
                         .split("-");
@@ -115,11 +112,10 @@ public class FuncionariosConsultaFuncionario extends JPanel {
                 f.setContentPane(new FuncionariosDadosFuncionario(funcionario));
                 f.revalidate();
             }
-
         });
 
         JButton botaoRetornar = new JButton("← Retornar");
-        botaoRetornar.setForeground(new Color(255, 255, 255));
+        botaoRetornar.setForeground(Color.WHITE);
         botaoRetornar.setBackground(new Color(159, 80, 0));
         botaoRetornar.setBounds(248, 426, 99, 21);
         panel.add(botaoRetornar);
@@ -134,7 +130,7 @@ public class FuncionariosConsultaFuncionario extends JPanel {
         });
 
         JButton botaoAdicionarFuncionario = new JButton("Adicionar novo funcionário\r\n");
-        botaoAdicionarFuncionario.setForeground(new Color(255, 255, 255));
+        botaoAdicionarFuncionario.setForeground(Color.WHITE);
         botaoAdicionarFuncionario.setBackground(new Color(159, 80, 0));
         botaoAdicionarFuncionario.setBounds(425, 407, 209, 40);
         panel.add(botaoAdicionarFuncionario);
@@ -146,9 +142,7 @@ public class FuncionariosConsultaFuncionario extends JPanel {
                 f.setContentPane(new FuncionariosNovoFuncionario());
                 f.revalidate();
             }
-
         });
-
     }
 
     // Filtro para permitir apenas letras acentuadas, letras e espaços
