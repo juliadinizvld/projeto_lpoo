@@ -14,9 +14,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 import javax.swing.text.MaskFormatter;
+import javax.swing.text.DocumentFilter.FilterBypass;
 
 import business.BDServices;
+import ui.FuncionariosConsultaFuncionario.FiltroApenasLetras;
 import ui.entities.Funcionarios;
 import ui.entities.MedicosVeterinarios;
 import java.awt.Color;
@@ -73,6 +78,9 @@ public class FuncionariosNovoFuncionario extends JPanel {
 		campoNomeFuncionario.setBounds(299, 69, 278, 22);
 		panel.add(campoNomeFuncionario);
 		campoNomeFuncionario.setColumns(10);
+		
+	    // Adiciona o filtro para permitir apenas letras
+        ((AbstractDocument) campoNomeFuncionario.getDocument()).setDocumentFilter(new FiltroApenasLetras());
 
 		JLabel textoIdade = new JLabel("Idade:");
 		textoIdade.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -264,4 +272,21 @@ public class FuncionariosNovoFuncionario extends JPanel {
 			}
 		});
 	}
+	// Filtro para permitir apenas letras (maiúsculas e minúsculas)
+    class FiltroApenasLetras extends DocumentFilter {
+        @Override
+        public void insertString(FilterBypass fb, int offset, String string, javax.swing.text.AttributeSet attr) throws BadLocationException {
+            if (string != null && string.matches("[a-zA-Z ]*")) {  // Permite letras e espaços
+                super.insertString(fb, offset, string, attr);
+            }
+        }
+
+        @Override
+        public void replace(FilterBypass fb, int offset, int length, String text, javax.swing.text.AttributeSet attrs) throws BadLocationException {
+            if (text != null && text.matches("[a-zA-Z ]*")) {  // Permite letras e espaços
+                super.replace(fb, offset, length, text, attrs);
+            }
+        }
+    }
+
 }
