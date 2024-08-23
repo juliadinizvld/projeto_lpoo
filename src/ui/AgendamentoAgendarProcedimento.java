@@ -1,5 +1,8 @@
 package ui;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -16,7 +19,6 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.text.MaskFormatter;
 
@@ -24,100 +26,105 @@ import data.BD;
 
 public class AgendamentoAgendarProcedimento extends JPanel {
 
-	private static final long serialVersionUID = 1L;
-	public static AgendamentoAgendarProcedimento agendamento1 = new AgendamentoAgendarProcedimento();
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * Create the panel.
-	 */
-	public AgendamentoAgendarProcedimento() {
-		
+    public static AgendamentoAgendarProcedimento agendamento1 = new AgendamentoAgendarProcedimento();
 
-		// Painel principal
-		JPanel panel = new JPanel();
-		panel.setLayout(new GridBagLayout());
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.insets = new Insets(10, 10, 10, 10);
+    /**
+     * Create the panel.
+     */
+    public AgendamentoAgendarProcedimento() {
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
-		// Tipo de procedimento
-		JLabel lblTipo = new JLabel("Tipo de procedimento:");
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		panel.add(lblTipo, gbc);
+        // Título
+        JLabel titulo = new JLabel("Agendamento de Procedimento", JLabel.CENTER);
+        titulo.setFont(new Font("Arial", Font.PLAIN, 30));
+        titulo.setPreferredSize(new Dimension(800, 50));
+        gbc.gridwidth = 2;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        add(titulo, gbc);
 
-		String[] tipos = { "Consulta", "Exame", "Cirurgia", "Vacinas" };
-		JComboBox<String> cbTipo = new JComboBox<>(tipos);
-		gbc.gridx = 1;
-		panel.add(cbTipo, gbc);
-		
-		// Escolha exames/etapas
-		JLabel lblExame = new JLabel("Escolha exames/etapas:");
-		gbc.gridx = 0;
-		gbc.gridy = 1;
-		panel.add(lblExame, gbc);
+        // Tipo de procedimento
+        JLabel lblTipo = new JLabel("Tipo de procedimento:");
+        gbc.gridwidth = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        add(lblTipo, gbc);
 
-		String[] exames = { "Raio-X", "Biometria ocular", "Ultrassom ocular" };
-		JComboBox<String> cbExame = new JComboBox<>(exames);
-		gbc.gridx = 1;
-		panel.add(cbExame, gbc);
+        String[] tipos = { "Consulta", "Exame", "Cirurgia", "Vacinas" };
+        JComboBox<String> cbTipo = new JComboBox<>(tipos);
+        gbc.gridx = 1;
+        add(cbTipo, gbc);
 
+        // Escolha exames/etapas
+        JLabel lblExame = new JLabel("Escolha exames/etapas:");
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        add(lblExame, gbc);
 
-		// ...
+        String[] exames = { "Raio-X", "Biometria ocular", "Ultrassom ocular" };
+        JComboBox<String> cbExame = new JComboBox<>(exames);
+        gbc.gridx = 1;
+        add(cbExame, gbc);
 
-		// ID do pet
-		JLabel lblIdPet = new JLabel("ID do pet:");
-		gbc.gridx = 0;
-		gbc.gridy = 2;
-		panel.add(lblIdPet, gbc);
+        // ID do pet
+        JLabel lblIdPet = new JLabel("ID do pet:");
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        add(lblIdPet, gbc);
 
-		// Cria uma máscara para permitir apenas dígitos numéricos 
-		MaskFormatter idPetFormatter = null;
-		try {
-		    idPetFormatter = new MaskFormatter("##########"); 
-		    idPetFormatter.setPlaceholderCharacter('_'); // Caractere de espaço vazio
-		} catch (ParseException e) {
-		    e.printStackTrace();
-		}
+        // Cria uma máscara para permitir apenas dígitos numéricos 
+        MaskFormatter idPetFormatter = null;
+        try {
+            idPetFormatter = new MaskFormatter("##########"); 
+            idPetFormatter.setPlaceholderCharacter('_'); // Caractere de espaço vazio
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
-		JFormattedTextField txtIdPet = new JFormattedTextField(idPetFormatter);
-		txtIdPet.setColumns(10);
-		gbc.gridx = 1;
-		panel.add(txtIdPet, gbc);
+        JFormattedTextField txtIdPet = new JFormattedTextField(idPetFormatter);
+        txtIdPet.setColumns(10);
+        gbc.gridx = 1;
+        add(txtIdPet, gbc);
 
-		// ...
+        // Botões
+        JButton btnRetornar = new JButton("← Retornar");
+        btnRetornar.setForeground(Color.WHITE);
+        btnRetornar.setBackground(new Color(159, 80, 0));
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        add(btnRetornar, gbc);
+        
+        btnRetornar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, AgendamentoAgendarProcedimento.this);
+                f.setContentPane(new Home());
+                f.revalidate();
+            }
+        });
 
-		
-		// Botões
-		JButton btnRetornar = new JButton("Retornar");
-		gbc.gridx = 0;
-		gbc.gridy = 3;
-		panel.add(btnRetornar, gbc);
-		
-		btnRetornar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new Home());
-				f.revalidate();
-			}
-		});
+        JButton btnAvancar = new JButton("Avançar");
+        btnAvancar.setForeground(Color.WHITE);
+        btnAvancar.setBackground(new Color(159, 80, 0));
+        gbc.gridx = 1;
+        add(btnAvancar, gbc);
 
-		JButton btnAvancar = new JButton("Avançar");
-		gbc.gridx = 1;
-		panel.add(btnAvancar, gbc);
+        // Ação do botão "Avançar"
+        btnAvancar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, AgendamentoAgendarProcedimento.this);
+                f.setContentPane(AgendamentoPagamento.agendamento2);
+                f.revalidate();
+            }
+        });
 
-		// Ação do botão "Avançar"
-		btnAvancar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(AgendamentoPagamento.agendamento2);
-				f.revalidate();
-			}
-		});
-
-		// Adiciona painel ao frame
-		add(panel);
-	}
-
+        // Configura o painel com fundo claro
+        setBackground(new Color(222, 222, 222));
+    }
 }
+
