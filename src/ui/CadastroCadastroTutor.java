@@ -24,7 +24,7 @@ import javax.swing.text.MaskFormatter;
 import javax.swing.text.DocumentFilter.FilterBypass;
 
 import business.BDServices;
-import ui.FuncionariosNovoFuncionario.FiltroApenasLetras;
+
 import ui.entities.Tutores;
 import java.awt.Color;
 
