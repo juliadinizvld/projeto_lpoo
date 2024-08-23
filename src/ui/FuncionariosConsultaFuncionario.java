@@ -37,7 +37,7 @@ public class FuncionariosConsultaFuncionario extends JPanel {
         setLayout(new BorderLayout());
 
         JPanel panel = new JPanel();
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(new Color(222, 222, 222));
         panel.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
