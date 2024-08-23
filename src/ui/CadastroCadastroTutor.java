@@ -17,9 +17,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 import javax.swing.text.MaskFormatter;
+import javax.swing.text.DocumentFilter.FilterBypass;
 
 import business.BDServices;
+import ui.FuncionariosNovoFuncionario.FiltroApenasLetras;
 import ui.entities.Tutores;
 import java.awt.Color;
 
@@ -199,6 +204,9 @@ public class CadastroCadastroTutor extends JPanel {
 		campoNome.setBounds(296, 84, 304, 19);
 		campoNome.setColumns(10);
 		panel.add(campoNome);
+		
+		 // Adiciona o filtro para permitir apenas letras
+        ((AbstractDocument) campoNome.getDocument()).setDocumentFilter(new FiltroApenasLetras());
 
 		String[] sexos = { "Masculino", "Feminino" };
 		JComboBox<String> selectSexo = new JComboBox<String>(sexos);
@@ -287,4 +295,20 @@ public class CadastroCadastroTutor extends JPanel {
 			}
 		});
 	}
+	// Filtro para permitir apenas letras (maiúsculas e minúsculas)
+    class FiltroApenasLetras extends DocumentFilter {
+        @Override
+        public void insertString(FilterBypass fb, int offset, String string, javax.swing.text.AttributeSet attr) throws BadLocationException {
+            if (string != null && string.matches("[a-zA-Z ]*")) {  // Permite letras e espaços
+                super.insertString(fb, offset, string, attr);
+            }
+        }
+
+        @Override
+        public void replace(FilterBypass fb, int offset, int length, String text, javax.swing.text.AttributeSet attrs) throws BadLocationException {
+            if (text != null && text.matches("[a-zA-Z ]*")) {  // Permite letras e espaços
+                super.replace(fb, offset, length, text, attrs);
+            }
+        }
+    }
 }
