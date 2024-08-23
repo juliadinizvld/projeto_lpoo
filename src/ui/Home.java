@@ -150,6 +150,12 @@ public class Home extends JPanel {
 
         JMenuItem mntmNewMenuItem_2 = new JMenuItem("Sobre");
         mnNewMenu_1.add(mntmNewMenuItem_2);
+        
+        mntmNewMenuItem_2.addActionListener(e -> {
+            JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, mainPanel);
+            f.setContentPane(new Sobre());
+            f.revalidate();
+        });
 
         add(menuAdministrador, BorderLayout.NORTH);
     }
