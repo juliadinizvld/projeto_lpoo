@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
-import java.awt.Color;
+
+import ui.entities.Produtos;
 
 public class ProdutosPagamento extends JPanel {
 
@@ -19,7 +21,7 @@ public class ProdutosPagamento extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public ProdutosPagamento() {
+	public ProdutosPagamento(Produtos produto) {
 		setLayout(null);
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
@@ -65,7 +67,7 @@ public class ProdutosPagamento extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(ProdutosInformacoesProdutos.produtosInformacoesProdutos);
+				f.setContentPane(new ProdutosInformacoesCompraProduto(produto));
 				f.revalidate();
 
 			}
