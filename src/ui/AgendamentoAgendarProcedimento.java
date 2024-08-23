@@ -98,7 +98,7 @@ public class AgendamentoAgendarProcedimento extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(Home.telaInicial);
+				f.setContentPane(new Home());
 				f.revalidate();
 			}
 		});
