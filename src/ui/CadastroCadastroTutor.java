@@ -1,6 +1,7 @@
 
 package ui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,12 +22,8 @@ import javax.swing.text.AbstractDocument;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.MaskFormatter;
-import javax.swing.text.DocumentFilter.FilterBypass;
-
-import business.BDServices;
 
 import ui.entities.Tutores;
-import java.awt.Color;
 
 public class CadastroCadastroTutor extends JPanel {
 
@@ -128,9 +125,9 @@ public class CadastroCadastroTutor extends JPanel {
 		lblNumero.setBounds(397, 273, 56, 13);
 		lblNumero.setFont(new Font("Arial", Font.BOLD, 10));
 		panel.add(lblNumero);
-		
-		JLabel lblComplemento = new JLabel("Complemento :"); 
-		lblComplemento.setBounds(562, 234, 80, 13); 
+
+		JLabel lblComplemento = new JLabel("Complemento :");
+		lblComplemento.setBounds(562, 234, 80, 13);
 		lblComplemento.setFont(new Font("Arial", Font.BOLD, 10));
 		panel.add(lblComplemento);
 
@@ -163,9 +160,9 @@ public class CadastroCadastroTutor extends JPanel {
 		campoRua.setBounds(457, 230, 96, 19);
 		panel.add(campoRua);
 		campoRua.setColumns(10);
-		
-		campoComplemento = new JTextField(); 
-		campoComplemento.setBounds(642, 230, 96, 19); 
+
+		campoComplemento = new JTextField();
+		campoComplemento.setBounds(642, 230, 96, 19);
 		panel.add(campoComplemento);
 		campoComplemento.setColumns(10);
 
@@ -204,9 +201,9 @@ public class CadastroCadastroTutor extends JPanel {
 		campoNome.setBounds(296, 84, 304, 19);
 		campoNome.setColumns(10);
 		panel.add(campoNome);
-		
-		 // Adiciona o filtro para permitir apenas letras
-        ((AbstractDocument) campoNome.getDocument()).setDocumentFilter(new FiltroApenasLetras());
+
+		// Adiciona o filtro para permitir apenas letras
+		((AbstractDocument) campoNome.getDocument()).setDocumentFilter(new FiltroApenasLetras());
 
 		String[] sexos = { "Masculino", "Feminino" };
 		JComboBox<String> selectSexo = new JComboBox<String>(sexos);
@@ -257,16 +254,14 @@ public class CadastroCadastroTutor extends JPanel {
 					return;
 				}
 
-		        int numeroCasa ;
-		        try {
-		            numeroCasa = Integer.parseInt(numeroCasaStr);
-		        } catch (NumberFormatException ex) {
-		            JOptionPane.showMessageDialog(null, "Número da casa deve ser um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
-		            return;
-		        }
-		        
-
-		
+				int numeroCasa;
+				try {
+					numeroCasa = Integer.parseInt(numeroCasaStr);
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "Número da casa deve ser um número válido.", "Erro",
+							JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 
 				if (cep.length() != 8) {
 					JOptionPane.showMessageDialog(null, "O CEP deve ter exatamente 8 dígitos numéricos.", "Erro",
@@ -283,7 +278,6 @@ public class CadastroCadastroTutor extends JPanel {
 					return;
 				}
 
-
 				Tutores tutor = new Tutores(null, nome, cpf, sexo, email, estado, cidade, telefone, numeroCasa,
 						dataFormatada, cep, bairro, rua);
 
@@ -293,20 +287,23 @@ public class CadastroCadastroTutor extends JPanel {
 			}
 		});
 	}
-	// Filtro para permitir apenas letras (maiúsculas e minúsculas)
-    class FiltroApenasLetras extends DocumentFilter {
-        @Override
-        public void insertString(FilterBypass fb, int offset, String string, javax.swing.text.AttributeSet attr) throws BadLocationException {
-            if (string != null && string.matches("[a-zA-Z ]*")) {  // Permite letras e espaços
-                super.insertString(fb, offset, string, attr);
-            }
-        }
 
-        @Override
-        public void replace(FilterBypass fb, int offset, int length, String text, javax.swing.text.AttributeSet attrs) throws BadLocationException {
-            if (text != null && text.matches("[a-zA-Z ]*")) {  // Permite letras e espaços
-                super.replace(fb, offset, length, text, attrs);
-            }
-        }
-    }
+	// Filtro para permitir apenas letras (maiúsculas e minúsculas)
+	class FiltroApenasLetras extends DocumentFilter {
+		@Override
+		public void insertString(FilterBypass fb, int offset, String string, javax.swing.text.AttributeSet attr)
+				throws BadLocationException {
+			if (string != null && string.matches("[a-zA-Z ]*")) { // Permite letras e espaços
+				super.insertString(fb, offset, string, attr);
+			}
+		}
+
+		@Override
+		public void replace(FilterBypass fb, int offset, int length, String text, javax.swing.text.AttributeSet attrs)
+				throws BadLocationException {
+			if (text != null && text.matches("[a-zA-Z ]*")) { // Permite letras e espaços
+				super.replace(fb, offset, length, text, attrs);
+			}
+		}
+	}
 }

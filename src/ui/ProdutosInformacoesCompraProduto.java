@@ -12,16 +12,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-public class ProdutosInformacoesProdutos extends JPanel {
+import ui.entities.Produtos;
+
+public class ProdutosInformacoesCompraProduto extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton botaoRetornar;
-	public static ProdutosInformacoesProdutos produtosInformacoesProdutos = new ProdutosInformacoesProdutos();
-	
+
 	/**
 	 * Create the panel.
 	 */
-	public ProdutosInformacoesProdutos() {
+	public ProdutosInformacoesCompraProduto(Produtos produto) {
 		setLayout(null);
 
 		JPanel panel = new JPanel();
@@ -35,26 +36,26 @@ public class ProdutosInformacoesProdutos extends JPanel {
 		tituloInformacoesDoProduto.setBounds(229, 11, 213, 30);
 		panel.add(tituloInformacoesDoProduto);
 
-		JLabel textoNomeDoProduto = new JLabel("Nome do produto: ");
+		JLabel textoNomeDoProduto = new JLabel("Nome do produto: " + produto.getNome());
 		textoNomeDoProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textoNomeDoProduto.setBounds(129, 80, 137, 30);
 		panel.add(textoNomeDoProduto);
 
-		JLabel textoQuantidadeEmEstoque = new JLabel("Quantidade em estoque: ");
+		JLabel textoQuantidadeEmEstoque = new JLabel("Quantidade em estoque: " + produto.getQuantidade());
 		textoQuantidadeEmEstoque.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textoQuantidadeEmEstoque.setBounds(128, 117, 200, 30);
 		panel.add(textoQuantidadeEmEstoque);
 
-		JLabel textoValorUnitario = new JLabel("Valor unitário: ");
+		JLabel textoValorUnitario = new JLabel("Valor unitário: " + produto.getValor());
 		textoValorUnitario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoValorUnitario.setBounds(129, 158, 107, 30);
+		textoValorUnitario.setBounds(129, 158, 221, 30);
 		panel.add(textoValorUnitario);
 
 		JLabel textoQuantidadeDesejada = new JLabel("Selecione a quantidade desejada: ");
 		textoQuantidadeDesejada.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textoQuantidadeDesejada.setBounds(129, 199, 240, 30);
 		panel.add(textoQuantidadeDesejada);
-		
+
 		JComboBox SelectQuantidadeDesejada = new JComboBox();
 		SelectQuantidadeDesejada.setBounds(392, 205, 59, 22);
 		panel.add(SelectQuantidadeDesejada);
@@ -72,28 +73,29 @@ public class ProdutosInformacoesProdutos extends JPanel {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
 				f.setContentPane(ProdutosConsultaProduto.produto1);
 				f.revalidate();
-				
+
 			}
-			
+
 		});
-		
+
 		JButton botaoFazerPedido = new JButton("Fazer pedido");
 		botaoFazerPedido.setBackground(new Color(159, 80, 0));
 		botaoFazerPedido.setForeground(new Color(255, 255, 255));
 		botaoFazerPedido.setBounds(335, 345, 150, 36);
 		panel.add(botaoFazerPedido);
-		
+
 		botaoFazerPedido.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new ProdutosPagamento());
-				f.revalidate();
 				
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new ProdutosPagamento(produto));
+				f.revalidate();
+
 			}
-			
+
 		});
-		
+
 	}
 }
