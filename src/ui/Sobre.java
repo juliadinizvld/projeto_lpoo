@@ -1,18 +1,15 @@
 package ui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.SwingUtilities;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class Sobre extends JPanel {
 
@@ -22,16 +19,24 @@ public class Sobre extends JPanel {
         setLayout(new BorderLayout());
         setBackground(new Color(222, 222, 222)); 
 
-       
-        JLabel titleLabel = new JLabel("CLÍNICA VETERINÁRIA", JLabel.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 40));
-        titleLabel.setPreferredSize(new Dimension(800, 100));
-        titleLabel.setForeground(Color.BLACK); 
-        add(titleLabel, BorderLayout.NORTH);
+        JPanel imagePanel = new JPanel();
+        imagePanel.setBackground(new Color(222, 222, 222)); 
+        try {
+            URL imageUrl = new URL("https://img.freepik.com/fotos-gratis/close-no-veterinario-cuidando-do-animal-de-estimacao_23-2149143875.jpg?t=st=1724438996~exp=1724442596~hmac=60f11e88bf49ee80708a0ddb04bd47512ef95f0bb4eb113c9b028ad0ae306548&w=740");
+            InputStream inputStream = imageUrl.openStream();
+            BufferedImage image = ImageIO.read(inputStream);
+            ImageIcon imageIcon = new ImageIcon(image);
+            JLabel imageLabel = new JLabel(imageIcon);
+            imageLabel.setHorizontalAlignment(JLabel.CENTER);
+            imagePanel.add(imageLabel);
+        } catch (IOException e) {
+            e.printStackTrace(); 
+        }
+        add(imagePanel, BorderLayout.NORTH);
 
-       
+        
         JTextArea textArea = new JTextArea();
-        textArea.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin, nisi vel pellentesque interdum, nunc magna ultrices est, vel cursus ipsum dui et ante. Nulla facilisi. Duis volutpat turpis vel bibendum hendrerit. In sit amet nisl urna. Nullam ultricies turpis non felis imperdiet facilisis. Vivamus non malesuada urna. Integer ut ante felis. Fusce viverra mollis sem, non dapibus justo hendrerit sed. Nullam lobortis purus id velit commodo, in euismod velit iaculis. Nulla facilisi. Ut non augue nec libero commodo consequat. Ut convallis, libero nec bibendum sagittis, sapien nunc scelerisque justo, nec vehicula nunc lectus non ligula. Nullam a fermentum tortor. Integer nec libero felis. Morbi non consectetur magna. Duis a dui leo. Ut faucibus lectus sit amet sapien cursus, nec dictum neque varius. Vivamus efficitur sapien a fermentum aliquet. Donec gravida eros eu urna fermentum, non hendrerit libero convallis. Aliquam erat volutpat. Integer vehicula lorem orci, vel hendrerit metus dictum sed. Aenean id felis turpis. Duis euismod nibh vitae erat vehicula, a vehicula ligula maximus.");
+        textArea.setText("Nossa Clínica Veterinária oferece cuidados especializados para animais de estimação, incluindo consultas, procedimentos cirúrgicos e serviços de emergência. Com uma equipe de veterinários experientes, proporcionamos tratamentos de alta qualidade e serviços de diagnóstico avançados. Além disso, disponibilizamos medicamentos e produtos para garantir o bem-estar contínuo dos seus pets. Estamos comprometidos em proporcionar um atendimento gentil e eficaz para a saúde do seu animal.");
         textArea.setEditable(false);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
@@ -43,6 +48,7 @@ public class Sobre extends JPanel {
         scrollPane.setBackground(new Color(222, 222, 222)); 
         add(scrollPane, BorderLayout.CENTER);
 
+        
         JButton returnButton = new JButton("Retornar");
         returnButton.setFont(new Font("Arial", Font.PLAIN, 20));
         returnButton.setBackground(new Color(159, 80, 0));
