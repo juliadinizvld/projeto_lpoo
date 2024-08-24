@@ -67,8 +67,7 @@ public class ProdutosDadosProdutos extends JPanel {
 				int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja remover este produto?",
 						"Confirmar Remoção", JOptionPane.YES_NO_OPTION);
 				if (confirmacao == JOptionPane.YES_OPTION) {
-
-					//BDServices.removerProduto(produtos.getId()); // pelo ID
+					BDServices.removerProduto(produtos.getId());
 					JOptionPane.showMessageDialog(null, "Produto removido com sucesso!");
 					JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
 					f.setContentPane(new ProdutosPesquisaProduto());

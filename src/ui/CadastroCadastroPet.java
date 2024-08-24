@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -165,7 +166,6 @@ public class CadastroCadastroPet extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				CadastroFinalizarCadastroTutor.showConfirmationDialog(frame);
 				String nome = campoNomeAnimal.getText();
 				String especie = String.valueOf(selectEspecie.getSelectedItem()).toUpperCase();
 				String raca = campoRacaAnimal.getText();
@@ -331,7 +331,7 @@ public class CadastroCadastroPet extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				CadastroFinalizarCadastroTutor.showConfirmationDialog(frame);
+
 				String nome = campoNomeAnimal.getText();
 				String especie = String.valueOf(selectEspecie.getSelectedItem()).toUpperCase();
 				String raca = campoRacaAnimal.getText();
@@ -347,7 +347,15 @@ public class CadastroCadastroPet extends JPanel {
 				String alergias = campoAlergiasAnimal.getText();
 				String vacinas = campoVacinasAnimal.getText();
 				Pets pet = new Pets(null, nome, especie, dataFormatada, sexo, raca, peso, alergias, vacinas, idTutor);
-				BDServices.inserirPet(pet);
+				int id = BDServices.inserirPet(pet);
+				pet = BDServices.consultarPet(id);
+				int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja visualizar o cadastro feito?",
+						"Confirmar Remoção", JOptionPane.YES_NO_OPTION);
+				if (confirmacao == JOptionPane.YES_OPTION) {
+					JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+					f.setContentPane(new ConsultaPetsDadosPet(pet));
+					f.revalidate();
+				}
 			}
 
 		});

@@ -1,9 +1,6 @@
 package business;
 
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-import java.util.List;
-
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -56,14 +53,16 @@ public class BDServices {
 		return id;
 	}
 
-	public static void inserirPet(Pets pet) {
+	public static int inserirPet(Pets pet) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(pet);
+		int id = pet.getId();
 		em.getTransaction().commit();
 		em.close();
 		emf.close();
+		return id;
 	}
 
 	public static Funcionarios consultarFuncionario(int id) {
@@ -93,16 +92,6 @@ public class BDServices {
 		return tutor;
 	}
 
-	public static List<Produtos> consultarProdutosPorNome(String nome) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
-		EntityManager em = emf.createEntityManager();
-		TypedQuery<Produtos> query = em.createQuery("SELECT p FROM Produtos p WHERE p.nome LIKE :nome", Produtos.class);
-		query.setParameter("nome", "%" + nome + "%");
-		List<Produtos> produtos = query.getResultList();
-		em.close();
-		return produtos;
-	}
-
 	public static Produtos consultarProduto(int id) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
 		EntityManager em = emf.createEntityManager();
@@ -110,4 +99,38 @@ public class BDServices {
 		em.close();
 		return produto;
 	}
+
+	public static void removerProduto(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		Produtos produto = em.find(Produtos.class, id);
+		em.getTransaction().begin();
+		em.remove(produto);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+	}
+
+	public static void removerFuncionario(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		Funcionarios funcionario = em.find(Funcionarios.class, id);
+		em.getTransaction().begin();
+		em.remove(funcionario);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+	}
+
+	public static void removerPet(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		Pets pet = em.find(Pets.class, id);
+		em.getTransaction().begin();
+		em.remove(pet);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+	}
+
 }

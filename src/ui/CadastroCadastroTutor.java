@@ -26,9 +26,9 @@ import javax.swing.text.MaskFormatter;
 import ui.entities.Tutores;
 
 public class CadastroCadastroTutor extends JPanel {
-
-	private static final long serialVersionUID = 1L;
+	
 	public static CadastroCadastroTutor cadastroTutor = new CadastroCadastroTutor();
+	private static final long serialVersionUID = 1L;
 	private static JTextField campoTelefone;
 	private static JTextField campoDataNascimento;
 	private static JFormattedTextField campoCep;
