@@ -1,0 +1,1 @@
+INDEX VERSION 1.134+C:\Users\55819\Desktop\Projeto LPOO\projeto_lpoo\src\.metadata\.plugins\org.eclipse.jdt.core

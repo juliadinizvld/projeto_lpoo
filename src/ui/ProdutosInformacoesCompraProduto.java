@@ -71,7 +71,7 @@ public class ProdutosInformacoesCompraProduto extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(ProdutosConsultaProduto.produto1);
+				f.setContentPane(new ProdutosConsultaProduto());
 				f.revalidate();
 
 			}
@@ -88,9 +88,9 @@ public class ProdutosInformacoesCompraProduto extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new ProdutosPagamento(produto));
+				//f.setContentPane(new ProdutosPagamento(produto));
 				f.revalidate();
 
 			}

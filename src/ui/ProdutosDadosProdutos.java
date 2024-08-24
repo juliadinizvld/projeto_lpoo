@@ -2,24 +2,20 @@ package ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-
-import ui.entities.Produtos;
-
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import ui.entities.Produtos;
+import business.BDServices;
 
 public class ProdutosDadosProdutos extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Create the panel.
-	 */
 	public ProdutosDadosProdutos(Produtos produtos) {
 		setLayout(null);
 		JPanel panel = new JPanel();
@@ -63,7 +59,22 @@ public class ProdutosDadosProdutos extends JPanel {
 			}
 		});
 
-		panel.add(botaoRetornar);
+		JButton botaoRemover = new JButton("Remover");
+		botaoRemover.setBounds(400, 285, 85, 21);
+		panel.add(botaoRemover);
+		botaoRemover.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja remover este produto?",
+						"Confirmar Remoção", JOptionPane.YES_NO_OPTION);
+				if (confirmacao == JOptionPane.YES_OPTION) {
 
+					//BDServices.removerProduto(produtos.getId()); // pelo ID
+					JOptionPane.showMessageDialog(null, "Produto removido com sucesso!");
+					JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+					f.setContentPane(new ProdutosPesquisaProduto());
+					f.revalidate();
+				}
+			}
+		});
 	}
 }

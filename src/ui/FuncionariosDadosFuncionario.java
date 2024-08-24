@@ -67,7 +67,7 @@ public class FuncionariosDadosFuncionario extends JPanel {
 		botaoRetornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(FuncionariosConsultaFuncionario.funcionario1);
+				f.setContentPane(new FuncionariosConsultaFuncionario());
 				f.revalidate();
 			}
 		});
