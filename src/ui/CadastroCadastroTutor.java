@@ -126,11 +126,6 @@ public class CadastroCadastroTutor extends JPanel {
 		lblNumero.setFont(new Font("Arial", Font.BOLD, 10));
 		panel.add(lblNumero);
 
-		JLabel lblComplemento = new JLabel("Complemento :");
-		lblComplemento.setBounds(562, 234, 80, 13);
-		lblComplemento.setFont(new Font("Arial", Font.BOLD, 10));
-		panel.add(lblComplemento);
-
 		campoTelefone = new JFormattedTextField(mfTelefone);
 		campoTelefone.setBounds(521, 146, 96, 19);
 		panel.add(campoTelefone);
@@ -160,11 +155,6 @@ public class CadastroCadastroTutor extends JPanel {
 		campoRua.setBounds(457, 230, 96, 19);
 		panel.add(campoRua);
 		campoRua.setColumns(10);
-
-		campoComplemento = new JTextField();
-		campoComplemento.setBounds(642, 230, 96, 19);
-		panel.add(campoComplemento);
-		campoComplemento.setColumns(10);
 
 		JButton btnRetornar = new JButton("Retornar ");
 		btnRetornar.setForeground(new Color(255, 255, 255));

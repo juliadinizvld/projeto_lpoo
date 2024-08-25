@@ -19,7 +19,6 @@ import javax.swing.text.DocumentFilter;
 import javax.swing.text.MaskFormatter;
 import javax.swing.text.DocumentFilter.FilterBypass;
 
-import application.AtualizacaoAtualizarCadastroFuncionario;
 import business.BDServices;
 import ui.entities.Funcionarios;
 import ui.entities.MedicosVeterinarios;

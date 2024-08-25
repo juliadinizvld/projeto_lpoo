@@ -120,12 +120,12 @@ public class Home extends JPanel {
 			f.setContentPane(new FuncionariosConsultaFuncionario());
 			f.revalidate();
 		});
-		
+
 		JMenuItem menuItemTutor = new JMenuItem("Tutor");
 		mnNewMenu.add(menuItemTutor);
 		menuItemTutor.addActionListener(e -> {
 			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, mainPanel);
-			//f.setContentPane(new ConsultaDadosTutor());
+			f.setContentPane(new TutorConsultaTutor());
 			f.revalidate();
 		});
 

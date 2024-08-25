@@ -328,7 +328,7 @@ public class AtualizacaoAtualizarCadastroPet extends JPanel {
 		btnNewButton.setBounds(416, 454, 108, 35);
 		panel.add(btnNewButton);
 
-		btnAtualizar.addActionListener(new ActionListener() {
+		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
