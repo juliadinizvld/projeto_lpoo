@@ -3,6 +3,7 @@ package pagamento.controladora;
 import com.google.gson.Gson;
 import pagamento.entidades.Constantes;
 import pagamento.entidades.PedidoPagamento;
+import pagamento.entidades.RespostaPagamento;
 
 import java.io.IOException;
 import java.net.URI;
@@ -59,7 +60,11 @@ public class CriacaoPagamento {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		RespostaPagamento criacaoPagamento = gson.fromJson(criacaoPagamentoResposta.body(), RespostaPagamento.class);
 
+        String linkRedirecionamento = criacaoPagamento.getSandbox_init_point();
+        System.out.println("Link para redirecionamento: " + linkRedirecionamento);
        
         String resposta = criacaoPagamentoResposta.body();
         int status = criacaoPagamentoResposta.statusCode();
