@@ -1,101 +1,48 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Font;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
 import javax.swing.JTextField;
-import javax.swing.SpinnerDateModel;
-import javax.swing.SwingUtilities;
+import javax.swing.SwingConstants;
 
 import com.toedter.calendar.JDateChooser;
 
 public class AgendamentoPagamento extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public static AgendamentoPagamento agendamento2 = new AgendamentoPagamento();
 
 	/**
 	 * Create the panel.
 	 */
 	public AgendamentoPagamento() {
-		// Painel principal
+		setLayout(null);
+
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridBagLayout());
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.insets = new Insets(10, 10, 10, 10);
-
-
-		// Seleção de data
-		JLabel lblData = new JLabel("Selecione a data desejada:");
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		panel.add(lblData, gbc);
-
-		// Cria o componente JDateChooser
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setDateFormatString("dd/MM/yyyy"); // Define o formato de exibição da data
-		gbc.gridx = 1;
-		panel.add(dateChooser, gbc);
-		
-		// Ajusta o tamanho do JDateChooser
-		dateChooser.setPreferredSize(new Dimension(150, 25)); 
-		
-		
-		
-		// Informação de pagamento
-		JLabel lblPagamento = new JLabel("<html><br><br><br>Para conclusão do agendamento é necessário realizar o pagamento. "
-				+ "O valor total para pagamento é de R$   . Acesse o link abaixo para realização do pagamento:<br>"
-				+ "link mercado pago, integração com API</html>");
-		gbc.gridx = 0;
-		gbc.gridy = 4;
-		gbc.gridwidth = 2;
-		gbc.insets = new Insets(20, 10, 10, 10); // Ajuste os insets para mover o lblPagamento
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		panel.add(lblPagamento, gbc);
-		
-		// Botões 
-		JButton btnRetornar = new JButton("Retornar");
-		gbc.gridx = 0;
-		gbc.gridy = 8;
-		gbc.gridwidth = 1;
-		panel.add(btnRetornar, gbc);
-
-		JButton btnAvancar = new JButton("Avançar");
-		gbc.gridx = 1;
-		panel.add(btnAvancar, gbc);
-
-		// Ação do botão "Retornar"
-		btnRetornar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(AgendamentoAgendarProcedimento.agendamento1);
-				f.revalidate();
-			}
-		});
-
-		// Ação do botão "Avançar"
-		btnAvancar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Aqui você pode definir a ação do botão Avançar
-				// Por exemplo, ir para uma página de confirmação
-				JOptionPane.showMessageDialog(panel, "Pagamento concluído e agendamento realizado com sucesso!");
-			}
-		});
-
-		// Adiciona painel ao frame
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(0, 0, 793, 666);
 		add(panel);
+		panel.setLayout(null);
+
+		JLabel lblEscolhaData = new JLabel("Escolha a data");
+		lblEscolhaData.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEscolhaData.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblEscolhaData.setBounds(216, 30, 253, 25);
+		panel.add(lblEscolhaData);
+
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("dd/MM/yyyy");
+		dateChooser.setBounds(265, 123, 159, 25);
+		dateChooser.setPreferredSize(new Dimension(150, 25));
+		panel.add(dateChooser);
+
+		JLabel lblPagamento = new JLabel(
+				"<html>Para conclusão do agendamento é necessário realizar o <br>pagamento. Acesse o link abaixo para realização do pagamento!</html>");
+		lblPagamento.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblPagamento.setBounds(126, 180, 480, 66);
+		panel.add(lblPagamento);
 	}
-
-
 }

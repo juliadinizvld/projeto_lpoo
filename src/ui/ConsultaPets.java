@@ -119,7 +119,6 @@ public class ConsultaPets extends JPanel {
 
 				try {
 					int idTutor = Integer.parseInt(caixaInserirIDTutor.getText());
-
 					try {
 						connection = BD.getConnection();
 						st = connection.createStatement();

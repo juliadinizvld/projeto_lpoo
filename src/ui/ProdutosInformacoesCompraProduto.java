@@ -27,7 +27,7 @@ public class ProdutosInformacoesCompraProduto extends JPanel {
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(-73, -114, 700, 500);
+		panel.setBounds(0, 0, 844, 574);
 		add(panel);
 		panel.setLayout(null);
 
@@ -71,7 +71,7 @@ public class ProdutosInformacoesCompraProduto extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(ProdutosConsultaProduto.produto1);
+				f.setContentPane(new ProdutosConsultaProduto());
 				f.revalidate();
 
 			}
@@ -88,9 +88,9 @@ public class ProdutosInformacoesCompraProduto extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new ProdutosPagamento(produto));
+				//f.setContentPane(new ProdutosPagamento(produto));
 				f.revalidate();
 
 			}

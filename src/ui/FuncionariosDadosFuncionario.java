@@ -7,10 +7,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
+import business.BDServices;
 import ui.entities.Funcionarios;
 import java.awt.Color;
 
@@ -67,11 +69,11 @@ public class FuncionariosDadosFuncionario extends JPanel {
 		botaoRetornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(FuncionariosConsultaFuncionario.funcionario1);
+				f.setContentPane(new FuncionariosConsultaFuncionario());
 				f.revalidate();
 			}
 		});
-		botaoRetornar.setBounds(302, 429, 122, 21);
+		botaoRetornar.setBounds(141, 429, 122, 21);
 		panel.add(botaoRetornar);
 
 		JLabel textoIdFuncionario = new JLabel("ID do funcionário: " + String.valueOf(funcionario.getId()));
@@ -123,5 +125,39 @@ public class FuncionariosDadosFuncionario extends JPanel {
 		textoCidadeFuncionario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textoCidadeFuncionario.setBounds(389, 283, 269, 25);
 		panel.add(textoCidadeFuncionario);
+
+		JButton botaoRemover = new JButton("Remover Funcionário");
+		botaoRemover.setForeground(Color.WHITE);
+		botaoRemover.setBackground(new Color(159, 80, 0));
+		botaoRemover.setBounds(302, 429, 173, 21);
+		panel.add(botaoRemover);
+
+		JButton botaoAtualizar = new JButton("Atualizar funcionário");
+		botaoAtualizar.setForeground(Color.WHITE);
+		botaoAtualizar.setBackground(new Color(159, 80, 0));
+		botaoAtualizar.setBounds(518, 429, 173, 21);
+		panel.add(botaoAtualizar);
+
+		botaoAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new AtualizacaoAtualizarCadastroFuncionario(funcionario));
+				f.revalidate();
+			}
+		});
+
+		botaoRemover.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja remover este funcionario?",
+						"Confirmar Remoção", JOptionPane.YES_NO_OPTION);
+				if (confirmacao == JOptionPane.YES_OPTION) {
+					BDServices.removerFuncionario(funcionario.getId());
+					JOptionPane.showMessageDialog(null, "Funcionario removido com sucesso!");
+					JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+					f.setContentPane(new FuncionariosConsultaFuncionario());
+					f.revalidate();
+				}
+			}
+		});
 	}
 };

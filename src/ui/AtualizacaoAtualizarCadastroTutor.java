@@ -23,11 +23,11 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.MaskFormatter;
 
+import business.BDServices;
 import ui.entities.Tutores;
 
-public class CadastroCadastroTutor extends JPanel {
-	
-	public static CadastroCadastroTutor cadastroTutor = new CadastroCadastroTutor();
+public class AtualizacaoAtualizarCadastroTutor extends JPanel {
+
 	private static final long serialVersionUID = 1L;
 	private static JTextField campoTelefone;
 	private static JTextField campoDataNascimento;
@@ -43,7 +43,7 @@ public class CadastroCadastroTutor extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CadastroCadastroTutor() {
+	public AtualizacaoAtualizarCadastroTutor(Tutores tutor) {
 
 		SimpleDateFormat fmtBr = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -56,7 +56,7 @@ public class CadastroCadastroTutor extends JPanel {
 		try {
 			mfcpf = new MaskFormatter("###.###.###-##");
 			mfDataNascimento = new MaskFormatter("##/##/####");
-			mfTelefone = new MaskFormatter("## #####-####");
+			mfTelefone = new MaskFormatter("### #####-####");
 			mfEstado = new MaskFormatter("UU");
 			mfCep = new MaskFormatter("#####-###");
 			mfCep.setValidCharacters("0123456789");
@@ -67,11 +67,11 @@ public class CadastroCadastroTutor extends JPanel {
 		setLayout(null);
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(10, 0, 917, 696);
+		panel.setBounds(0, 0, 917, 696);
 		add(panel);
 		panel.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Dados do tutor:");
+		JLabel lblNewLabel = new JLabel("Atualização de dados do tutor");
 		lblNewLabel.setBounds(332, 32, 373, 22);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 17));
 		panel.add(lblNewLabel);
@@ -130,52 +130,58 @@ public class CadastroCadastroTutor extends JPanel {
 		campoTelefone.setBounds(521, 146, 96, 19);
 		panel.add(campoTelefone);
 		campoTelefone.setColumns(10);
+		campoTelefone.setText(tutor.getTelefone());
 
 		campoDataNascimento = new JFormattedTextField(mfDataNascimento);
 		campoDataNascimento.setBounds(521, 123, 96, 19);
 		panel.add(campoDataNascimento);
 		campoDataNascimento.setColumns(10);
+		campoDataNascimento.setText(fmtBr.format(tutor.getDataNascimento()));
 
 		campoCep = new JFormattedTextField(mfCep);
 		campoCep.setBounds(230, 229, 96, 19);
 		panel.add(campoCep);
 		campoCep.setColumns(10);
+		campoCep.setText(tutor.getCep());
 
 		campoNumeroCasa = new JTextField();
 		campoNumeroCasa.setBounds(447, 273, 40, 19);
 		panel.add(campoNumeroCasa);
 		campoNumeroCasa.setColumns(10);
+		campoNumeroCasa.setText(String.valueOf(tutor.getNumeroCasa()));
 
 		campoBairro = new JTextField();
 		campoBairro.setBounds(255, 270, 96, 19);
 		panel.add(campoBairro);
 		campoBairro.setColumns(10);
+		campoBairro.setText(tutor.getBairro());
 
 		campoRua = new JTextField();
 		campoRua.setBounds(457, 230, 96, 19);
 		panel.add(campoRua);
 		campoRua.setColumns(10);
+		campoRua.setText(tutor.getRua());
 
-		JButton btnRetornar = new JButton("Retornar ");
-		btnRetornar.setForeground(new Color(255, 255, 255));
-		btnRetornar.setBackground(new Color(159, 80, 0));
-		btnRetornar.setBounds(255, 448, 112, 37);
-		panel.add(btnRetornar);
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setForeground(new Color(255, 255, 255));
+		btnCancelar.setBackground(new Color(159, 80, 0));
+		btnCancelar.setBounds(255, 448, 112, 37);
+		panel.add(btnCancelar);
 
-		btnRetornar.addActionListener(new ActionListener() {
+		btnCancelar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new CadastroEscolha());
+				f.setContentPane(new TutorConsultaTutor());
 				f.revalidate();
 			}
 		});
 
-		JButton btnAvancar = new JButton("Avançar");
-		btnAvancar.setBackground(new Color(159, 80, 0));
-		btnAvancar.setForeground(new Color(255, 255, 255));
-		btnAvancar.setBounds(436, 448, 148, 37);
-		panel.add(btnAvancar);
+		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.setBackground(new Color(159, 80, 0));
+		btnAtualizar.setForeground(new Color(255, 255, 255));
+		btnAtualizar.setBounds(436, 448, 148, 37);
+		panel.add(btnAtualizar);
 
 		JLabel lblEmail = new JLabel("Email :");
 		lblEmail.setBounds(200, 188, 45, 13);
@@ -186,11 +192,13 @@ public class CadastroCadastroTutor extends JPanel {
 		campoEmail.setBounds(239, 188, 189, 16);
 		campoEmail.setColumns(10);
 		panel.add(campoEmail);
+		campoEmail.setText(tutor.getEmail());
 
 		campoNome = new JTextField();
 		campoNome.setBounds(296, 84, 304, 19);
 		campoNome.setColumns(10);
 		panel.add(campoNome);
+		campoNome.setText(tutor.getNome());
 
 		// Adiciona o filtro para permitir apenas letras
 		((AbstractDocument) campoNome.getDocument()).setDocumentFilter(new FiltroApenasLetras());
@@ -200,27 +208,35 @@ public class CadastroCadastroTutor extends JPanel {
 		selectSexo.setFont(new Font("Dialog", Font.PLAIN, 14));
 		selectSexo.setBounds(239, 150, 112, 21);
 		panel.add(selectSexo);
+		if (tutor.getSexo().charAt(0) == 'M') {
+			selectSexo.setSelectedItem("Masculino");
+		} else {
+			selectSexo.setSelectedItem("Feminino");
+		}
 
 		campoCidade = new JTextField();
 		campoCidade.setBounds(255, 306, 96, 19);
 		campoCidade.setColumns(10);
 		panel.add(campoCidade);
+		campoCidade.setText(tutor.getCidade());
 
 		JFormattedTextField campoCpf = new JFormattedTextField(mfcpf);
 		campoCpf.setBounds(239, 123, 112, 19);
 		panel.add(campoCpf);
+		campoCpf.setText(tutor.getCpf());
 
 		JFormattedTextField campoEstado = new JFormattedTextField(mfEstado);
 		campoEstado.setToolTipText("");
 		campoEstado.setBounds(446, 305, 41, 20);
 		panel.add(campoEstado);
+		campoEstado.setText(tutor.getEstado());
 
 		JLabel textoEstado = new JLabel("Estado:");
 		textoEstado.setFont(new Font("Arial", Font.BOLD, 10));
 		textoEstado.setBounds(396, 308, 46, 14);
 		panel.add(textoEstado);
 
-		btnAvancar.addActionListener(new ActionListener() {
+		btnAtualizar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				String nome = campoNome.getText().trim();
@@ -268,13 +284,19 @@ public class CadastroCadastroTutor extends JPanel {
 					return;
 				}
 
-				Tutores tutor = new Tutores(null, nome, cpf, sexo, email, estado, cidade, telefone, numeroCasa,
-						dataFormatada, cep, bairro, rua);
+				int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja confirmar a atualização dos dados?",
+						"Confirmar Atualização", JOptionPane.YES_NO_OPTION);
 
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new CadastroCadastroPet(tutor));
-				f.revalidate();
+				if (confirmacao == JOptionPane.YES_OPTION) {
+					BDServices.atualizarTutor(tutor.getId(), nome, cpf, sexo, email, estado, cidade, telefone,
+							numeroCasa, dataFormatada, cep, bairro, rua);
+					Tutores tutorAtualizado = BDServices.consultarTutor(tutor.getId());
+					JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+					f.setContentPane(new ConsultaDadosTutor(tutorAtualizado));
+					f.revalidate();
+				}
 			}
+
 		});
 	}
 

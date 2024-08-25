@@ -264,7 +264,7 @@ public class FuncionariosNovoFuncionario extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-                f.setContentPane(FuncionariosConsultaFuncionario.funcionario1);
+                f.setContentPane(new FuncionariosConsultaFuncionario());
                 f.revalidate();
             }
         });

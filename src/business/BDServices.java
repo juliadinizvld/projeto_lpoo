@@ -1,11 +1,12 @@
 package business;
 
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-import java.util.List;
+import java.sql.Date;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import org.hibernate.Session;
 
 import ui.entities.Funcionarios;
 import ui.entities.MedicosVeterinarios;
@@ -56,14 +57,100 @@ public class BDServices {
 		return id;
 	}
 
-	public static void inserirPet(Pets pet) {
+	public static void atualizarTutor(int id, String nome, String cpf, String sexo, String email, String estado,
+			String cidade, String telefone, int numeroCasa, Date dataFormatada, String cep, String bairro, String rua) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
+		Tutores tutor = em.find(Tutores.class, id);
+		tutor.setNome(nome);
+		tutor.setCpf(cpf);
+		tutor.setSexo(sexo);
+		tutor.setEmail(email);
+		tutor.setEstado(estado);
+		tutor.setCidade(cidade);
+		tutor.setTelefone(telefone);
+		tutor.setNumeroCasa(numeroCasa);
+		tutor.setDataNascimento(dataFormatada);
+		tutor.setCep(cep);
+		tutor.setBairro(bairro);
+		tutor.setRua(rua);
+		em.persist(tutor);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+	}
+
+	public static void atualizarProduto(int id, String tipo, String nome, int quantidade, double valor) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Produtos produto = em.find(Produtos.class, id);
+		produto.setTipo(tipo);
+		produto.setNome(nome);
+		produto.setQuantidade(quantidade);
+		produto.setValor(valor);
+		em.persist(produto);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+	}
+
+	public static void atualizarPet(int id, String nome, String especie, Date dataNascimento, String sexo, String raca,
+			double peso, String alergias, String vacinas) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Pets pet = em.find(Pets.class, id);
+		pet.setNome(nome);
+		pet.setEspecie(especie);
+		pet.setDataNascimento(dataNascimento);
+		pet.setSexo(sexo);
+		pet.setRaca(raca);
+		pet.setPeso(peso);
+		pet.setAlergias(alergias);
+		pet.setVacinas(vacinas);
 		em.persist(pet);
 		em.getTransaction().commit();
 		em.close();
 		emf.close();
+	}
+
+	public static void atualizarFuncionario(int id, String nome, int idade, String telefone, String cpf,
+			String tipoFuncionario, String sexo, String cep, int numeroCasa, String rua, String bairro, String estado,
+			String cidade) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Funcionarios funcionario = em.find(Funcionarios.class, id);
+		funcionario.setNome(nome);
+		funcionario.setIdade(idade);
+		funcionario.setTelefone(telefone);
+		funcionario.setCpf(cpf);
+		funcionario.setTipoFuncionario(tipoFuncionario);
+		funcionario.setSexo(sexo);
+		funcionario.setCep(cep);
+		funcionario.setNumeroCasa(numeroCasa);
+		funcionario.setRua(rua);
+		funcionario.setBairro(bairro);
+		funcionario.setEstado(estado);
+		funcionario.setCidade(cidade);
+		em.persist(funcionario);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+	}
+
+	public static int inserirPet(Pets pet) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(pet);
+		int id = pet.getId();
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+		return id;
 	}
 
 	public static Funcionarios consultarFuncionario(int id) {
@@ -93,16 +180,6 @@ public class BDServices {
 		return tutor;
 	}
 
-	public static List<Produtos> consultarProdutosPorNome(String nome) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
-		EntityManager em = emf.createEntityManager();
-		TypedQuery<Produtos> query = em.createQuery("SELECT p FROM Produtos p WHERE p.nome LIKE :nome", Produtos.class);
-		query.setParameter("nome", "%" + nome + "%");
-		List<Produtos> produtos = query.getResultList();
-		em.close();
-		return produtos;
-	}
-
 	public static Produtos consultarProduto(int id) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
 		EntityManager em = emf.createEntityManager();
@@ -110,4 +187,49 @@ public class BDServices {
 		em.close();
 		return produto;
 	}
+
+	public static void removerProduto(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		Produtos produto = em.find(Produtos.class, id);
+		em.getTransaction().begin();
+		em.remove(produto);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+	}
+
+	public static void removerFuncionario(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		Funcionarios funcionario = em.find(Funcionarios.class, id);
+		em.getTransaction().begin();
+		em.remove(funcionario);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+	}
+
+	public static void removerTutor(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		Tutores tutor = em.find(Tutores.class, id);
+		em.getTransaction().begin();
+		em.remove(tutor);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+	}
+
+	public static void removerPet(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		Pets pet = em.find(Pets.class, id);
+		em.getTransaction().begin();
+		em.remove(pet);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+	}
+
 }
