@@ -43,46 +43,30 @@ public class ConsultaDadosTutor extends JPanel {
 		tituloDadosTutor.setBounds(272, 13, 132, 41);
 		panel.add(tituloDadosTutor);
 
-		table = new JTable();
-		table.setBounds(149, 109, 1, 1);
-		panel.add(table);
-
-		table_1 = new JTable();
-		table_1.setBounds(271, 147, 1, 1);
-		panel.add(table_1);
-
-		table_2 = new JTable();
-		table_2.setBounds(197, 109, 1, 1);
-		panel.add(table_2);
-
 		JLabel textIDTutor = new JLabel("ID: " + tutor.getId());
-		textIDTutor.setBounds(8, 120, 86, 14);
+		textIDTutor.setBounds(8, 120, 132, 14);
 		panel.add(textIDTutor);
 
 		JLabel TextNomeTutor = new JLabel("Nome: " + tutor.getNome());
-		TextNomeTutor.setBounds(8, 147, 226, 14);
+		TextNomeTutor.setBounds(8, 145, 226, 14);
 		panel.add(TextNomeTutor);
 
-		JLabel TextCPFTutor = new JLabel("CPF: <dynamic>");
+		JLabel TextCPFTutor = new JLabel("CPF: " + tutor.getCpf());
 		TextCPFTutor.setBackground(new Color(255, 255, 255));
-		TextCPFTutor.setBounds(8, 164, 226, 14);
+		TextCPFTutor.setBounds(8, 174, 226, 14);
 		panel.add(TextCPFTutor);
 
-		JLabel EmailTutor = new JLabel("Email:  <dynamic>");
-		EmailTutor.setBounds(8, 189, 190, 14);
-		panel.add(EmailTutor);
-
-		JLabel TelefoneTutor = new JLabel("Telefone: <dynamic>");
-		TelefoneTutor.setBounds(8, 285, 142, 14);
+		JLabel TelefoneTutor = new JLabel("Telefone: " + tutor.getTelefone());
+		TelefoneTutor.setBounds(8, 261, 226, 14);
 		panel.add(TelefoneTutor);
 
-		JLabel TextSexoPet = new JLabel("Sexo: " + tutor.getSexo());
-		TextSexoPet.setBounds(8, 214, 142, 14);
-		panel.add(TextSexoPet);
+		JLabel TextSexo = new JLabel("Sexo: " + tutor.getSexo());
+		TextSexo.setBounds(8, 199, 208, 14);
+		panel.add(TextSexo);
 
-		JLabel TextNascPet = new JLabel("Nascimento: " + tutor.getDataNascimento());
-		TextNascPet.setBounds(8, 247, 208, 27);
-		panel.add(TextNascPet);
+		JLabel TextDataNascimento = new JLabel("Data de Nascimento: " + tutor.getDataNascimento());
+		TextDataNascimento.setBounds(8, 238, 245, 23);
+		panel.add(TextDataNascimento);
 
 		JButton botaoRetornar = new JButton("Retornar");
 		botaoRetornar.setBackground(new Color(159, 80, 0));
@@ -95,7 +79,7 @@ public class ConsultaDadosTutor extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new ConsultaPets());
+				f.setContentPane(new Home());
 				f.revalidate();
 			}
 
@@ -106,39 +90,34 @@ public class ConsultaDadosTutor extends JPanel {
 		botaoRemoverTutor.setBackground(new Color(159, 80, 0));
 		botaoRemoverTutor.setBounds(390, 403, 195, 23);
 		panel.add(botaoRemoverTutor);
-		
-		JLabel EmailTutor_1 = new JLabel("Email:  <dynamic>");
-		EmailTutor_1.setBounds(8, 235, 190, 14);
-		panel.add(EmailTutor_1);
-		
-		JLabel lblCep = new JLabel("CEP:  <dynamic>");
+
+		JLabel EmailTutor = new JLabel("Email: " + tutor.getEmail());
+		EmailTutor.setBounds(8, 221, 226, 14);
+		panel.add(EmailTutor);
+
+		JLabel lblCep = new JLabel("CEP: " + tutor.getCep());
 		lblCep.setBounds(415, 134, 190, 14);
 		panel.add(lblCep);
-		
-		JLabel BairroTutor = new JLabel("Bairro:  <dynamic>");
+
+		JLabel BairroTutor = new JLabel("Bairro: " + tutor.getBairro());
 		BairroTutor.setBounds(415, 164, 190, 14);
 		panel.add(BairroTutor);
-		
-		JLabel RuaAV = new JLabel("Rua/Av:  <dynamic>");
+
+		JLabel RuaAV = new JLabel("Rua/Av: " + tutor.getRua());
 		RuaAV.setBounds(415, 189, 190, 14);
 		panel.add(RuaAV);
-		
-		JLabel TextNumeroCasa = new JLabel(" Numero: null");
+
+		JLabel TextNumeroCasa = new JLabel(" Numero: " + tutor.getNumeroCasa());
 		TextNumeroCasa.setBounds(412, 208, 208, 27);
 		panel.add(TextNumeroCasa);
 
 		botaoRemoverTutor.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja remover este Pet?", "Confirmar Remoção",
 						JOptionPane.YES_NO_OPTION);
 				if (confirmacao == JOptionPane.YES_OPTION) {
-					BDServices.removerPet(pet.getId());
-					JOptionPane.showMessageDialog(null, "Pet removido com sucesso!");
-					JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-					f.setContentPane(new ConsultaPets());
-					f.revalidate();
+
 				}
 			}
 
