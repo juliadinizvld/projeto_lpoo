@@ -96,6 +96,26 @@ public class BDServices {
 		emf.close();
 	}
 
+	public static void atualizarPet(int id, String nome, String especie, Date dataNascimento, String sexo, String raca,
+			double peso, String alergias, String vacinas) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Pets pet = em.find(Pets.class, id);
+		pet.setNome(nome);
+		pet.setEspecie(especie);
+		pet.setDataNascimento(dataNascimento);
+		pet.setSexo(sexo);
+		pet.setRaca(raca);
+		pet.setPeso(peso);
+		pet.setAlergias(alergias);
+		pet.setVacinas(vacinas);
+		em.persist(pet);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+	}
+
 	public static int inserirPet(Pets pet) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
 		EntityManager em = emf.createEntityManager();

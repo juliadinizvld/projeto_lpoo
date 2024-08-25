@@ -140,7 +140,7 @@ public class ConsultaPetsDadosPet extends JPanel {
 		JButton botaoRetornar = new JButton("Retornar");
 		botaoRetornar.setBackground(new Color(159, 80, 0));
 		botaoRetornar.setForeground(new Color(255, 255, 255));
-		botaoRetornar.setBounds(197, 403, 114, 23);
+		botaoRetornar.setBounds(106, 405, 114, 23);
 		panel.add(botaoRetornar);
 
 		botaoRetornar.addActionListener(new ActionListener() {
@@ -157,8 +157,24 @@ public class ConsultaPetsDadosPet extends JPanel {
 		JButton botaoRemoverPet = new JButton("Remover Pet");
 		botaoRemoverPet.setForeground(Color.WHITE);
 		botaoRemoverPet.setBackground(new Color(159, 80, 0));
-		botaoRemoverPet.setBounds(390, 403, 195, 23);
+		botaoRemoverPet.setBounds(299, 405, 195, 23);
 		panel.add(botaoRemoverPet);
+
+		JButton botaoAtualizarDados = new JButton("Atualizar Dados");
+		botaoAtualizarDados.setForeground(Color.WHITE);
+		botaoAtualizarDados.setBackground(new Color(159, 80, 0));
+		botaoAtualizarDados.setBounds(526, 405, 195, 23);
+		panel.add(botaoAtualizarDados);
+
+		botaoAtualizarDados.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new AtualizacaoAtualizarCadastroPet(pet));
+				f.revalidate();
+			}
+
+		});
 
 		botaoRemoverPet.addActionListener(new ActionListener() {
 
