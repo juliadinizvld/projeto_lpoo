@@ -25,7 +25,7 @@ public class ProdutosPagamento extends JPanel {
 		setLayout(null);
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(-63, -47, 700, 500);
+		panel.setBounds(0, 0, 808, 526);
 		add(panel);
 		panel.setLayout(null);
 

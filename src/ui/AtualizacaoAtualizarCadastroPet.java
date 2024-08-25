@@ -60,7 +60,7 @@ public class AtualizacaoAtualizarCadastroPet extends JPanel {
 		// Cria um painel principal com um layout de BorderLayout
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(0, 11, 715, 523);
+		panel.setBounds(0, 0, 768, 590);
 		add(panel);
 		panel.setLayout(null);
 
@@ -211,17 +211,17 @@ public class AtualizacaoAtualizarCadastroPet extends JPanel {
 
 		});
 
-		JButton btnRetornar = new JButton("Retornar");
-		btnRetornar.setForeground(new Color(255, 255, 255));
-		btnRetornar.setBackground(new Color(159, 80, 0));
-		btnRetornar.setBounds(262, 454, 108, 35);
-		panel.add(btnRetornar);
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setForeground(new Color(255, 255, 255));
+		btnCancelar.setBackground(new Color(159, 80, 0));
+		btnCancelar.setBounds(262, 454, 108, 35);
+		panel.add(btnCancelar);
 
-		btnRetornar.addActionListener(new ActionListener() {
+		btnCancelar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(CadastroCadastroTutor.cadastroTutor);
+				f.setContentPane(new ConsultaPets());
 				f.revalidate();
 			}
 		});

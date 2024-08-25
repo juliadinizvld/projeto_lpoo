@@ -27,7 +27,7 @@ public class ProdutosInformacoesCompraProduto extends JPanel {
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(-73, -114, 700, 500);
+		panel.setBounds(0, 0, 844, 574);
 		add(panel);
 		panel.setLayout(null);
 

@@ -52,11 +52,11 @@ public class ConsultaInserirDadosConsulta extends JPanel {
 	
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(10, -12, 821, 500);
+		panel.setBounds(0, 0, 821, 500);
 		add(panel);
 		panel.setLayout(null);
 
-		JLabel textDataConsulta = new JLabel("Data da Consultaaa:");
+		JLabel textDataConsulta = new JLabel("Data da Consulta:");
 		textDataConsulta.setBounds(10, 25, 168, 14);
 		panel.add(textDataConsulta);
 

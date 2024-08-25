@@ -78,7 +78,7 @@ public class Home extends JPanel {
 		mainPanel.add(agendamentoProcedimentosButton, gbcMain);
 		agendamentoProcedimentosButton.addActionListener(e -> {
 			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, mainPanel);
-			f.setContentPane(AgendamentoAgendarProcedimento.agendamento1);
+			f.setContentPane(new AgendamentoAgendarProcedimento());
 			f.revalidate();
 		});
 
