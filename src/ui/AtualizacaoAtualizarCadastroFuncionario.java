@@ -1,9 +1,11 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -17,12 +19,10 @@ import javax.swing.text.AbstractDocument;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.MaskFormatter;
-import javax.swing.text.DocumentFilter.FilterBypass;
 
 import business.BDServices;
 import ui.entities.Funcionarios;
 import ui.entities.MedicosVeterinarios;
-import java.awt.Color;
 
 public class AtualizacaoAtualizarCadastroFuncionario extends JPanel {
 

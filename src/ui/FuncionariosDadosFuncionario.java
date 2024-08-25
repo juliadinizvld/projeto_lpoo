@@ -73,7 +73,7 @@ public class FuncionariosDadosFuncionario extends JPanel {
 				f.revalidate();
 			}
 		});
-		botaoRetornar.setBounds(253, 428, 122, 21);
+		botaoRetornar.setBounds(141, 429, 122, 21);
 		panel.add(botaoRetornar);
 
 		JLabel textoIdFuncionario = new JLabel("ID do funcionário: " + String.valueOf(funcionario.getId()));
@@ -129,8 +129,22 @@ public class FuncionariosDadosFuncionario extends JPanel {
 		JButton botaoRemover = new JButton("Remover Funcionário");
 		botaoRemover.setForeground(Color.WHITE);
 		botaoRemover.setBackground(new Color(159, 80, 0));
-		botaoRemover.setBounds(413, 428, 173, 21);
+		botaoRemover.setBounds(302, 429, 173, 21);
 		panel.add(botaoRemover);
+
+		JButton botaoAtualizar = new JButton("Atualizar funcionário");
+		botaoAtualizar.setForeground(Color.WHITE);
+		botaoAtualizar.setBackground(new Color(159, 80, 0));
+		botaoAtualizar.setBounds(518, 429, 173, 21);
+		panel.add(botaoAtualizar);
+
+		botaoAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new AtualizacaoAtualizarCadastroFuncionario());
+				f.revalidate();
+			}
+		});
 
 		botaoRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

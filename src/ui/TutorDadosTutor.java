@@ -69,7 +69,7 @@ public class TutorDadosTutor extends JPanel {
 				f.revalidate();
 			}
 		});
-		botaoRetornar.setBounds(253, 428, 122, 21);
+		botaoRetornar.setBounds(131, 429, 122, 21);
 		panel.add(botaoRetornar);
 
 		JLabel textoIdTutor = new JLabel("ID do tutor: " + String.valueOf(tutor.getId()));
@@ -125,8 +125,22 @@ public class TutorDadosTutor extends JPanel {
 		JButton botaoRemover = new JButton("Remover Tutor");
 		botaoRemover.setForeground(Color.WHITE);
 		botaoRemover.setBackground(new Color(159, 80, 0));
-		botaoRemover.setBounds(413, 428, 173, 21);
+		botaoRemover.setBounds(291, 429, 173, 21);
 		panel.add(botaoRemover);
+
+		JButton botaoAtualizarDados = new JButton("Atualizar dados");
+		botaoAtualizarDados.setForeground(Color.WHITE);
+		botaoAtualizarDados.setBackground(new Color(159, 80, 0));
+		botaoAtualizarDados.setBounds(509, 429, 173, 21);
+		panel.add(botaoAtualizarDados);
+
+		botaoAtualizarDados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new AtualizacaoAtualizarCadastroTutor(tutor));
+				f.revalidate();
+			}
+		});
 
 		botaoRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

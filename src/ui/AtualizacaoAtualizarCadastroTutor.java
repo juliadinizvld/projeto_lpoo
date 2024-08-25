@@ -162,17 +162,17 @@ public class AtualizacaoAtualizarCadastroTutor extends JPanel {
 		campoRua.setColumns(10);
 		campoRua.setText(tutor.getRua());
 
-		JButton btnRetornar = new JButton("Retornar ");
-		btnRetornar.setForeground(new Color(255, 255, 255));
-		btnRetornar.setBackground(new Color(159, 80, 0));
-		btnRetornar.setBounds(255, 448, 112, 37);
-		panel.add(btnRetornar);
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setForeground(new Color(255, 255, 255));
+		btnCancelar.setBackground(new Color(159, 80, 0));
+		btnCancelar.setBounds(255, 448, 112, 37);
+		panel.add(btnCancelar);
 
-		btnRetornar.addActionListener(new ActionListener() {
+		btnCancelar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new CadastroEscolha());
+				f.setContentPane(new TutorConsultaTutor());
 				f.revalidate();
 			}
 		});

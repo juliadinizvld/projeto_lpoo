@@ -16,32 +16,32 @@ public class ProdutosDadosProdutos extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public ProdutosDadosProdutos(Produtos produtos) {
+	public ProdutosDadosProdutos(Produtos produto) {
 		setLayout(null);
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(0, 0, 677, 391);
+		panel.setBounds(0, 0, 796, 555);
 		add(panel);
 		panel.setLayout(null);
 
-		JLabel textId = new JLabel("Id: " + produtos.getId());
-		textId.setBounds(10, 73, 168, 14);
+		JLabel textId = new JLabel("Id: " + produto.getId());
+		textId.setBounds(121, 83, 168, 14);
 		panel.add(textId);
 
-		JLabel textNomeProduto = new JLabel(" Nome do Produto: " + produtos.getNome());
-		textNomeProduto.setBounds(10, 115, 168, 14);
+		JLabel textNomeProduto = new JLabel(" Nome do Produto: " + produto.getNome());
+		textNomeProduto.setBounds(121, 125, 168, 14);
 		panel.add(textNomeProduto);
 
-		JLabel textTipo = new JLabel(" Tipo: " + produtos.getTipo());
-		textTipo.setBounds(10, 163, 168, 14);
+		JLabel textTipo = new JLabel(" Tipo: " + produto.getTipo());
+		textTipo.setBounds(121, 173, 168, 14);
 		panel.add(textTipo);
 
-		JLabel textQuantidade = new JLabel("Quantidade: " + produtos.getQuantidade());
-		textQuantidade.setBounds(10, 198, 168, 14);
+		JLabel textQuantidade = new JLabel("Quantidade: " + produto.getQuantidade());
+		textQuantidade.setBounds(121, 208, 168, 14);
 		panel.add(textQuantidade);
 
-		JLabel textValor = new JLabel(" Valor: " + produtos.getValor());
-		textValor.setBounds(10, 238, 122, 14);
+		JLabel textValor = new JLabel(" Valor: " + produto.getValor());
+		textValor.setBounds(121, 248, 122, 14);
 		panel.add(textValor);
 
 		JLabel lblDadosdeProdutos = new JLabel("Dados do Produto ");
@@ -49,7 +49,7 @@ public class ProdutosDadosProdutos extends JPanel {
 		panel.add(lblDadosdeProdutos);
 
 		JButton botaoRetornar = new JButton("Retornar");
-		botaoRetornar.setBounds(302, 285, 85, 21);
+		botaoRetornar.setBounds(199, 318, 85, 21);
 		panel.add(botaoRetornar);
 		botaoRetornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -60,19 +60,31 @@ public class ProdutosDadosProdutos extends JPanel {
 		});
 
 		JButton botaoRemover = new JButton("Remover");
-		botaoRemover.setBounds(400, 285, 85, 21);
+		botaoRemover.setBounds(297, 318, 85, 21);
 		panel.add(botaoRemover);
+		
 		botaoRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja remover este produto?",
 						"Confirmar Remoção", JOptionPane.YES_NO_OPTION);
 				if (confirmacao == JOptionPane.YES_OPTION) {
-					BDServices.removerProduto(produtos.getId());
+					BDServices.removerProduto(produto.getId());
 					JOptionPane.showMessageDialog(null, "Produto removido com sucesso!");
 					JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
 					f.setContentPane(new ProdutosPesquisaProduto());
 					f.revalidate();
 				}
+			}
+		});
+
+		JButton botaoAtualizarProduto = new JButton("Atualizar Produto");
+		botaoAtualizarProduto.setBounds(409, 317, 144, 21);
+		panel.add(botaoAtualizarProduto);
+		botaoAtualizarProduto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new AtualizacaoAtualizarCadastroProduto(produto));
+				f.revalidate();
 			}
 		});
 	}

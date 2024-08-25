@@ -81,6 +81,21 @@ public class BDServices {
 		emf.close();
 	}
 
+	public static void atualizarProduto(int id, String tipo, String nome, int quantidade, double valor) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Produtos produto = em.find(Produtos.class, id);
+		produto.setTipo(tipo);
+		produto.setNome(nome);
+		produto.setQuantidade(quantidade);
+		produto.setValor(valor);
+		em.persist(produto);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+	}
+
 	public static int inserirPet(Pets pet) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
 		EntityManager em = emf.createEntityManager();

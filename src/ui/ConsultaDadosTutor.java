@@ -79,7 +79,7 @@ public class ConsultaDadosTutor extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new Home());
+				f.setContentPane(new TutorConsultaTutor());
 				f.revalidate();
 			}
 
