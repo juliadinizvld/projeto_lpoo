@@ -6,7 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import ui.Home;
+import business.BDServices;
+import ui.ConsultaDadosTutor;
+import ui.entities.Tutores;
 
 public class Main extends JFrame {
 
@@ -37,7 +39,8 @@ public class Main extends JFrame {
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
-		setContentPane(new Home());
+		Tutores tutor = BDServices.consultarTutor(2);
+		setContentPane(new ConsultaDadosTutor(tutor));
 
 	}
 
