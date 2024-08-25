@@ -328,7 +328,7 @@ public class AtualizacaoAtualizarCadastroPet extends JPanel {
 		btnNewButton.setBounds(416, 454, 108, 35);
 		panel.add(btnNewButton);
 
-		btnNewButton.addActionListener(new ActionListener() {
+		btnAtualizar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
@@ -349,8 +349,8 @@ public class AtualizacaoAtualizarCadastroPet extends JPanel {
 				Pets pet = new Pets(null, nome, especie, dataFormatada, sexo, raca, peso, alergias, vacinas, idTutor);
 				int id = BDServices.inserirPet(pet);
 				pet = BDServices.consultarPet(id);
-				int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja visualizar o cadastro feito?",
-						"Confirmar Remoção", JOptionPane.YES_NO_OPTION);
+				int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja confirmar a atualização dos dados?", 
+		                "Confirmar Atualização", JOptionPane.YES_NO_OPTION);
 				if (confirmacao == JOptionPane.YES_OPTION) {
 					JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
 					f.setContentPane(new ConsultaPetsDadosPet(pet));
