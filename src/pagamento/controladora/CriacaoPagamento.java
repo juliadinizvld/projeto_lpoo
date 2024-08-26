@@ -73,4 +73,15 @@ public class CriacaoPagamento {
 
     }
 
+	public String criarPagamento(String nomeProduto, double precoProduto) {
+		
+	    PedidoPagamento.Item item = new PedidoPagamento.Item();
+	    item.setTitle(nomeProduto);
+	    item.setCurrency_id("BRL");
+	    item.setQuantity(1);
+	    item.setUnit_price(precoProduto);
+		return null;
+	}
+
+
 }
