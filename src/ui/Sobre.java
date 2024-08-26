@@ -17,38 +17,38 @@ public class Sobre extends JPanel {
 
     public Sobre() {
         setLayout(new BorderLayout());
-        setBackground(new Color(222, 222, 222)); 
+        setBackground(new Color(222, 222, 222));
 
         JPanel imagePanel = new JPanel();
-        imagePanel.setBackground(new Color(222, 222, 222)); 
+        imagePanel.setBackground(new Color(222, 222, 222));
         try {
             URL imageUrl = new URL("https://img.freepik.com/fotos-gratis/close-no-veterinario-cuidando-do-animal-de-estimacao_23-2149143875.jpg?t=st=1724438996~exp=1724442596~hmac=60f11e88bf49ee80708a0ddb04bd47512ef95f0bb4eb113c9b028ad0ae306548&w=740");
             InputStream inputStream = imageUrl.openStream();
-            BufferedImage image = ImageIO.read(inputStream);
-            ImageIcon imageIcon = new ImageIcon(image);
+            BufferedImage originalImage = ImageIO.read(inputStream);
+            BufferedImage resizedImage = resizeImage(originalImage, 600, 300); // Redimensiona a imagem
+
+            ImageIcon imageIcon = new ImageIcon(resizedImage);
             JLabel imageLabel = new JLabel(imageIcon);
             imageLabel.setHorizontalAlignment(JLabel.CENTER);
             imagePanel.add(imageLabel);
         } catch (IOException e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
         }
         add(imagePanel, BorderLayout.NORTH);
 
-        
         JTextArea textArea = new JTextArea();
         textArea.setText("Nossa Clínica Veterinária oferece cuidados especializados para animais de estimação, incluindo consultas, procedimentos cirúrgicos e serviços de emergência. Com uma equipe de veterinários experientes, proporcionamos tratamentos de alta qualidade e serviços de diagnóstico avançados. Além disso, disponibilizamos medicamentos e produtos para garantir o bem-estar contínuo dos seus pets. Estamos comprometidos em proporcionar um atendimento gentil e eficaz para a saúde do seu animal.");
         textArea.setEditable(false);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setFont(new Font("Arial", Font.PLAIN, 16));
-        textArea.setBackground(new Color(222, 222, 222)); 
+        textArea.setBackground(new Color(222, 222, 222));
 
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setPreferredSize(new Dimension(600, 300));
-        scrollPane.setBackground(new Color(222, 222, 222)); 
+        scrollPane.setBackground(new Color(222, 222, 222));
         add(scrollPane, BorderLayout.CENTER);
 
-        
         JButton returnButton = new JButton("Retornar");
         returnButton.setFont(new Font("Arial", Font.PLAIN, 20));
         returnButton.setBackground(new Color(159, 80, 0));
@@ -63,9 +63,20 @@ public class Sobre extends JPanel {
         });
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(new Color(222, 222, 222)); 
+        buttonPanel.setBackground(new Color(222, 222, 222));
         buttonPanel.add(returnButton);
         add(buttonPanel, BorderLayout.SOUTH);
     }
-}
 
+    // redimensionar a imagem
+    private BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) {
+        Image tmp = originalImage.getScaledInstance(targetWidth, targetHeight, Image.SCALE_SMOOTH);
+        BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
+
+        Graphics2D g2d = resizedImage.createGraphics();
+        g2d.drawImage(tmp, 0, 0, null);
+        g2d.dispose();
+
+        return resizedImage;
+    }
+}
