@@ -5,11 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.InputVerifier;
+import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 
 import business.BDServices;
 import ui.entities.Tutores;
@@ -45,7 +48,7 @@ public class CadastroInformarIdTutor extends JPanel {
         btnConfirmar.setBounds(340, 146, 148, 37);
         panel.add(btnConfirmar);
 
-        JFormattedTextField campoIdTutor = new JFormattedTextField();
+        JTextField campoIdTutor = new JTextField();
         campoIdTutor.setBounds(306, 90, 73, 20);
         panel.add(campoIdTutor);
 
@@ -131,5 +134,21 @@ public class CadastroInformarIdTutor extends JPanel {
                 }
             }
         });
+
+        // Adiciona um InputVerifier para o campoIdTutor
+        campoIdTutor.setInputVerifier(new InputVerifier() {
+            @Override
+            public boolean verify(JComponent input) {
+                JTextField textField = (JTextField) input;
+                String text = textField.getText();
+                if (text.matches("\\d*")) { // Aceita apenas dígitos
+                    return true;
+                } else {
+                    JOptionPane.showMessageDialog(textField, "Por favor, insira apenas números.", "Entrada inválida", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+            }
+        });
     }
 }
+
