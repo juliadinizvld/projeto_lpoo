@@ -1,4 +1,3 @@
-
 package ui;
 
 import java.awt.Color;
@@ -21,7 +20,9 @@ import javax.swing.SwingUtilities;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
+import javax.swing.text.DocumentFilter.FilterBypass;
 import javax.swing.text.MaskFormatter;
+import javax.swing.text.PlainDocument;
 
 import ui.entities.Tutores;
 
@@ -195,6 +196,10 @@ public class CadastroCadastroTutor extends JPanel {
 		// Adiciona o filtro para permitir apenas letras
 		((AbstractDocument) campoNome.getDocument()).setDocumentFilter(new FiltroApenasLetras());
 
+		// Adiciona o filtro para limitar o comprimento máximo
+		((PlainDocument) campoNome.getDocument()).setDocumentFilter(new TamanhoMaximoFiltro(50));
+		((PlainDocument) campoEmail.getDocument()).setDocumentFilter(new TamanhoMaximoFiltro(50));
+
 		String[] sexos = { "Masculino", "Feminino" };
 		JComboBox<String> selectSexo = new JComboBox<String>(sexos);
 		selectSexo.setFont(new Font("Dialog", Font.PLAIN, 14));
@@ -293,6 +298,41 @@ public class CadastroCadastroTutor extends JPanel {
 				throws BadLocationException {
 			if (text != null && text.matches("[a-zA-Z ]*")) { // Permite letras e espaços
 				super.replace(fb, offset, length, text, attrs);
+			}
+		}
+	}
+
+	// Filtro para limitar o comprimento máximo dos textos
+	class TamanhoMaximoFiltro extends DocumentFilter {
+		private final int maxLength;
+
+		public TamanhoMaximoFiltro(int maxLength) {
+			this.maxLength = maxLength;
+		}
+
+		@Override
+		public void insertString(FilterBypass fb, int offset, String string, javax.swing.text.AttributeSet attr)
+				throws BadLocationException {
+			if (string != null) {
+				if ((fb.getDocument().getLength() + string.length()) <= maxLength) {
+					super.insertString(fb, offset, string, attr);
+				} else {
+					JOptionPane.showMessageDialog(null, "Número máximo de caracteres é " + maxLength + ".", "Erro",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		}
+
+		@Override
+		public void replace(FilterBypass fb, int offset, int length, String text, javax.swing.text.AttributeSet attrs)
+				throws BadLocationException {
+			if (text != null) {
+				if ((fb.getDocument().getLength() - length + text.length()) <= maxLength) {
+					super.replace(fb, offset, length, text, attrs);
+				} else {
+					JOptionPane.showMessageDialog(null, "Número máximo de caracteres é " + maxLength + ".", "Erro",
+							JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		}
 	}
