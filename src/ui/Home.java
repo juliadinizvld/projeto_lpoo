@@ -2,159 +2,131 @@ package ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.JMenuBar;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 public class Home extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	public static Home telaInicial = new Home();
 
-	/**
-	 * Create the panel.
-	 */
 	public Home() {
-		setForeground(new Color(255, 255, 255));
-		setBackground(new Color(255, 255, 255));
+		setLayout(new BorderLayout());
 
-		setLayout(null);
-		// Cria um painel para a barra de favoritos
-		JPanel favoritesBarPanel = new JPanel();
-		favoritesBarPanel.setBackground(new Color(192, 192, 192)); // Cor cinza escuro
-		favoritesBarPanel.setPreferredSize(new Dimension(getWidth(), 30)); // Altura da barra de favoritos
-		favoritesBarPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		// Painel principal
+		JPanel mainPanel = new JPanel();
+		mainPanel.setBackground(new Color(222, 222, 222));
+		mainPanel.setLayout(new GridBagLayout());
+		GridBagConstraints gbcMain = new GridBagConstraints();
+		gbcMain.insets = new Insets(10, 10, 10, 10);
+		gbcMain.anchor = GridBagConstraints.CENTER;
+		gbcMain.fill = GridBagConstraints.HORIZONTAL;
 
-		// Cria e adiciona os botões "File" e "Options" na barra de favoritos
-		JButton fileButton = new JButton("File");
-		fileButton.setBackground(new Color(192, 192, 192));
-		JButton optionsButton = new JButton("Options");
-		optionsButton.setBackground(new Color(192, 192, 192));
+		// Título
+		JLabel sloganLabel = new JLabel("Bem-vindos ao VetMed", JLabel.CENTER);
+		sloganLabel.setFont(new Font("Arial", Font.PLAIN, 30));
+		gbcMain.gridwidth = 2;
+		gbcMain.gridy = 0;
+		mainPanel.add(sloganLabel, gbcMain);
 
-		fileButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		optionsButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
-
-		favoritesBarPanel.add(fileButton);
-		favoritesBarPanel.add(optionsButton);
-
-		// Cria um painel principal com um layout de coluna única
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(222, 222, 222));
-		panel.setLayout(null);
-
-		// Cria os botões para opções
+		// Botão Cadastro de Pets
 		JButton cadastroPetsButton = new JButton("Cadastro de pets");
-		cadastroPetsButton.setForeground(new Color(255, 255, 255));
+		cadastroPetsButton.setForeground(Color.WHITE);
 		cadastroPetsButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		cadastroPetsButton.setBackground(new Color(159, 80, 0));
-		cadastroPetsButton.setBounds(295, 97, 200, 60);
+		gbcMain.gridwidth = 1;
+		gbcMain.gridy++;
+		gbcMain.weightx = 1.0;
+		gbcMain.fill = GridBagConstraints.HORIZONTAL;
+		mainPanel.add(cadastroPetsButton, gbcMain);
 		cadastroPetsButton.addActionListener(e -> {
-			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, mainPanel);
 			f.setContentPane(new CadastroEscolha());
 			f.revalidate();
 		});
 
+		// Botão Consultar Pets
 		JButton consultarPetsButton = new JButton("Consultar pets");
-		consultarPetsButton.setForeground(new Color(255, 255, 255));
+		consultarPetsButton.setForeground(Color.WHITE);
 		consultarPetsButton.setBackground(new Color(159, 80, 0));
 		consultarPetsButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		consultarPetsButton.setBounds(295, 187, 200, 60);
-
+		gbcMain.gridy++;
+		mainPanel.add(consultarPetsButton, gbcMain);
 		consultarPetsButton.addActionListener(e -> {
-			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, mainPanel);
 			f.setContentPane(new ConsultaPets());
 			f.revalidate();
 		});
 
+		// Botão Agendamento de Procedimentos
 		JButton agendamentoProcedimentosButton = new JButton(
 				"<html><div style='text-align: center;'>Agendamento de<br/>procedimentos</div></html>");
-		agendamentoProcedimentosButton.setForeground(new Color(255, 255, 255));
+		agendamentoProcedimentosButton.setForeground(Color.WHITE);
 		agendamentoProcedimentosButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		agendamentoProcedimentosButton.setBackground(new Color(159, 80, 0));
-		agendamentoProcedimentosButton.setBounds(295, 270, 200, 64);
+		gbcMain.gridy++;
+		mainPanel.add(agendamentoProcedimentosButton, gbcMain);
 		agendamentoProcedimentosButton.addActionListener(e -> {
-			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-			f.setContentPane(AgendamentoAgendarProcedimento.agendamento1);
+			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, mainPanel);
+			f.setContentPane(new AgendamentoAgendarProcedimento());
 			f.revalidate();
 		});
 
+		// Botão Consulta de Produtos
 		JButton consultaProdutosButton = new JButton(
 				"<html><div style='text-align: center;'>Consulta de<br/><div style='padding-left: 5px;'>produtos</div></div></html>");
-		consultaProdutosButton.setForeground(new Color(255, 255, 255));
+		consultaProdutosButton.setForeground(Color.WHITE);
 		consultaProdutosButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		consultaProdutosButton.setBackground(new Color(159, 80, 0));
-		consultaProdutosButton.setBounds(295, 360, 200, 60);
+		gbcMain.gridy++;
+		mainPanel.add(consultaProdutosButton, gbcMain);
 		consultaProdutosButton.addActionListener(e -> {
-			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, mainPanel);
 			f.setContentPane(new ProdutosConsultaProduto());
 			f.revalidate();
 		});
 
-		// Adiciona o slogan
-		JLabel sloganLabel = new JLabel("Bem-vindos ao VetMed", JLabel.CENTER);
-		sloganLabel.setBounds(181, 23, 431, 64);
-		sloganLabel.setFont(new Font("Arial", Font.PLAIN, 30));
-		sloganLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		add(sloganLabel);
+		add(mainPanel, BorderLayout.CENTER);
 
-		// Adiciona os botões ao painel principal
-		add(cadastroPetsButton);
-		add(consultarPetsButton);
-		add(agendamentoProcedimentosButton);
-		add(consultaProdutosButton);
-
-		// Cria um painel para conter a barra de favoritos e o painel principal
-		JPanel containerPanel = new JPanel();
-		containerPanel.setLayout(new BorderLayout());
-		add(favoritesBarPanel, BorderLayout.NORTH);
-		add(panel, BorderLayout.CENTER);
-
-		// Adiciona o painel de contêiner à janela
-		add(containerPanel);
-
+		// Menu
 		JMenuBar menuAdministrador = new JMenuBar();
 		menuAdministrador.setBackground(new Color(249, 220, 189));
-		menuAdministrador.setBounds(0, 0, 800, 22);
-		add(menuAdministrador);
-
 		JMenu mnNewMenu = new JMenu("Adicionar/consultar");
 		mnNewMenu.setFont(new Font("Arial", Font.PLAIN, 12));
 		menuAdministrador.add(mnNewMenu);
 
 		JMenuItem menuItemProduto = new JMenuItem("Produto");
 		mnNewMenu.add(menuItemProduto);
-
-		menuItemProduto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new ProdutosPesquisaProduto());
-				f.revalidate();
-			}
+		menuItemProduto.addActionListener(e -> {
+			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, mainPanel);
+			f.setContentPane(new ProdutosPesquisaProduto());
+			f.revalidate();
 		});
 
 		JMenuItem menuItemFuncionario = new JMenuItem("Funcionario");
 		mnNewMenu.add(menuItemFuncionario);
+		menuItemFuncionario.addActionListener(e -> {
+			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, mainPanel);
+			f.setContentPane(new FuncionariosConsultaFuncionario());
+			f.revalidate();
+		});
 
-		menuItemFuncionario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new FuncionariosConsultaFuncionario());
-				f.revalidate();
-			}
+		JMenuItem menuItemTutor = new JMenuItem("Tutor");
+		mnNewMenu.add(menuItemTutor);
+		menuItemTutor.addActionListener(e -> {
+			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, mainPanel);
+			f.setContentPane(new TutorConsultaTutor());
+			f.revalidate();
 		});
 
 		JMenu mnNewMenu_1 = new JMenu("Informações");
@@ -163,5 +135,13 @@ public class Home extends JPanel {
 
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Sobre");
 		mnNewMenu_1.add(mntmNewMenuItem_2);
+
+		mntmNewMenuItem_2.addActionListener(e -> {
+			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, mainPanel);
+			f.setContentPane(new Sobre());
+			f.revalidate();
+		});
+
+		add(menuAdministrador, BorderLayout.NORTH);
 	}
 }

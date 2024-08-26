@@ -71,4 +71,10 @@ public class Produtos implements Serializable {
 		this.valor = valor;
 	}
 
+	@Override
+	public String toString() {
+		return "Produtos [id=" + id + ", tipo=" + tipo + ", nome=" + nome + ", quantidade=" + quantidade + ", valor="
+				+ valor + "]";
+	}
+
 }

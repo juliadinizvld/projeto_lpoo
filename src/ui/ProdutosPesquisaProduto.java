@@ -20,13 +20,15 @@ import javax.swing.SwingUtilities;
 import business.BDServices;
 import data.BD;
 import ui.entities.Funcionarios;
+import ui.entities.Produtos;
+
 import java.awt.Color;
 
 public class ProdutosPesquisaProduto extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField campoNomeProduto;
-	public static ProdutosPesquisaProduto produto1 = new ProdutosPesquisaProduto();
+	public static ProdutosPesquisaProduto produtosPesquisaProduto = new ProdutosPesquisaProduto();
 
 	/**
 	 * Create the panel.
@@ -89,7 +91,7 @@ public class ProdutosPesquisaProduto extends JPanel {
 					}
 				} catch (SQLException i) {
 					i.printStackTrace();
-				} 
+				}
 			}
 		});
 
@@ -102,13 +104,12 @@ public class ProdutosPesquisaProduto extends JPanel {
 		botaoVerificarProduto.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				String[] produtoSelecionado = String.valueOf(selectResultadoProdutos.getSelectedItem())
-						.split("-");
-				//int idProdutoSelecionado = Integer.parseInt(produtoSelecionado[1].trim());
-				//Produtos produto = BDServices.consultarProduto(idProdutoSelecionado);
-				//JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				//f.setContentPane(new AdicaoProdutos(produto));
-				//f.revalidate();
+				String[] produtoSelecionado = String.valueOf(selectResultadoProdutos.getSelectedItem()).split("-");
+				int idProdutoSelecionado = Integer.parseInt(produtoSelecionado[1].trim());
+				Produtos produto = BDServices.consultarProduto(idProdutoSelecionado);
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new ProdutosDadosProdutos(produto));
+				f.revalidate();
 			}
 
 		});

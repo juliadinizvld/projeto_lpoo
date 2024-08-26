@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
@@ -31,7 +32,7 @@ public class ConsultaPetsDadosPet extends JPanel {
 	public ConsultaPetsDadosPet(Pets pet) {
 		setLayout(null);
 		Tutores tutor = BDServices.consultarTutor(pet.getId_tutor());
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 821, 500);
@@ -139,7 +140,7 @@ public class ConsultaPetsDadosPet extends JPanel {
 		JButton botaoRetornar = new JButton("Retornar");
 		botaoRetornar.setBackground(new Color(159, 80, 0));
 		botaoRetornar.setForeground(new Color(255, 255, 255));
-		botaoRetornar.setBounds(197, 403, 114, 23);
+		botaoRetornar.setBounds(106, 405, 114, 23);
 		panel.add(botaoRetornar);
 
 		botaoRetornar.addActionListener(new ActionListener() {
@@ -149,6 +150,45 @@ public class ConsultaPetsDadosPet extends JPanel {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
 				f.setContentPane(new ConsultaPets());
 				f.revalidate();
+			}
+
+		});
+
+		JButton botaoRemoverPet = new JButton("Remover Pet");
+		botaoRemoverPet.setForeground(Color.WHITE);
+		botaoRemoverPet.setBackground(new Color(159, 80, 0));
+		botaoRemoverPet.setBounds(299, 405, 195, 23);
+		panel.add(botaoRemoverPet);
+
+		JButton botaoAtualizarDados = new JButton("Atualizar Dados");
+		botaoAtualizarDados.setForeground(Color.WHITE);
+		botaoAtualizarDados.setBackground(new Color(159, 80, 0));
+		botaoAtualizarDados.setBounds(526, 405, 195, 23);
+		panel.add(botaoAtualizarDados);
+
+		botaoAtualizarDados.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new AtualizacaoAtualizarCadastroPet(pet));
+				f.revalidate();
+			}
+
+		});
+
+		botaoRemoverPet.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja remover este Pet?", "Confirmar Remoção",
+						JOptionPane.YES_NO_OPTION);
+				if (confirmacao == JOptionPane.YES_OPTION) {
+					BDServices.removerPet(pet.getId());
+					JOptionPane.showMessageDialog(null, "Pet removido com sucesso!");
+					JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+					f.setContentPane(new ConsultaPets());
+					f.revalidate();
+				}
 			}
 
 		});

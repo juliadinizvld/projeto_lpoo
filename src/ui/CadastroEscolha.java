@@ -1,85 +1,93 @@
 package ui;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-import java.awt.Color;
 
 public class CadastroEscolha extends JPanel {
 
-	private static final long serialVersionUID = 1L;
-	public static CadastroCadastroTutor cadastroEscolha = new CadastroCadastroTutor();
-	private static JFrame frame;
+    private static final long serialVersionUID = 1L;
+    public static CadastroCadastroTutor cadastroEscolha = new CadastroCadastroTutor();
+    private static JFrame frame;
 
-	/**
-	 * Create the panel.
-	 */
-	public CadastroEscolha() {
-		setLayout(null);
-		// Cria um painel principal com um layout de BorderLayout
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(-11, 0, 700, 500);
-		add(panel);
-		panel.setLayout(null);
+    /**
+     * Create the panel.
+     */
+    public CadastroEscolha() {
+        setLayout(new BorderLayout());
 
-		// Adiciona os componentes
-		JLabel lblNewLabel = new JLabel("Tutor já é cadastrado?");
-		lblNewLabel.setBounds(239, 30, 373, 22);
-		lblNewLabel.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 17));
-		panel.add(lblNewLabel);
+        // Painel principal
+        JPanel mainPanel = new JPanel();
+        mainPanel.setBackground(new Color(222, 222, 222));
+        mainPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbcMain = new GridBagConstraints();
+        gbcMain.insets = new Insets(10, 10, 10, 10);
+        gbcMain.anchor = GridBagConstraints.CENTER;
+        gbcMain.fill = GridBagConstraints.HORIZONTAL;
 
-		JButton btnRetornar = new JButton("Retornar ");
-		btnRetornar.setForeground(new Color(255, 255, 255));
-		btnRetornar.setBackground(new Color(159, 80, 0));
-		btnRetornar.setBounds(134, 136, 112, 37);
-		btnRetornar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new Home());
-				f.revalidate();
-			}
-		});
-		panel.add(btnRetornar);
+        // Título
+        JLabel lblTitulo = new JLabel("Tutor já é cadastrado?");
+        lblTitulo.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 17));
+        gbcMain.gridwidth = 2;
+        gbcMain.gridy = 0;
+        mainPanel.add(lblTitulo, gbcMain);
 
-		JButton btnNovoCadastro = new JButton("Novo Cadastro");
-		btnNovoCadastro.setForeground(new Color(255, 255, 255));
-		btnNovoCadastro.setBackground(new Color(159, 80, 0));
-		btnNovoCadastro.setBounds(275, 136, 148, 37);
-		btnNovoCadastro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new CadastroCadastroTutor());
-				f.revalidate();
-			}
-		});
-		panel.add(btnNovoCadastro);
-		
-		JButton btnJaCadastrado = new JButton("Já sou cadastrado");
-		btnJaCadastrado.setForeground(new Color(255, 255, 255));
-		btnJaCadastrado.setBackground(new Color(159, 80, 0));
-		btnJaCadastrado.setBounds(457, 136, 148, 37);
-		panel.add(btnJaCadastrado);
-		
-		btnJaCadastrado.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new CadastroInformarIdTutor());
-				f.revalidate();
-			}
-		});
+        // Botão Novo Cadastro
+        JButton btnNovoCadastro = new JButton("Novo Cadastro");
+        btnNovoCadastro.setForeground(Color.WHITE);
+        btnNovoCadastro.setBackground(new Color(159, 80, 0));
+        gbcMain.gridwidth = 1;
+        gbcMain.gridy++;
+        mainPanel.add(btnNovoCadastro, gbcMain);
+        btnNovoCadastro.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, mainPanel);
+                f.setContentPane(new CadastroCadastroTutor());
+                f.revalidate();
+            }
+        });
 
-		// Agrupa os botões de rádio
-		ButtonGroup genderGroup = new ButtonGroup();
-	}
+        // Botão Já sou cadastrado
+        JButton btnJaCadastrado = new JButton("Já sou cadastrado");
+        btnJaCadastrado.setForeground(Color.WHITE);
+        btnJaCadastrado.setBackground(new Color(159, 80, 0));
+        gbcMain.gridy++;
+        mainPanel.add(btnJaCadastrado, gbcMain);
+        btnJaCadastrado.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, mainPanel);
+                f.setContentPane(new CadastroInformarIdTutor());
+                f.revalidate();
+            }
+        });
+
+        // Botão Retornar
+        JButton btnRetornar = new JButton("Retornar");
+        btnRetornar.setForeground(Color.WHITE);
+        btnRetornar.setBackground(new Color(159, 80, 0));
+        gbcMain.gridy++;
+        mainPanel.add(btnRetornar, gbcMain);
+        btnRetornar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, mainPanel);
+                f.setContentPane(new Home());
+                f.revalidate();
+            }
+        });
+
+        add(mainPanel, BorderLayout.CENTER);
+    }
 }
+
