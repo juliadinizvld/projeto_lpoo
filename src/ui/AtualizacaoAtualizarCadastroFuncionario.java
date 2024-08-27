@@ -20,14 +20,16 @@ import javax.swing.text.AbstractDocument;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.MaskFormatter;
-
+import javax.swing.text.PlainDocument;
+import javax.swing.text.DocumentFilter.FilterBypass;
 import business.BDServices;
+import ui.CadastroCadastroPet.LengthLimitFilter;
 import ui.entities.Funcionarios;
 
 public class AtualizacaoAtualizarCadastroFuncionario extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField campoRmv;
+	private JTextField campoCRmv;
 	private JTextField campoNomeFuncionario;
 	private JTextField campoCpf;
 
@@ -80,6 +82,8 @@ public class AtualizacaoAtualizarCadastroFuncionario extends JPanel {
 
 		// Adiciona o filtro para permitir apenas letras acentuadas, letras e espaços
 		((AbstractDocument) campoNomeFuncionario.getDocument()).setDocumentFilter(new FiltroApenasLetrasEAcentos());
+		PlainDocument docNomeFuncionario = (PlainDocument) campoNomeFuncionario.getDocument();
+		docNomeFuncionario.setDocumentFilter(new LengthLimitFilter(45));
 
 		JLabel textoIdade = new JLabel("Idade:");
 		textoIdade.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -283,7 +287,40 @@ public class AtualizacaoAtualizarCadastroFuncionario extends JPanel {
 			}
 		});
 	}
+	public class LengthLimitFilter extends DocumentFilter {
+	    private final int maxLength;
 
+	    public LengthLimitFilter(int maxLength) {
+	        this.maxLength = maxLength;
+	    }
+
+	    @Override
+	    public void insertString(FilterBypass fb, int offset, String string, javax.swing.text.AttributeSet attr)
+				throws BadLocationException {
+			if (string != null) {
+				if ((fb.getDocument().getLength() + string.length()) <= maxLength) {
+					super.insertString(fb, offset, string, attr);
+				} else {
+					JOptionPane.showMessageDialog(null, "Número máximo de caracteres é " + maxLength + ".", "Erro",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		}
+
+		@Override
+		public void replace(FilterBypass fb, int offset, int length, String text, javax.swing.text.AttributeSet attrs)
+				throws BadLocationException {
+			if (text != null) {
+				if ((fb.getDocument().getLength() - length + text.length()) <= maxLength) {
+					super.replace(fb, offset, length, text, attrs);
+				} else {
+					JOptionPane.showMessageDialog(null, "Número máximo de caracteres é " + maxLength + ".", "Erro",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		}
+	}
+}
 	// Filtro para permitir apenas letras (maiúsculas, minúsculas e acentos) e
 	// espaços
 	class FiltroApenasLetrasEAcentos extends DocumentFilter {
@@ -303,4 +340,3 @@ public class AtualizacaoAtualizarCadastroFuncionario extends JPanel {
 			}
 		}
 	}
-}

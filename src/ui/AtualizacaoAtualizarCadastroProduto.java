@@ -17,7 +17,10 @@ import javax.swing.text.AbstractDocument;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.MaskFormatter;
+import javax.swing.text.PlainDocument;
+
 import business.BDServices;
+import ui.CadastroCadastroPet.LengthLimitFilter;
 import ui.entities.Produtos;
 import ui.entities.Tutores;
 
@@ -105,6 +108,7 @@ public class AtualizacaoAtualizarCadastroProduto extends JPanel {
 		((AbstractDocument) txtProductName.getDocument()).setDocumentFilter(new FiltroApenasLetras());
 		panel.add(txtProductName);
 		txtProductName.setText(produto.getNome());
+		
 
 		JFormattedTextField txtQuantity = new JFormattedTextField();
 		txtQuantity.setBounds(394, 134, 28, 20);

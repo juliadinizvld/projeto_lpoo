@@ -17,9 +17,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 import javax.swing.text.MaskFormatter;
-
+import javax.swing.text.PlainDocument;
+import javax.swing.text.DocumentFilter.FilterBypass;
 import business.BDServices;
+import ui.CadastroCadastroPet.LengthLimitFilter;
 import ui.entities.Pets;
 import ui.entities.Tutores;
 import java.awt.Color;
@@ -78,6 +82,10 @@ public class AtualizacaoAtualizarCadastroPet extends JPanel {
 		campoNomeAnimal.setColumns(10);
 		panel.add(campoNomeAnimal);
 		campoNomeAnimal.setText(pet.getNome());
+		
+		
+		PlainDocument docNomeAnimal = (PlainDocument) campoNomeAnimal.getDocument();
+		docNomeAnimal.setDocumentFilter(new LengthLimitFilter(45));
 
 		JLabel lblNewLabel = new JLabel("Nome do animal:");
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 10));
@@ -228,4 +236,38 @@ public class AtualizacaoAtualizarCadastroPet extends JPanel {
 
 		setVisible(true);
 	}
+	public class LengthLimitFilter extends DocumentFilter {
+	    private final int maxLength;
+
+	    public LengthLimitFilter(int maxLength) {
+	        this.maxLength = maxLength;
+	    }
+
+	    @Override
+	    public void insertString(FilterBypass fb, int offset, String string, javax.swing.text.AttributeSet attr)
+				throws BadLocationException {
+			if (string != null) {
+				if ((fb.getDocument().getLength() + string.length()) <= maxLength) {
+					super.insertString(fb, offset, string, attr);
+				} else {
+					JOptionPane.showMessageDialog(null, "Número máximo de caracteres é " + maxLength + ".", "Erro",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		}
+
+		@Override
+		public void replace(FilterBypass fb, int offset, int length, String text, javax.swing.text.AttributeSet attrs)
+				throws BadLocationException {
+			if (text != null) {
+				if ((fb.getDocument().getLength() - length + text.length()) <= maxLength) {
+					super.replace(fb, offset, length, text, attrs);
+				} else {
+					JOptionPane.showMessageDialog(null, "Número máximo de caracteres é " + maxLength + ".", "Erro",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		}
+	}
 }
+ 
