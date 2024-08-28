@@ -38,7 +38,7 @@ public class ProdutosPesquisaProduto extends JPanel {
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(0, 0, 821, 500);
+		panel.setBounds(0, 0, 919, 568);
 		add(panel);
 		panel.setLayout(null);
 
@@ -115,7 +115,9 @@ public class ProdutosPesquisaProduto extends JPanel {
 		});
 
 		JButton botaoRetornar = new JButton("← Retornar");
-		botaoRetornar.setBounds(248, 426, 99, 21);
+		botaoRetornar.setForeground(new Color(255, 255, 255));
+		botaoRetornar.setBackground(new Color(159, 80, 0));
+		botaoRetornar.setBounds(189, 338, 140, 40);
 		panel.add(botaoRetornar);
 
 		botaoRetornar.addActionListener(new ActionListener() {
@@ -128,8 +130,10 @@ public class ProdutosPesquisaProduto extends JPanel {
 			}
 		});
 
-		JButton botaoAdicionarProduto = new JButton("Adicionar novo produto\r\n");
-		botaoAdicionarProduto.setBounds(425, 407, 209, 40);
+		JButton botaoAdicionarProduto = new JButton("Adicionar produto\r\n");
+		botaoAdicionarProduto.setForeground(new Color(255, 255, 255));
+		botaoAdicionarProduto.setBackground(new Color(159, 80, 0));
+		botaoAdicionarProduto.setBounds(398, 338, 140, 40);
 		panel.add(botaoAdicionarProduto);
 
 		botaoAdicionarProduto.addActionListener(new ActionListener() {

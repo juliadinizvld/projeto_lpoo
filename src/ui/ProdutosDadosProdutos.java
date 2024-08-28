@@ -20,7 +20,7 @@ public class ProdutosDadosProdutos extends JPanel {
 		setLayout(null);
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(0, 0, 796, 555);
+		panel.setBounds(0, 108, 805, 552);
 		add(panel);
 		panel.setLayout(null);
 
@@ -49,7 +49,9 @@ public class ProdutosDadosProdutos extends JPanel {
 		panel.add(lblDadosdeProdutos);
 
 		JButton botaoRetornar = new JButton("Retornar");
-		botaoRetornar.setBounds(199, 318, 85, 21);
+		botaoRetornar.setForeground(new Color(255, 255, 255));
+		botaoRetornar.setBackground(new Color(159, 80, 0));
+		botaoRetornar.setBounds(199, 318, 85, 35);
 		panel.add(botaoRetornar);
 		botaoRetornar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -60,7 +62,9 @@ public class ProdutosDadosProdutos extends JPanel {
 		});
 
 		JButton botaoRemover = new JButton("Remover");
-		botaoRemover.setBounds(297, 318, 85, 21);
+		botaoRemover.setForeground(new Color(255, 255, 255));
+		botaoRemover.setBackground(new Color(159, 80, 0));
+		botaoRemover.setBounds(314, 318, 85, 35);
 		panel.add(botaoRemover);
 		
 		botaoRemover.addActionListener(new ActionListener() {
@@ -78,7 +82,9 @@ public class ProdutosDadosProdutos extends JPanel {
 		});
 
 		JButton botaoAtualizarProduto = new JButton("Atualizar Produto");
-		botaoAtualizarProduto.setBounds(409, 317, 144, 21);
+		botaoAtualizarProduto.setForeground(new Color(255, 255, 255));
+		botaoAtualizarProduto.setBackground(new Color(159, 80, 0));
+		botaoAtualizarProduto.setBounds(427, 318, 129, 35);
 		panel.add(botaoAtualizarProduto);
 		botaoAtualizarProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -41,7 +41,7 @@ public class ProdutosAdiçãoProduto extends JPanel {
 		setLayout(null);
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(0, 0, 821, 500);
+		panel.setBounds(0, -15, 821, 500);
 		add(panel);
 		panel.setLayout(null);
 
