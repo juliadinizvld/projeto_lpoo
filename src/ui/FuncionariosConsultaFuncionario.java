@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -120,6 +121,11 @@ public class FuncionariosConsultaFuncionario extends JPanel {
 
         botaoVerificarFuncionario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	   if (selectResultadoFuncionarios.getSelectedItem() == null) {
+                       // Exibe uma mensagem de alerta caso nenhum funcionário tenha sido selecionado
+                       JOptionPane.showMessageDialog(null, "Por favor, selecione um funcionário antes de continuar.", 
+                                                     "Atenção", JOptionPane.WARNING_MESSAGE);
+                   } else {
                 String[] funcionarioSelecionado = String.valueOf(selectResultadoFuncionarios.getSelectedItem())
                         .split("-");
                 int idFuncionarioSelecionado = Integer.parseInt(funcionarioSelecionado[1].trim());
@@ -127,6 +133,7 @@ public class FuncionariosConsultaFuncionario extends JPanel {
                 JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
                 f.setContentPane(new FuncionariosDadosFuncionario(funcionario));
                 f.revalidate();
+                   }
             }
         });
 
