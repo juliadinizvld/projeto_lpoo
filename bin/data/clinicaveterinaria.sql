@@ -4,6 +4,12 @@
 -- ------------------------------------------------------
 -- Server version	8.3.0
 
+DROP DATABASE IF EXISTS `clinicaveterinaria`;
+
+CREATE DATABASE clinicaveterinaria;
+
+USE clinicaveterinaria;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -16,6 +22,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `consultas`
+--
+
+DROP TABLE IF EXISTS `consultas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `consultas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `dataConsulta` date NOT NULL,
+  `nomeMedico` varchar(45) NOT NULL,
+  `descricao` varchar(255) NOT NULL,
+  `medicacao` varchar(255) NOT NULL,
+  `id_pet` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_pet` (`id_pet`),
+  CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`id_pet`) REFERENCES `pets` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `consultas`
+--
+
+LOCK TABLES `consultas` WRITE;
+/*!40000 ALTER TABLE `consultas` DISABLE KEYS */;
+INSERT INTO `consultas` VALUES (16,'2024-08-28','Rafael Correia','aaeseasloakse´p\naseop´keas´p\nasepókeasóeas\naseokeaspókesa','Shampoo',5),(17,'2024-08-29','Rafael Correia','asdasdkmdaskp	asókasdads\nasdo,msaoed	das','Testosterona',5);
+/*!40000 ALTER TABLE `consultas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `funcionarios`
 --
 
@@ -25,17 +61,19 @@ DROP TABLE IF EXISTS `funcionarios`;
 CREATE TABLE `funcionarios` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
-  `cep` varchar(8) NOT NULL,
-  `estado` varchar(45) NOT NULL,
-  `cidade` varchar(45) NOT NULL,
-  `rua` varchar(45) NOT NULL,
-  `bairro` varchar(45) NOT NULL,
-  `numero_casa` int NOT NULL,
+  `idade` int NOT NULL,
   `telefone` varchar(12) NOT NULL,
   `cpf` varchar(11) NOT NULL,
-  `sexo` varchar(25) NOT NULL,
+  `tipoFuncionario` enum('ADMINISTRADOR','ATENDENTE') NOT NULL,
+  `sexo` enum('MASCULINO','FEMININO') NOT NULL,
+  `cep` varchar(8) NOT NULL,
+  `numeroCasa` int NOT NULL,
+  `rua` varchar(45) NOT NULL,
+  `bairro` varchar(45) NOT NULL,
+  `cidade` varchar(45) NOT NULL,
+  `estado` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,40 +82,44 @@ CREATE TABLE `funcionarios` (
 
 LOCK TABLES `funcionarios` WRITE;
 /*!40000 ALTER TABLE `funcionarios` DISABLE KEYS */;
+INSERT INTO `funcionarios` VALUES (5,'Rafael Correia Costa',26,'819983213092','12442495423','ADMINISTRADOR','MASCULINO','52221060',60,'Sudeste','Cajueiro','Recife','PE');
 /*!40000 ALTER TABLE `funcionarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `medicos_veterinarios`
+-- Table structure for table `medicosveterinarios`
 --
 
-DROP TABLE IF EXISTS `medicos_veterinarios`;
+DROP TABLE IF EXISTS `medicosveterinarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `medicos_veterinarios` (
+CREATE TABLE `medicosveterinarios` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `crm` varchar(20) NOT NULL,
   `nome` varchar(100) NOT NULL,
-  `cep` varchar(8) NOT NULL,
-  `estado` varchar(45) NOT NULL,
-  `cidade` varchar(45) NOT NULL,
-  `rua` varchar(45) NOT NULL,
-  `bairro` varchar(45) NOT NULL,
-  `numero_casa` int NOT NULL,
+  `idade` int NOT NULL,
   `telefone` varchar(12) NOT NULL,
   `cpf` varchar(11) NOT NULL,
-  `sexo` varchar(25) NOT NULL,
+  `tipoFuncionario` enum('ADMINISTRADOR','ATENDENTE') NOT NULL,
+  `sexo` enum('MASCULINO','FEMININO') NOT NULL,
+  `cep` varchar(8) NOT NULL,
+  `numeroCasa` int NOT NULL,
+  `rua` varchar(45) NOT NULL,
+  `bairro` varchar(45) NOT NULL,
+  `cidade` varchar(45) NOT NULL,
+  `estado` varchar(45) NOT NULL,
+  `rmv` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `medicos_veterinarios`
+-- Dumping data for table `medicosveterinarios`
 --
 
-LOCK TABLES `medicos_veterinarios` WRITE;
-/*!40000 ALTER TABLE `medicos_veterinarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `medicos_veterinarios` ENABLE KEYS */;
+LOCK TABLES `medicosveterinarios` WRITE;
+/*!40000 ALTER TABLE `medicosveterinarios` DISABLE KEYS */;
+INSERT INTO `medicosveterinarios` VALUES (9,'Rafael Correia',32,'309128309128','12309312093','ADMINISTRADOR','MASCULINO','09321830',329,'Sudeste','Cajueiro','Recife','PE','CRM/PE91238-30');
+/*!40000 ALTER TABLE `medicosveterinarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -90,18 +132,18 @@ DROP TABLE IF EXISTS `pets`;
 CREATE TABLE `pets` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
-  `especie` varchar(45) NOT NULL,
-  `data_nascimento` date NOT NULL,
-  `sexo` varchar(25) NOT NULL,
+  `especie` enum('CACHORRO','GATO') NOT NULL,
+  `dataNascimento` date NOT NULL,
+  `sexo` enum('MACHO','FÊMEA') NOT NULL,
   `raca` varchar(45) NOT NULL,
   `peso` double NOT NULL,
-  `alergias` varchar(90) NOT NULL,
-  `vacinas` varchar(90) NOT NULL,
+  `alergias` varchar(150) NOT NULL,
+  `vacinas` varchar(150) NOT NULL,
   `id_tutor` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_tutor` (`id_tutor`),
   CONSTRAINT `pets_ibfk_1` FOREIGN KEY (`id_tutor`) REFERENCES `tutores` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,67 +152,8 @@ CREATE TABLE `pets` (
 
 LOCK TABLES `pets` WRITE;
 /*!40000 ALTER TABLE `pets` DISABLE KEYS */;
+INSERT INTO `pets` VALUES (5,'Belinha','CACHORRO','2015-05-30','FÊMEA','Vira-lata',50.42,'Poeira','Anti-rábica',2),(7,'Tunai','CACHORRO','1996-04-20','MACHO','Vira-lata',50,'Poeira','Raiva',2);
 /*!40000 ALTER TABLE `pets` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `procedimento_pet`
---
-
-DROP TABLE IF EXISTS `procedimento_pet`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `procedimento_pet` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_procedimento` int NOT NULL,
-  `id_pet` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_procedimento` (`id_procedimento`),
-  KEY `id_pet` (`id_pet`),
-  CONSTRAINT `procedimento_pet_ibfk_1` FOREIGN KEY (`id_procedimento`) REFERENCES `procedimentos` (`id`),
-  CONSTRAINT `procedimento_pet_ibfk_2` FOREIGN KEY (`id_pet`) REFERENCES `pets` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `procedimento_pet`
---
-
-LOCK TABLES `procedimento_pet` WRITE;
-/*!40000 ALTER TABLE `procedimento_pet` DISABLE KEYS */;
-/*!40000 ALTER TABLE `procedimento_pet` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `procedimentos`
---
-
-DROP TABLE IF EXISTS `procedimentos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `procedimentos` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(45) NOT NULL,
-  `metodo_pagamento` varchar(45) NOT NULL,
-  `valor_consulta` double NOT NULL,
-  `medicacao_solicitada` varchar(45) NOT NULL,
-  `descricao_procedimento` varchar(255) NOT NULL,
-  `data_procedimento` date NOT NULL,
-  `procedimento_solicitado` varchar(45) NOT NULL,
-  `id_medico_veterinario` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_medico_veterinario` (`id_medico_veterinario`),
-  CONSTRAINT `procedimentos_ibfk_1` FOREIGN KEY (`id_medico_veterinario`) REFERENCES `medicos_veterinarios` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `procedimentos`
---
-
-LOCK TABLES `procedimentos` WRITE;
-/*!40000 ALTER TABLE `procedimentos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `procedimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -182,11 +165,12 @@ DROP TABLE IF EXISTS `produtos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `produtos` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `tipo` enum('CONSULTA','EXAME','CIRURGIA','VACINA','GERAL') DEFAULT NULL,
   `nome` varchar(45) DEFAULT NULL,
-  `valor` double NOT NULL,
   `quantidade` int NOT NULL,
+  `valor` double NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,6 +179,7 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
+INSERT INTO `produtos` VALUES (9,'EXAME','exame',22,239.83),(10,'CIRURGIA','Cirurgia',20,200),(11,'VACINA','Raiva',20,120);
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,18 +194,18 @@ CREATE TABLE `tutores` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `cpf` varchar(11) NOT NULL,
-  `sexo` varchar(20) NOT NULL,
+  `sexo` enum('MASCULINO','FEMININO') NOT NULL,
   `email` varchar(100) NOT NULL,
   `estado` varchar(45) NOT NULL,
   `cidade` varchar(45) NOT NULL,
   `telefone` varchar(12) NOT NULL,
-  `numero_casa` int NOT NULL,
-  `data_nascimento` date NOT NULL,
+  `numeroCasa` int NOT NULL,
+  `dataNascimento` date NOT NULL,
   `cep` varchar(8) NOT NULL,
   `bairro` varchar(45) NOT NULL,
   `rua` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,6 +214,7 @@ CREATE TABLE `tutores` (
 
 LOCK TABLES `tutores` WRITE;
 /*!40000 ALTER TABLE `tutores` DISABLE KEYS */;
+INSERT INTO `tutores` VALUES (2,'Rafael Correia Costa','12442452321','MASCULINO','rafaelcosta@gmail.com','PE','Recife','081999328932',60,'1999-02-27','52221060','Cajueiro','Sudeste');
 /*!40000 ALTER TABLE `tutores` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -241,4 +227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-17  0:33:08
+-- Dump completed on 2024-08-29  0:20:52
