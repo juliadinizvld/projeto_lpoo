@@ -199,6 +199,10 @@ public class CadastroCadastroTutor extends JPanel {
 		// Adiciona o filtro para limitar o comprimento máximo
 		((PlainDocument) campoNome.getDocument()).setDocumentFilter(new TamanhoMaximoFiltro(45));
 		((PlainDocument) campoEmail.getDocument()).setDocumentFilter(new TamanhoMaximoFiltro(45));
+		((PlainDocument) campoRua.getDocument()).setDocumentFilter(new TamanhoMaximoFiltro(45));
+		((PlainDocument) campoBairro.getDocument()).setDocumentFilter(new TamanhoMaximoFiltro(45));
+		((PlainDocument) campoNumeroCasa.getDocument()).setDocumentFilter(new TamanhoMaximoFiltro(45));
+
 
 		String[] sexos = { "Masculino", "Feminino" };
 		JComboBox<String> selectSexo = new JComboBox<String>(sexos);
