@@ -19,7 +19,7 @@ public class ProdutosDadosProdutos extends JPanel {
 	public ProdutosDadosProdutos(Produtos produto) {
 		setLayout(null);
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
+		setBackground(new Color(222, 222, 222));
 		panel.setBounds(0, 108, 805, 552);
 		add(panel);
 		panel.setLayout(null);

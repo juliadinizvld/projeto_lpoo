@@ -65,7 +65,7 @@ public class CadastroCadastroPet extends JPanel {
 		SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
 		// Cria um painel principal com um layout de BorderLayout
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
+		setBackground(new Color(222, 222, 222));
 		panel.setBounds(0, 11, 715, 523);
 		add(panel);
 		panel.setLayout(null);
