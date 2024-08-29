@@ -3,6 +3,10 @@ package ui;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.AbstractListModel;
 import javax.swing.JButton;
@@ -15,9 +19,12 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 
 import business.BDServices;
+import data.BD;
+import ui.entities.Consultas;
 import ui.entities.Pets;
 import java.awt.Color;
 import ui.entities.Tutores;
+import javax.swing.JComboBox;
 
 public class ConsultaPetsDadosPet extends JPanel {
 
@@ -65,28 +72,28 @@ public class ConsultaPetsDadosPet extends JPanel {
 		panel.add(table_2);
 
 		JLabel textIDPet = new JLabel("ID: " + pet.getId());
-		textIDPet.setBounds(8, 120, 86, 14);
+		textIDPet.setBounds(85, 138, 86, 14);
 		panel.add(textIDPet);
 
 		JLabel TextNomePet = new JLabel("Nome: " + pet.getNome());
-		TextNomePet.setBounds(8, 147, 226, 14);
+		TextNomePet.setBounds(85, 165, 226, 14);
 		panel.add(TextNomePet);
 
 		JLabel TextEspeciePet = new JLabel("Espécie: " + pet.getEspecie());
 		TextEspeciePet.setBackground(new Color(255, 255, 255));
-		TextEspeciePet.setBounds(8, 164, 226, 14);
+		TextEspeciePet.setBounds(85, 182, 226, 14);
 		panel.add(TextEspeciePet);
 
 		JLabel TextracaPet = new JLabel("Raça: " + pet.getRaca());
-		TextracaPet.setBounds(8, 189, 190, 14);
+		TextracaPet.setBounds(85, 207, 190, 14);
 		panel.add(TextracaPet);
 
 		JLabel Alergias = new JLabel("Alergias: " + pet.getAlergias());
-		Alergias.setBounds(8, 242, 142, 14);
+		Alergias.setBounds(85, 260, 142, 14);
 		panel.add(Alergias);
 
 		JLabel TextSexoPet = new JLabel("Sexo: " + pet.getSexo());
-		TextSexoPet.setBounds(8, 267, 142, 14);
+		TextSexoPet.setBounds(85, 285, 142, 14);
 		panel.add(TextSexoPet);
 
 		JLabel textPesoPet = new JLabel("Peso: " + pet.getPeso());
@@ -101,21 +108,25 @@ public class ConsultaPetsDadosPet extends JPanel {
 		textListaDeConsulta.setBounds(546, 147, 108, 14);
 		panel.add(textListaDeConsulta);
 
-		JList listConsultasAnterior = new JList();
-		listConsultasAnterior.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		listConsultasAnterior.setModel(new AbstractListModel() {
-			String[] values = new String[] { "Consulta: 07/04/2024", "Consulta: 08/06/2024" };
+		JComboBox<String> listaConsultas = new JComboBox<>();
+		listaConsultas.setBounds(536, 178, 118, 22);
+		panel.add(listaConsultas);
 
-			public int getSize() {
-				return values.length;
+		listaConsultas.removeAllItems();
+		int idPet = pet.getId();
+		Connection connection = null;
+		Statement st = null;
+		ResultSet rs = null;
+		try {
+			connection = BD.getConnection();
+			st = connection.createStatement();
+			rs = st.executeQuery("SELECT * FROM consultas WHERE id_pet = " + idPet);
+			while (rs.next()) {
+				listaConsultas.addItem(rs.getString("dataConsulta") + " - " + rs.getInt("id"));
 			}
-
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		listConsultasAnterior.setBounds(477, 163, 244, 109);
-		panel.add(listConsultasAnterior);
+		} catch (SQLException i) {
+			i.printStackTrace();
+		}
 
 		JButton botaoVerificarConsulta = new JButton("Verificar Consulta");
 		botaoVerificarConsulta.setBackground(new Color(159, 80, 0));
@@ -127,14 +138,18 @@ public class ConsultaPetsDadosPet extends JPanel {
 		botaoVerificarConsulta.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				String[] consultaSelecionada = String.valueOf(listaConsultas.getSelectedItem()).split(" - ");
+				int idConsultaSelecionada = Integer.parseInt(consultaSelecionada[1].trim());
+				Consultas consulta = BDServices.consultarConsulta(idConsultaSelecionada);
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new ConsultaPetsDadosConsulta(pet));
+				f.setContentPane(new ConsultaPetsDadosConsulta(consulta));
 				f.revalidate();
+
 			}
 		});
 
 		JLabel TextNascPet = new JLabel("Nascimento: " + pet.getDataNascimento());
-		TextNascPet.setBounds(8, 212, 208, 27);
+		TextNascPet.setBounds(85, 230, 208, 27);
 		panel.add(TextNascPet);
 
 		JButton botaoRetornar = new JButton("Retornar");

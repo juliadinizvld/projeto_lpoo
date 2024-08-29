@@ -25,7 +25,7 @@ public class ProdutosInformacoesProdutos extends JPanel {
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(-73, -114, 700, 500);
+		panel.setBounds(0, 0, 700, 500);
 		add(panel);
 		panel.setLayout(null);
 
@@ -36,17 +36,17 @@ public class ProdutosInformacoesProdutos extends JPanel {
 
 		JLabel textoNomeDoProduto = new JLabel("Nome do produto: ");
 		textoNomeDoProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoNomeDoProduto.setBounds(129, 80, 137, 30);
+		textoNomeDoProduto.setBounds(129, 80, 356, 30);
 		panel.add(textoNomeDoProduto);
 
 		JLabel textoQuantidadeEmEstoque = new JLabel("Quantidade em estoque: ");
 		textoQuantidadeEmEstoque.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoQuantidadeEmEstoque.setBounds(128, 117, 200, 30);
+		textoQuantidadeEmEstoque.setBounds(128, 117, 357, 30);
 		panel.add(textoQuantidadeEmEstoque);
 
 		JLabel textoValorUnitario = new JLabel("Valor unitário: ");
 		textoValorUnitario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoValorUnitario.setBounds(129, 158, 107, 30);
+		textoValorUnitario.setBounds(129, 158, 313, 30);
 		panel.add(textoValorUnitario);
 
 		JLabel textoQuantidadeDesejada = new JLabel("Selecione a quantidade desejada: ");

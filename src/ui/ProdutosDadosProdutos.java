@@ -84,7 +84,7 @@ public class ProdutosDadosProdutos extends JPanel {
 		JButton botaoAtualizarProduto = new JButton("Atualizar Produto");
 		botaoAtualizarProduto.setForeground(new Color(255, 255, 255));
 		botaoAtualizarProduto.setBackground(new Color(159, 80, 0));
-		botaoAtualizarProduto.setBounds(427, 318, 129, 35);
+		botaoAtualizarProduto.setBounds(427, 318, 214, 35);
 		panel.add(botaoAtualizarProduto);
 		botaoAtualizarProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

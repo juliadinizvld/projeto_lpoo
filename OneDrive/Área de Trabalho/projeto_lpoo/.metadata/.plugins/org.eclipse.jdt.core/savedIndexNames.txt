@@ -1,4 +1,0 @@
-INDEX VERSION 1.134+C:\Users\julia\OneDrive\Área de Trabalho\projeto_lpoo\.metadata\.plugins\org.eclipse.jdt.core
-1635404021.index
-1865797976.index
-776299057.index

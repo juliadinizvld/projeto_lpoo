@@ -129,6 +129,14 @@ public class Home extends JPanel {
 			f.revalidate();
 		});
 
+		JMenuItem menuItemMedico = new JMenuItem("Médico");
+		mnNewMenu.add(menuItemMedico);
+		menuItemMedico.addActionListener(e -> {
+			JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, mainPanel);
+			f.setContentPane(new MedicosConsultaMedico());
+			f.revalidate();
+		});
+
 		JMenu mnNewMenu_1 = new JMenu("Informações");
 		mnNewMenu_1.setFont(new Font("Arial", Font.PLAIN, 12));
 		menuAdministrador.add(mnNewMenu_1);
