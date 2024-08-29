@@ -157,7 +157,8 @@ public class ConsultaPets extends JPanel {
 				f.revalidate();
 			}
 
-		});
+		}}
+		);
 
 		panel.add(botaoVerificarFicha);
 	}
