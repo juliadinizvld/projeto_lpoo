@@ -142,7 +142,7 @@ public class MedicosVeterinarios implements Serializable {
 		this.cidade = cidade;
 	}
 
-	public String getRrmv() {
+	public String getRmv() {
 		return rmv;
 	}
 

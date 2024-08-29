@@ -6,8 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.hibernate.Session;
-
+import ui.entities.Consultas;
 import ui.entities.Funcionarios;
 import ui.entities.MedicosVeterinarios;
 import ui.entities.Pets;
@@ -141,12 +140,48 @@ public class BDServices {
 		emf.close();
 	}
 
+	public static void atualizarMedico(int id, String nome, int idade, String telefone, String cpf, String sexo,
+			String cep, int numeroCasa, String rua, String bairro, String estado, String cidade, String rmv) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		MedicosVeterinarios medico = em.find(MedicosVeterinarios.class, id);
+		medico.setNome(nome);
+		medico.setIdade(idade);
+		medico.setTelefone(telefone);
+		medico.setCpf(cpf);
+		medico.setSexo(sexo);
+		medico.setCep(cep);
+		medico.setNumeroCasa(numeroCasa);
+		medico.setRua(rua);
+		medico.setBairro(bairro);
+		medico.setEstado(estado);
+		medico.setCidade(cidade);
+		medico.setRmv(rmv);
+		em.persist(medico);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+	}
+
 	public static int inserirPet(Pets pet) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(pet);
 		int id = pet.getId();
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+		return id;
+	}
+
+	public static int inserirConsulta(Consultas consulta) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(consulta);
+		int id = consulta.getId();
 		em.getTransaction().commit();
 		em.close();
 		emf.close();
@@ -162,6 +197,15 @@ public class BDServices {
 		return funcionario;
 	}
 
+	public static MedicosVeterinarios consultarMedico(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		MedicosVeterinarios medico = em.find(MedicosVeterinarios.class, id);
+		emf.close();
+		em.close();
+		return medico;
+	}
+
 	public static Pets consultarPet(int id) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
 		EntityManager em = emf.createEntityManager();
@@ -169,6 +213,15 @@ public class BDServices {
 		emf.close();
 		em.close();
 		return pet;
+	}
+
+	public static Consultas consultarConsulta(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		Consultas consulta = em.find(Consultas.class, id);
+		emf.close();
+		em.close();
+		return consulta;
 	}
 
 	public static Tutores consultarTutor(int id) {
@@ -205,6 +258,17 @@ public class BDServices {
 		Funcionarios funcionario = em.find(Funcionarios.class, id);
 		em.getTransaction().begin();
 		em.remove(funcionario);
+		em.getTransaction().commit();
+		em.close();
+		emf.close();
+	}
+
+	public static void removerMedico(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinicaveterinaria");
+		EntityManager em = emf.createEntityManager();
+		MedicosVeterinarios medico = em.find(MedicosVeterinarios.class, id);
+		em.getTransaction().begin();
+		em.remove(medico);
 		em.getTransaction().commit();
 		em.close();
 		emf.close();

@@ -35,8 +35,6 @@ public class AtualizacaoAtualizarCadastroProduto extends JPanel {
 	 * Create the panel.
 	 */
 	public AtualizacaoAtualizarCadastroProduto(Produtos produto) {
-
-		System.out.println(produto.getId());
 		MaskFormatter valorProduto = null;
 		try {
 			valorProduto = new MaskFormatter("###.##");
@@ -108,7 +106,6 @@ public class AtualizacaoAtualizarCadastroProduto extends JPanel {
 		((AbstractDocument) txtProductName.getDocument()).setDocumentFilter(new FiltroApenasLetras());
 		panel.add(txtProductName);
 		txtProductName.setText(produto.getNome());
-		
 
 		JFormattedTextField txtQuantity = new JFormattedTextField();
 		txtQuantity.setBounds(394, 134, 28, 20);

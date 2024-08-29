@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,8 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import ui.entities.Pets;
-import java.awt.Color;
+import ui.entities.Consultas;
+import javax.swing.JTextArea;
+import java.awt.SystemColor;
 
 public class ConsultaPetsDadosConsulta extends JPanel {
 
@@ -19,55 +21,55 @@ public class ConsultaPetsDadosConsulta extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public ConsultaPetsDadosConsulta(Pets pet) {
+	public ConsultaPetsDadosConsulta(Consultas consulta) {
 		setLayout(null);
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(0, 0, 821, 500);
+		panel.setBounds(0, 0, 821, 576);
 		add(panel);
 		panel.setLayout(null);
 
-		JLabel textDataConsulta = new JLabel("Data da Consulta:");
-		textDataConsulta.setBounds(10, 25, 168, 14);
+		JLabel textDataConsulta = new JLabel("Data da Consulta: " + consulta.getDataConsulta());
+		textDataConsulta.setBounds(137, 61, 278, 14);
 		panel.add(textDataConsulta);
 
-		JLabel textMedicoDaConsulta = new JLabel("Médico da Consulta:");
-		textMedicoDaConsulta.setBounds(10, 50, 168, 14);
+		JLabel textMedicoDaConsulta = new JLabel("Médico da Consulta: " + consulta.getNomeMedico());
+		textMedicoDaConsulta.setBounds(138, 89, 277, 14);
 		panel.add(textMedicoDaConsulta);
 
 		JLabel textDescricaoDaConsulta = new JLabel("Descrição da Consulta:");
-		textDescricaoDaConsulta.setBounds(10, 94, 168, 14);
+		textDescricaoDaConsulta.setBounds(137, 121, 278, 14);
 		panel.add(textDescricaoDaConsulta);
 
-		JLabel textProcedimentoSolicitado = new JLabel("Procedimento Solicitado:");
-		textProcedimentoSolicitado.setBounds(10, 198, 168, 14);
-		panel.add(textProcedimentoSolicitado);
-
-		JLabel textmedicacaoSolicitada = new JLabel("Medicação Solicitada:");
-		textmedicacaoSolicitada.setBounds(10, 240, 122, 14);
+		JLabel textmedicacaoSolicitada = new JLabel("Medicação Solicitada: " + consulta.getMedicacao());
+		textmedicacaoSolicitada.setBounds(137, 344, 459, 14);
 		panel.add(textmedicacaoSolicitada);
-
-		JLabel textMetodoPagamento = new JLabel("Métodos de Pagamento:");
-		textMetodoPagamento.setBounds(163, 366, 165, 14);
-		panel.add(textMetodoPagamento);
-
-		JLabel textValorConsulta = new JLabel("Valor da Consulta:");
-		textValorConsulta.setBounds(163, 335, 109, 14);
-		panel.add(textValorConsulta);
 
 		JButton botaoSair = new JButton("Sair");
 		botaoSair.setForeground(new Color(255, 255, 255));
 		botaoSair.setBackground(new Color(159, 80, 0));
-		botaoSair.setBounds(672, 21, 89, 23);
+		botaoSair.setBounds(311, 399, 89, 23);
 		botaoSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new ConsultaPetsDadosPet(pet));
+				f.setContentPane(new ConsultaPets());
 				f.revalidate();
 			}
 		});
 
 		panel.add(botaoSair);
+
+		JTextArea descricaoConsulta = new JTextArea();
+		descricaoConsulta.setBackground(SystemColor.inactiveCaption);
+		descricaoConsulta.setForeground(Color.BLACK);
+		descricaoConsulta.setBounds(137, 157, 459, 171);
+		panel.add(descricaoConsulta);
+		descricaoConsulta.setText(consulta.getDescricao());
+		descricaoConsulta.setEditable(false);
+
+		JLabel textIdPet = new JLabel("Id do pet: " + consulta.getId_pet());
+		textIdPet.setBounds(425, 61, 139, 14);
+		panel.add(textIdPet);
 
 	}
 }
