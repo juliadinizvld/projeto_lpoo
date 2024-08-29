@@ -145,6 +145,10 @@ public class ConsultaPets extends JPanel {
 		botaoVerificarFicha.setFont(new Font("Tahoma", Font.BOLD, 11));
 		botaoVerificarFicha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (ListAnimaisPorID.getSelectedItem() == null) {
+		            // Exibir alerta
+		            JOptionPane.showMessageDialog(null, "Por favor, selecione um pet antes de verificar a ficha.", "Atenção", JOptionPane.WARNING_MESSAGE);
+		        } else {
 				String[] petSelecionado = String.valueOf(ListAnimaisPorID.getSelectedItem()).split("-");
 				int idPetSelecionado = Integer.parseInt(petSelecionado[1].trim());
 				Pets pet = BDServices.consultarPet(idPetSelecionado);
