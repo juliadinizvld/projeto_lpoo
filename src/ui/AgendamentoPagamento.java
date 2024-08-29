@@ -72,7 +72,7 @@ public class AgendamentoPagamento extends JPanel {
                 try {
                     // Obter os detalhes da consulta
                     double valorConsulta = consulta.getValorConsulta();
-                    int idConsulta = consulta.getId();
+                   String idConsulta = String.valueOf(consulta.getId());
                     
                     // Chamar a API do Mercado Pago para criar o pagamento
                     CriacaoPagamento api = new CriacaoPagamento(); // Suponha que você tenha uma classe para isso
