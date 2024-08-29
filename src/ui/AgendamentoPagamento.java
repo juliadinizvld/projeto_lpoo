@@ -1,17 +1,23 @@
 package ui;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URI;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import com.toedter.calendar.JDateChooser;
+
+import pagamento.controladora.CriacaoPagamento;
 
 public class AgendamentoPagamento extends JPanel {
 
@@ -26,7 +32,7 @@ public class AgendamentoPagamento extends JPanel {
 
         JPanel panel = new JPanel();
         panel.setBackground(new Color(255, 255, 255));
-        panel.setBounds(0, 0, 914, 641);
+        panel.setBounds(-119, -92, 958, 840);
         add(panel);
         panel.setLayout(null);
 
@@ -43,24 +49,53 @@ public class AgendamentoPagamento extends JPanel {
         panel.add(dateChooser);
 
         JLabel lblPagamento = new JLabel(
-                "<html>Para conclusão do agendamento é necessário realizar o pagamento.</html>");
+                "<html>Para conclusão do agendamento é necessário realizar o <br>pagamento. Acesse o link abaixo para realização do pagamento!</html>");
         lblPagamento.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        lblPagamento.setBounds(166, 217, 602, 69);
+        lblPagamento.setBounds(126, 180, 480, 66);
         panel.add(lblPagamento);
 
         JButton btnRetornar = new JButton("← Retornar");
         btnRetornar.setForeground(Color.WHITE);
         btnRetornar.setBackground(new Color(159, 80, 0));
-        btnRetornar.setBounds(247, 324, 120, 30); // Ajuste a posição e o tamanho conforme necessário
+        btnRetornar.setBounds(174, 274, 120, 30); // Ajuste a posição e o tamanho conforme necessário
         panel.add(btnRetornar);
-        btnRealizarPagamento.addActionListener(new ActionListener() {
+
+        JButton btnPagamento = new JButton("Pagamento");
+        btnPagamento.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         	}
         });
-        btnRealizarPagamento.setBounds(480, 324, 123, 30);
-        panel.add(btnRealizarPagamento);
-        btnRealizarPagamento.setForeground(new Color(255, 255, 255));
-        btnRealizarPagamento.setBackground(new Color(159, 80, 0));
+        btnPagamento.setForeground(Color.WHITE);
+        btnPagamento.setBackground(new Color(159, 80, 0));36
+        btnPagamento.setBounds(392, 274, 120, 30);
+        panel.add(btnPagamento);
+
+        btnPagamento.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        try {
+
+		            String nomeProduto = produto.getNome();
+		            double precoProduto = produto.getValor();
+		            int idProduto = produto.getId();
+
+		            // Chamar a API do Mercado Pago para criar o pagamento
+		            CriacaoPagamento api = new CriacaoPagamento(); // Suponha que você tenha uma classe para isso
+		            String linkPagamento = api.criarPagamento(nomeProduto, precoProduto, idProduto);
+
+		            // Redirecionar para o link de pagamento
+		            if (linkPagamento != null) {
+		                // Abrir o link de pagamento no navegador padrão
+		                Desktop.getDesktop().browse(new URI(linkPagamento));
+		            } else {
+		                JOptionPane.showMessageDialog(null, "Não foi possível gerar o link de pagamento.");
+		            }
+		        } catch (Exception ex) {
+		            ex.printStackTrace();
+		            JOptionPane.showMessageDialog(null, "Erro ao processar o pagamento.");
+		        }
+		    }
+		});
 
         btnRetornar.addActionListener(new ActionListener() {
             @Override
