@@ -75,10 +75,11 @@ public class ProdutosPagamento extends JPanel {
 		            // Usar o produto selecionado
 		            String nomeProduto = produto.getNome();
 		            double precoProduto = produto.getValor();
+			    String idProduto = String.valueOf(produto.getId());
 		            
 		            // Chamar a API do Mercado Pago para criar o pagamento
-		            CriacaoPagamento api = new CriacaoPagamento(); // Suponha que você tenha uma classe para isso
-		            String linkPagamento = api.criarPagamento(nomeProduto, precoProduto);
+		            CriacaoPagamento api = new CriacaoPagamento(); 
+		            String linkPagamento = api.criarPagamento(nomeProduto, precoProduto, idProduto);
 		            
 		            // Redirecionar para o link de pagamento
 		            if (linkPagamento != null) {
