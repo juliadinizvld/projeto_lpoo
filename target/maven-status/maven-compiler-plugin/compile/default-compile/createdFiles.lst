@@ -47,6 +47,7 @@ ui\CadastroCadastroTutor$FiltroApenasLetras.class
 ui\AtualizacaoAtualizarCadastroProduto.class
 ui\CadastroEscolha$3.class
 ui\TutorConsultaTutor.class
+data\BD.class
 ui\FiltroApenasLetrasEAcentos.class
 ui\ConsultaPets$5.class
 ui\MedicosNovoMedico$1.class

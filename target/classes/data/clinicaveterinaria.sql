@@ -4,6 +4,12 @@
 -- ------------------------------------------------------
 -- Server version	8.3.0
 
+DROP DATABASE IF EXISTS `clinicaveterinaria`;
+
+CREATE DATABASE `clinicaveterinaria`;
+
+USE `clinicaveterinaria`;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -14,6 +20,36 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `consultas`
+--
+
+DROP TABLE IF EXISTS `consultas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `consultas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `dataConsulta` date NOT NULL,
+  `nomeMedico` varchar(45) NOT NULL,
+  `descricao` varchar(255) NOT NULL,
+  `medicacao` varchar(255) NOT NULL,
+  `id_pet` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_pet` (`id_pet`),
+  CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`id_pet`) REFERENCES `pets` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `consultas`
+--
+
+LOCK TABLES `consultas` WRITE;
+/*!40000 ALTER TABLE `consultas` DISABLE KEYS */;
+INSERT INTO `consultas` VALUES (16,'2024-08-28','Rafael Correia','aaeseasloakse´p\naseop´keas´p\nasepókeasóeas\naseokeaspókesa','Shampoo',5),(17,'2024-08-29','Rafael Correia','asdasdkmdaskp	asókasdads\nasdo,msaoed	das','Testosterona',5);
+/*!40000 ALTER TABLE `consultas` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `funcionarios`
@@ -46,7 +82,7 @@ CREATE TABLE `funcionarios` (
 
 LOCK TABLES `funcionarios` WRITE;
 /*!40000 ALTER TABLE `funcionarios` DISABLE KEYS */;
-INSERT INTO `funcionarios` VALUES (5,'Rafael Correia Costa',25,'819998398293','12338932893','ATENDENTE','MASCULINO','52221060',60,'Sudeste','Cajueiro','Recife','PE'),(6,'Rafaela Joana',32,'392183091280','03192832019','ADMINISTRADOR','MASCULINO','54140841',50,'RJAS','eAJI','Olinda','PE'),(7,'joao da costa',24,'239832938918','92318093128','ATENDENTE','MASCULINO','42412412',42,'SOIEJASIO1223','asekaesp','eoaskpeas','PE');
+INSERT INTO `funcionarios` VALUES (5,'Rafael Correia',26,'819983213092','12442495423','ADMINISTRADOR','MASCULINO','52221060',60,'Sudeste','Cajueiro','Recife','PE');
 /*!40000 ALTER TABLE `funcionarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,6 +99,7 @@ CREATE TABLE `medicosveterinarios` (
   `idade` int NOT NULL,
   `telefone` varchar(12) NOT NULL,
   `cpf` varchar(11) NOT NULL,
+  `tipoFuncionario` enum('ADMINISTRADOR','ATENDENTE') NOT NULL,
   `sexo` enum('MASCULINO','FEMININO') NOT NULL,
   `cep` varchar(8) NOT NULL,
   `numeroCasa` int NOT NULL,
@@ -72,7 +109,7 @@ CREATE TABLE `medicosveterinarios` (
   `estado` varchar(45) NOT NULL,
   `rmv` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,7 +118,7 @@ CREATE TABLE `medicosveterinarios` (
 
 LOCK TABLES `medicosveterinarios` WRITE;
 /*!40000 ALTER TABLE `medicosveterinarios` DISABLE KEYS */;
-INSERT INTO `medicosveterinarios` VALUES (3,'aepeasok',13,'312098031298','90312809231','MASCULINO','31209831',59,'teste','teste','teste','PE','CRM/PE09123-83');
+INSERT INTO `medicosveterinarios` VALUES (9,'Rafael Correia',32,'309128309128','12309312093','ADMINISTRADOR','MASCULINO','09321830',329,'Sudeste','Cajueiro','Recife','PE','CRM/PE91238-30');
 /*!40000 ALTER TABLE `medicosveterinarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,7 +143,7 @@ CREATE TABLE `pets` (
   PRIMARY KEY (`id`),
   KEY `id_tutor` (`id_tutor`),
   CONSTRAINT `pets_ibfk_1` FOREIGN KEY (`id_tutor`) REFERENCES `tutores` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +152,7 @@ CREATE TABLE `pets` (
 
 LOCK TABLES `pets` WRITE;
 /*!40000 ALTER TABLE `pets` DISABLE KEYS */;
-INSERT INTO `pets` VALUES (2,'Bob Marley','CACHORRO','2023-12-20','MACHO','Golden Retriever',44.12,'Poeira','Anti-rábica',2),(4,'Ruby','GATO','2018-02-20','FÊMEA','Vira-lata',20,'Poeira','Anti-rábica',4),(5,'Belinha','CACHORRO','2015-05-30','FÊMEA','Vira-lata',50.42,'Poeira','Anti-rábica',2),(6,'Raiejpoaes','GATO','2024-12-23','FÊMEA','aspekaes',54.23,'aoiesjaes','easpj',5),(7,'Tunai','CACHORRO','1997-04-20','MACHO','Vira-lata',42.49,'Poeira','Raiva',2),(8,'AEOjs','CACHORRO','2024-10-29','MACHO','aepijsa',49.48,'AEJIa','aesdopija',5),(9,'Teste','CACHORRO','2023-12-29','MACHO','bebe',42.41,'aspij','asdepok',4),(10,'easeas','CACHORRO','2022-12-23','MACHO','aeseas',42.34,'teste','teste',4),(11,'asejek','CACHORRO','2024-02-27','MACHO','eoakoea',32.13,'eaoskjepase','easpk',6);
+INSERT INTO `pets` VALUES (5,'Belinha','CACHORRO','2015-05-30','FÊMEA','Vira-lata',50.42,'Poeira','Anti-rábica',2),(7,'Tunai','CACHORRO','1996-04-20','MACHO','Vira-lata',50,'Poeira','Raiva',2);
 /*!40000 ALTER TABLE `pets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,7 +170,7 @@ CREATE TABLE `produtos` (
   `quantidade` int NOT NULL,
   `valor` double NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,7 +179,7 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
-INSERT INTO `produtos` VALUES (3,'CONSULTA','Teste',5,332.23),(4,'CONSULTA','teaesjp',42,332.31),(5,'EXAME','teaesjp',42,332.31),(6,'CONSULTA','Roacutan',50,233.02),(7,'CONSULTA','das',42,323.12);
+INSERT INTO `produtos` VALUES (12,'GERAL','Antipulgas',50,29.9),(13,'GERAL','Ração para Cães Adultos',200,120),(14,'GERAL','Coleira Anti-Pulgas',75,45.5),(15,'GERAL','Vermífugo',100,32),(16,'GERAL','Ração para Gatos',150,95),(17,'GERAL','Shampoo Antialérgico',40,22.3),(18,'GERAL','Brinquedo Bola',60,15.9);
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,7 +214,7 @@ CREATE TABLE `tutores` (
 
 LOCK TABLES `tutores` WRITE;
 /*!40000 ALTER TABLE `tutores` DISABLE KEYS */;
-INSERT INTO `tutores` VALUES (2,'Rafael Correia Costa','23109310238','MASCULINO','rafaelcostateste@teste.teste','PE','Recife','081999328932',60,'1999-02-27','52221060','Cajuerio','Sudeste'),(4,'Joana D\'arc','31298321098','MASCULINO','aspjeasp@apeiosjpea.com','PE','Olinda','309218091328',50,'2003-03-27','93128392','teste','teste'),(5,'asoejheas','12938231908','MASCULINO','aseojheas@areoijase.com','PE','Recife','81999896516',950,'8241-03-23','52929289','eapsjkse','ASIJ'),(6,'aseasaes','12312312312','MASCULINO','iaejoiaes','PE','aesjoiaes','82980231980',50,'1999-02-27','32918093','eioasj','oasejea');
+INSERT INTO `tutores` VALUES (2,'Rafael Correia Costa','12442452321','MASCULINO','rafaelcosta@gmail.com','PE','Recife','081999328932',60,'1999-02-27','52221060','Cajueiro','Sudeste');
 /*!40000 ALTER TABLE `tutores` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -190,4 +227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-23  0:18:11
+-- Dump completed on 2024-08-30  3:35:42
