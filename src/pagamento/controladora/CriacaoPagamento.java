@@ -14,12 +14,6 @@ import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
-
-
-
 public class CriacaoPagamento {
 
 	public enum TipoEntidade {
@@ -28,24 +22,19 @@ public class CriacaoPagamento {
 
 	public static void main(String[] args) {
 		CriacaoPagamento criacaoPagamento = new CriacaoPagamento();
-		String linkConsulta = criacaoPagamento.criarPagamento(TipoEntidade.CONSULTA, "1", "Consulta", 100.00);
-		if (link != null) {
-			System.out.println("Link para redirecionamento: " + link);
-		} else {
-			System.out.println("Erro ao criar o pagamento.");
-		}
+
 	}
 
-	public String criarPagamento(TipoEntidade tipoEntidade, String idEntidade, String nomeEntidade, double precoEntidade) {
+	public String criarPagamento(String idEntidade, String nomeEntidade,
+			double precoEntidade) {
 		try {
 			// Cria o item de pagamento
 			PedidoPagamento.Item item = new PedidoPagamento.Item();
-			item.setId(idEntidade);
+			item.setId(Integer.parseInt(idEntidade));
 			item.setTitle(nomeEntidade);
 			item.setCurrency_id("BRL");
 			item.setQuantity(1);
 			item.setUnit_price(precoEntidade);
-
 
 			// Cria o pedido de pagamento e adiciona o item
 			PedidoPagamento pagamento = new PedidoPagamento();
@@ -61,29 +50,24 @@ public class CriacaoPagamento {
 			HttpRequest criacaoPagamentoRequisicao = HttpRequest.newBuilder()
 					.uri(new URI("https://api.mercadopago.com/checkout/preferences"))
 					.header("Authorization", "Bearer " + Constantes.Chave_acesso)
-					.POST(HttpRequest.BodyPublishers.ofString(corpoRequisicao))
-					.build();
+					.POST(HttpRequest.BodyPublishers.ofString(corpoRequisicao)).build();
 
 			// Envia a requisição e obtém a resposta
 			HttpClient httpClient = HttpClient.newHttpClient();
-			HttpResponse<String> criacaoPagamentoResposta = httpClient.send(criacaoPagamentoRequisicao, HttpResponse.BodyHandlers.ofString());
+			HttpResponse<String> criacaoPagamentoResposta = httpClient.send(criacaoPagamentoRequisicao,
+					HttpResponse.BodyHandlers.ofString());
 
 			// Converte a resposta para o objeto RespostaPagamento
-			RespostaPagamento criacaoPagamento = gson.fromJson(criacaoPagamentoResposta.body(), RespostaPagamento.class);
+			RespostaPagamento criacaoPagamento = gson.fromJson(criacaoPagamentoResposta.body(),
+					RespostaPagamento.class);
 
 			// Retorna o link de redirecionamento (sandbox ou produção)
-			return criacaoPagamento.getSandbox_init_point();  // Use getInit_point() para produção
-
+			return criacaoPagamento.getSandbox_init_point(); //
+			
 		} catch (URISyntaxException | IOException | InterruptedException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-
-
-	public String criarPagamento(String string, double valorConsulta, String idConsulta) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

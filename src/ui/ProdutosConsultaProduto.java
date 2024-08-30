@@ -34,150 +34,151 @@ import java.awt.Color;
 
 public class ProdutosConsultaProduto extends JPanel {
 
-    private static final long serialVersionUID = 1L;
-    private JTextField campoNomeDoProduto;
+	private static final long serialVersionUID = 1L;
+	private JTextField campoNomeDoProduto;
 
-    public ProdutosConsultaProduto() {
-        setLayout(new BorderLayout());
-        
-        JPanel panel = new JPanel();
-        panel.setBackground(new Color(222, 222, 222));
-        panel.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 2;
+	public ProdutosConsultaProduto() {
+		setLayout(new BorderLayout());
 
-        JLabel tituloConsultaDeProdutos = new JLabel("Consulta de produtos", SwingConstants.CENTER);
-        tituloConsultaDeProdutos.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        panel.add(tituloConsultaDeProdutos, gbc);
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(222, 222, 222));
+		panel.setLayout(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.insets = new Insets(5, 5, 5, 5);
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		gbc.gridwidth = 2;
 
-        gbc.gridy++;
-        gbc.gridwidth = 1;
-        JLabel textoNomeDoProduto = new JLabel("Nome do produto:");
-        textoNomeDoProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        panel.add(textoNomeDoProduto, gbc);
+		JLabel tituloConsultaDeProdutos = new JLabel("Consulta de produtos", SwingConstants.CENTER);
+		tituloConsultaDeProdutos.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		panel.add(tituloConsultaDeProdutos, gbc);
 
-        gbc.gridx++;
-        campoNomeDoProduto = new JTextField(20);
-        // Configuração do filtro de limite de caracteres
-        AbstractDocument document = (AbstractDocument) campoNomeDoProduto.getDocument();
-        document.setDocumentFilter(new LimitDocumentFilter(45)); // Limita a 45 caracteres
-        panel.add(campoNomeDoProduto, gbc);
+		gbc.gridy++;
+		gbc.gridwidth = 1;
+		JLabel textoNomeDoProduto = new JLabel("Nome do produto:");
+		textoNomeDoProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(textoNomeDoProduto, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy++;
-        gbc.gridwidth = 2;
-        JButton botaoVerificarProduto = new JButton("Verificar Produto");
-        botaoVerificarProduto.setForeground(Color.WHITE);
-        botaoVerificarProduto.setBackground(new Color(159, 80, 0));
-        panel.add(botaoVerificarProduto, gbc);
+		gbc.gridx++;
+		campoNomeDoProduto = new JTextField(20);
+		// Configuração do filtro de limite de caracteres
+		AbstractDocument document = (AbstractDocument) campoNomeDoProduto.getDocument();
+		document.setDocumentFilter(new LimitDocumentFilter(45)); // Limita a 45 caracteres
+		panel.add(campoNomeDoProduto, gbc);
 
-        gbc.gridy++;
-        JLabel tituloProdutosEncontrados = new JLabel("Produtos encontrados:", SwingConstants.CENTER);
-        tituloProdutosEncontrados.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        panel.add(tituloProdutosEncontrados, gbc);
+		gbc.gridx = 0;
+		gbc.gridy++;
+		gbc.gridwidth = 2;
+		JButton botaoVerificarProduto = new JButton("Verificar Produto");
+		botaoVerificarProduto.setForeground(Color.WHITE);
+		botaoVerificarProduto.setBackground(new Color(159, 80, 0));
+		panel.add(botaoVerificarProduto, gbc);
 
-        gbc.gridy++;
-        JComboBox<String> listaProdutosEncontrados = new JComboBox<>();
-        listaProdutosEncontrados.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        panel.add(listaProdutosEncontrados, gbc);
+		gbc.gridy++;
+		JLabel tituloProdutosEncontrados = new JLabel("Produtos encontrados:", SwingConstants.CENTER);
+		tituloProdutosEncontrados.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		panel.add(tituloProdutosEncontrados, gbc);
 
-        gbc.gridy++;
-        gbc.gridwidth = 1;
-        JButton botaoRetornar = new JButton("← Retornar");
-        botaoRetornar.setForeground(Color.WHITE);
-        botaoRetornar.setBackground(new Color(159, 80, 0));
-        panel.add(botaoRetornar, gbc);
+		gbc.gridy++;
+		JComboBox<String> listaProdutosEncontrados = new JComboBox<>();
+		listaProdutosEncontrados.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		panel.add(listaProdutosEncontrados, gbc);
 
-        gbc.gridx++;
-        JButton botaoRealizarCompra = new JButton("Realizar Compra");
-        botaoRealizarCompra.setForeground(Color.WHITE);
-        botaoRealizarCompra.setBackground(new Color(159, 80, 0));
-        panel.add(botaoRealizarCompra, gbc);
+		gbc.gridy++;
+		gbc.gridwidth = 1;
+		JButton botaoRetornar = new JButton("← Retornar");
+		botaoRetornar.setForeground(Color.WHITE);
+		botaoRetornar.setBackground(new Color(159, 80, 0));
+		panel.add(botaoRetornar, gbc);
 
-        add(panel, BorderLayout.CENTER);
+		gbc.gridx++;
+		JButton botaoRealizarCompra = new JButton("Realizar Compra");
+		botaoRealizarCompra.setForeground(Color.WHITE);
+		botaoRealizarCompra.setBackground(new Color(159, 80, 0));
+		panel.add(botaoRealizarCompra, gbc);
 
-        botaoVerificarProduto.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                listaProdutosEncontrados.removeAllItems();
-                Connection connection = null;
-                Statement st = null;
-                ResultSet rs = null;
-                String nome = campoNomeDoProduto.getText();
-                try {
-                    connection = BD.getConnection();
-                    st = connection.createStatement();
-                    rs = st.executeQuery("SELECT * FROM produtos WHERE nome LIKE '%" + nome + "%';");
-                    while (rs.next()) {
-                        listaProdutosEncontrados.addItem(rs.getString("nome") + " - " + rs.getInt("id"));
-                    }
-                } catch (SQLException i) {
-                    i.printStackTrace();
-                }
-            }
-        });
+		add(panel, BorderLayout.CENTER);
 
-        botaoRetornar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-                f.setContentPane(new Home());
-                f.revalidate();
-            }
-        });
+		botaoVerificarProduto.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				listaProdutosEncontrados.removeAllItems();
+				Connection connection = null;
+				Statement st = null;
+				ResultSet rs = null;
+				String nome = campoNomeDoProduto.getText();
+				try {
+					connection = BD.getConnection();
+					st = connection.createStatement();
+					rs = st.executeQuery("SELECT * FROM produtos WHERE nome LIKE '%" + nome + "%';");
+					while (rs.next()) {
+						listaProdutosEncontrados.addItem(rs.getString("nome") + " - " + rs.getInt("id"));
+					}
+				} catch (SQLException i) {
+					i.printStackTrace();
+				}
+			}
+		});
 
-        botaoRealizarCompra.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (listaProdutosEncontrados.getSelectedItem() == null) {
-                    JOptionPane.showMessageDialog(null, 
-                                                  "Por favor, selecione um produto antes de prosseguir com a compra.", 
-                                                  "Aviso", 
-                                                  JOptionPane.WARNING_MESSAGE);
-                } else {
-                    String[] produtoSelecionado = String.valueOf(listaProdutosEncontrados.getSelectedItem()).split("-");
-                    int idProdutoSelecionado = Integer.parseInt(produtoSelecionado[1].trim());
-                    Produtos produto = BDServices.consultarProduto(idProdutoSelecionado);
-                    JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-                    f.setContentPane(new ProdutosInformacoesCompraProduto(produto));
-                    f.revalidate();
-                }
-            }
-        });
-    }
+		botaoRetornar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+				f.setContentPane(new Home());
+				f.revalidate();
+			}
+		});
 
-    // Classe interna para o filtro de limite de caracteres
-    static class LimitDocumentFilter extends DocumentFilter {
-        private final int limit;
+		botaoRealizarCompra.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (listaProdutosEncontrados.getSelectedItem() == null) {
+					JOptionPane.showMessageDialog(null,
+							"Por favor, selecione um produto antes de prosseguir com a compra.", "Aviso",
+							JOptionPane.WARNING_MESSAGE);
+				} else {
+					String[] produtoSelecionado = String.valueOf(listaProdutosEncontrados.getSelectedItem()).split("-");
+					int idProdutoSelecionado = Integer.parseInt(produtoSelecionado[1].trim());
+					Produtos produto = BDServices.consultarProduto(idProdutoSelecionado);
+					JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+					f.setContentPane(new ProdutosInformacoesCompraProduto(produto));
+					f.revalidate();
+				}
+			}
+		});
+	}
 
-        public LimitDocumentFilter(int limit) {
-            this.limit = limit;
-        }
+	// Classe interna para o filtro de limite de caracteres
+	static class LimitDocumentFilter extends DocumentFilter {
+		private final int limit;
 
-        @Override
-        public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
-            if (string == null) {
-                return;
-            }
+		public LimitDocumentFilter(int limit) {
+			this.limit = limit;
+		}
 
-            if ((fb.getDocument().getLength() + string.length()) <= limit) {
-                super.insertString(fb, offset, string, attr);
-            }
-        }
+		@Override
+		public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr)
+				throws BadLocationException {
+			if (string == null) {
+				return;
+			}
 
-        @Override
-        public void replace(FilterBypass fb, int offset, int length, String string, AttributeSet attrs) throws BadLocationException {
-            if (string == null) {
-                return;
-            }
+			if ((fb.getDocument().getLength() + string.length()) <= limit) {
+				super.insertString(fb, offset, string, attr);
+			}
+		}
 
-            if ((fb.getDocument().getLength() - length + string.length()) <= limit) {
-                super.replace(fb, offset, length, string, attrs);
-            }
-        }
-    }
+		@Override
+		public void replace(FilterBypass fb, int offset, int length, String string, AttributeSet attrs)
+				throws BadLocationException {
+			if (string == null) {
+				return;
+			}
+
+			if ((fb.getDocument().getLength() - length + string.length()) <= limit) {
+				super.replace(fb, offset, length, string, attrs);
+			}
+		}
+	}
 }

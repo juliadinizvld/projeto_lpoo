@@ -56,7 +56,8 @@ public class ProdutosInformacoesCompraProduto extends JPanel {
 		textoQuantidadeDesejada.setBounds(129, 199, 240, 30);
 		panel.add(textoQuantidadeDesejada);
 
-		JComboBox SelectQuantidadeDesejada = new JComboBox();
+		String[] quantidade = { "1" };
+		JComboBox SelectQuantidadeDesejada = new JComboBox(quantidade);
 		SelectQuantidadeDesejada.setBounds(392, 205, 59, 22);
 		panel.add(SelectQuantidadeDesejada);
 
@@ -90,7 +91,7 @@ public class ProdutosInformacoesCompraProduto extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				// f.setContentPane(new ProdutosPagamento(produto));
+				f.setContentPane(new ProdutosPagamento(produto));
 				f.revalidate();
 
 			}

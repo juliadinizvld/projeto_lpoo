@@ -24,7 +24,6 @@ public class ProdutosPagamento extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	
 	public ProdutosPagamento(Produtos produto) {
 		setLayout(null);
 		JPanel panel = new JPanel();
@@ -38,18 +37,19 @@ public class ProdutosPagamento extends JPanel {
 		tituloPagamento.setBounds(305, 11, 101, 25);
 		panel.add(tituloPagamento);
 
-		JLabel textoNomeDoProduto = new JLabel("Nome do produto: ");
+		JLabel textoNomeDoProduto = new JLabel("Nome do produto: " + produto.getNome());
 		textoNomeDoProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textoNomeDoProduto.setBounds(168, 98, 322, 25);
 		panel.add(textoNomeDoProduto);
 
-		JLabel textoQuantidadeSolicitada = new JLabel("Quantidade solicitada: ");
+		JLabel textoQuantidadeSolicitada = new JLabel("Quantidade solicitada: " + "1");
 		textoQuantidadeSolicitada.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textoQuantidadeSolicitada.setBounds(168, 134, 322, 25);
 		panel.add(textoQuantidadeSolicitada);
 
 		JLabel textoConclusaoCompra = new JLabel(
-				"<html>Para conclusão da compra é necessário realizar o pagamento, o valor total para pagamento é de R$ .  </html>");
+				"<html>Para conclusão da compra é necessário realizar o pagamento, o valor total para pagamento é de R$ "
+						+ produto.getValor() + "</html>");
 		textoConclusaoCompra.setVerticalAlignment(SwingConstants.TOP);
 		textoConclusaoCompra.setHorizontalAlignment(SwingConstants.CENTER);
 		textoConclusaoCompra.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -61,38 +61,39 @@ public class ProdutosPagamento extends JPanel {
 		botaoRetornar.setBackground(new Color(159, 80, 0));
 		botaoRetornar.setBounds(168, 344, 117, 23);
 		panel.add(botaoRetornar);
-		
+
 		JButton btnPaga = new JButton("Pagamento");
 		btnPaga.setBackground(new Color(159, 80, 0));
 		btnPaga.setForeground(new Color(255, 255, 255));
 		btnPaga.setBounds(379, 344, 112, 23);
 		panel.add(btnPaga);
-		
+
 		btnPaga.addActionListener(new ActionListener() {
-		    @Override
-		    public void actionPerformed(ActionEvent e) {
-		        try {
-		            // Usar o produto selecionado
-		            String nomeProduto = produto.getNome();
-		            double precoProduto = produto.getValor();
-			    String idProduto = String.valueOf(produto.getId());
-		            
-		            // Chamar a API do Mercado Pago para criar o pagamento
-		            CriacaoPagamento api = new CriacaoPagamento(); 
-		            String linkPagamento = api.criarPagamento(nomeProduto, precoProduto, idProduto);
-		            
-		            // Redirecionar para o link de pagamento
-		            if (linkPagamento != null) {
-		                // Abrir o link de pagamento no navegador padrão
-		                Desktop.getDesktop().browse(new URI(linkPagamento));
-		            } else {
-		                JOptionPane.showMessageDialog(null, "Não foi possível gerar o link de pagamento.");
-		            }
-		        } catch (Exception ex) {
-		            ex.printStackTrace();
-		            JOptionPane.showMessageDialog(null, "Erro ao processar o pagamento.");
-		        }
-		    }
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				try { // Usar o produto selecionado
+					String nomeProduto = produto.getNome();
+					double precoProduto = produto.getValor();
+					String idProduto = String.valueOf(produto.getId());
+
+					// Chamar a API do Mercado Pago para criar o pagamento
+					CriacaoPagamento api = new CriacaoPagamento();
+					String linkPagamento = api.criarPagamento(String.valueOf(idProduto), nomeProduto, precoProduto);
+
+					// Redirecionar para o link de pagamento
+					if (linkPagamento != null) {
+						// Abrir o link de pagamento no navegador padrão
+						Desktop.getDesktop().browse(new URI(linkPagamento));
+					} else {
+						JOptionPane.showMessageDialog(null, "Não foi possível gerar o link de pagamento.");
+					}
+				} catch (Exception ex) {
+					ex.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Erro ao processar o pagamento.");
+				}
+
+			}
 		});
 
 		botaoRetornar.addActionListener(new ActionListener() {
