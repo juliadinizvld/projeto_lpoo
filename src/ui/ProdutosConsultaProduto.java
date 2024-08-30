@@ -20,6 +20,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingConstants;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 
 import business.BDServices;
 import data.BD;
@@ -57,6 +61,9 @@ public class ProdutosConsultaProduto extends JPanel {
 
         gbc.gridx++;
         campoNomeDoProduto = new JTextField(20);
+        // Configuração do filtro de limite de caracteres
+        AbstractDocument document = (AbstractDocument) campoNomeDoProduto.getDocument();
+        document.setDocumentFilter(new LimitDocumentFilter(45)); // Limita a 45 caracteres
         panel.add(campoNomeDoProduto, gbc);
 
         gbc.gridx = 0;
@@ -133,5 +140,36 @@ public class ProdutosConsultaProduto extends JPanel {
                 f.revalidate();
             }
         });
+    }
+
+    // Classe interna para o filtro de limite de caracteres
+    static class LimitDocumentFilter extends DocumentFilter {
+        private final int limit;
+
+        public LimitDocumentFilter(int limit) {
+            this.limit = limit;
+        }
+
+        @Override
+        public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
+            if (string == null) {
+                return;
+            }
+
+            if ((fb.getDocument().getLength() + string.length()) <= limit) {
+                super.insertString(fb, offset, string, attr);
+            }
+        }
+
+        @Override
+        public void replace(FilterBypass fb, int offset, int length, String string, AttributeSet attrs) throws BadLocationException {
+            if (string == null) {
+                return;
+            }
+
+            if ((fb.getDocument().getLength() - length + string.length()) <= limit) {
+                super.replace(fb, offset, length, string, attrs);
+            }
+        }
     }
 }

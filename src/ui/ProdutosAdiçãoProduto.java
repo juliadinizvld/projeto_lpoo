@@ -32,8 +32,10 @@ public class ProdutosAdiçãoProduto extends JPanel {
 	public ProdutosAdiçãoProduto() {
 
 		MaskFormatter valorProduto = null;
+		MaskFormatter quantidade = null;
 		try {
 			valorProduto = new MaskFormatter("###.##");
+			quantidade = new MaskFormatter("###.##");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -94,7 +96,7 @@ public class ProdutosAdiçãoProduto extends JPanel {
 		((AbstractDocument) txtProductName.getDocument()).setDocumentFilter(new FiltroApenasLetras());
 		panel.add(txtProductName);
 
-		JFormattedTextField txtQuantity = new JFormattedTextField();
+		JFormattedTextField txtQuantity = new JFormattedTextField(quantidade);
 		txtQuantity.setBounds(394, 134, 28, 20);
 		panel.add(txtQuantity);
 
