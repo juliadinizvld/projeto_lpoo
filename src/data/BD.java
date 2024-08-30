@@ -16,9 +16,7 @@ public class BD {
 	public static Connection getConnection() {
 		if (connection == null) {
 			try {
-				Properties properties = loadProperties();
-				String url = properties.getProperty("dburl");
-				connection = DriverManager.getConnection(url, properties);
+				connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/clinicaveterinaria", "root", "root");
 			} catch (SQLException e) {
 				throw new BDException(e.getMessage());
 			}
