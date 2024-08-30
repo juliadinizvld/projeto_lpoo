@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,12 +21,11 @@ import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
+import javax.swing.text.DocumentFilter.FilterBypass;
 
 import business.BDServices;
 import data.BD;
 import ui.entities.Produtos;
-
-import java.awt.Color;
 
 public class ProdutosPesquisaProduto extends JPanel {
 
@@ -36,19 +36,11 @@ public class ProdutosPesquisaProduto extends JPanel {
     public ProdutosPesquisaProduto() {
         setLayout(null);
 
-<<<<<<< HEAD
         JPanel panel = new JPanel();
         panel.setBackground(new Color(255, 255, 255));
         panel.setBounds(0, 0, 821, 500);
         add(panel);
         panel.setLayout(null);
-=======
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(0, 0, 919, 568);
-		add(panel);
-		panel.setLayout(null);
->>>>>>> 0e31935cb8fd566cc7b2610097b4cc93ae6dc72e
 
         JLabel tituloProdutos = new JLabel("Produtos");
         tituloProdutos.setHorizontalAlignment(SwingConstants.CENTER);
@@ -65,6 +57,7 @@ public class ProdutosPesquisaProduto extends JPanel {
         campoNomeProduto.setBounds(347, 83, 267, 24);
         panel.add(campoNomeProduto);
         campoNomeProduto.setColumns(10);
+
         // Aplicação do filtro de limite de caracteres
         AbstractDocument document = (AbstractDocument) campoNomeProduto.getDocument();
         document.setDocumentFilter(new LimitDocumentFilter(45)); // Limita a 45 caracteres
@@ -102,6 +95,15 @@ public class ProdutosPesquisaProduto extends JPanel {
                     }
                 } catch (SQLException i) {
                     i.printStackTrace();
+                } finally {
+                    // Fechar recursos se necessário
+                    try {
+                        if (rs != null) rs.close();
+                        if (st != null) st.close();
+                        if (connection != null) connection.close();
+                    } catch (SQLException e1) {
+                        e1.printStackTrace();
+                    }
                 }
             }
         });
@@ -113,7 +115,6 @@ public class ProdutosPesquisaProduto extends JPanel {
         panel.add(botaoVerificarProduto);
 
         botaoVerificarProduto.addActionListener(new ActionListener() {
-
             public void actionPerformed(ActionEvent e) {
                 String[] produtoSelecionado = String.valueOf(selectResultadoProdutos.getSelectedItem()).split("-");
                 int idProdutoSelecionado = Integer.parseInt(produtoSelecionado[1].trim());
@@ -122,42 +123,28 @@ public class ProdutosPesquisaProduto extends JPanel {
                 f.setContentPane(new ProdutosDadosProdutos(produto));
                 f.revalidate();
             }
-
         });
 
-<<<<<<< HEAD
         JButton botaoRetornar = new JButton("← Retornar");
-        botaoRetornar.setBounds(248, 426, 99, 21);
+        botaoRetornar.setForeground(new Color(255, 255, 255));
+        botaoRetornar.setBackground(new Color(159, 80, 0));
+        botaoRetornar.setBounds(189, 338, 140, 40);
         panel.add(botaoRetornar);
-=======
-		JButton botaoRetornar = new JButton("← Retornar");
-		botaoRetornar.setForeground(new Color(255, 255, 255));
-		botaoRetornar.setBackground(new Color(159, 80, 0));
-		botaoRetornar.setBounds(189, 338, 140, 40);
-		panel.add(botaoRetornar);
->>>>>>> 0e31935cb8fd566cc7b2610097b4cc93ae6dc72e
 
         botaoRetornar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
                 f.setContentPane(new Home());
                 f.revalidate();
             }
         });
 
-<<<<<<< HEAD
-        JButton botaoAdicionarProduto = new JButton("Adicionar novo produto\r\n");
-        botaoAdicionarProduto.setBounds(425, 407, 209, 40);
+        JButton botaoAdicionarProduto = new JButton("Adicionar produto");
+        botaoAdicionarProduto.setForeground(new Color(255, 255, 255));
+        botaoAdicionarProduto.setBackground(new Color(159, 80, 0));
+        botaoAdicionarProduto.setBounds(398, 338, 140, 40);
         panel.add(botaoAdicionarProduto);
-=======
-		JButton botaoAdicionarProduto = new JButton("Adicionar produto\r\n");
-		botaoAdicionarProduto.setForeground(new Color(255, 255, 255));
-		botaoAdicionarProduto.setBackground(new Color(159, 80, 0));
-		botaoAdicionarProduto.setBounds(398, 338, 140, 40);
-		panel.add(botaoAdicionarProduto);
->>>>>>> 0e31935cb8fd566cc7b2610097b4cc93ae6dc72e
 
         botaoAdicionarProduto.addActionListener(new ActionListener() {
             @Override
@@ -166,9 +153,7 @@ public class ProdutosPesquisaProduto extends JPanel {
                 f.setContentPane(new ProdutosAdiçãoProduto());
                 f.revalidate();
             }
-
         });
-
     }
 
     // Classe interna para o filtro de limite de caracteres
