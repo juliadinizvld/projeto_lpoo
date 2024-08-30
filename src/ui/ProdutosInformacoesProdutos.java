@@ -16,7 +16,6 @@ public class ProdutosInformacoesProdutos extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton botaoRetornar;
-	public static ProdutosInformacoesProdutos produtosInformacoesProdutos = new ProdutosInformacoesProdutos();
 	
 	/**
 	 * Create the panel.
@@ -25,7 +24,7 @@ public class ProdutosInformacoesProdutos extends JPanel {
 		setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
+		setBackground(new Color(222, 222, 222));
 		panel.setBounds(-73, -114, 700, 500);
 		add(panel);
 		panel.setLayout(null);
@@ -70,7 +69,7 @@ public class ProdutosInformacoesProdutos extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(ProdutosConsultaProduto.produto1);
+				f.setContentPane(new ProdutosConsultaProduto());
 				f.revalidate();
 				
 			}
@@ -88,7 +87,7 @@ public class ProdutosInformacoesProdutos extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				f.setContentPane(new ProdutosPagamento());
+				//f.setContentPane(new ProdutosPagamento());
 				f.revalidate();
 				
 			}

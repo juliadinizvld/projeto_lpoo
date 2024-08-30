@@ -26,7 +26,7 @@ public class ProdutosInformacoesCompraProduto extends JPanel {
 		setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
+		setBackground(new Color(222, 222, 222));
 		panel.setBounds(0, 0, 844, 574);
 		add(panel);
 		panel.setLayout(null);
@@ -38,17 +38,17 @@ public class ProdutosInformacoesCompraProduto extends JPanel {
 
 		JLabel textoNomeDoProduto = new JLabel("Nome do produto: " + produto.getNome());
 		textoNomeDoProduto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoNomeDoProduto.setBounds(129, 80, 137, 30);
+		textoNomeDoProduto.setBounds(129, 80, 333, 30);
 		panel.add(textoNomeDoProduto);
 
 		JLabel textoQuantidadeEmEstoque = new JLabel("Quantidade em estoque: " + produto.getQuantidade());
 		textoQuantidadeEmEstoque.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoQuantidadeEmEstoque.setBounds(128, 117, 200, 30);
+		textoQuantidadeEmEstoque.setBounds(128, 117, 334, 30);
 		panel.add(textoQuantidadeEmEstoque);
 
 		JLabel textoValorUnitario = new JLabel("Valor unitário: " + produto.getValor());
 		textoValorUnitario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textoValorUnitario.setBounds(129, 158, 221, 30);
+		textoValorUnitario.setBounds(129, 158, 313, 30);
 		panel.add(textoValorUnitario);
 
 		JLabel textoQuantidadeDesejada = new JLabel("Selecione a quantidade desejada: ");
@@ -90,7 +90,7 @@ public class ProdutosInformacoesCompraProduto extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-				//f.setContentPane(new ProdutosPagamento(produto));
+				// f.setContentPane(new ProdutosPagamento(produto));
 				f.revalidate();
 
 			}

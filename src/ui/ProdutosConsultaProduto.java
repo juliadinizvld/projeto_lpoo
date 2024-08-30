@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -132,12 +133,19 @@ public class ProdutosConsultaProduto extends JPanel {
         botaoRealizarCompra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String[] produtoSelecionado = String.valueOf(listaProdutosEncontrados.getSelectedItem()).split("-");
-                int idProdutoSelecionado = Integer.parseInt(produtoSelecionado[1].trim());
-                Produtos produto = BDServices.consultarProduto(idProdutoSelecionado);
-                JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
-                f.setContentPane(new ProdutosInformacoesCompraProduto(produto));
-                f.revalidate();
+                if (listaProdutosEncontrados.getSelectedItem() == null) {
+                    JOptionPane.showMessageDialog(null, 
+                                                  "Por favor, selecione um produto antes de prosseguir com a compra.", 
+                                                  "Aviso", 
+                                                  JOptionPane.WARNING_MESSAGE);
+                } else {
+                    String[] produtoSelecionado = String.valueOf(listaProdutosEncontrados.getSelectedItem()).split("-");
+                    int idProdutoSelecionado = Integer.parseInt(produtoSelecionado[1].trim());
+                    Produtos produto = BDServices.consultarProduto(idProdutoSelecionado);
+                    JFrame f = (JFrame) SwingUtilities.getAncestorOfClass(JFrame.class, panel);
+                    f.setContentPane(new ProdutosInformacoesCompraProduto(produto));
+                    f.revalidate();
+                }
             }
         });
     }

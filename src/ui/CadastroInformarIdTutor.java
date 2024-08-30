@@ -5,11 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.InputVerifier;
+import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 
 import business.BDServices;
 import ui.entities.Tutores;
@@ -26,46 +29,50 @@ public class CadastroInformarIdTutor extends JPanel {
         setLayout(null);
         JPanel panel = new JPanel();
         panel.setBackground(new Color(255, 255, 255));
-        panel.setBounds(0, 0, 700, 500);
+        panel.setBounds(10, 10, 867, 606);
         add(panel);
         panel.setLayout(null);
 
         JLabel lblNewLabel = new JLabel("Informe o ID do tutor:");
-        lblNewLabel.setBounds(247, 29, 373, 22);
+        lblNewLabel.setBounds(303, 31, 373, 22);
         lblNewLabel.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 17));
         panel.add(lblNewLabel);
 
         JButton btnRetornar = new JButton("Retornar ");
         btnRetornar.setForeground(new Color(255, 255, 255));
         btnRetornar.setBackground(new Color(159, 80, 0));
-        btnRetornar.setBounds(188, 146, 112, 37);
+        btnRetornar.setBounds(248, 146, 112, 37);
         panel.add(btnRetornar);
 
         JButton btnConfirmar = new JButton("Confirmar");
-        btnConfirmar.setBounds(340, 146, 148, 37);
+        btnConfirmar.setForeground(new Color(255, 255, 255));
+        btnConfirmar.setBackground(new Color(159, 80, 0));
+        btnConfirmar.setBounds(470, 146, 122, 37);
         panel.add(btnConfirmar);
 
-        JFormattedTextField campoIdTutor = new JFormattedTextField();
-        campoIdTutor.setBounds(306, 90, 73, 20);
+        JTextField campoIdTutor = new JTextField();
+        campoIdTutor.setBounds(403, 91, 73, 20);
         panel.add(campoIdTutor);
 
         JButton btnAvancar = new JButton("Avançar");
-        btnAvancar.setBounds(270, 305, 148, 37);
+        btnAvancar.setForeground(new Color(255, 255, 255));
+        btnAvancar.setBackground(new Color(159, 80, 0));
+        btnAvancar.setBounds(344, 333, 148, 37);
         panel.add(btnAvancar);
 
         JLabel textoCampoIdTutor = new JLabel("ID:");
         textoCampoIdTutor.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        textoCampoIdTutor.setBounds(261, 90, 35, 17);
+        textoCampoIdTutor.setBounds(345, 90, 35, 17);
         panel.add(textoCampoIdTutor);
 
         JLabel textoIdTutor = new JLabel("Id tutor: ");
         textoIdTutor.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        textoIdTutor.setBounds(223, 240, 279, 14);
+        textoIdTutor.setBounds(292, 243, 279, 14);
         panel.add(textoIdTutor);
 
         JLabel textoNomeTutor = new JLabel("Nome do tutor:");
         textoNomeTutor.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        textoNomeTutor.setBounds(223, 265, 328, 14);
+        textoNomeTutor.setBounds(292, 269, 328, 14);
         panel.add(textoNomeTutor);
 
         // Implementação do botão Confirmar
@@ -131,5 +138,21 @@ public class CadastroInformarIdTutor extends JPanel {
                 }
             }
         });
+
+        // Adiciona um InputVerifier para o campoIdTutor
+        campoIdTutor.setInputVerifier(new InputVerifier() {
+            @Override
+            public boolean verify(JComponent input) {
+                JTextField textField = (JTextField) input;
+                String text = textField.getText();
+                if (text.matches("\\d*")) { // Aceita apenas dígitos
+                    return true;
+                } else {
+                    JOptionPane.showMessageDialog(textField, "Por favor, insira apenas números.", "Entrada inválida", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+            }
+        });
     }
 }
+

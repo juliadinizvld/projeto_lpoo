@@ -1,17 +1,24 @@
 package ui;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URI;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import com.toedter.calendar.JDateChooser;
+
+import pagamento.controladora.CriacaoPagamento;
+import ui.entities.Consulta;
 
 public class AgendamentoPagamento extends JPanel {
 
@@ -20,12 +27,12 @@ public class AgendamentoPagamento extends JPanel {
     /**
      * Create the panel.
      */
-    public AgendamentoPagamento() {
+    public AgendamentoPagamento(Consulta consulta) {
         setLayout(null);
 
         JPanel panel = new JPanel();
-        panel.setBackground(new Color(255, 255, 255));
-        panel.setBounds(0, 0, 958, 840);
+        setBackground(new Color(222, 222, 222));
+        panel.setBounds(-118, -81, 958, 840);
         add(panel);
         panel.setLayout(null);
 
@@ -50,8 +57,40 @@ public class AgendamentoPagamento extends JPanel {
         JButton btnRetornar = new JButton("← Retornar");
         btnRetornar.setForeground(Color.WHITE);
         btnRetornar.setBackground(new Color(159, 80, 0));
-        btnRetornar.setBounds(291, 272, 120, 30); // Ajuste a posição e o tamanho conforme necessário
+        btnRetornar.setBounds(174, 274, 148, 30); // Ajuste a posição e o tamanho conforme necessário
         panel.add(btnRetornar);
+        
+        JButton btnPagamento = new JButton("Pagamento");
+        btnPagamento.setForeground(Color.WHITE);
+        btnPagamento.setBackground(new Color(159, 80, 0));
+        btnPagamento.setBounds (357, 274, 148, 30);
+        panel.add(btnPagamento);
+        
+        btnPagamento.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    // Obter os detalhes da consulta
+                    double valorConsulta = consulta.getValorConsulta();
+                   String idConsulta = String.valueOf(consulta.getId());
+                    
+                    // Chamar a API do Mercado Pago para criar o pagamento
+                    CriacaoPagamento api = new CriacaoPagamento(); // Suponha que você tenha uma classe para isso
+                    String linkPagamento = api.criarPagamento("Consulta", valorConsulta, idConsulta);
+                    
+                    // Redirecionar para o link de pagamento
+                    if (linkPagamento != null) {
+                        // Abrir o link de pagamento no navegador padrão
+                        Desktop.getDesktop().browse(new URI(linkPagamento));
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Não foi possível gerar o link de pagamento.");
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Erro ao processar o pagamento.");
+                }
+            }
+        });
 
         btnRetornar.addActionListener(new ActionListener() {
             @Override

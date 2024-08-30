@@ -36,11 +36,19 @@ public class ProdutosPesquisaProduto extends JPanel {
     public ProdutosPesquisaProduto() {
         setLayout(null);
 
+<<<<<<< HEAD
         JPanel panel = new JPanel();
         panel.setBackground(new Color(255, 255, 255));
         panel.setBounds(0, 0, 821, 500);
         add(panel);
         panel.setLayout(null);
+=======
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(0, 0, 919, 568);
+		add(panel);
+		panel.setLayout(null);
+>>>>>>> 0e31935cb8fd566cc7b2610097b4cc93ae6dc72e
 
         JLabel tituloProdutos = new JLabel("Produtos");
         tituloProdutos.setHorizontalAlignment(SwingConstants.CENTER);
@@ -117,9 +125,17 @@ public class ProdutosPesquisaProduto extends JPanel {
 
         });
 
+<<<<<<< HEAD
         JButton botaoRetornar = new JButton("← Retornar");
         botaoRetornar.setBounds(248, 426, 99, 21);
         panel.add(botaoRetornar);
+=======
+		JButton botaoRetornar = new JButton("← Retornar");
+		botaoRetornar.setForeground(new Color(255, 255, 255));
+		botaoRetornar.setBackground(new Color(159, 80, 0));
+		botaoRetornar.setBounds(189, 338, 140, 40);
+		panel.add(botaoRetornar);
+>>>>>>> 0e31935cb8fd566cc7b2610097b4cc93ae6dc72e
 
         botaoRetornar.addActionListener(new ActionListener() {
             @Override
@@ -131,9 +147,17 @@ public class ProdutosPesquisaProduto extends JPanel {
             }
         });
 
+<<<<<<< HEAD
         JButton botaoAdicionarProduto = new JButton("Adicionar novo produto\r\n");
         botaoAdicionarProduto.setBounds(425, 407, 209, 40);
         panel.add(botaoAdicionarProduto);
+=======
+		JButton botaoAdicionarProduto = new JButton("Adicionar produto\r\n");
+		botaoAdicionarProduto.setForeground(new Color(255, 255, 255));
+		botaoAdicionarProduto.setBackground(new Color(159, 80, 0));
+		botaoAdicionarProduto.setBounds(398, 338, 140, 40);
+		panel.add(botaoAdicionarProduto);
+>>>>>>> 0e31935cb8fd566cc7b2610097b4cc93ae6dc72e
 
         botaoAdicionarProduto.addActionListener(new ActionListener() {
             @Override

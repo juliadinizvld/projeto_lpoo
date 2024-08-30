@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -17,12 +18,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 import javax.swing.text.MaskFormatter;
+import javax.swing.text.PlainDocument;
 
 import business.BDServices;
 import ui.entities.Pets;
 import ui.entities.Tutores;
-import java.awt.Color;
 
 public class CadastroCadastroPet extends JPanel {
 
@@ -39,6 +42,8 @@ public class CadastroCadastroPet extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * 
+	 * @wbp.parser.constructor
 	 */
 
 	public CadastroCadastroPet(Tutores tutor) {
@@ -47,6 +52,7 @@ public class CadastroCadastroPet extends JPanel {
 
 		MaskFormatter mfDataNascimento = null;
 		MaskFormatter mfPeso = null;
+		MaskFormatter mfNomeAnimal = null;
 
 		try {
 			mfDataNascimento = new MaskFormatter("##/##/####");
@@ -59,7 +65,7 @@ public class CadastroCadastroPet extends JPanel {
 		SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
 		// Cria um painel principal com um layout de BorderLayout
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
+		setBackground(new Color(222, 222, 222));
 		panel.setBounds(0, 11, 715, 523);
 		add(panel);
 		panel.setLayout(null);
@@ -77,6 +83,9 @@ public class CadastroCadastroPet extends JPanel {
 		campoNomeAnimal.setBounds(282, 74, 242, 26);
 		campoNomeAnimal.setColumns(10);
 		panel.add(campoNomeAnimal);
+
+		PlainDocument docNomeAnimal = (PlainDocument) campoNomeAnimal.getDocument();
+		docNomeAnimal.setDocumentFilter(new LengthLimitFilter(45));
 
 		JLabel lblNewLabel = new JLabel("Nome do animal:");
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 10));
@@ -243,6 +252,10 @@ public class CadastroCadastroPet extends JPanel {
 		campoNomeAnimal.setColumns(10);
 		panel.add(campoNomeAnimal);
 
+		PlainDocument docNomeAnimal = (PlainDocument) campoNomeAnimal.getDocument();
+		// docNomeAnimal.setDocumentFilter(new CustomDocumentFilter());
+		panel.add(campoNomeAnimal);
+
 		JLabel lblNewLabel = new JLabel("Nome do animal:");
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 10));
 		lblNewLabel.setBounds(185, 74, 100, 24);
@@ -373,8 +386,43 @@ public class CadastroCadastroPet extends JPanel {
 				f.setContentPane(new CadastroEscolha());
 				f.revalidate();
 			}
+
 		});
 
 		setVisible(true);
+	}
+
+	public class LengthLimitFilter extends DocumentFilter {
+		private final int maxLength;
+
+		public LengthLimitFilter(int maxLength) {
+			this.maxLength = maxLength;
+		}
+
+		@Override
+		public void insertString(FilterBypass fb, int offset, String string, javax.swing.text.AttributeSet attr)
+				throws BadLocationException {
+			if (string != null) {
+				if ((fb.getDocument().getLength() + string.length()) <= maxLength) {
+					super.insertString(fb, offset, string, attr);
+				} else {
+					JOptionPane.showMessageDialog(null, "Número máximo de caracteres é " + maxLength + ".", "Erro",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		}
+
+		@Override
+		public void replace(FilterBypass fb, int offset, int length, String text, javax.swing.text.AttributeSet attrs)
+				throws BadLocationException {
+			if (text != null) {
+				if ((fb.getDocument().getLength() - length + text.length()) <= maxLength) {
+					super.replace(fb, offset, length, text, attrs);
+				} else {
+					JOptionPane.showMessageDialog(null, "Número máximo de caracteres é " + maxLength + ".", "Erro",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		}
 	}
 }

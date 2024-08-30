@@ -17,7 +17,10 @@ import javax.swing.text.AbstractDocument;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.MaskFormatter;
+import javax.swing.text.PlainDocument;
+
 import business.BDServices;
+import ui.CadastroCadastroPet.LengthLimitFilter;
 import ui.entities.Produtos;
 import ui.entities.Tutores;
 
@@ -32,8 +35,6 @@ public class AtualizacaoAtualizarCadastroProduto extends JPanel {
 	 * Create the panel.
 	 */
 	public AtualizacaoAtualizarCadastroProduto(Produtos produto) {
-
-		System.out.println(produto.getId());
 		MaskFormatter valorProduto = null;
 		try {
 			valorProduto = new MaskFormatter("###.##");
@@ -43,7 +44,7 @@ public class AtualizacaoAtualizarCadastroProduto extends JPanel {
 
 		setLayout(null);
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
+		setBackground(new Color(222, 222, 222));
 		panel.setBounds(0, 0, 821, 500);
 		add(panel);
 		panel.setLayout(null);
